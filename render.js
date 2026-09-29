@@ -76,26 +76,17 @@ function verdictHtml(story) {
       </aside>`;
 }
 
-function briefHtml(story) {
-  if (!story.ai || !story.ai.summary) return '';
-  const n = story.outlets.length;
-  return `
-      <div class="brief">
-        <p class="brief-text">${esc(story.ai.summary)}</p>
-        ${story.ai.differences ? `<p class="brief-diff">${esc(story.ai.differences)}</p>` : ''}
-        <p class="brief-credit">Summary by ${esc(story.ai.model)}, from ${n === 1 ? '1 outlet' : n + ' outlets'}</p>
-      </div>`;
-}
-
-function frameHtml(frame) {
+function frameHtml(story, skipFirstQuote) {
+  const frame = story.frame;
   const parts = [];
 
-  if (frame.shared.length) {
+  const quotes = skipFirstQuote ? frame.shared.slice(1) : frame.shared;
+  if (quotes.length) {
     parts.push(`
         <div class="block block-agreed">
-          <h4>What every side agrees on</h4>
-          <ul class="shared">${frame.shared.map((s) => `
-            <li><q>${esc(s.text)}</q><cite>${esc(s.outlet)}</cite></li>`).join('')}
+          <h4>${skipFirstQuote ? 'Other sides report the same' : 'What every side agrees on'}</h4>
+          <ul class="shared">${quotes.map((q) => `
+            <li><q>${esc(q.text)}</q><cite>${esc(q.outlet)}</cite></li>`).join('')}
           </ul>
         </div>`);
   }
@@ -115,7 +106,7 @@ function frameHtml(frame) {
   return parts.length ? `<div class="frame">${parts.join('')}</div>` : '';
 }
 
-function coverageDetails(story) {
+function outletsHtml(story) {
   const groups = CAMP_ORDER.filter((c) => story.coverage.some((x) => x.camp === c)).map((c) => `
           <div class="camp-group">
             <p class="also-head">${esc(CAMP_NAME[c])}</p>
@@ -123,27 +114,44 @@ function coverageDetails(story) {
               <li><a href="${esc(x.link)}" target="_blank" rel="noopener"><span class="who">${esc(x.source)}</span>${esc(x.asPublished)}</a></li>`).join('')}
             </ul>
           </div>`).join('');
-
   return `
-      <details class="original">
-        <summary>See every outlet's headline</summary>
-        <div class="original-body">${groups}</div>
-      </details>`;
+        <div class="block block-outlets">
+          <h4>Read it at the source</h4>
+          <div class="original-body">${groups}</div>
+        </div>`;
+}
+
+// What a story says before it is opened: one or two sentences, never a wall.
+function gistOf(story) {
+  if (story.ai && story.ai.summary) return { text: story.ai.summary, credit: 'Summary by ' + story.ai.model, fromQuote: false };
+  if (story.frame.shared.length) {
+    const q = story.frame.shared[0];
+    return { text: q.text, credit: q.outlet, fromQuote: true };
+  }
+  if (story.summary) return { text: story.summary, credit: story.source, fromQuote: false };
+  return null;
 }
 
 function storyHtml(story, { lead = false } = {}) {
-  // When the agreed account carries the story, one outlet's own summary above it is
-  // both a repetition and a thumb on the scale. The shared version does the work.
-  const showSummary = !story.ai && story.summary && story.frame.shared.length < 2;
+  const gist = gistOf(story);
+  const flag = story.ai ? story.ai.verdict : story.frame.verdict;
   return `
     <article class="story${lead ? ' story-lead' : ''}">
-      <h3><a class="headline" href="${esc(story.link)}" target="_blank" rel="noopener">${esc(story.headline)}</a></h3>
-      ${showSummary ? `<p class="summary">${esc(story.summary)}</p>` : ''}
-      ${briefHtml(story)}
-      ${spreadHtml(story)}
-      ${verdictHtml(story)}
-      ${frameHtml(story.frame)}
-      ${coverageDetails(story)}
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">${esc(story.headline)}</h3>
+          ${gist ? `<p class="gist">${esc(gist.text)} <span class="gist-credit">${esc(gist.credit)}</span></p>` : ''}
+          ${spreadHtml(story)}
+          ${flag ? `<p class="flag-line">${esc(flag.title)}</p>` : ''}
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          ${story.ai && story.ai.differences ? `<p class="brief-diff">${esc(story.ai.differences)}</p>` : ''}
+          ${verdictHtml(story)}
+          ${frameHtml(story, gist && gist.fromQuote)}
+          ${outletsHtml(story)}
+        </div>
+      </details>
     </article>`;
 }
 

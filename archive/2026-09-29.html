@@ -123,10 +123,17 @@ a { color: inherit; }
   margin: 0;
   font-size: 1.875rem;
   font-weight: 400;
-  letter-spacing: 0.38em;
-  text-indent: 0.38em;
-  text-transform: lowercase;
+  letter-spacing: 0.34em;
+  text-indent: 0.34em;
   color: var(--ink);
+}
+
+.mission {
+  max-width: 27rem;
+  margin: 1rem auto 0;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: var(--ink-mid);
 }
 
 .dateline {
@@ -352,6 +359,34 @@ details.story-more[open] .cue-close { display: inline; }
   details.story-more[open] .more-body { animation: open-up 220ms ease-out; }
   @keyframes open-up { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
 }
+
+/* ------------------------------------------------------------- the account */
+
+.account p {
+  margin: 0 0 var(--gap-m);
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: var(--ink);
+}
+.account p:last-child { margin-bottom: 0; }
+.account + * { margin-top: var(--gap-l); }
+
+details.sources { margin-top: var(--gap-l); }
+details.sources > summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+details.sources > summary::after {
+  content: "";
+  width: 0.35rem;
+  height: 0.35rem;
+  border-right: 1px solid currentColor;
+  border-bottom: 1px solid currentColor;
+  transform: translateY(-0.1rem) rotate(45deg);
+}
+details.sources[open] > summary::after { transform: translateY(0.1rem) rotate(-135deg); }
+details.sources .original-body { margin-top: var(--gap-s); }
 
 /* -------------------------------------------------------------- the brief */
 
@@ -643,16 +678,24 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
 /* -------------------------------------------------------------------- narrow */
 
 @media (max-width: 34rem) {
-  body { padding: 0 1rem 4rem; font-size: 1rem; }
+  /* Phones: larger type and a little more air, since this is read in a hand. */
+  body { padding: 0 1.125rem 4rem; font-size: 1.125rem; }
   .masthead { padding-top: 3rem; }
-  .wordmark { font-size: 1.5rem; letter-spacing: 0.3em; text-indent: 0.3em; }
-  .story-lead h3 { font-size: 1.5rem; }
-  .story h3 { font-size: 1.1875rem; }
+  .wordmark { font-size: 1.625rem; letter-spacing: 0.3em; text-indent: 0.3em; }
+  .mission { font-size: 1.0625rem; }
+  .story-lead h3 { font-size: 1.625rem; }
+  .story h3 { font-size: 1.375rem; line-height: 1.3; }
+  .gist, .story-lead .gist { font-size: 1.125rem; line-height: 1.7; }
+  .account p { font-size: 1.125rem; line-height: 1.75; }
+  .gist-credit, .spread-words, .more-cue, details > summary, .index a, .dateline { font-size: 1rem; }
+  q, .verdict li, .framing dd, .original-body li { font-size: 1.0625rem; }
+  .verdict-title { font-size: 1.1875rem; }
   .block-agreed, .block-only { padding-left: 0.875rem; }
   .block-agreed::after { display: none; }
   .original-body { padding: 0.875rem; }
   .seg { width: 2rem; }
-  .section h2 { letter-spacing: 0.16em; }
+  .section h2 { letter-spacing: 0.16em; font-size: 1.0625rem; }
+  .more-cue { padding: 0.5rem 0; }
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -713,7 +756,8 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
 <body>
   <main>
     <header class="masthead">
-      <h1 class="wordmark">steady</h1>
+      <h1 class="wordmark">Steady</h1>
+      <p class="mission">Each morning, Steady reads the news from the left, the right and everything in between, and tells you what happened in plain, calm words.</p>
       <p class="dateline">Tuesday, September 29, 2026</p>
       <p class="standing">Updated once each morning</p>
       <div class="appearance" id="appearance" hidden>
@@ -749,18 +793,16 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
         </summary>
         <div class="more-body">
           
+        <div class="account">
+          <p>It comes after the woman filed a civil lawsuit alleging she was drugged and raped at a fraternity house in 2024. <span class="gist-credit">BBC</span> US prosecutors reopened an investigation on Monday into an alleged 2024 gang rape at Cornell University after the woman involved accused the school of failing to punish those responsible adequately. <span class="gist-credit">France 24</span> Lawyers for the student, known as Jane Doe, filed a civil lawsuit earlier this month against the university and the alleged perpetrators, known online as the &quot;Cornell seven.&quot; <span class="gist-credit">The 19th</span></p>
+          <p>In a lawsuit, she said seven Chi Phi fraternity members drugged her with ketamine and assaulted her. <span class="gist-credit">France 24</span> Tompkins County District Attorney Matthew Van Houten told ABC News that he also intends to present the case to a grand jury with Doe&#39;s cooperation. <span class="gist-credit">The 19th</span> Those actions, the complaint alleged, included temporary suspensions and opportunities for some of the fraternity members to mitigate those suspensions by submitting essays. <span class="gist-credit">Mother Jones</span></p>
+        </div>
           
-          <div class="frame">
-        <div class="block block-agreed">
-          <h4>Other sides report the same</h4>
-          <ul class="shared">
-            <li><q>New York prosecutors are reopening an investigation into an alleged rape case at Cornell University in 2024.</q><cite>NPR</cite></li>
-            <li><q>After a week of intensifying public pressure and reporting from Cornell&#39;s independent daily newspaper, prosecutors in New York have reopened a criminal investigation into the alleged 2024 gang rape of a former student at the campus&#39;s Chi Phi fraternity house.</q><cite>Mother Jones</cite></li>
-          </ul>
-        </div></div>
           
-        <div class="block block-outlets">
-          <h4>Read it at the source</h4>
+          
+          
+        <details class="sources">
+          <summary>Sources (6)</summary>
           <div class="original-body">
           <div class="camp-group">
             <p class="also-head">the left</p>
@@ -788,7 +830,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
               <li><a href="https://19thnews.org/2026/09/cornell-fraternity-rape-allegations-lawsuit/" target="_blank" rel="noopener"><span class="who">The 19th</span>The Cornell rape allegations and lawsuit, explained</a></li>
             </ul>
           </div></div>
-        </div>
+        </details>
         </div>
       </details>
     </article>
@@ -796,7 +838,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
       <details class="story-more">
         <summary>
           <h3 class="headline">OpenAI cancels release of new artificial intelligence model over safety concerns</h3>
-          <p class="gist">OpenAI will not release its latest artificial intelligence model, Astra 6. <span class="gist-credit">France 24</span></p>
+          <p class="gist">OpenAI&#39;s decision to hold back the model, called GPT-6.1 Astra, comes amid a broader push within the industry to slow the development of increasingly autonomous systems until safety measures catch up. <span class="gist-credit">NPR</span></p>
           
       <p class="spread">
         <span class="segs"><span class="seg on" title="left" aria-hidden="true"><i></i></span><span class="seg" title="center" aria-hidden="true"><i></i></span><span class="seg on" title="right" aria-hidden="true"><i></i></span><span class="seg on heavy" title="state" aria-hidden="true"><i></i></span><span class="seg" title="indep" aria-hidden="true"><i></i></span></span>
@@ -807,18 +849,16 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
         </summary>
         <div class="more-body">
           
+        <div class="account">
+          <p>AI giant says latest model failed to meet alignment standards during internal testing. <span class="gist-credit">Al Jazeera</span> Saachi Jain, OpenAI&#39;s chief of safety systems, said in a statement that the model &quot;didn&#39;t quite meet the bar in terms of staying within scope and authorization, and how it communicates back to the user about the type of work it&#39;s done.&quot; <span class="gist-credit">Washington Examiner</span> The GPT-6.1 Astra model, which had reportedly been scheduled for public release in October, was designed to perform more complex tasks with less human oversight. <span class="gist-credit">RT</span></p>
+          <p>The decision came just ahead of Tuesday&#39;s annual DevDay developer conference in San Francisco. <span class="gist-credit">France 24</span> The decision to scrap the model in part because of concerns over its ability to remain within an authorized scope comes as leading AI CEOs call for more guardrails in the industry. <span class="gist-credit">Washington Examiner</span> &quot;For anything regarding safety and alignment, there&#39;s a trade off,&quot; Jain told multiple outlets, including the Wall Street Journal. <span class="gist-credit">Washington Examiner</span></p>
+        </div>
           
-          <div class="frame">
-        <div class="block block-agreed">
-          <h4>Other sides report the same</h4>
-          <ul class="shared">
-            <li><q>OpenAI&#39;s decision to hold back the model, called GPT-6.</q><cite>NPR</cite></li>
-            <li><q>OpenAI has canceled the release of GPT-6.</q><cite>RT</cite></li>
-          </ul>
-        </div></div>
           
-        <div class="block block-outlets">
-          <h4>Read it at the source</h4>
+          
+          
+        <details class="sources">
+          <summary>Sources (6)</summary>
           <div class="original-body">
           <div class="camp-group">
             <p class="also-head">the left</p>
@@ -841,7 +881,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
               <li><a href="https://www.france24.com/en/americas/20260929-openai-cancels-release-new-ai-model-safety-concerns" target="_blank" rel="noopener"><span class="who">France 24</span>OpenAI cancels release of new artificial intelligence model over safety concerns</a></li>
             </ul>
           </div></div>
-        </div>
+        </details>
         </div>
       </details>
     </article>
@@ -852,26 +892,24 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
           <p class="gist">The legislation passed in a bipartisan 77-22 split and aims to address growing concerns about fairness and equity in college sports. <span class="gist-credit">Just the News</span></p>
           
       <p class="spread">
-        <span class="segs"><span class="seg on" title="left" aria-hidden="true"><i></i></span><span class="seg on" title="center" aria-hidden="true"><i></i></span><span class="seg on" title="right" aria-hidden="true"><i></i></span><span class="seg" title="state" aria-hidden="true"><i></i></span><span class="seg" title="indep" aria-hidden="true"><i></i></span></span>
-        <span class="spread-words">5 outlets: left, center, right</span>
+        <span class="segs"><span class="seg on" title="left" aria-hidden="true"><i></i></span><span class="seg on" title="center" aria-hidden="true"><i></i></span><span class="seg on heavy" title="right" aria-hidden="true"><i></i></span><span class="seg" title="state" aria-hidden="true"><i></i></span><span class="seg" title="indep" aria-hidden="true"><i></i></span></span>
+        <span class="spread-words">6 outlets: left, center, right</span>
       </p>
           
           <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
         </summary>
         <div class="more-body">
           
+        <div class="account">
+          <p>The Senate passed the bipartisan Protect College Sports Act on Monday, voting 77 to 22 in favor of the overhaul of college athletics. <span class="gist-credit">Axios</span> The outlook for the legislation, which seeks to stabilize the unsettled collegiate sports landscape, is uncertain in the House. <span class="gist-credit">The New York Times</span> Why it matters: It is a piece of legislation, setting national rules on everything from name, image and likeness compensation and the transfer portal to conference realignment and pooled media rights. <span class="gist-credit">Axios</span></p>
+          <p>It was one of the last congressional actions before the midterms. <span class="gist-credit">The New York Times</span> Between the lines: The bill&#39;s path through the Senate has been long and full of hiccups. <span class="gist-credit">Axios</span> The legislation would establish a federal framework for NIL payments, cap the amount universities can give directly to athletes, create rules for transfers, and establish other regulations governing college sports. <span class="gist-credit">Washington Examiner</span></p>
+        </div>
           
-          <div class="frame">
-        <div class="block block-agreed">
-          <h4>Other sides report the same</h4>
-          <ul class="shared">
-            <li><q>The Senate passed the bipartisan Protect College Sports Act on Monday, voting 77 to 22 in favor of the overhaul of college athletics.</q><cite>Axios</cite></li>
-            <li><q>The Protect College Sports Act passed 77-22 with broad bipartisan support.</q><cite>Washington Examiner</cite></li>
-          </ul>
-        </div></div>
           
-        <div class="block block-outlets">
-          <h4>Read it at the source</h4>
+          
+          
+        <details class="sources">
+          <summary>Sources (6)</summary>
           <div class="original-body">
           <div class="camp-group">
             <p class="also-head">the left</p>
@@ -889,11 +927,12 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
           <div class="camp-group">
             <p class="also-head">the right</p>
             <ul>
+              <li><a href="https://www.washingtontimes.com/news/2026/sep/28/senate-passes-benchmark-legislation-college-sports-nil-rights/" target="_blank" rel="noopener"><span class="who">The Washington Times</span>Senate passes benchmark legislation on college sports NIL rights</a></li>
               <li><a href="https://www.washingtonexaminer.com/news/senate/4746034/senate-passes-protect-college-sports-bill-nil/" target="_blank" rel="noopener"><span class="who">Washington Examiner</span>Senate passes bill to regulate college sports NIL deals</a></li>
               <li><a href="https://justthenews.com/government/congress/senate-passes-protect-college-sports-act-sending-amended-bill-house?utm_source=justthenews.com&amp;amp;utm_medium=feed&amp;amp;utm_campaign=external-news-aggregators" target="_blank" rel="noopener"><span class="who">Just the News</span>Senate passes Protect College Sports Act, sending amended bill to House</a></li>
             </ul>
           </div></div>
-        </div>
+        </details>
         </div>
       </details>
     </article>
@@ -917,18 +956,16 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
         </summary>
         <div class="more-body">
           
+        <div class="account">
+          <p>The leftist government of South Korea demanded a public apology on Sunday from the government of Ukraine after. <span class="gist-credit">Breitbart</span> President Volodymyr Zelensky told the United Nations General Assembly last week that his troops had captured North Korean soldiers on the battlefield, and sent them to the South. <span class="gist-credit">Breitbart</span></p>
+          <p>Seoul&#39;s presidential office escalated the diplomatic row in a statement on Sunday, expressing &quot;strong regret&quot; over Ukraine&#39;s attempt to downplay Zelensky&#39;s blunder at the UN General Assembly last week. <span class="gist-credit">RT</span> Seoul is also reviewing unspecified &quot;further necessary measures,&quot; he added. <span class="gist-credit">RT</span></p>
+        </div>
           
-          <div class="frame">
-        <div class="block block-agreed">
-          <h4>Other sides report the same</h4>
-          <ul class="shared">
-            <li><q>Seoul demanded an official explanation from Kiev for disclosing the secret transfer of two North Korean soldiers captured in Russia.</q><cite>RT</cite></li>
-            <li><q>President Volodymyr Zelensky told the United Nations General Assembly last week that his troops had captured North Korean soldiers on the battlefield, and sent them to the South.</q><cite>Breitbart</cite></li>
-          </ul>
-        </div></div>
           
-        <div class="block block-outlets">
-          <h4>Read it at the source</h4>
+          
+          
+        <details class="sources">
+          <summary>Sources (3)</summary>
           <div class="original-body">
           <div class="camp-group">
             <p class="also-head">the center</p>
@@ -948,7 +985,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
               <li><a href="https://www.rt.com/news/646339-zelensky-korea-soldiers-apology/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=RSS" target="_blank" rel="noopener"><span class="who">RT</span>South Korea demands apology from Zelensky</a></li>
             </ul>
           </div></div>
-        </div>
+        </details>
         </div>
       </details>
     </article>
@@ -967,18 +1004,23 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
         </summary>
         <div class="more-body">
           
+        <div class="account">
+          <p>The eviction of Maricarmen Abascal, 87, prompted large-scale protests across Spain. <span class="gist-credit">BBC</span> Maricarmen, who is 87 years old, became a symbol of the housing crisis in Spain after she was evicted last week from the apartment she had lived in for decades. <span class="gist-credit">Deutsche Welle</span></p>
+          <p>The agreement comes as demonstrations across the country pile pressure on Prime Minister Pedro Sanchez&#39;s government to address rising rents, a shortage of affordable homes and weak tenant protections. <span class="gist-credit">France 24</span></p>
+        </div>
           
-          <div class="frame">
+          
+          
         <div class="block block-framing">
           <h4>Same thing, different words</h4>
           <dl class="framing">
             <dt>protests</dt>
             <dd><span class="who">the center</span> <b>protest</b><span class="sep"></span><span class="who">government-funded outlets</span> <b>protest</b> <b>demonstration</b></dd>
           </dl>
-        </div></div>
+        </div>
           
-        <div class="block block-outlets">
-          <h4>Read it at the source</h4>
+        <details class="sources">
+          <summary>Sources (3)</summary>
           <div class="original-body">
           <div class="camp-group">
             <p class="also-head">the center</p>
@@ -993,7 +1035,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
               <li><a href="https://www.france24.com/en/europe/20260928-evicted-spanish-pensioner-to-return-home-after-housing-protest-deal-spain-madrid" target="_blank" rel="noopener"><span class="who">France 24</span>Evicted 87-year-old Spanish pensioner to return home after deal</a></li>
             </ul>
           </div></div>
-        </div>
+        </details>
         </div>
       </details>
     </article>
@@ -1012,11 +1054,16 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
         </summary>
         <div class="more-body">
           
+        <div class="account">
+          <p>The US president realizes that the Yemeni group is a &quot;formidable fighting force,&quot; the University of Chicago political scientist says US. <span class="gist-credit">RT</span> Trump has effectively abandoned Saudi Arabia, a key ally in the Middle East, leaving it to face &quot;almost a full-blown war&quot; with Yemen&#39;s Houthis, political scientist and University of Chicago Professor John Mearsheimer said in an interview with RT. <span class="gist-credit">RT</span></p>
+          <p>The Houthis have launched missile and drone attacks on Saudi territory, while Riyadh-backed government forces have tried to hold off the group&#39;s advances inside Yemen. <span class="gist-credit">RT</span></p>
+        </div>
           
           
           
-        <div class="block block-outlets">
-          <h4>Read it at the source</h4>
+          
+        <details class="sources">
+          <summary>Sources (2)</summary>
           <div class="original-body">
           <div class="camp-group">
             <p class="also-head">government-funded outlets</p>
@@ -1025,7 +1072,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
               <li><a href="https://www.rt.com/news/646322-trump-left-saudi-arabia-to-face-houthis-alone-mearsheimer/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=RSS" target="_blank" rel="noopener"><span class="who">RT</span>Trump left Saudi Arabia to face Houthis alone – Mearsheimer to RT (VIDEO)</a></li>
             </ul>
           </div></div>
-        </div>
+        </details>
         </div>
       </details>
     </article>
@@ -1047,8 +1094,9 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
           
           
           
-        <div class="block block-outlets">
-          <h4>Read it at the source</h4>
+          
+        <details class="sources">
+          <summary>Sources (2)</summary>
           <div class="original-body">
           <div class="camp-group">
             <p class="also-head">government-funded outlets</p>
@@ -1057,15 +1105,15 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
               <li><a href="https://www.dw.com/en/hungary-lifts-pm-peter-magyar-s-immunity-clears-way-for-probes-into-2-former-orban-ministers/a-79458651?maca=en-rss-en-all-1573-rdf" target="_blank" rel="noopener"><span class="who">Deutsche Welle</span>Hungary lifts PM Peter Magyar&#39;s immunity, clears way for probes into 2 former Orban ministers</a></li>
             </ul>
           </div></div>
-        </div>
+        </details>
         </div>
       </details>
     </article>
     <article class="story">
       <details class="story-more">
         <summary>
-          <h3 class="headline">Public transport drivers strike in Manila over rising fuel prices</h3>
-          <p class="gist">Public transport drivers in Manila begin a three-day strike over rising fuel prices. <span class="gist-credit">Al Jazeera</span></p>
+          <h3 class="headline">Australia raises interest rates to 15-year high</h3>
+          <p class="gist">Reserve Bank of Australia lifts benchmark rate to 4.6 percent amid stubborn inflation. <span class="gist-credit">Al Jazeera</span></p>
           
       <p class="spread">
         <span class="segs"><span class="seg" title="left" aria-hidden="true"><i></i></span><span class="seg" title="center" aria-hidden="true"><i></i></span><span class="seg" title="right" aria-hidden="true"><i></i></span><span class="seg on" title="state" aria-hidden="true"><i></i></span><span class="seg" title="indep" aria-hidden="true"><i></i></span></span>
@@ -1079,16 +1127,17 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
           
           
           
-        <div class="block block-outlets">
-          <h4>Read it at the source</h4>
+          
+        <details class="sources">
+          <summary>Sources (1)</summary>
           <div class="original-body">
           <div class="camp-group">
             <p class="also-head">government-funded outlets</p>
             <ul>
-              <li><a href="https://www.aljazeera.com/video/newsfeed/2026/9/29/public-transport-drivers-strike-in-manila-over-soaring-fuel-prices?traffic_source=rss" target="_blank" rel="noopener"><span class="who">Al Jazeera</span>Public transport drivers strike in Manila over soaring fuel prices</a></li>
+              <li><a href="https://www.aljazeera.com/economy/2026/9/29/australia-raises-interest-rates-to-15-year-high?traffic_source=rss" target="_blank" rel="noopener"><span class="who">Al Jazeera</span>Australia raises interest rates to 15-year high</a></li>
             </ul>
           </div></div>
-        </div>
+        </details>
         </div>
       </details>
     </article>
@@ -1111,18 +1160,16 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
         </summary>
         <div class="more-body">
           
+        <div class="account">
+          <p>One of the youngest women sent to death row is set to be executed in Tennessee. <span class="gist-credit">NPR</span> &quot;I am not afraid to die,&quot; Christa Pike wrote in a letter to NBC News. <span class="gist-credit">New York Post</span> If the execution goes through, she will be the first woman executed in the state in 200 years. <span class="gist-credit">The Guardian</span></p>
+          <p>Her supporters say she has changed in isolation; her victim&#39;s family wants her to die. <span class="gist-credit">The New York Times</span> &quot;I&#39;m only nervous about the process.&quot; <span class="gist-credit">New York Post</span></p>
+        </div>
           
-          <div class="frame">
-        <div class="block block-agreed">
-          <h4>Other sides report the same</h4>
-          <ul class="shared">
-            <li><q>If the execution proceeds, Pike would be the first woman put to death in Tennessee in more than 200 years.</q><cite>BBC</cite></li>
-            <li><q>Christa Pike could be the first woman executed in Tennessee in more than 200 years.</q><cite>The New York Times</cite></li>
-          </ul>
-        </div></div>
           
-        <div class="block block-outlets">
-          <h4>Read it at the source</h4>
+          
+          
+        <details class="sources">
+          <summary>Sources (5)</summary>
           <div class="original-body">
           <div class="camp-group">
             <p class="also-head">the left</p>
@@ -1144,7 +1191,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
               <li><a href="https://nypost.com/2026/09/29/us-news/lone-woman-death-row-inmate-christa-pike-says-shes-at-peace-ahead-of-execution-as-tennessee-gov-denies-last-ditch-bid-for-clemency/" target="_blank" rel="noopener"><span class="who">New York Post</span>Lone woman death row inmate Christa Pike says she&#39;s &#39;at peace&#39; ahead of execution — as Tennessee gov. denies last-ditch bid for clemency</a></li>
             </ul>
           </div></div>
-        </div>
+        </details>
         </div>
       </details>
     </article>
@@ -1163,18 +1210,16 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
         </summary>
         <div class="more-body">
           
+        <div class="account">
+          <p>The justice&#39;s participation in the Boulder case already may have been pivotal, and his continued stock holdings, including in fossil fuels, keep an ethics cloud over the Supreme Court. <span class="gist-credit">Inside Climate News</span> Alito Jr. had faced pressure to recuse himself from the climate case because he owns stock in oil companies. <span class="gist-credit">The New York Times</span></p>
+          <p>By Marianne Lavelle Justice Samuel Alito decided Monday to sit out one of the most consequential climate change cases to reach the Supreme Court, but legal experts expected continuing ramifications due to his ownership of individual corporate stocks, including in the fossil fuel industry. <span class="gist-credit">Inside Climate News</span></p>
+        </div>
           
-          <div class="frame">
-        <div class="block block-agreed">
-          <h4>Other sides report the same</h4>
-          <ul class="shared">
-            <li><q>Decision from conservative justice comes before court hears case on whether fossil-fuel firms deceived US public Supreme court justice Samuel Alito recused himself on Monday from a major climate-change case after facing calls to step aside due to stock holdings in oil companies.</q><cite>The Guardian</cite></li>
-            <li><q>Justice Samuel Alito decided Monday to sit out one of the most consequential climate change cases to reach the Supreme Court, but legal experts expected continuing ramifications due to his ownership of individual corporate stocks, including in the fossil fuel industry.</q><cite>Inside Climate News</cite></li>
-          </ul>
-        </div></div>
           
-        <div class="block block-outlets">
-          <h4>Read it at the source</h4>
+          
+          
+        <details class="sources">
+          <summary>Sources (4)</summary>
           <div class="original-body">
           <div class="camp-group">
             <p class="also-head">the left</p>
@@ -1195,7 +1240,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
               <li><a href="https://insideclimatenews.org/news/28092026/alitos-recusal-from-climate-case-too-little-too-late/" target="_blank" rel="noopener"><span class="who">Inside Climate News</span>Alito&#39;s Recusal From Climate Case: Too Little, Too Late?</a></li>
             </ul>
           </div></div>
-        </div>
+        </details>
         </div>
       </details>
     </article>
@@ -1214,25 +1259,23 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
         </summary>
         <div class="more-body">
           
-          
-          <div class="frame">
-        <div class="block block-agreed">
-          <h4>Other sides report the same</h4>
-          <ul class="shared">
-            <li><q>&quot;Axios just released a story that &#39;Trump&#39; offered Sanctions Relief and Frozen Funds to Iran,&quot; Trump wrote on Truth Social.</q><cite>The Hill</cite></li>
-            <li><q>President Trump rejects a news report claiming his administration offered Iran sanctions relief and frozen funds.</q><cite>Al Jazeera</cite></li>
-          </ul>
+        <div class="account">
+          <p>Axios&#39; story, like most others, is a Hoax, used only for purposes of satisfying their. <span class="gist-credit">Washington Examiner</span> Trump called on the outlet to &quot;Immediately&quot; withdraw the story. <span class="gist-credit">Washington Examiner</span> Trump was willing to alleviate those points of economic pressure in exchange for Iran making concessions to its nuclear development. <span class="gist-credit">Washington Examiner</span></p>
+          <p>The article came at a time when there has been speculation about where the process of peace-making stands between the two countries and what options are on the table for each party following Trump&#39;s denial of an Iran-proposed ceasefire deal this weekend. <span class="gist-credit">Washington Examiner</span> Trump confirmed over the weekend that he rejected an Iranian peace proposal, calling the suggested agreement unacceptable. <span class="gist-credit">Washington Examiner</span> &quot;We&#39;re winning tremendously,&quot; Trump said on Saturday. <span class="gist-credit">Washington Examiner</span></p>
         </div>
+          
+          
+          
         <div class="block block-framing">
           <h4>Same thing, different words</h4>
           <dl class="framing">
             <dt>a government</dt>
             <dd><span class="who">the center</span> <b>regime</b><span class="sep"></span><span class="who">government-funded outlets</span> <b>administration</b></dd>
           </dl>
-        </div></div>
+        </div>
           
-        <div class="block block-outlets">
-          <h4>Read it at the source</h4>
+        <details class="sources">
+          <summary>Sources (3)</summary>
           <div class="original-body">
           <div class="camp-group">
             <p class="also-head">the center</p>
@@ -1252,7 +1295,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
               <li><a href="https://www.aljazeera.com/news/liveblog/2026/9/29/iran-war-live-trump-says-he-did-not-offer-tehran-sanctions-relief?traffic_source=rss" target="_blank" rel="noopener"><span class="who">Al Jazeera</span>Iran war live: Trump says he did not offer Tehran sanctions relief</a></li>
             </ul>
           </div></div>
-        </div>
+        </details>
         </div>
       </details>
     </article>
@@ -1271,18 +1314,16 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
         </summary>
         <div class="more-body">
           
+        <div class="account">
+          <p>Nvidia is deploying a new tool that it says can be used to prevent and contain rogue and potentially dangerous AI agents. <span class="gist-credit">Axios</span> On Monday, Nvidia, the multinational tech company, which has become one of the most valuable companies in the world in significant part thanks to its role in developing chips for AI processing and model training, announced the launch of a new safety platform that will monitor and contain AI agents, amid recent reports of &quot;rogue AI&quot; incidents like OpenAI&#39;s Hugging Face hacking fiasco. <span class="gist-credit">Mother Jones</span> Why it matters: The world&#39;s largest chip company has resisted calls to slow AI development over safety fears, arguing now that technological guardrails can keep rogue AI agents under control. <span class="gist-credit">Axios</span></p>
+          <p>Driving the news: Nvidia debuted the Nvidia Open Agent Safety Platform, which includes its OpenShell open source software system and its Sentry agent monitoring system. <span class="gist-credit">Axios</span> Nvidia says its Open Agent Safety Platform, which it launched Monday with a number of leading tech and AI firms, can quarantine agents that attempt to escape containment within &quot; milliseconds.&quot; <span class="gist-credit">Mother Jones</span></p>
+        </div>
           
-          <div class="frame">
-        <div class="block block-agreed">
-          <h4>Other sides report the same</h4>
-          <ul class="shared">
-            <li><q>On Monday, Nvidia, the multinational tech company, which has become one of the most valuable companies in the world in significant part thanks to its role in developing chips for AI processing and model training, announced the launch of a new safety platform that will monitor and contain AI agents, amid recent reports of &quot;rogue AI&quot; incidents.</q><cite>Mother Jones</cite></li>
-            <li><q>Nvidia is deploying a new tool that it says can be used to prevent and contain rogue and potentially dangerous AI agents.</q><cite>Axios</cite></li>
-          </ul>
-        </div></div>
           
-        <div class="block block-outlets">
-          <h4>Read it at the source</h4>
+          
+          
+        <details class="sources">
+          <summary>Sources (3)</summary>
           <div class="original-body">
           <div class="camp-group">
             <p class="also-head">the left</p>
@@ -1302,7 +1343,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
               <li><a href="https://www.breitbart.com/tech/2026/09/28/nvidia-unveils-safety-platform-to-stop-ai-agents-from-breaking-containment/" target="_blank" rel="noopener"><span class="who">Breitbart</span>Nvidia Unveils Safety Platform to Stop AI Agents from Breaking Containment</a></li>
             </ul>
           </div></div>
-        </div>
+        </details>
         </div>
       </details>
     </article>
@@ -1310,7 +1351,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
       <details class="story-more">
         <summary>
           <h3 class="headline">Trump: 5 terrorism suspects in U.K. base incident were under investigation</h3>
-          <p class="gist">British police arrested five men Sunday on suspicion of terrorism near a U. <span class="gist-credit">Axios</span></p>
+          <p class="gist">British police arrested five men Sunday on suspicion of terrorism near a U.K. air base used for U.S. operations in Iran, as President Trump said the suspects had been under investigation. <span class="gist-credit">Axios</span></p>
           
       <p class="spread">
         <span class="segs"><span class="seg on" title="left" aria-hidden="true"><i></i></span><span class="seg on" title="center" aria-hidden="true"><i></i></span><span class="seg" title="right" aria-hidden="true"><i></i></span><span class="seg" title="state" aria-hidden="true"><i></i></span><span class="seg" title="indep" aria-hidden="true"><i></i></span></span>
@@ -1321,8 +1362,13 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
         </summary>
         <div class="more-body">
           
+        <div class="account">
+          <p>The men have been detained on suspicion of preparation of a terrorist act after three suspicious vehicles were reported to be travelling towards the base. <span class="gist-credit">BBC</span> Investigators haven&#39;t concluded whether the incident was state-backed. <span class="gist-credit">NPR</span> The latest: &quot;Working with Britain, it was an amazing job,&quot; Trump told reporters Sunday morning. <span class="gist-credit">Axios</span></p>
+          <p>Police received a call shortly after midnight Sunday about three suspicious vehicles apparently traveling toward RAF Fairford in Gloucestershire, England, near the southern Welsh border. <span class="gist-credit">Salon</span> They are investigating a possible link to Iran, Russia or non-state militant groups. <span class="gist-credit">NPR</span> Armed officers stopped the vehicles and arrested five men in nearby Whelford on suspicion of explosives offenses. <span class="gist-credit">Salon</span></p>
+        </div>
           
-          <div class="frame">
+          
+          
         <div class="block block-framing">
           <h4>Same thing, different words</h4>
           <dl class="framing">
@@ -1331,10 +1377,10 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
             <dt>investigations</dt>
             <dd><span class="who">the left</span> <b>probe</b><span class="sep"></span><span class="who">the center</span> <b>investigation</b></dd>
           </dl>
-        </div></div>
+        </div>
           
-        <div class="block block-outlets">
-          <h4>Read it at the source</h4>
+        <details class="sources">
+          <summary>Sources (4)</summary>
           <div class="original-body">
           <div class="camp-group">
             <p class="also-head">the left</p>
@@ -1350,7 +1396,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
               <li><a href="https://www.axios.com/2026/09/27/terrorism-raf-fairford-base-us-air-force" target="_blank" rel="noopener"><span class="who">Axios</span>Trump: 5 terrorism suspects in U.K. base incident were under investigation</a></li>
             </ul>
           </div></div>
-        </div>
+        </details>
         </div>
       </details>
     </article>
@@ -1369,18 +1415,16 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
         </summary>
         <div class="more-body">
           
+        <div class="account">
+          <p>Why it matters: The threat of foreign election interference has been a biennial U.S. concern for the past decade. <span class="gist-credit">Axios</span> &quot;As we approach this election cycle, we must prove that we can and will protect the integrity of our democratic processes from any threat,&quot; Hegseth wrote in a memo released Monday. <span class="gist-credit">Washington Examiner</span> &quot;As President Trump has emphasized, &#39;free and fair elections are the foundation of our republic&#39; and we must always work to protect our voting systems because &#39;no country can be great without fair elections. <span class="gist-credit">Washington Examiner</span></p>
+          <p>Hegseth&#39;s order does not direct military personnel to the polls, but President Trump has refused to rule out that possibility, heightening concern from Democrats and administration critics. <span class="gist-credit">Axios</span> Zoom in: Under a memo Hegseth authorized on Sept. <span class="gist-credit">Axios</span> He&#39;s attempted to crack down on illegal voting in the United States and safeguard systems from foreign interference through policy initiatives such as his hailed Save America Act, which Democrats have railed against as efforts to restrict voting. <span class="gist-credit">Washington Examiner</span></p>
+        </div>
           
-          <div class="frame">
-        <div class="block block-agreed">
-          <h4>Other sides report the same</h4>
-          <ul class="shared">
-            <li><q>Defense Secretary Pete Hegseth instructed the Pentagon last week to prioritize and deploy &quot;advanced intelligence and cyber capabilities&quot; to track down, disrupt and neutralize &quot;foreign actors to protect the 2026 midterm elections&quot; while.</q><cite>The Hill</cite></li>
-            <li><q>Defense Secretary Pete Hegseth has assigned personnel to use &quot;advanced intelligence and cyber capabilities to identify, disrupt, and neutralize foreign interference&quot; in the upcoming elections, Axios has learned.</q><cite>Axios</cite></li>
-          </ul>
-        </div></div>
           
-        <div class="block block-outlets">
-          <h4>Read it at the source</h4>
+          
+          
+        <details class="sources">
+          <summary>Sources (3)</summary>
           <div class="original-body">
           <div class="camp-group">
             <p class="also-head">the center</p>
@@ -1395,7 +1439,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
               <li><a href="https://www.washingtonexaminer.com/news/campaigns/congressional/4746327/hegseth-pentagon-cyber-midterms-foreign-threats/" target="_blank" rel="noopener"><span class="who">Washington Examiner</span>Hegseth mobilizes Pentagon to protect midterm elections from foreign threats</a></li>
             </ul>
           </div></div>
-        </div>
+        </details>
         </div>
       </details>
     </article>
@@ -1421,8 +1465,9 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
           
           
           
-        <div class="block block-outlets">
-          <h4>Read it at the source</h4>
+          
+        <details class="sources">
+          <summary>Sources (1)</summary>
           <div class="original-body">
           <div class="camp-group">
             <p class="also-head">independent outlets</p>
@@ -1430,7 +1475,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
               <li><a href="https://www.themarshallproject.org/2026/09/26/texas-heat-california-cold-prison" target="_blank" rel="noopener"><span class="who">The Marshall Project</span>From Sweltering Cells to Frigid Tents: The Extreme Temperatures of Incarceration</a></li>
             </ul>
           </div></div>
-        </div>
+        </details>
         </div>
       </details>
     </article>
@@ -1449,11 +1494,15 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
         </summary>
         <div class="more-body">
           
+        <div class="account">
+          <p>The news comes after the resignation of FBI Deputy Director Andrew Bailey, who reportedly disagreed with how the bureau demoted two counterterrorism agents who pushed back on the probe into Miller&#39;s caller. <span class="gist-credit">The Daily Beast</span></p>
+        </div>
           
           
           
-        <div class="block block-outlets">
-          <h4>Read it at the source</h4>
+          
+        <details class="sources">
+          <summary>Sources (1)</summary>
           <div class="original-body">
           <div class="camp-group">
             <p class="also-head">the left</p>
@@ -1461,7 +1510,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
               <li><a href="https://www.thedailybeast.com/bombshell-drops-in-fbis-stephen-miller-phone-call-meltdown/" target="_blank" rel="noopener"><span class="who">The Daily Beast</span>Bombshell Drops in FBI&#39;s Stephen Miller Phone Call Meltdown</a></li>
             </ul>
           </div></div>
-        </div>
+        </details>
         </div>
       </details>
     </article>
@@ -1480,11 +1529,15 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
         </summary>
         <div class="more-body">
           
+        <div class="account">
+          <p>Paxton was asked about the case of Adam Hoffman, a former Waco attorney who admitted sexually abusing a young boy, during an on-stage interview by Javier Palomarez, the president of the U.S. Hispanic Business Council in Dallas. <span class="gist-credit">The Daily Beast</span> Paxton, 63, has been under fire on the topic since April, with critics saying his office was too lenient toward Hoffman after his trial ended in a stalemate. <span class="gist-credit">The Daily Beast</span></p>
+        </div>
           
           
           
-        <div class="block block-outlets">
-          <h4>Read it at the source</h4>
+          
+        <details class="sources">
+          <summary>Sources (1)</summary>
           <div class="original-body">
           <div class="camp-group">
             <p class="also-head">the left</p>
@@ -1492,7 +1545,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
               <li><a href="https://www.thedailybeast.com/maga-candidate-ken-paxton-defends-his-1-day-prison-deal-for-child-sex-predator/" target="_blank" rel="noopener"><span class="who">The Daily Beast</span>MAGA Candidate Ken Paxton Defends His 1-Day Prison Deal for Child Sex Predator</a></li>
             </ul>
           </div></div>
-        </div>
+        </details>
         </div>
       </details>
     </article>
@@ -1515,11 +1568,16 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
         </summary>
         <div class="more-body">
           
+        <div class="account">
+          <p>Amye Joseph says America&#39;s political polarization has made it an &quot;interesting time&quot; in her Tennessee household. <span class="gist-credit">KFF Health News</span> She and her husband, Charlie, have been married 35 years. <span class="gist-credit">KFF Health News</span></p>
+          <p>The conglomerate, which reported $400 billion in revenue last year, includes a major health insurer (Aetna), one of the country&#39;s dominant PBMs (CVS Caremark), and America&#39;s largest retail pharmacy chain. <span class="gist-credit">KFF Health News</span> She laments the lack of face-to-face interaction with pharmacists, prices that seem to rise without explanation, and pressure from the couple&#39;s CVS Caremark drug plan to use CVS stores instead of their local pharmacy. <span class="gist-credit">KFF Health News</span></p>
+        </div>
           
           
           
-        <div class="block block-outlets">
-          <h4>Read it at the source</h4>
+          
+        <details class="sources">
+          <summary>Sources (1)</summary>
           <div class="original-body">
           <div class="camp-group">
             <p class="also-head">independent outlets</p>
@@ -1527,7 +1585,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
               <li><a href="https://kffhealthnews.org/health-industry/pharmacy-benefit-managers-pbms-drug-costs-common-ground-tennessee/" target="_blank" rel="noopener"><span class="who">KFF Health News</span>Republicans and Democrats Find a Unifying Target: Pharmacy Benefit Managers</a></li>
             </ul>
           </div></div>
-        </div>
+        </details>
         </div>
       </details>
     </article>
@@ -1546,11 +1604,16 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
         </summary>
         <div class="more-body">
           
+        <div class="account">
+          <p>The run-up to the midterm elections is turning into a food fight,. <span class="gist-credit">KFF Health News</span> The summer was marred by a foodborne outbreak that sickened scores of people and the recall of tens of thousands of pounds of imported meat, turning the safety of the U.S. food supply into a topic of national conversation and a political cause. <span class="gist-credit">KFF Health News</span> Some food safety scientists blamed the outbreaks on federal cuts to public health. <span class="gist-credit">KFF Health News</span></p>
+          <p>Democrats have come out on the offensive, saying voters worried about the safety of the U.S. food supply should oust Republicans in the midterm elections. <span class="gist-credit">KFF Health News</span> The Trump administration has countered by accusing Democrats of scaremongering over food safety to score political points. <span class="gist-credit">KFF Health News</span> The political fracas reflects the toll that large-scale outbreaks have had on the public psyche. <span class="gist-credit">KFF Health News</span></p>
+        </div>
           
           
           
-        <div class="block block-outlets">
-          <h4>Read it at the source</h4>
+          
+        <details class="sources">
+          <summary>Sources (1)</summary>
           <div class="original-body">
           <div class="camp-group">
             <p class="also-head">independent outlets</p>
@@ -1558,7 +1621,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
               <li><a href="https://kffhealthnews.org/elections/food-safety-concerns-midterms-kitchen-table-politics/" target="_blank" rel="noopener"><span class="who">KFF Health News</span>Food Safety Finds a Place Among &#39;Kitchen-Table&#39; Political Issues</a></li>
             </ul>
           </div></div>
-        </div>
+        </details>
         </div>
       </details>
     </article>
@@ -1577,11 +1640,16 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
         </summary>
         <div class="more-body">
           
+        <div class="account">
+          <p>21 letter obtained by Fox News Digital, the lawmakers called on Centers for Medicare &amp; Medicaid Services (CMS) Administrator Dr. Mehmet Oz to remove the agency&#39;s proposed fixed-dose combination policy from its final rule implementing Medicare&#39;s Drug Price Negotiation Program. <span class="gist-credit">Fox News</span> The Medicare Drug Price Negotiation Program was created under the Inflation Reduction Act, which former. <span class="gist-credit">Fox News</span> At the center of the dispute is how Medicare would treat newer versions of existing drugs for price negotiation purposes. <span class="gist-credit">Fox News</span></p>
+          <p>DR OZ Warns MEDICARE SCAMMERS ARE Stealing Billions, AND Your Personal Information Could BE Next. <span class="gist-credit">Fox News</span> The lawmakers argue the proposal would cause some improved treatments to face Medicare price negotiations much sooner after receiving Food and Drug Administration (FDA) approval. <span class="gist-credit">Fox News</span></p>
+        </div>
           
           
           
-        <div class="block block-outlets">
-          <h4>Read it at the source</h4>
+          
+        <details class="sources">
+          <summary>Sources (1)</summary>
           <div class="original-body">
           <div class="camp-group">
             <p class="also-head">the right</p>
@@ -1589,7 +1657,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
               <li><a href="https://www.foxnews.com/politics/trump-cms-faces-bipartisan-pushback-over-medicare-proposal-tied-biden-era-drug-pricing-law" target="_blank" rel="noopener"><span class="who">Fox News</span>Trump CMS faces bipartisan pushback over Medicare proposal tied to Biden-era drug pricing law</a></li>
             </ul>
           </div></div>
-        </div>
+        </details>
         </div>
       </details>
     </article>
@@ -1612,18 +1680,16 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
         </summary>
         <div class="more-body">
           
+        <div class="account">
+          <p>Starship is key to SpaceX&#39;s commercial success and NASA&#39;s plans to land humans on the moon. <span class="gist-credit">NPR</span> Elon Musk&#39;s SpaceX&#39;s next-generation Starship rocket reached orbit for the first time despite an engine shutdown. <span class="gist-credit">Al Jazeera</span> Starship is the biggest and most powerful spacecraft ever built and it is meant to support NASA&#39;s Artemis moon program. <span class="gist-credit">Deutsche Welle</span></p>
+          <p>Why it matters: The, fully-reusable Starship is key to SpaceX&#39;s commercial spaceflight ambitions, while NASA is counting on a modified version for use as a lunar lander in its Artemis program. <span class="gist-credit">Axios</span> This is the 14th flight of the uncrewed Starship, but the first time it reached orbit. <span class="gist-credit">NPR</span> However, the mission was cut short and the spacecraft began in a fireball following its splashdown in the Pacific. <span class="gist-credit">RT</span></p>
+        </div>
           
-          <div class="frame">
-        <div class="block block-agreed">
-          <h4>Other sides report the same</h4>
-          <ul class="shared">
-            <li><q>Elon Musk&#39;s SpaceX&#39;s next-generation Starship rocket reached orbit for the first time despite an engine shutdown.</q><cite>Al Jazeera</cite></li>
-            <li><q>Starship is key to SpaceX&#39;s commercial success and NASA&#39;s plans to land humans on the moon.</q><cite>NPR</cite></li>
-          </ul>
-        </div></div>
           
-        <div class="block block-outlets">
-          <h4>Read it at the source</h4>
+          
+          
+        <details class="sources">
+          <summary>Sources (5)</summary>
           <div class="original-body">
           <div class="camp-group">
             <p class="also-head">the left</p>
@@ -1645,7 +1711,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
               <li><a href="https://www.dw.com/en/spacex-launches-supersized-starship-into-orbit/a-79462696?maca=en-rss-en-all-1573-rdf" target="_blank" rel="noopener"><span class="who">Deutsche Welle</span>SpaceX launches supersized Starship into orbit</a></li>
             </ul>
           </div></div>
-        </div>
+        </details>
         </div>
       </details>
     </article>
@@ -1667,8 +1733,9 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
           
           
           
-        <div class="block block-outlets">
-          <h4>Read it at the source</h4>
+          
+        <details class="sources">
+          <summary>Sources (1)</summary>
           <div class="original-body">
           <div class="camp-group">
             <p class="also-head">independent outlets</p>
@@ -1676,7 +1743,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
               <li><a href="https://www.sciencenews.org/article/magnetism-kick-start-our-solar-system" target="_blank" rel="noopener"><span class="who">Science News</span>Magnetism may have helped kick-start our solar system</a></li>
             </ul>
           </div></div>
-        </div>
+        </details>
         </div>
       </details>
     </article>
@@ -1695,11 +1762,15 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
         </summary>
         <div class="more-body">
           
+        <div class="account">
+          <p>The late Ronald Graham wore two hats. <span class="gist-credit">Quanta</span> He was a renowned mathematician, at one time president of the American Mathematical Society. <span class="gist-credit">Quanta</span></p>
+        </div>
           
           
           
-        <div class="block block-outlets">
-          <h4>Read it at the source</h4>
+          
+        <details class="sources">
+          <summary>Sources (1)</summary>
           <div class="original-body">
           <div class="camp-group">
             <p class="also-head">independent outlets</p>
@@ -1707,7 +1778,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
               <li><a href="https://www.quantamagazine.org/mathematicians-harness-randomness-to-crack-a-55-year-old-conjecture-20260928/" target="_blank" rel="noopener"><span class="who">Quanta</span>Mathematicians Harness Randomness To Crack a 55-Year-Old Conjecture</a></li>
             </ul>
           </div></div>
-        </div>
+        </details>
         </div>
       </details>
     </article>
@@ -1729,8 +1800,9 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
           
           
           
-        <div class="block block-outlets">
-          <h4>Read it at the source</h4>
+          
+        <details class="sources">
+          <summary>Sources (1)</summary>
           <div class="original-body">
           <div class="camp-group">
             <p class="also-head">independent outlets</p>
@@ -1738,7 +1810,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
               <li><a href="https://www.sciencenews.org/article/desert-penguins-climate-el-nino" target="_blank" rel="noopener"><span class="who">Science News</span>Peru&#39;s penguins are on the brink. A super El Niño could make it worse.</a></li>
             </ul>
           </div></div>
-        </div>
+        </details>
         </div>
       </details>
     </article>
@@ -1761,11 +1833,15 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
         </summary>
         <div class="more-body">
           
+        <div class="account">
+          <p>One observer called the move a &quot;disaster for people&#39;s health, the planet, and even U.S. automakers.&quot; <span class="gist-credit">Inside Climate News</span></p>
+        </div>
           
           
           
-        <div class="block block-outlets">
-          <h4>Read it at the source</h4>
+          
+        <details class="sources">
+          <summary>Sources (1)</summary>
           <div class="original-body">
           <div class="camp-group">
             <p class="also-head">independent outlets</p>
@@ -1773,7 +1849,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
               <li><a href="https://insideclimatenews.org/news/28092026/trump-slashes-fuel-economy-standards/" target="_blank" rel="noopener"><span class="who">Inside Climate News</span>Trump Slashes Fuel-Economy Standards in Blow to Climate, Health, EV Market</a></li>
             </ul>
           </div></div>
-        </div>
+        </details>
         </div>
       </details>
     </article>
@@ -1792,11 +1868,15 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
         </summary>
         <div class="more-body">
           
+        <div class="account">
+          <p>Contracting fraud and misconduct are after storms and fires. <span class="gist-credit">Inside Climate News</span> Experts share tips for the increasing number of Hawaiʻi communities in recovery. <span class="gist-credit">Inside Climate News</span></p>
+        </div>
           
           
           
-        <div class="block block-outlets">
-          <h4>Read it at the source</h4>
+          
+        <details class="sources">
+          <summary>Sources (1)</summary>
           <div class="original-body">
           <div class="camp-group">
             <p class="also-head">independent outlets</p>
@@ -1804,7 +1884,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
               <li><a href="https://insideclimatenews.org/news/28092026/how-to-protect-yourself-from-disaster-scams/" target="_blank" rel="noopener"><span class="who">Inside Climate News</span>How to Protect Yourself From Disaster Scams</a></li>
             </ul>
           </div></div>
-        </div>
+        </details>
         </div>
       </details>
     </article>
@@ -1826,8 +1906,9 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
           
           
           
-        <div class="block block-outlets">
-          <h4>Read it at the source</h4>
+          
+        <details class="sources">
+          <summary>Sources (1)</summary>
           <div class="original-body">
           <div class="camp-group">
             <p class="also-head">independent outlets</p>
@@ -1835,7 +1916,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
               <li><a href="https://www.hcn.org/articles/montanans-are-demanding-better-indian-education-setting-an-example-for-other-western-states/" target="_blank" rel="noopener"><span class="who">High Country News</span>Montanans are demanding better Indian education, setting an example for other Western states</a></li>
             </ul>
           </div></div>
-        </div>
+        </details>
         </div>
       </details>
     </article>
@@ -1854,11 +1935,16 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
         </summary>
         <div class="more-body">
           
+        <div class="account">
+          <p>They might ride ATVs along dirt trails, snowmobile down winding tracks, or go off-roading in 4x4s. <span class="gist-credit">Mother Jones</span> The United States Forest Service&#39;s approach to all such forms of recreation on trails can be summed up in four words: closed unless designated open. <span class="gist-credit">Mother Jones</span> Unless a trail is explicitly designated as open to off-highway vehicles, such as side-by-sides and dirt bikes, it can only be used for nonmotorized recreation. <span class="gist-credit">Mother Jones</span></p>
+          <p>Most national forests have travel management plans that outline when a trail is open for nonmotorized use like mountain biking, horseback riding, or hiking, and when it&#39;s open to off-highway vehicles. <span class="gist-credit">Mother Jones</span> The strict guidelines are a result of a Forest Service policy called the travel management rule. <span class="gist-credit">Mother Jones</span> In late August, the Forest Service announced its plan to revise the rule so that trails are open unless designated closed. <span class="gist-credit">Mother Jones</span></p>
+        </div>
           
           
           
-        <div class="block block-outlets">
-          <h4>Read it at the source</h4>
+          
+        <details class="sources">
+          <summary>Sources (1)</summary>
           <div class="original-body">
           <div class="camp-group">
             <p class="also-head">the left</p>
@@ -1866,7 +1952,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
               <li><a href="https://www.motherjones.com/environment/2026/09/trump-us-forest-service-atv-dirt-bikes-off-road-vehicles-rules-trails/" target="_blank" rel="noopener"><span class="who">Mother Jones</span>Trump Aims to Open Nearly All National Forest Trails to Dirt Bikes and ATVs</a></li>
             </ul>
           </div></div>
-        </div>
+        </details>
         </div>
       </details>
     </article>
@@ -1889,17 +1975,16 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
         </summary>
         <div class="more-body">
           
+        <div class="account">
+          <p>Pope Leo XIV on Monday said mounting concerns about artificial intelligence software going rogue require discussions on how to regulate it, dismissing the notion that they are &quot;fake news. <span class="gist-credit">The Hill</span> Leader of the Catholic Church says AI safety issues should be taken seriously and acted on. <span class="gist-credit">Al Jazeera</span> If someone were to ask me, &#39;Am I in panic mode?&#39; <span class="gist-credit">The Hill</span></p>
+          <p>Why it matters: Leo is leading the Catholic Church as AI raises societal concerns, and he has made confronting those risks a key part of his papacy. <span class="gist-credit">Axios</span> As the first American pope, Leo is also positioned to counter. <span class="gist-credit">Axios</span> President Trump, who called concerns over AI safety a &quot;Hoax&quot; and a &quot;Sick conspiracy.&quot; <span class="gist-credit">Axios</span></p>
+        </div>
           
-          <div class="frame">
-        <div class="block block-agreed">
-          <h4>Other sides report the same</h4>
-          <ul class="shared">
-            <li><q>Pope Leo XIV on Monday said mounting concerns about artificial intelligence software going rogue require discussions on how to regulate it, dismissing the notion that they are &quot;fake news.</q><cite>The Hill</cite></li>
-          </ul>
-        </div></div>
           
-        <div class="block block-outlets">
-          <h4>Read it at the source</h4>
+          
+          
+        <details class="sources">
+          <summary>Sources (3)</summary>
           <div class="original-body">
           <div class="camp-group">
             <p class="also-head">the center</p>
@@ -1914,7 +1999,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
               <li><a href="https://www.aljazeera.com/economy/2026/9/29/pope-leo-says-ai-risk-concerns-not-fake-news?traffic_source=rss" target="_blank" rel="noopener"><span class="who">Al Jazeera</span>Pope Leo says AI risk concerns not &#39;fake news&#39;</a></li>
             </ul>
           </div></div>
-        </div>
+        </details>
         </div>
       </details>
     </article>
@@ -1933,11 +2018,16 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
         </summary>
         <div class="more-body">
           
+        <div class="account">
+          <p>The breach, in which the hackers stole personal information on &quot;all FBI employees and applicants&quot; including physical addresses, job roles, names of spouses, and medical records, represents a significant national security and counterintelligence threat. <span class="gist-credit">404 Media</span> Criminals in the same ecosystem as the hacking group, called ShinyHunters, have previously used hacked phone data to track and harass the FBI agents investigating them. <span class="gist-credit">404 Media</span></p>
+          <p>When 404 Media first broke news of the breach, the group sent the personal data of an agent and their spouse who they said was investigating the group. <span class="gist-credit">404 Media</span> Although any potential damage will be less if ShinyHunters doesn&#39;t publish the data publicly, the theft happening at all still presents much of those same national security risks, with the data providing granular insight into how the FBI operates. <span class="gist-credit">404 Media</span></p>
+        </div>
           
           
           
-        <div class="block block-outlets">
-          <h4>Read it at the source</h4>
+          
+        <details class="sources">
+          <summary>Sources (1)</summary>
           <div class="original-body">
           <div class="camp-group">
             <p class="also-head">independent outlets</p>
@@ -1945,7 +2035,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
               <li><a href="https://www.404media.co/fbi-hackers-say-they-wont-publish-massive-trove-of-fbi-employee-data/" target="_blank" rel="noopener"><span class="who">404 Media</span>FBI Hackers Say They Won&#39;t Publish Massive Trove of FBI Employee Data</a></li>
             </ul>
           </div></div>
-        </div>
+        </details>
         </div>
       </details>
     </article>
@@ -1964,11 +2054,15 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
         </summary>
         <div class="more-body">
           
+        <div class="account">
+          <p>She&#39;s a reporter at the New York Times, and the author of ⁠Your Face Belongs to Us: A Tale of AI, a Secretive Startup, and the End of Privacy⁠. <span class="gist-credit">404 Media</span></p>
+        </div>
           
           
           
-        <div class="block block-outlets">
-          <h4>Read it at the source</h4>
+          
+        <details class="sources">
+          <summary>Sources (1)</summary>
           <div class="original-body">
           <div class="camp-group">
             <p class="also-head">independent outlets</p>
@@ -1976,7 +2070,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
               <li><a href="https://www.404media.co/the-end-of-privacy-is-here-with-kashmir-hill/" target="_blank" rel="noopener"><span class="who">404 Media</span>The End of Privacy Is Here (with Kashmir Hill)</a></li>
             </ul>
           </div></div>
-        </div>
+        </details>
         </div>
       </details>
     </article>
@@ -1999,11 +2093,16 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
         </summary>
         <div class="more-body">
           
+        <div class="account">
+          <p>The Washington, D.C. area has long had a reputation for being both wealthy and recession-proof, based on money forcibly extracted in the form of taxes from people living productive lives elsewhere in the United States. <span class="gist-credit">Reason</span> That may no longer be the case. <span class="gist-credit">Reason</span> Downsizing of the federal workforce concentrated in the DMV area, the District of Columbia and parts of Maryland and Virginia, has hit many residents hard, and some are considering leaving or have already done so. <span class="gist-credit">Reason</span></p>
+          <p>Federal Workforce Reductions Hit the D.C. Area &quot;Federal workforce reductions have rattled the local economy of the Greater Washington area, long anchored by government employment,&quot; Gallup reported last week. <span class="gist-credit">Reason</span> &quot;More than half of DMV residents (55%) say they or someone in their household has been negatively impacted by federal job cuts, including 66% of those living in DC and 62% in Arlington County and Alexandria.&quot; <span class="gist-credit">Reason</span></p>
+        </div>
           
           
           
-        <div class="block block-outlets">
-          <h4>Read it at the source</h4>
+          
+        <details class="sources">
+          <summary>Sources (1)</summary>
           <div class="original-body">
           <div class="camp-group">
             <p class="also-head">the right</p>
@@ -2011,7 +2110,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
               <li><a href="https://reason.com/2026/09/28/once-recession-proof-d-c-area-feels-pain-from-federal-workforce-reductions/" target="_blank" rel="noopener"><span class="who">Reason</span>Once Recession-Proof, D.C. Feels the Pain From Federal Workforce Reductions</a></li>
             </ul>
           </div></div>
-        </div>
+        </details>
         </div>
       </details>
     </article>
@@ -2034,11 +2133,16 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
         </summary>
         <div class="more-body">
           
+        <div class="account">
+          <p>Dos hombres que crecieron en Humboldt Park, se graduaron de escuelas secundarias públicas de Chicago de admisión selectiva y se convirtieron en maestros a través de Teach for America vuelven an enfrentarse en la contienda para representar an un distrito que se extiende desde West Town hasta Belmont Cragin. <span class="gist-credit">Chalkbeat</span> El actual miembro de la junta, Carlos Rivas Jr., ganó en 2024 con el 54% de los votos, frente al 46% de Jason Dónes. <span class="gist-credit">Chalkbeat</span></p>
+          <p>También cuenta con el respaldo de defensores de las escuelas charter y de algunos funcionarios locales y del condado del noroeste de Chicago. <span class="gist-credit">Chalkbeat</span></p>
+        </div>
           
           
           
-        <div class="block block-outlets">
-          <h4>Read it at the source</h4>
+          
+        <details class="sources">
+          <summary>Sources (1)</summary>
           <div class="original-body">
           <div class="camp-group">
             <p class="also-head">independent outlets</p>
@@ -2046,7 +2150,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
               <li><a href="https://www.chalkbeat.org/chicago/2026/09/28/elecciones-junta-educacion-2026-distrito-3b-candidatos-guia-electoral/" target="_blank" rel="noopener"><span class="who">Chalkbeat</span>Elecciones de la Junta de Educación de Chicago 2026: La carrera en el Distrito 3b</a></li>
             </ul>
           </div></div>
-        </div>
+        </details>
         </div>
       </details>
     </article>
@@ -2065,11 +2169,16 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
         </summary>
         <div class="more-body">
           
+        <div class="account">
+          <p>Police Department are expanding a program that alerts school staff when a child has witnessed gun violence, domestic abuse, or another traumatic event at home or in the community. <span class="gist-credit">Chalkbeat</span> Under Handle With Care, police officers are trained to send a note to the school district when they encounter a child while responding to a call. <span class="gist-credit">Chalkbeat</span></p>
+          <p>School District personnel then identify the student&#39;s school and alert staff that the student may need extra care and attention. <span class="gist-credit">Chalkbeat</span> The program launched as a pilot in one North Philadelphia police district last year, and will expand to all police districts next week. <span class="gist-credit">Chalkbeat</span></p>
+        </div>
           
           
           
-        <div class="block block-outlets">
-          <h4>Read it at the source</h4>
+          
+        <details class="sources">
+          <summary>Sources (1)</summary>
           <div class="original-body">
           <div class="camp-group">
             <p class="also-head">independent outlets</p>
@@ -2077,7 +2186,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
               <li><a href="https://www.chalkbeat.org/philadelphia/2026/09/28/handle-with-care-program-to-help-students-who-witness-violence-expands/" target="_blank" rel="noopener"><span class="who">Chalkbeat</span>Philadelphia expands program that flags students who witness violence outside school for more support</a></li>
             </ul>
           </div></div>
-        </div>
+        </details>
         </div>
       </details>
     </article>
@@ -2171,7 +2280,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
         </tr>
         <tr>
           <td>The Washington Times</td>
-          <td><span class="lean">center-right</span>Unification movement affiliated, conservative<span class="review">Couldn’t be reached today</span></td>
+          <td><span class="lean">center-right</span>Unification movement affiliated, conservative</td>
         </tr>
         <tr>
           <td>Fox News</td>

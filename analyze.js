@@ -6,9 +6,18 @@ const { stripHtml } = require('./neutralize');
 
 const STOP = new Set(('a an the and or but of in on at to for from with by as is are was were be been being it its this that these those his her their our your my he she they we you i not no new says said after over under into about more most than then will would can could may might should who whom which what when where why how amid among across during while also just has have had do does did get got make made take took one two three first second last year years day days week weeks month months time times report reports reported study news say some many according told call called back out up down off per via near next still yet own way even much long').split(/\s+/));
 
+const KEEP = '\u0001';
+
+// A decimal point or an abbreviation is not the end of a sentence: "Astra 6.1" and
+// "U.S." were both being cut in half.
 function sentences(text) {
-  return String(text || '')
-    .match(/[^.!?]+(?:[.!?]+["’')\]]*|$)/g)?.map((s) => s.trim()).filter((s) => s.split(/\s+/).length >= 6) || [];
+  const masked = String(text || '')
+    .replace(/(\d)\.(\d)/g, '$1' + KEEP + '$2')
+    .replace(/\b([A-Z])\.([A-Z])\./g, '$1' + KEEP + '$2' + KEEP)
+    .replace(/\b(Mr|Mrs|Ms|Dr|Prof|Sen|Rep|Gov|Gen|Lt|Sgt|St|Jr|Sr|vs|etc|Inc|Corp|No)\./gi, (m) => m.slice(0, -1) + KEEP);
+  return (masked.match(/[^.!?]+(?:[.!?]+["\u2019')\]]*|$)/g) || [])
+    .map((s) => s.split(KEEP).join('.').trim())
+    .filter((s) => s.split(/\s+/).length >= 6);
 }
 
 function terms(text) {
@@ -358,4 +367,4 @@ function analyze(items) {
   };
 }
 
-module.exports = { analyze, CAMP_NAME };
+module.exports = { analyze, CAMP_NAME, sentences, terms, shingles, overlap };

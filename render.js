@@ -1,6 +1,7 @@
 'use strict';
 
 const { CAMP_NAME } = require('./analyze');
+const { fullerAccount } = require('./digest');
 
 function esc(s) {
   return String(s == null ? '' : s)
@@ -76,34 +77,27 @@ function verdictHtml(story) {
       </aside>`;
 }
 
-function frameHtml(story, skipFirstQuote) {
-  const frame = story.frame;
-  const parts = [];
+function accountHtml(story, gist) {
+  const paragraphs = fullerAccount(story, { alreadyShown: gist ? gist.text : '' });
+  if (!paragraphs.length) return '';
+  return `
+        <div class="account">${paragraphs.map((p) => `
+          <p>${p.map((x) => `${esc(x.text)} <span class="gist-credit">${esc(x.outlet)}</span>`).join(' ')}</p>`).join('')}
+        </div>`;
+}
 
-  const quotes = skipFirstQuote ? frame.shared.slice(1) : frame.shared;
-  if (quotes.length) {
-    parts.push(`
-        <div class="block block-agreed">
-          <h4>${skipFirstQuote ? 'Other sides report the same' : 'What every side agrees on'}</h4>
-          <ul class="shared">${quotes.map((q) => `
-            <li><q>${esc(q.text)}</q><cite>${esc(q.outlet)}</cite></li>`).join('')}
-          </ul>
-        </div>`);
-  }
-
-  if (frame.framing.length) {
-    parts.push(`
+function framingHtml(story) {
+  const f = story.frame.framing;
+  if (!f.length) return '';
+  return `
         <div class="block block-framing">
           <h4>Same thing, different words</h4>
-          <dl class="framing">${frame.framing.map((f) => `
-            <dt>${esc(f.about)}</dt>
-            <dd>${CAMP_ORDER.filter((c) => f.byCamp[c]).map((c) =>
-              `<span class="who">${esc(CAMP_NAME[c])}</span> ${f.byCamp[c].map((w) => `<b>${esc(w)}</b>`).join(' ')}`).join('<span class="sep"></span>')}</dd>`).join('')}
+          <dl class="framing">${f.map((x) => `
+            <dt>${esc(x.about)}</dt>
+            <dd>${CAMP_ORDER.filter((c) => x.byCamp[c]).map((c) =>
+              `<span class="who">${esc(CAMP_NAME[c])}</span> ${x.byCamp[c].map((w) => `<b>${esc(w)}</b>`).join(' ')}`).join('<span class="sep"></span>')}</dd>`).join('')}
           </dl>
-        </div>`);
-  }
-
-  return parts.length ? `<div class="frame">${parts.join('')}</div>` : '';
+        </div>`;
 }
 
 function outletsHtml(story) {
@@ -115,10 +109,10 @@ function outletsHtml(story) {
             </ul>
           </div>`).join('');
   return `
-        <div class="block block-outlets">
-          <h4>Read it at the source</h4>
+        <details class="sources">
+          <summary>Sources (${story.coverage.length})</summary>
           <div class="original-body">${groups}</div>
-        </div>`;
+        </details>`;
 }
 
 // What a story says before it is opened: one or two sentences, never a wall.
@@ -146,9 +140,10 @@ function storyHtml(story, { lead = false } = {}) {
           <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
         </summary>
         <div class="more-body">
+          ${accountHtml(story, gist)}
           ${story.ai && story.ai.differences ? `<p class="brief-diff">${esc(story.ai.differences)}</p>` : ''}
           ${verdictHtml(story)}
-          ${frameHtml(story, gist && gist.fromQuote)}
+          ${framingHtml(story)}
           ${outletsHtml(story)}
         </div>
       </details>
@@ -224,7 +219,8 @@ function render(edition, config, { standalone = false, css = '', archiveLink = n
   const body = `
   <main>
     <header class="masthead">
-      <h1 class="wordmark">steady</h1>
+      <h1 class="wordmark">Steady</h1>
+      <p class="mission">Each morning, Steady reads the news from the left, the right and everything in between, and tells you what happened in plain, calm words.</p>
       <p class="dateline">${esc(longDate(edition.date))}</p>
       <p class="standing">Updated once each morning</p>
       <div class="appearance" id="appearance" hidden>
@@ -320,7 +316,7 @@ ${THEME_SCRIPT}
 <body>
   <main>
     <header class="masthead">
-      <h1 class="wordmark">steady</h1>
+      <h1 class="wordmark">Steady</h1>
       <p class="dateline">Earlier editions</p>
       <p class="standing">Past days, newest first.</p>
       <div class="appearance" id="appearance" hidden>

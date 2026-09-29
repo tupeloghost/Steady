@@ -351,6 +351,14 @@ function neutralizeSummary(raw, lexicon, body) {
   return s;
 }
 
+// A longer cut of the same text, for the fuller account shown when a story is opened.
+// Prefers the article body when the feed carries one.
+function neutralizeLong(raw, lexicon, body) {
+  const a = wholeSentences(cleanProse(raw, lexicon), 1400, 1800);
+  const b = body ? wholeSentences(cleanProse(body, lexicon), 1400, 1800) : '';
+  return b.length > a.length ? b : a;
+}
+
 // How much heat the original carried. Used only to pick the calmest wording of a
 // shared story. It is never shown to the reader as a score.
 function heatScore(raw) {
@@ -373,4 +381,4 @@ function headlineCore(raw) {
   return stripHtml(raw).replace(COLUMN_PREFIX, '').replace(PAYWALL_PREFIX, '').replace(PREFIXES, '').trim();
 }
 
-module.exports = { headlineCore, neutralizeTitle, neutralizeSummary, heatScore, stripHtml };
+module.exports = { neutralizeLong, headlineCore, neutralizeTitle, neutralizeSummary, heatScore, stripHtml };

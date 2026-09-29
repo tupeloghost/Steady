@@ -1,6 +1,6 @@
 'use strict';
 
-const { neutralizeTitle, neutralizeSummary, heatScore, stripHtml, headlineCore } = require('./neutralize');
+const { neutralizeTitle, neutralizeSummary, neutralizeLong, heatScore, stripHtml, headlineCore } = require('./neutralize');
 const { analyze } = require('./analyze');
 
 /* ------------------------------------------------------------------ feed reading */
@@ -277,7 +277,7 @@ function buildStories(groups) {
       coverage: g.items
         .map((i) => ({
           source: i.outlet, lean: i.lean, camp: i.camp, owner: i.owner, state: i.state,
-          link: i.link, asPublished: i.title, text: i.summaryText || '',
+          link: i.link, asPublished: i.title, text: i.summaryText || '', long: i.longText || '',
         }))
         .filter((a, idx, arr) => arr.findIndex((x) => x.source === a.source) === idx),
       weight,
@@ -391,6 +391,7 @@ async function buildEdition(CONFIG) {
         title: firstStory(it.title),
         titleNeutral: neutralizeTitle(firstStory(it.title), lowercaseLexicon),
         summaryText: firstStory(neutralizeSummary(it.summary || it.body, lowercaseLexicon, it.body)),
+        longText: firstStory(neutralizeLong(it.summary || it.body, lowercaseLexicon, it.body)),
         link: it.link,
         date: it.date,
         heat: heatScore(it.title),

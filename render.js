@@ -302,7 +302,7 @@ ${THEME_SCRIPT}
     <header class="masthead">
       <h1 class="wordmark">steady</h1>
       <p class="dateline">Earlier editions</p>
-      <p class="standing">Each one exactly as it was assembled that morning.</p>
+      <p class="standing">Past days, newest first.</p>
       <div class="appearance" id="appearance" hidden>
         <button type="button" data-theme-choice="auto">auto</button>
         <button type="button" data-theme-choice="light">light</button>

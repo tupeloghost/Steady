@@ -19,29 +19,26 @@ function longDate(key) {
 const CAMP_ORDER = ['left', 'center', 'right', 'state', 'independent'];
 
 const SPREAD_SLOTS = [
-  { camp: 'left', short: 'left' },
-  { camp: 'center', short: 'center' },
-  { camp: 'right', short: 'right' },
-  { camp: 'state', short: 'state' },
-  { camp: 'independent', short: 'indep' },
+  { camp: 'left', label: 'Left' },
+  { camp: 'center', label: 'Center' },
+  { camp: 'right', label: 'Right' },
+  { camp: 'state', label: 'Government-funded' },
+  { camp: 'independent', label: 'Independent' },
 ];
 
-// Short names for the coverage line under each story.
-const CAMP_SHORT = { left: 'left', center: 'center', right: 'right', state: 'government-funded', independent: 'independent' };
-
-function coverageWords(story) {
-  const who = CAMP_ORDER.filter((c) => story.camps.includes(c)).map((c) => CAMP_SHORT[c]).join(', ');
-  return (story.outlets.length === 1 ? '1 outlet: ' : story.outlets.length + ' outlets: ') + who;
-}
-
-// The spread of the political spectrum a story reached, which is the whole point of
-// the app and was previously only stated in words.
+// Which sides covered the story, written out as words: the sides that covered it are
+// lit, the ones that did not are faded, so it reads at a glance with no key needed.
 function spreadHtml(story) {
-  return `<span class="seg${on ? ' on' : ''}${n >= 3 ? ' heavy' : ''}" title="${esc(slot.short)}" aria-hidden="true"><i></i></span>`;
+  const n = story.outlets.length;
+  const covered = SPREAD_SLOTS.filter((x) => story.camps.includes(x.camp)).map((x) => x.label.toLowerCase());
+  const chips = SPREAD_SLOTS.map((slot) => {
+    const on = story.camps.includes(slot.camp);
+    return `<span class="chip${on ? ' on' : ''}" aria-hidden="true">${esc(slot.label)}</span>`;
   }).join('');
   return `
-      <p class="spread">
-        <span class="spread-words">${esc(coverageWords(story))}</span>
+      <p class="spread" aria-label="${esc('Covered by ' + (n === 1 ? '1 outlet' : n + ' outlets') + ': ' + covered.join(', '))}">
+        <span class="spread-label">Covered by ${n === 1 ? '1 outlet' : n + ' outlets'}</span>
+        <span class="chips">${chips}</span>
       </p>`;
 }
 

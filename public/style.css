@@ -398,31 +398,19 @@ details.sources .original-body { margin-top: var(--gap-s); }
 
 .spread {
   margin: var(--gap-m) 0 0;
-  display: flex;
-  align-items: center;
-  gap: 0 0.875rem;
-  flex-wrap: wrap;
-}
-
-.segs { display: inline-flex; gap: 5px; }
-
-.seg { width: 2.5rem; }
-.seg i {
-  display: block;
-  height: 3px;
-  border-radius: 2px;
-  background: var(--rule);
-}
-.seg.on i { background: var(--accent-soft); }
-.seg.on.heavy i { background: var(--accent); }
-
-.spread-words {
   font-variant-caps: all-small-caps;
   font-variant-numeric: oldstyle-nums;
   letter-spacing: 0.08em;
   font-size: 0.9375rem;
-  color: var(--ink-faint);
 }
+
+.spread-label { display: block; color: var(--ink-faint); margin-bottom: 0.25rem; }
+
+.chips { display: flex; flex-wrap: wrap; gap: 0.25rem 0.75rem; }
+
+/* A side that did not cover the story is present but faded, so the gap shows. */
+.chip { color: var(--ink-faint); opacity: 0.45; padding-bottom: 1px; }
+.chip.on { color: var(--ink); opacity: 1; box-shadow: inset 0 -2px 0 var(--accent-soft); }
 
 /* ------------------------------------------------------------------ the frame */
 
@@ -679,13 +667,14 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
   .story h3 { font-size: 1.375rem; line-height: 1.3; }
   .gist, .story-lead .gist { font-size: 1.125rem; line-height: 1.7; }
   .account p { font-size: 1.125rem; line-height: 1.75; }
-  .gist-credit, .spread-words, .more-cue, details > summary, .index a, .dateline { font-size: 1rem; }
+  .spread { letter-spacing: 0.05em; }
+  .chips { gap: 0.25rem 0.625rem; }
+  .gist-credit, .spread, .more-cue, details > summary, .index a, .dateline { font-size: 1rem; }
   q, .verdict li, .framing dd, .original-body li { font-size: 1.0625rem; }
   .verdict-title { font-size: 1.1875rem; }
   .block-agreed, .block-only { padding-left: 0.875rem; }
   .block-agreed::after { display: none; }
   .original-body { padding: 0.875rem; }
-  .seg { width: 2rem; }
   .section h2 { letter-spacing: 0.16em; font-size: 1.0625rem; }
   .more-cue { padding: 0.5rem 0; }
 }

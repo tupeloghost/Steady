@@ -1,0 +1,58 @@
+name: Publish today's edition
+
+on:
+  schedule:
+    # 11:30 UTC is 7:30 in the morning Eastern, 4:30 Pacific.
+    - cron: '30 11 * * *'
+  # A "Run workflow" button on GitHub, for rebuilding by hand.
+  workflow_dispatch:
+
+permissions:
+  contents: write      # to commit the day's edition into archive/
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Assemble the edition
+        run: node build.js
+
+      # Saving the edition is also what keeps this schedule alive: GitHub switches off
+      # scheduled jobs in public repositories after 60 days with no commits.
+      - name: Save it to the archive
+        run: |
+          git config user.name "steady-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add archive
+          if git diff --cached --quiet; then
+            echo "Nothing new to archive."
+          else
+            git commit -m "Edition for $(date -u +%Y-%m-%d)"
+            git push
+          fi
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

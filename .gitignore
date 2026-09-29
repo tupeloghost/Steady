@@ -1,0 +1,5 @@
+# built output and local caches, all regenerated
+dist/
+cache/
+latest-edition.html
+.DS_Store

@@ -1,0 +1,76 @@
+{
+  "rule": "These are inputs to compare, not sources to trust. Outlets are carried across the political spectrum, including state broadcasters, precisely so that a story can be read against itself. Every outlet is labelled by lean, owner and money. Agreement across outlets that disagree is the only thing treated as evidence.",
+  "camps": {
+    "left": "the left",
+    "right": "the right",
+    "center": "the center",
+    "state": "state broadcasters",
+    "independent": "independent newsrooms"
+  },
+  "beats": {
+    "world": "The world", "nation": "The nation", "justice": "Courts and justice",
+    "health": "Health", "science": "Science", "climate": "Climate and land",
+    "technology": "Technology", "money": "Work and money", "education": "Schools"
+  },
+  "sources": [
+    { "id": "motherjones", "outlet": "Mother Jones",     "lean": "left",        "camp": "left",   "owner": "nonprofit, reader funded, openly progressive",        "beat": "nation", "scope": "national", "url": "https://www.motherjones.com/feed/" },
+    { "id": "dailybeast",  "outlet": "The Daily Beast",  "lean": "left",        "camp": "left",   "owner": "IAC, commercial",                                     "beat": "nation", "scope": "national", "url": "https://www.thedailybeast.com/arc/outboundfeeds/rss/" },
+    { "id": "salon",       "outlet": "Salon",            "lean": "left",        "camp": "left",   "owner": "commercial, openly progressive",                      "beat": "nation", "scope": "national", "url": "https://www.salon.com/feed/" },
+
+    { "id": "guardian",    "outlet": "The Guardian",     "lean": "center-left", "camp": "left",   "owner": "Scott Trust, no shareholders, declared left politics", "beat": "nation", "scope": "national", "url": "https://www.theguardian.com/us-news/rss" },
+    { "id": "npr",         "outlet": "NPR",              "lean": "center-left", "camp": "left",   "owner": "nonprofit network, federal funding under dispute",     "beat": "nation", "scope": "national", "url": "https://feeds.npr.org/1001/rss.xml" },
+    { "id": "washpost",    "outlet": "The Washington Post","lean": "center-left","camp": "left",  "owner": "Jeff Bezos, sole owner",                               "beat": "nation", "scope": "national", "url": "https://feeds.washingtonpost.com/rss/politics" },
+    { "id": "nyt",         "outlet": "The New York Times","lean": "center-left","camp": "left",   "owner": "public company, Sulzberger family control",            "beat": "nation", "scope": "national", "url": "https://rss.nytimes.com/services/xml/rss/nyt/US.xml" },
+    { "id": "cnn",         "outlet": "CNN",              "lean": "center-left", "camp": "left",   "owner": "Warner Bros Discovery, commercial",                    "beat": "nation", "scope": "national", "url": "http://rss.cnn.com/rss/cnn_topstories.rss" },
+    { "id": "politico",    "outlet": "Politico",         "lean": "center-left", "camp": "left",   "owner": "Axel Springer, commercial",                            "beat": "nation", "scope": "national", "url": "https://rss.politico.com/politics-news.xml" },
+
+    { "id": "bbc",         "outlet": "BBC",              "lean": "center",      "camp": "center", "owner": "UK licence fee, level set by government",              "beat": "nation", "scope": "national", "url": "https://feeds.bbci.co.uk/news/world/us_and_canada/rss.xml" },
+    { "id": "bbc_world",   "outlet": "BBC",              "lean": "center",      "camp": "center", "owner": "UK licence fee, level set by government",              "beat": "world",  "scope": "world",    "url": "https://feeds.bbci.co.uk/news/world/rss.xml" },
+    { "id": "thehill",     "outlet": "The Hill",         "lean": "center",      "camp": "center", "owner": "Nexstar, commercial",                                  "beat": "nation", "scope": "national", "url": "https://thehill.com/news/feed/" },
+    { "id": "axios",       "outlet": "Axios",            "lean": "center",      "camp": "center", "owner": "Cox Enterprises, commercial",                          "beat": "nation", "scope": "national", "url": "https://api.axios.com/feed/" },
+    { "id": "csmonitor",   "outlet": "Christian Science Monitor","lean":"center","camp":"center", "owner": "church owned nonprofit, editorially independent",      "beat": "nation", "scope": "national", "url": "https://rss.csmonitor.com/feeds/usa" },
+
+    { "id": "wsj",         "outlet": "The Wall Street Journal","lean":"center-right","camp":"right","owner": "News Corp, Murdoch family",                          "beat": "world",  "scope": "world",    "url": "https://feeds.a.dj.com/rss/RSSWorldNews.xml" },
+    { "id": "reason",      "outlet": "Reason",           "lean": "center-right", "camp": "right", "owner": "nonprofit, libertarian by charter",                    "beat": "nation", "scope": "national", "url": "https://reason.com/feed/" },
+    { "id": "natlreview",  "outlet": "National Review",  "lean": "center-right", "camp": "right", "owner": "nonprofit, conservative by charter",                   "beat": "nation", "scope": "national", "url": "https://www.nationalreview.com/feed/" },
+    { "id": "dispatch",    "outlet": "The Dispatch",     "lean": "center-right", "camp": "right", "owner": "subscriber funded, conservative",                      "beat": "nation", "scope": "national", "url": "https://thedispatch.com/feed/" },
+    { "id": "washtimes",   "outlet": "The Washington Times","lean":"center-right","camp":"right", "owner": "Unification movement affiliated, conservative",        "beat": "nation", "scope": "national", "url": "https://www.washingtontimes.com/rss/headlines/news/politics/" },
+
+    { "id": "foxnews",     "outlet": "Fox News",         "lean": "right",       "camp": "right",  "owner": "Fox Corporation, Murdoch family",                      "beat": "nation", "scope": "national", "url": "https://moxie.foxnews.com/google-publisher/politics.xml" },
+    { "id": "nypost",      "outlet": "New York Post",    "lean": "right",       "camp": "right",  "owner": "News Corp, Murdoch family",                            "beat": "nation", "scope": "national", "url": "https://nypost.com/feed/" },
+    { "id": "washexam",    "outlet": "Washington Examiner","lean":"right",      "camp": "right",  "owner": "Clarity Media, Philip Anschutz",                       "beat": "nation", "scope": "national", "url": "https://www.washingtonexaminer.com/feed/" },
+    { "id": "dailywire",   "outlet": "The Daily Wire",   "lean": "right",       "camp": "right",  "owner": "commercial, openly conservative",                      "beat": "nation", "scope": "national", "url": "https://www.dailywire.com/feeds/rss.xml" },
+    { "id": "breitbart",   "outlet": "Breitbart",        "lean": "right",       "camp": "right",  "owner": "commercial, openly right wing",                        "beat": "nation", "scope": "national", "url": "https://feeds.feedburner.com/breitbart" },
+    { "id": "justnews",    "outlet": "Just the News",    "lean": "right",       "camp": "right",  "owner": "commercial, conservative",                             "beat": "nation", "scope": "national", "url": "https://justthenews.com/rss.xml" },
+
+    { "id": "aljazeera",   "outlet": "Al Jazeera",       "lean": "state",       "camp": "state",  "state": "Qatar", "owner": "funded by the government of Qatar",                    "beat": "world",  "scope": "world",    "url": "https://www.aljazeera.com/xml/rss/all.xml" },
+    { "id": "rt",          "outlet": "RT",               "lean": "state",       "camp": "state",  "state": "Russia", "owner": "funded by the Russian state",                          "beat": "world",  "scope": "world",    "url": "https://www.rt.com/rss/" },
+    { "id": "dw",          "outlet": "Deutsche Welle",   "lean": "state",       "camp": "state",  "state": "Germany", "owner": "funded by the German federal government",              "beat": "world",  "scope": "world",    "url": "https://rss.dw.com/rdf/rss-en-all" },
+    { "id": "france24",    "outlet": "France 24",        "lean": "state",       "camp": "state",  "state": "France", "owner": "funded by the French state",                           "beat": "world",  "scope": "world",    "url": "https://www.france24.com/en/rss" },
+
+    { "id": "propublica",  "outlet": "ProPublica",       "lean": "independent", "camp": "independent", "owner": "nonprofit, donor funded",                         "beat": "nation", "scope": "national", "url": "https://www.propublica.org/feeds/propublica/main" },
+    { "id": "reveal",      "outlet": "Reveal",           "lean": "independent", "camp": "independent", "owner": "nonprofit",                                       "beat": "nation", "scope": "national", "url": "https://revealnews.org/feed/" },
+    { "id": "icij",        "outlet": "ICIJ",             "lean": "independent", "camp": "independent", "owner": "nonprofit consortium",                            "beat": "money",  "scope": "world",    "url": "https://www.icij.org/feed/" },
+    { "id": "marshall",    "outlet": "The Marshall Project","lean":"independent","camp": "independent","owner": "nonprofit",                                       "beat": "justice","scope": "national", "url": "https://www.themarshallproject.org/rss/recent.rss" },
+    { "id": "kff",         "outlet": "KFF Health News",  "lean": "independent", "camp": "independent", "owner": "endowed nonprofit",                               "beat": "health", "scope": "national", "url": "https://kffhealthnews.org/feed/" },
+    { "id": "404media",    "outlet": "404 Media",        "lean": "independent", "camp": "independent", "owner": "journalist owned, subscriber funded",              "beat": "technology","scope":"national", "url": "https://www.404media.co/rss/" },
+    { "id": "markup",      "outlet": "The Markup",       "lean": "independent", "camp": "independent", "owner": "nonprofit",                                       "beat": "technology","scope":"national", "url": "https://themarkup.org/feeds/rss.xml" },
+    { "id": "restofworld", "outlet": "Rest of World",    "lean": "independent", "camp": "independent", "owner": "nonprofit",                                       "beat": "technology","scope":"world",    "url": "https://restofworld.org/feed/latest/" },
+    { "id": "sciencenews", "outlet": "Science News",     "lean": "independent", "camp": "independent", "owner": "nonprofit membership society",                    "beat": "science","scope": "world",    "url": "https://www.sciencenews.org/feed" },
+    { "id": "quanta",      "outlet": "Quanta",           "lean": "independent", "camp": "independent", "owner": "Simons Foundation",                               "beat": "science","scope": "world",    "url": "https://api.quantamagazine.org/feed/" },
+    { "id": "undark",      "outlet": "Undark",           "lean": "independent", "camp": "independent", "owner": "Knight Foundation, MIT program",                  "beat": "science","scope": "world",    "url": "https://undark.org/feed/" },
+    { "id": "insideclimate","outlet": "Inside Climate News","lean":"independent","camp": "independent","owner": "nonprofit",                                       "beat": "climate","scope": "national", "url": "https://insideclimatenews.org/feed/" },
+    { "id": "highcountry", "outlet": "High Country News","lean": "independent", "camp": "independent", "owner": "nonprofit, reader supported",                     "beat": "climate","scope": "national", "url": "https://www.hcn.org/feed/" },
+    { "id": "votebeat",    "outlet": "Votebeat",         "lean": "independent", "camp": "independent", "owner": "nonprofit, nonpartisan by charter",               "beat": "nation", "scope": "national", "url": "https://www.votebeat.org/arc/outboundfeeds/rss/" },
+    { "id": "chalkbeat",   "outlet": "Chalkbeat",        "lean": "independent", "camp": "independent", "owner": "nonprofit",                                       "beat": "education","scope":"national", "url": "https://www.chalkbeat.org/arc/outboundfeeds/rss/" },
+    { "id": "19th",        "outlet": "The 19th",         "lean": "independent", "camp": "independent", "owner": "nonprofit, gender lens",                          "beat": "nation", "scope": "national", "url": "https://19thnews.org/feed/" },
+    { "id": "texastribune","outlet": "The Texas Tribune","lean": "independent", "camp": "independent", "owner": "nonprofit",                                       "beat": "nation", "scope": "state",    "url": "https://www.texastribune.org/feeds/main/" },
+    { "id": "calmatters",  "outlet": "CalMatters",       "lean": "independent", "camp": "independent", "owner": "nonprofit",                                       "beat": "nation", "scope": "state",    "url": "https://calmatters.org/feed/" }
+  ],
+  "unavailable": [
+    { "name": "Associated Press", "why": "blocks automated access, no public feed" },
+    { "name": "Reuters", "why": "retired its public feeds" },
+    { "name": "Xinhua and Press TV", "why": "feeds dead, so Chinese and Iranian state lines are not represented" },
+    { "name": "MSNBC, HuffPost, The Nation, Newsweek", "why": "feeds return nothing or refuse automated requests" }
+  ]
+}

@@ -310,7 +310,7 @@ function manufactureSignals(items) {
   };
 }
 
-const CAMP_NAME = { left: 'the left', right: 'the right', center: 'the center', state: 'government-funded outlets', independent: 'independent outlets' };
+const CAMP_NAME = { left: 'the left', right: 'the right', center: 'the center', state: 'government-funded outlets', independent: 'independent outlets', local: 'local outlets', good: 'good news outlets' };
 
 // She asked for a verdict, not just measurements. It is graded, and every verdict
 // prints the evidence it was drawn from so it can be checked and argued with.

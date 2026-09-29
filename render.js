@@ -16,7 +16,7 @@ function longDate(key) {
   });
 }
 
-const CAMP_ORDER = ['left', 'center', 'right', 'state', 'independent'];
+const CAMP_ORDER = ['left', 'center', 'right', 'state', 'independent', 'local', 'good'];
 
 const SPREAD_SLOTS = [
   { camp: 'left', label: 'Left' },
@@ -29,6 +29,13 @@ const SPREAD_SLOTS = [
 // Which sides covered the story, written out as words: the sides that covered it are
 // lit, the ones that did not are faded, so it reads at a glance with no key needed.
 function spreadHtml(story) {
+  // Local and good news are not about which political side covered them; just say who.
+  if (story.section) {
+    const names = story.outlets;
+    const who = names.length > 1 ? names.slice(0, -1).join(', ') + ' and ' + names[names.length - 1] : names[0];
+    return `
+      <p class="spread"><span class="spread-label">Reported by ${esc(who)}</span></p>`;
+  }
   const n = story.outlets.length;
   const covered = SPREAD_SLOTS.filter((x) => story.camps.includes(x.camp)).map((x) => x.label.toLowerCase());
   const chips = SPREAD_SLOTS.map((slot) => {
@@ -193,7 +200,7 @@ function render(edition, config, { standalone = false, css = '', archiveLink = n
   const index = edition.sections.length ? `
     <nav class="index" aria-label="sections in this edition">
       ${edition.lead.length ? '<a href="#lead">Top stories</a>' : ''}
-      ${edition.sections.map((s) => `<a href="#${esc(s.beat)}">${esc(s.title)}</a>`).join('')}
+      ${edition.sections.map((s) => `<a href="#${esc(s.beat)}">${esc(({ local: 'Local', good: 'Good news' })[s.beat] || s.title)}</a>`).join('')}
     </nav>
 ` : '';
 

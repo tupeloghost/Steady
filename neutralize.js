@@ -170,9 +170,11 @@ function deQuestion(text) {
   // "Where does the quantum world end" cannot become a noun phrase without conjugating
   // the verb, so it simply loses its question mark and keeps the words it had.
   if (/^(what|why|how|who|whom|when|where)\s+(is|are|was|were|do|does|did|can|could|should|will|would|has|have|may|might)\b/i.test(t)) return t;
-  t = t.replace(/^(what|why|how|who|whom|when|where|is|are|was|were|does|do|did|can|could|should|will|would|has|have)\b\s*/i, '');
-  t = t.replace(/^(is|are|was|were|the|a|an)\b\s*/i, '');
-  return t ? 'On ' + t.charAt(0).toLowerCase() + t.slice(1) : text.replace(/\?/g, '');
+  // A statement followed by a question: keep the statement, drop the question.
+  const lastStop = t.lastIndexOf('. ');
+  if (lastStop > 20) return t.slice(0, lastStop);
+  // Otherwise keep the words and simply lose the question mark.
+  return t;
 }
 
 // "an" before a consonant sound, or "a" before a vowel one, is usually the wreckage

@@ -78,6 +78,12 @@ function firstStory(text) {
   return m && m.index > 20 ? s.slice(0, m.index + 1).trim() : s;
 }
 
+// Places that make a statewide story local to the foothills around Gilpin County.
+const FOOTHILLS = /\b(Gilpin|Black Hawk|Blackhawk|Central City|Rollinsville|Nederland|Peak[- ]to[- ]Peak|Coal Creek Canyon|Golden Gate Canyon|Idaho Springs|Clear Creek|Georgetown|Silver Plume|Floyd Hill|Evergreen|Conifer|Kittredge|Bergen Park|Genesee|Boulder Canyon|Jamestown|Allenspark|Bailey|Pine Junction|Aspen Park|Echo Lake|Mount Blue Sky|Loveland Pass|Berthoud Pass|Eldora|Boulder County|Jefferson County|Jeffco|Red Rocks|in Golden|Golden, Colo|in Lyons|in Morrison|in Empire|Colorado foothills|mountain towns?|I-70 mountain corridor)\b/;
+
+// Items that are not news in a local or good news feed: listings, calendars, ads.
+const NOT_SECTION_NEWS = /\b(good news in history|this day in history|obituar|calendar|event listings?|music listing|things to do|gift guide|deals?|coupon|sponsored|horoscope|crossword|police blotter|letters? to the editor)\b/i;
+
 function isReporting(item) {
   if (NOT_NEWS_PATH.test(item.link)) return false;
   const core = headlineCore(item.title);
@@ -378,11 +384,16 @@ async function buildEdition(CONFIG) {
   for (const { src, items: raw } of results) {
     for (const it of raw) {
       if (!isReporting(it)) continue;
+      if (src.section && NOT_SECTION_NEWS.test(it.title)) continue;
+      if (src.placeFilter && !FOOTHILLS.test(it.title + ' ' + stripHtml(it.summary || '').slice(0, 600))) continue;
       const age = it.date ? now - it.date : null;
-      if (age !== null && (age > 3 * DAY || age < -2 * 60 * 60 * 1000)) continue;
+      // Good news and local papers publish less often, so they get a longer window.
+      const window = src.section ? 7 * DAY : 3 * DAY;
+      if (age !== null && (age > window || age < -2 * 60 * 60 * 1000)) continue;
       items.push({
         outlet: src.outlet,
         camp: src.camp,
+        section: src.section || null,
         lean: src.lean,
         state: src.state || null,
         owner: src.owner,
@@ -410,9 +421,42 @@ async function buildEdition(CONFIG) {
     return true;
   });
 
-  const { groups } = clusterItems(unique);
-  const stories = buildStories(groups);
+  // Local and good news are grouped and chosen on their own, so a mountain town story
+  // never lands in a national beat and national stories never crowd these out.
+  const main = unique.filter((i) => !i.section);
+  const stories = buildStories(clusterItems(main).groups);
   const { lead, sections } = selectEdition(stories);
+
+  const sectionStories = (name, room, perOutlet) => {
+    const pool = unique.filter((i) => i.section === name);
+    if (!pool.length) return [];
+    const built = buildStories(clusterItems(pool).groups).map((s) => {
+      s.frame.verdict = null;            // the coverage flags are about national politics
+      s.section = name;
+      return s;
+    });
+    // Local stories closest to Gilpin County come first.
+    const nearness = (st) => {
+      const text = st.headline + ' ' + (st.summary || '');
+      if (/\b(Gilpin|Black Hawk|Blackhawk|Central City|Rollinsville|Nederland|Peak[- ]to[- ]Peak|Coal Creek Canyon|Golden Gate Canyon)\b/.test(text)) return 3;
+      if (/\b(Idaho Springs|Clear Creek|Georgetown|Silver Plume|Floyd Hill|Evergreen|Conifer|Kittredge|Bergen Park|Genesee|Eldora|Boulder Canyon|Jamestown|Echo Lake|Mount Blue Sky|in Golden|Golden, Colo)\b/.test(text)) return 2;
+      return st.source === 'Clear Creek Courant' ? 2 : 1;
+    };
+    built.sort((a, b) => (name === 'local' ? nearness(b) - nearness(a) : 0)
+      || (b.outlets.length - a.outlets.length) || ((b.date || 0) - (a.date || 0)));
+    const count = {};
+    const out = [];
+    for (const s of built) {
+      if (out.length >= room) break;
+      if ((count[s.source] = (count[s.source] || 0) + 1) > perOutlet) continue;
+      out.push(s);
+    }
+    return out;
+  };
+  const local = sectionStories('local', 6, 3);
+  const good = sectionStories('good', 5, 2);
+  if (local.length) sections.unshift({ beat: 'local', stories: local });
+  if (good.length) sections.push({ beat: 'good', stories: good });
 
   const clean = (s) => { const { names, weight, ...rest } = s; return rest; };
 

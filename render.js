@@ -25,12 +25,12 @@ const SPREAD_SLOTS = [
   { camp: 'independent', short: 'indep' },
 ];
 
+// Short names for the coverage line under each story.
+const CAMP_SHORT = { left: 'left', center: 'center', right: 'right', state: 'government-funded', independent: 'independent' };
+
 function coverageWords(story) {
-  const camps = CAMP_ORDER.filter((c) => story.camps.includes(c)).map((c) => CAMP_NAME[c]);
-  const who = camps.length > 1
-    ? camps.slice(0, -1).join(', ') + ' and ' + camps[camps.length - 1]
-    : camps[0];
-  return (story.outlets.length === 1 ? 'one outlet, ' : story.outlets.length + ' outlets, ') + who;
+  const who = CAMP_ORDER.filter((c) => story.camps.includes(c)).map((c) => CAMP_SHORT[c]).join(', ');
+  return (story.outlets.length === 1 ? '1 outlet: ' : story.outlets.length + ' outlets: ') + who;
 }
 
 // The spread of the political spectrum a story reached, which is the whole point of
@@ -55,20 +55,24 @@ function verdictHtml(story) {
     if (!v) return '';
     return `
       <aside class="verdict verdict-${esc(v.key)}">
-        <p class="verdict-kicker">what the coverage pattern shows, judged by ${esc(story.ai.model)}</p>
+        <p class="verdict-kicker">Worth knowing about this coverage</p>
         <p class="verdict-title">${esc(v.title)}</p>
         ${v.reasoning ? `<p class="verdict-reasoning">${esc(v.reasoning)}</p>` : ''}
-        ${measured.length ? `<p class="verdict-measured">Measured</p>
+        <p class="verdict-by">Judged by ${esc(story.ai.model)}</p>
+        ${measured.length ? `<p class="verdict-measured">What we counted</p>
         <ul>${measured.map((r) => `<li>${esc(r)}</li>`).join('')}</ul>` : ''}
       </aside>`;
   }
   const v = story.frame.verdict;
   if (!v) return '';
+  // A reason that only restates the title adds reading, not information.
+  const norm = (t) => t.toLowerCase().replace(/[^a-z]/g, '');
+  const reasons = v.reasons.filter((r) => !norm(r).includes(norm(v.title)) && norm(r) !== 'basedonhowthestorywascovered');
   return `
       <aside class="verdict verdict-${esc(v.key)}">
-        <p class="verdict-kicker">what the coverage pattern shows</p>
+        <p class="verdict-kicker">Worth knowing about this coverage</p>
         <p class="verdict-title">${esc(v.title)}</p>
-        <ul>${v.reasons.map((r) => `<li>${esc(r)}</li>`).join('')}</ul>
+        ${reasons.length ? `<ul>${reasons.map((r) => `<li>${esc(r)}</li>`).join('')}</ul>` : ''}
       </aside>`;
 }
 
@@ -79,7 +83,7 @@ function briefHtml(story) {
       <div class="brief">
         <p class="brief-text">${esc(story.ai.summary)}</p>
         ${story.ai.differences ? `<p class="brief-diff">${esc(story.ai.differences)}</p>` : ''}
-        <p class="brief-credit">Written by ${esc(story.ai.model)} from ${n === 1 ? 'one outlet' : n + ' outlets'}. ${story.frame.shared.length ? 'The quoted lines below are its sources.' : 'Every headline is listed below.'}</p>
+        <p class="brief-credit">Summary by ${esc(story.ai.model)}, from ${n === 1 ? '1 outlet' : n + ' outlets'}</p>
       </div>`;
 }
 
@@ -93,24 +97,6 @@ function frameHtml(frame) {
           <ul class="shared">${frame.shared.map((s) => `
             <li><q>${esc(s.text)}</q><cite>${esc(s.outlet)}</cite></li>`).join('')}
           </ul>
-        </div>`);
-  }
-
-  if (frame.only.length) {
-    parts.push(`
-        <div class="block block-only">
-          <h4>Reported on one side only</h4>
-          ${frame.only.map((only) => {
-            const bits = [];
-            if (only.facts.length) bits.push('figures no one else gives: ' + only.facts.join(', '));
-            if (only.terms.length) bits.push(only.terms.join(', '));
-            return `
-          <div class="side">
-            <p class="side-name">${esc(CAMP_NAME[only.camp])}</p>
-            <p class="side-body">${esc(bits.join('. '))}</p>
-            ${only.quote ? `<p class="side-quote"><q>${esc(only.quote.text)}</q><cite>${esc(only.quote.outlet)}</cite></p>` : ''}
-          </div>`;
-          }).join('')}
         </div>`);
   }
 
@@ -140,7 +126,7 @@ function coverageDetails(story) {
 
   return `
       <details class="original">
-        <summary>every headline, side by side</summary>
+        <summary>See every outlet's headline</summary>
         <div class="original-body">${groups}</div>
       </details>`;
 }
@@ -171,7 +157,7 @@ function sourcesHtml(edition, config) {
   })).map((s) => `
         <tr>
           <td>${esc(s.outlet)}</td>
-          <td><span class="lean">${esc(s.lean)}</span>${esc(s.owner)}${quiet.has(s.outlet) ? '<span class="review">Quiet today: ' + esc(quiet.get(s.outlet)) + '</span>' : ''}</td>
+          <td><span class="lean">${esc(s.lean)}</span>${esc(s.owner)}${quiet.has(s.outlet) ? '<span class="review">Couldn\u2019t be reached today</span>' : ''}</td>
         </tr>`).join('');
 
   const gone = config.unavailable.map((s) => `
@@ -179,23 +165,21 @@ function sourcesHtml(edition, config) {
 
   return `
     <details class="colophon">
-      <summary><span>How this is put together, and who is in it</span></summary>
+      <summary><span>How this works, and which outlets are included</span></summary>
       <div class="body">
         <p>${esc(config.rule)}</p>
-        ${edition.model ? `<p>The short account at the top of each story, and each verdict, are written by
-        ${esc(edition.model)}, which reads every outlet's version and is told to use only what they
-        reported. Everything below that is quoted directly from a named outlet, so its work can
-        be checked against the sources.</p>` : `<p>The shared account is built by taking the claims that outlets on opposite sides
-        both carry. What only one side says is listed separately rather than blended in.
-        Nothing here is written by a machine: every line is a sentence a named outlet
-        published, and the outlet is named next to it.</p>`}
-        <p>The verdicts are drawn from measurements: how much of the wording is identical
-        across outlets, whether the coverage rests on unnamed officials, whether any
-        document is cited, how many outlets published inside the same three hours, and
-        whether state broadcasters are carrying it harder than anyone. The evidence is
-        printed under every verdict. It can be wrong, so argue with it.</p>
+        <p>Each morning Steady reads news outlets from the left, center and right, plus
+        government-funded and independent ones. Stories that several of them covered go first.</p>
+        ${edition.model ? `<p>${esc(edition.model)} writes the short summary at the top of each story, using only what
+        the outlets reported. It also flags coverage that looks coordinated, one-sided or poorly
+        sourced. The outlets' own words sit underneath so you can check it.</p>` : `<p>The quotes under each story are
+        things outlets on different sides both reported, in their own words.</p>`}
+        <p>Headlines are reworded to remove charged language. Tap "See every outlet's headline"
+        to read the originals.</p>
+        <p>Every outlet has a political lean, and many have owners or funders with interests of
+        their own. They are listed below.</p>
         <table>${rows}</table>
-        <p class="left-out">Wanted but unavailable:</p>
+        <p class="left-out">Outlets we couldn\u2019t include:</p>
         <table>${gone}</table>
       </div>
     </details>`;
@@ -206,20 +190,20 @@ function render(edition, config, { standalone = false, css = '', archiveLink = n
 
   const empty = total ? '' : `
     <div class="empty">
-      <p>There is no edition today. Nothing could be read, or nothing has been published in
-      the last three days. That is the whole update.</p>
+      <p>No news today. None of the outlets could be reached, or none published anything
+      new in the last three days.</p>
     </div>`;
 
   const index = edition.sections.length ? `
     <nav class="index" aria-label="sections in this edition">
-      ${edition.lead.length ? '<a href="#lead">The widest spread</a>' : ''}
+      ${edition.lead.length ? '<a href="#lead">Top stories</a>' : ''}
       ${edition.sections.map((s) => `<a href="#${esc(s.beat)}">${esc(s.title)}</a>`).join('')}
     </nav>
-    <p class="legend">Under each story, the bar reads left, center, right, state, independent. A filled mark means that side carried it.</p>` : '';
+` : '';
 
   const lead = edition.lead.length ? `
     <section class="section section-lead" id="lead">
-      <h2><span>The widest spread</span></h2>
+      <h2><span>Top stories</span></h2>
       ${edition.lead.map((s) => storyHtml(s, { lead: true })).join('')}
     </section>` : '';
 
@@ -234,7 +218,7 @@ function render(edition, config, { standalone = false, css = '', archiveLink = n
     <header class="masthead">
       <h1 class="wordmark">steady</h1>
       <p class="dateline">${esc(longDate(edition.date))}</p>
-      <p class="standing">This edition was assembled once. It will not change while you read it.</p>
+      <p class="standing">Updated once each morning</p>
       <div class="appearance" id="appearance" hidden>
         <button type="button" data-theme-choice="auto">auto</button>
         <button type="button" data-theme-choice="light">light</button>
@@ -248,9 +232,8 @@ function render(edition, config, { standalone = false, css = '', archiveLink = n
     ${sections}
 
     <div class="ending">
-      <p><strong>That is the entire edition.</strong></p>
-      <p>There is nothing below this line and nothing more will load. The next edition is
-      assembled tomorrow. Closing this page is the correct ending.</p>
+      <p><strong>That\u2019s everything for today.</strong></p>
+      <p>The next edition arrives tomorrow morning.</p>
       ${archiveLink ? `<p class="archive-link"><a href="${esc(archiveLink)}">Earlier editions</a></p>` : ''}
       ${sourcesHtml(edition, config)}
     </div>

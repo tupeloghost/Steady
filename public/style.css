@@ -421,6 +421,7 @@ cite {
 }
 
 .verdict-reasoning { margin: 0.375rem 0 0; color: var(--ink-mid); font-size: 0.9375rem; line-height: 1.6; }
+.verdict-by { margin: 0.375rem 0 0; font-style: italic; font-size: 0.875rem; color: var(--ink-faint); }
 .verdict-measured {
   margin: var(--gap-s) 0 0;
   font-variant-caps: all-small-caps;

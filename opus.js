@@ -36,9 +36,9 @@ summary: two to four plain sentences saying what happened. Use only what the out
 
 differences: one or two sentences on where the camps' accounts genuinely differ, in what they include, leave out, or how they frame it, naming the camps. Write an empty string if they do not meaningfully differ or only one camp covered it.
 
-verdict: judge whether the coverage pattern itself looks like a coordinated or manufactured push, a single source repeated by many outlets, one state broadcaster's line, a story resting on anonymous officials, a story only one political side is running, one only independent newsrooms have, or the same talking point appearing across outlets in different words (coordinated-framing). Use the measurements as evidence, and also look for things they miss. Choose "none" when the pattern looks like ordinary reporting. Most stories are ordinary; do not reach for a label. title is a short plain sentence naming what you see, empty when the label is none. reasoning is one or two plain sentences citing the specific evidence, empty when the label is none.
+verdict: judge whether the coverage pattern itself looks like a coordinated or manufactured push, a single source repeated by many outlets, one state broadcaster's line, a story resting on anonymous officials, a story only one political side is running, one only independent newsrooms have, or the same talking point appearing across outlets in different words (coordinated-framing). Use the measurements as evidence, and also look for things they miss. Choose "none" when the pattern looks like ordinary reporting. Most stories are ordinary; do not reach for a label. title is a short plain phrase a first-time reader understands instantly, such as "Many outlets, one source", empty when the label is none. reasoning is one or two plain sentences citing the specific evidence, empty when the label is none.
 
-Write for a general reader in plain words. Never use em dashes. Never tell the reader how to feel.`;
+Write for a general reader in plain, everyday words. No jargon, no labels the reader would have to decode, no media-analysis terms. Never use em dashes. Never tell the reader how to feel.`;
 
 function storyPrompt(story) {
   const outlets = story.coverage.map((c) => ({

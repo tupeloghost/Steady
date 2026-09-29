@@ -181,8 +181,13 @@ const TAKES_AN = /^(hour|honest|honou?r|heir|honorary|mri|fbi|nsa|ira)/i;
 const TAKES_A = /^(uni|use|usu|user|euro|one|once|ubiq|eula)/i;
 
 function fixArticles(t) {
-  return t.replace(/\b([Aa])n?\s+([A-Za-z][\w'\u2019-]*)/g, (m, a, w) => {
-    const an = (/^[aeiou]/i.test(w) && !TAKES_A.test(w)) || TAKES_AN.test(w);
+  return t.replace(/\b([Aa])n?\s+([A-Za-z](?:[A-Z]\.|[\w'\u2019-])*\.?)/g, (m, a, w) => {
+    // An abbreviation is said letter by letter: "a U.K. base", "an FBI agent".
+    // ...unless it is said as a word: "a NATO envoy", "a NASA probe".
+    const saidAsWord = /^(NATO|NASA|NASCAR|NAACP|UNESCO|UNICEF|OPEC|FEMA|HUD|ICE|SNAP|OSHA|COVID|SCOTUS|DACA|MAGA|AIDS|OPEC|NAFTA|UEFA|FIFA)$/.test(w.replace(/\./g, ''));
+    const spelled = !saidAsWord && /^[A-Z](\.|[A-Z]{1,5}$)/.test(w);
+    const an = spelled ? /^[AEFHILMNORSX]/.test(w)
+      : (/^[aeiou]/i.test(w) && !TAKES_A.test(w)) || TAKES_AN.test(w);
     const word = an ? 'an' : 'a';
     return (a === 'A' ? word.charAt(0).toUpperCase() + word.slice(1) : word) + ' ' + w;
   });

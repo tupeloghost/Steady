@@ -5,3 +5,4 @@ latest-edition.html
 .DS_Store
 node_modules/
 Steady/
+.preview/

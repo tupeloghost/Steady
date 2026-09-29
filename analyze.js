@@ -53,32 +53,32 @@ function overlap(a, b) {
 
 // Pairs of words that describe the same thing and pick a side by existing.
 const FRAMING = [
-  { about: 'people crossing borders', words: ['undocumented', 'illegal immigrant', 'illegal alien', 'illegals', 'migrant', 'asylum seeker', 'illegal migrant'] },
+  { about: 'immigrants', words: ['undocumented', 'illegal immigrant', 'illegal alien', 'illegals', 'migrant', 'asylum seeker', 'illegal migrant'] },
   { about: 'abortion', words: ['pro-life', 'anti-abortion', 'abortion rights', 'pro-choice', 'unborn child', 'fetus', 'baby'] },
   { about: 'guns', words: ['assault weapon', 'modern sporting rifle', 'gun safety', 'gun control', 'gun rights', 'gun violence', 'second amendment'] },
-  { about: 'a crowd in the street', words: ['riot', 'rioters', 'protest', 'protesters', 'unrest', 'uprising', 'demonstration', 'mob', 'agitators'] },
-  { about: 'changing a law', words: ['reform', 'overhaul', 'gutting', 'rollback', 'modernization', 'crackdown', 'dismantling', 'streamlining'] },
-  { about: 'public money', words: ['tax cut', 'tax giveaway', 'stimulus', 'bailout', 'relief', 'handout', 'investment', 'spending spree'] },
+  { about: 'protests', words: ['riot', 'rioters', 'protest', 'protesters', 'unrest', 'uprising', 'demonstration', 'mob', 'agitators'] },
+  { about: 'changes to a law', words: ['reform', 'overhaul', 'gutting', 'rollback', 'modernization', 'crackdown', 'dismantling', 'streamlining'] },
+  { about: 'government spending', words: ['tax cut', 'tax giveaway', 'stimulus', 'bailout', 'relief', 'handout', 'investment', 'spending spree'] },
   { about: 'the climate', words: ['climate crisis', 'climate change', 'global warming', 'climate emergency', 'green agenda', 'climate alarmism', 'energy transition'] },
-  { about: 'where someone stands', words: ['far-right', 'hard right', 'conservative', 'far-left', 'hard left', 'progressive', 'radical', 'extremist', 'moderate'] },
-  { about: 'armed men', words: ['militant', 'terrorist', 'fighter', 'insurgent', 'freedom fighter', 'gunman', 'rebel', 'soldier'] },
-  { about: 'a state you dislike', words: ['regime', 'government', 'administration', 'junta', 'authorities'] },
-  { about: 'killing from the air', words: ['strike', 'attack', 'operation', 'bombing', 'raid', 'defensive action'] },
-  { about: 'contested information', words: ['misinformation', 'disinformation', 'censorship', 'fact-check', 'propaganda', 'narrative', 'conspiracy theory'] },
-  { about: 'care for trans people', words: ['gender-affirming care', 'transition care', 'sex change', 'gender ideology', 'transgender care'] },
+  { about: 'political labels', words: ['far-right', 'hard right', 'conservative', 'far-left', 'hard left', 'progressive', 'radical', 'extremist', 'moderate'] },
+  { about: 'armed groups', words: ['militant', 'terrorist', 'fighter', 'insurgent', 'freedom fighter', 'gunman', 'rebel', 'soldier'] },
+  { about: 'a government', words: ['regime', 'government', 'administration', 'junta', 'authorities'] },
+  { about: 'military strikes', words: ['strike', 'attack', 'operation', 'bombing', 'raid', 'defensive action'] },
+  { about: 'disputed information', words: ['misinformation', 'disinformation', 'censorship', 'fact-check', 'propaganda', 'narrative', 'conspiracy theory'] },
+  { about: 'transgender health care', words: ['gender-affirming care', 'transition care', 'sex change', 'gender ideology', 'transgender care'] },
   { about: 'voting', words: ['election integrity', 'voter suppression', 'election denial', 'voter fraud', 'ballot harvesting', 'voting rights'] },
-  { about: 'a president leaving office', words: ['coup', 'transition', 'insurrection', 'protest', 'self-coup', 'unrest'] },
+  { about: 'a transfer of power', words: ['coup', 'transition', 'insurrection', 'protest', 'self-coup', 'unrest'] },
   { about: 'the border', words: ['border crisis', 'border security', 'invasion', 'surge', 'arrivals', 'encounters', 'crossings'] },
-  { about: 'police and force', words: ['officer involved shooting', 'killed by police', 'use of force', 'brutality', 'line of duty', 'suspect'] },
-  { about: 'money for a public service', words: ['defund', 'cuts', 'savings', 'efficiencies', 'austerity', 'right sizing', 'waste'] },
-  { about: 'a deportation', words: ['deportation', 'removal', 'repatriation', 'expulsion', 'self-deport'] },
-  { about: 'an inquiry', words: ['witch hunt', 'investigation', 'probe', 'inquiry', 'fishing expedition', 'oversight'] },
-  { about: 'who is speaking', words: ['whistleblower', 'leaker', 'activist', 'agitator', 'advocate', 'lobbyist', 'expert'] },
-  { about: 'a rise in prices', words: ['inflation', 'price gouging', 'greedflation', 'cost of living', 'shrinkflation'] },
-  { about: 'a workforce cut', words: ['layoffs', 'restructuring', 'downsizing', 'job cuts', 'workforce reduction', 'firings'] },
-  { about: 'a school lesson', words: ['critical race theory', 'diversity training', 'inclusive curriculum', 'indoctrination', 'dei'] },
-  { about: 'a weapon used abroad', words: ['precision strike', 'airstrike', 'massacre', 'collateral damage', 'civilian casualties'] },
-  { about: 'a health measure', words: ['mandate', 'guidance', 'requirement', 'restriction', 'recommendation', 'lockdown'] },
+  { about: 'police use of force', words: ['officer involved shooting', 'killed by police', 'use of force', 'brutality', 'line of duty', 'suspect'] },
+  { about: 'budget cuts', words: ['defund', 'cuts', 'savings', 'efficiencies', 'austerity', 'right sizing', 'waste'] },
+  { about: 'deportations', words: ['deportation', 'removal', 'repatriation', 'expulsion', 'self-deport'] },
+  { about: 'investigations', words: ['witch hunt', 'investigation', 'probe', 'inquiry', 'fishing expedition', 'oversight'] },
+  { about: 'how a source is described', words: ['whistleblower', 'leaker', 'activist', 'agitator', 'advocate', 'lobbyist', 'expert'] },
+  { about: 'rising prices', words: ['inflation', 'price gouging', 'greedflation', 'cost of living', 'shrinkflation'] },
+  { about: 'job cuts', words: ['layoffs', 'restructuring', 'downsizing', 'job cuts', 'workforce reduction', 'firings'] },
+  { about: 'what schools teach', words: ['critical race theory', 'diversity training', 'inclusive curriculum', 'indoctrination', 'dei'] },
+  { about: 'civilian harm in war', words: ['precision strike', 'airstrike', 'massacre', 'collateral damage', 'civilian casualties'] },
+  { about: 'health rules', words: ['mandate', 'guidance', 'requirement', 'restriction', 'recommendation', 'lockdown'] },
 ];
 
 /* ------------------------------------------------------------------- the frame */
@@ -301,7 +301,7 @@ function manufactureSignals(items) {
   };
 }
 
-const CAMP_NAME = { left: 'the left', right: 'the right', center: 'the center', state: 'state broadcasters', independent: 'independent newsrooms' };
+const CAMP_NAME = { left: 'the left', right: 'the right', center: 'the center', state: 'government-funded outlets', independent: 'independent outlets' };
 
 // She asked for a verdict, not just measurements. It is graded, and every verdict
 // prints the evidence it was drawn from so it can be checked and argued with.
@@ -310,37 +310,31 @@ function verdict(sig) {
   let level = null;
 
   const cloned = sig.clonedOutlets.length;
-  if (cloned >= 3) reasons.push(cloned + ' outlets are running near identical wording, so this is one text being repeated rather than ' + cloned + ' newsrooms reporting');
-  else if (cloned === 2) reasons.push('two outlets are running near identical wording');
+  if (cloned >= 3) reasons.push(cloned + ' outlets used nearly the same wording, so this is likely one source repeated, not ' + cloned + ' separate reports');
+  else if (cloned === 2) reasons.push('two outlets used nearly the same wording');
 
-  if (sig.anonymous >= 0.5 && sig.outlets >= 3) reasons.push('most of the coverage rests on unnamed officials rather than anyone who can be held to it');
-  if (!sig.documented && sig.outlets >= 4) reasons.push('no filing, ruling, report or dataset is cited anywhere in the coverage');
-  if (sig.statementLed >= 0.5 && sig.outlets >= 3) reasons.push('the coverage traces back to a statement or press release rather than to reporting');
-  if (sig.burst >= 6) reasons.push(sig.burst + ' outlets published inside the same three hours');
+  if (sig.anonymous >= 0.5 && sig.outlets >= 3) reasons.push('most of the coverage relies on unnamed officials');
+  if (!sig.documented && sig.outlets >= 4) reasons.push('none of the coverage points to a document, court ruling, report or data');
+  if (sig.statementLed >= 0.5 && sig.outlets >= 3) reasons.push('most of the coverage repeats a press release or official statement');
+  if (sig.burst >= 6) reasons.push(sig.burst + ' outlets published it within the same three hours');
 
-  // With one outlet per state in this roster, a single state's line cannot be told
-  // apart from a single state's scoop. So the claim stays at what is observable.
-  const stateOnlyOneState = sig.stateOnly && sig.states.length === 1;
-  if (stateOnlyOneState) reasons.push('the only outlet carrying this is funded by the ' + sig.states[0] + ' state, and no commercial or independent newsroom has picked it up');
-  else if (sig.stateOnly && sig.states.length >= 2) reasons.push('only state funded broadcasters have this, though from rival states rather than one');
+  // A world story carried only by a government-funded outlet is ordinary, not a warning
+  // sign, so it is left to Opus to judge rather than flagged by a threshold.
 
-  if (sig.oneSided) reasons.push('the outlets carrying this are ' + sig.sideOutlets.join(', ') + ', with nothing from the other side');
-  if (sig.onlyIndependent) reasons.push('no outlet on either side has picked this up');
+  if (sig.oneSided) reasons.push('reported by ' + sig.sideOutlets.join(', ') + ', and no outlet from the other side');
+  if (sig.onlyIndependent) reasons.push('no left, center or right outlet has reported it yet');
 
   const heavy = (cloned >= 3 ? 1 : 0) + (sig.anonymous >= 0.5 ? 1 : 0) + (sig.burst >= 6 ? 1 : 0)
-    + (sig.statementLed >= 0.5 ? 1 : 0) + (!sig.documented && sig.outlets >= 4 ? 1 : 0)
-    + (stateOnlyOneState ? 1 : 0);
+    + (sig.statementLed >= 0.5 ? 1 : 0) + (!sig.documented && sig.outlets >= 4 ? 1 : 0);
 
-  if (heavy >= 3) level = { key: 'manufactured', title: 'This looks manufactured' };
-  else if (cloned >= 3 || (sig.statementLed >= 0.5 && sig.outlets >= 3)) level = { key: 'single-source', title: 'This is one source wearing many hats' };
-  else if (stateOnlyOneState) level = { key: 'state-line', title: 'Only the ' + sig.states[0] + ' state broadcaster has this' };
-  else if (sig.stateOnly) level = { key: 'state-line', title: 'Only state broadcasters have this' };
-  else if (sig.anonymous >= 0.6 && sig.outlets >= 3) level = { key: 'anonymous', title: 'Anonymous all the way down' };
+  if (heavy >= 3) level = { key: 'manufactured', title: 'This looks like a coordinated push' };
+  else if (cloned >= 3 || (sig.statementLed >= 0.5 && sig.outlets >= 3)) level = { key: 'single-source', title: 'Many outlets, one source' };
+  else if (sig.anonymous >= 0.6 && sig.outlets >= 3) level = { key: 'anonymous', title: 'Relies on unnamed sources' };
   else if (sig.oneSided) level = { key: 'one-sided', title: 'Only ' + CAMP_NAME[sig.soleCamp] + ' is running this' };
-  else if (sig.onlyIndependent) level = { key: 'under-covered', title: 'Only independent newsrooms have this' };
+  else if (sig.onlyIndependent) level = { key: 'under-covered', title: 'Only independent outlets have this' };
 
   if (!level) return null;
-  return { ...level, reasons: reasons.length ? reasons : ['measured from the coverage pattern'] };
+  return { ...level, reasons: reasons.length ? reasons : ['based on how the story was covered'] };
 }
 
 /* ------------------------------------------------------------------- assemble */

@@ -37,14 +37,10 @@ function coverageWords(story) {
 // The spread of the political spectrum a story reached, which is the whole point of
 // the app and was previously only stated in words.
 function spreadHtml(story) {
-  const marks = SPREAD_SLOTS.map((slot) => {
-    const on = story.camps.includes(slot.camp);
-    const n = on ? story.coverage.filter((c) => c.camp === slot.camp).length : 0;
-    return `<span class="seg${on ? ' on' : ''}${n >= 3 ? ' heavy' : ''}" title="${esc(slot.short)}" aria-hidden="true"><i></i></span>`;
+  return `<span class="seg${on ? ' on' : ''}${n >= 3 ? ' heavy' : ''}" title="${esc(slot.short)}" aria-hidden="true"><i></i></span>`;
   }).join('');
   return `
       <p class="spread">
-        <span class="segs">${marks}</span>
         <span class="spread-words">${esc(coverageWords(story))}</span>
       </p>`;
 }

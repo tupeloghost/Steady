@@ -48,7 +48,21 @@ function spreadHtml(story) {
       </p>`;
 }
 
-function verdictHtml(v) {
+function verdictHtml(story) {
+  const measured = story.frame.verdict ? story.frame.verdict.reasons : [];
+  if (story.ai) {
+    const v = story.ai.verdict;
+    if (!v) return '';
+    return `
+      <aside class="verdict verdict-${esc(v.key)}">
+        <p class="verdict-kicker">what the coverage pattern shows, judged by ${esc(story.ai.model)}</p>
+        <p class="verdict-title">${esc(v.title)}</p>
+        ${v.reasoning ? `<p class="verdict-reasoning">${esc(v.reasoning)}</p>` : ''}
+        ${measured.length ? `<p class="verdict-measured">Measured</p>
+        <ul>${measured.map((r) => `<li>${esc(r)}</li>`).join('')}</ul>` : ''}
+      </aside>`;
+  }
+  const v = story.frame.verdict;
   if (!v) return '';
   return `
       <aside class="verdict verdict-${esc(v.key)}">
@@ -56,6 +70,17 @@ function verdictHtml(v) {
         <p class="verdict-title">${esc(v.title)}</p>
         <ul>${v.reasons.map((r) => `<li>${esc(r)}</li>`).join('')}</ul>
       </aside>`;
+}
+
+function briefHtml(story) {
+  if (!story.ai || !story.ai.summary) return '';
+  const n = story.outlets.length;
+  return `
+      <div class="brief">
+        <p class="brief-text">${esc(story.ai.summary)}</p>
+        ${story.ai.differences ? `<p class="brief-diff">${esc(story.ai.differences)}</p>` : ''}
+        <p class="brief-credit">Written by ${esc(story.ai.model)} from ${n === 1 ? 'one outlet' : n + ' outlets'}. ${story.frame.shared.length ? 'The quoted lines below are its sources.' : 'Every headline is listed below.'}</p>
+      </div>`;
 }
 
 function frameHtml(frame) {
@@ -123,13 +148,14 @@ function coverageDetails(story) {
 function storyHtml(story, { lead = false } = {}) {
   // When the agreed account carries the story, one outlet's own summary above it is
   // both a repetition and a thumb on the scale. The shared version does the work.
-  const showSummary = story.summary && story.frame.shared.length < 2;
+  const showSummary = !story.ai && story.summary && story.frame.shared.length < 2;
   return `
     <article class="story${lead ? ' story-lead' : ''}">
       <h3><a class="headline" href="${esc(story.link)}" target="_blank" rel="noopener">${esc(story.headline)}</a></h3>
       ${showSummary ? `<p class="summary">${esc(story.summary)}</p>` : ''}
+      ${briefHtml(story)}
       ${spreadHtml(story)}
-      ${verdictHtml(story.frame.verdict)}
+      ${verdictHtml(story)}
       ${frameHtml(story.frame)}
       ${coverageDetails(story)}
     </article>`;
@@ -156,10 +182,13 @@ function sourcesHtml(edition, config) {
       <summary><span>How this is put together, and who is in it</span></summary>
       <div class="body">
         <p>${esc(config.rule)}</p>
-        <p>The shared account is built by taking the claims that outlets on opposite sides
+        ${edition.model ? `<p>The short account at the top of each story, and each verdict, are written by
+        ${esc(edition.model)}, which reads every outlet's version and is told to use only what they
+        reported. Everything below that is quoted directly from a named outlet, so its work can
+        be checked against the sources.</p>` : `<p>The shared account is built by taking the claims that outlets on opposite sides
         both carry. What only one side says is listed separately rather than blended in.
         Nothing here is written by a machine: every line is a sentence a named outlet
-        published, and the outlet is named next to it.</p>
+        published, and the outlet is named next to it.</p>`}
         <p>The verdicts are drawn from measurements: how much of the wording is identical
         across outlets, whether the coverage rests on unnamed officials, whether any
         document is cited, how many outlets published inside the same three hours, and

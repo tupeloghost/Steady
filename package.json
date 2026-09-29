@@ -1,0 +1,16 @@
+{
+  "name": "steady",
+  "private": true,
+  "description": "A daily news reader built across the spectrum.",
+  "scripts": {
+    "build": "node build.js",
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.129.0",
+    "zod": "^4.6.5"
+  }
+}

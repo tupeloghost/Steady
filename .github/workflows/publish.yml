@@ -25,9 +25,17 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+          cache: npm
 
+      - name: Install
+        run: npm ci
+
+      # Opus 5.5 writes each story's account and judges the verdicts when the
+      # ANTHROPIC_API_KEY secret is set. Without it the page still builds.
       - name: Assemble the edition
         run: node build.js
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
 
       # Saving the edition is also what keeps this schedule alive: GitHub switches off
       # scheduled jobs in public repositories after 60 days with no commits.

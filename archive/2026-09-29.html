@@ -273,6 +273,20 @@ a.headline:focus-visible { outline: 2px solid var(--focus); outline-offset: 4px;
 }
 .story-lead .summary { font-size: 1.0625rem; }
 
+/* -------------------------------------------------------------- the brief */
+
+.brief { margin: var(--gap-s) 0 0; }
+.brief-text { margin: 0; font-size: 1.0625rem; line-height: 1.7; color: var(--ink); }
+.story-lead .brief-text { font-size: 1.125rem; }
+.brief-diff { margin: var(--gap-s) 0 0; font-size: 1rem; line-height: 1.7; color: var(--ink-mid); font-style: italic; }
+.brief-credit {
+  margin: var(--gap-xs) 0 0;
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.1em;
+  font-size: 0.875rem;
+  color: var(--ink-faint);
+}
+
 /* ------------------------------------------------------- the spectrum spread */
 
 .spread {
@@ -414,6 +428,14 @@ cite {
   color: var(--flag-ink);
 }
 
+.verdict-reasoning { margin: 0.375rem 0 0; color: var(--ink-mid); font-size: 0.9375rem; line-height: 1.6; }
+.verdict-measured {
+  margin: var(--gap-s) 0 0;
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.14em;
+  font-size: 0.8125rem;
+  color: var(--flag-edge);
+}
 .verdict ul { margin: var(--gap-xs) 0 0; padding-left: 1rem; }
 .verdict li { margin: 0.1875rem 0; color: var(--ink-mid); font-size: 0.9375rem; line-height: 1.6; }
 
@@ -635,6 +657,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
       <h3><a class="headline" href="https://19thnews.org/2026/09/cornell-fraternity-rape-allegations-lawsuit/" target="_blank" rel="noopener">The Cornell rape allegations and lawsuit, explained</a></h3>
       
       
+      
       <p class="spread">
         <span class="segs"><span class="seg on heavy" title="left" aria-hidden="true"><i></i></span><span class="seg on" title="center" aria-hidden="true"><i></i></span><span class="seg" title="right" aria-hidden="true"><i></i></span><span class="seg on" title="state" aria-hidden="true"><i></i></span><span class="seg on" title="indep" aria-hidden="true"><i></i></span></span>
         <span class="spread-words">6 outlets, the left, the center, state broadcasters and independent newsrooms</span>
@@ -685,6 +708,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
       <h3><a class="headline" href="https://www.france24.com/en/americas/20260929-openai-cancels-release-new-ai-model-safety-concerns" target="_blank" rel="noopener">OpenAI cancels release of new AI model over safety concerns</a></h3>
       
       
+      
       <p class="spread">
         <span class="segs"><span class="seg" title="left" aria-hidden="true"><i></i></span><span class="seg on" title="center" aria-hidden="true"><i></i></span><span class="seg on" title="right" aria-hidden="true"><i></i></span><span class="seg on heavy" title="state" aria-hidden="true"><i></i></span><span class="seg" title="indep" aria-hidden="true"><i></i></span></span>
         <span class="spread-words">6 outlets, the center, the right and state broadcasters</span>
@@ -729,9 +753,10 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
       <h3><a class="headline" href="https://www.washingtonexaminer.com/news/senate/4746034/senate-passes-protect-college-sports-bill-nil/" target="_blank" rel="noopener">Senate passes bill to regulate college sports NIL deals</a></h3>
       
       
+      
       <p class="spread">
-        <span class="segs"><span class="seg on" title="left" aria-hidden="true"><i></i></span><span class="seg on" title="center" aria-hidden="true"><i></i></span><span class="seg on" title="right" aria-hidden="true"><i></i></span><span class="seg" title="state" aria-hidden="true"><i></i></span><span class="seg" title="indep" aria-hidden="true"><i></i></span></span>
-        <span class="spread-words">5 outlets, the left, the center and the right</span>
+        <span class="segs"><span class="seg on" title="left" aria-hidden="true"><i></i></span><span class="seg on" title="center" aria-hidden="true"><i></i></span><span class="seg on heavy" title="right" aria-hidden="true"><i></i></span><span class="seg" title="state" aria-hidden="true"><i></i></span><span class="seg" title="indep" aria-hidden="true"><i></i></span></span>
+        <span class="spread-words">6 outlets, the left, the center and the right</span>
       </p>
       
       <div class="frame">
@@ -777,6 +802,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
           <div class="camp-group">
             <p class="also-head">the right</p>
             <ul>
+              <li><a href="https://www.washingtontimes.com/news/2026/sep/28/senate-passes-benchmark-legislation-college-sports-nil-rights/" target="_blank" rel="noopener"><span class="who">The Washington Times</span>Senate passes benchmark legislation on college sports NIL rights</a></li>
               <li><a href="https://www.washingtonexaminer.com/news/senate/4746034/senate-passes-protect-college-sports-bill-nil/" target="_blank" rel="noopener"><span class="who">Washington Examiner</span>Senate passes bill to regulate college sports NIL deals</a></li>
               <li><a href="https://justthenews.com/government/congress/senate-passes-protect-college-sports-act-sending-amended-bill-house?utm_source=justthenews.com&amp;amp;utm_medium=feed&amp;amp;utm_campaign=external-news-aggregators" target="_blank" rel="noopener"><span class="who">Just the News</span>Senate passes Protect College Sports Act, sending amended bill to House</a></li>
             </ul>
@@ -790,6 +816,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
       
     <article class="story">
       <h3><a class="headline" href="https://www.breitbart.com/asia/2026/09/28/leftist-south-korea-demands-ukraine-apologize-after-zelensky-reveals-north-korea-soldiers-shipped-to-seoul/" target="_blank" rel="noopener">Leftist South Korea Demands Ukraine Apologize After Zelensky Reveals North Korea Soldiers Shipped to Seoul</a></h3>
+      
       
       
       <p class="spread">
@@ -843,6 +870,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
       <h3><a class="headline" href="https://www.france24.com/en/europe/20260928-evicted-spanish-pensioner-to-return-home-after-housing-protest-deal-spain-madrid" target="_blank" rel="noopener">Evicted 87-year-old Spanish pensioner to return home after deal</a></h3>
       <p class="summary">An 87-year-old Madrid pensioner whose eviction became a rallying point for Spain&#39;s housing protests will be able to return home after reaching a deal with the property&#39;s owners, her lawyer said Monday. The agreement comes as demonstrations across the country pile pressure on Prime Minister Pedro Sanchez&#39;s government to address rising rents, a shortage of affordable homes and weak tenant protections.</p>
       
+      
       <p class="spread">
         <span class="segs"><span class="seg" title="left" aria-hidden="true"><i></i></span><span class="seg on" title="center" aria-hidden="true"><i></i></span><span class="seg" title="right" aria-hidden="true"><i></i></span><span class="seg on" title="state" aria-hidden="true"><i></i></span><span class="seg" title="indep" aria-hidden="true"><i></i></span></span>
         <span class="spread-words">3 outlets, the center and state broadcasters</span>
@@ -885,6 +913,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
       <h3><a class="headline" href="https://www.aljazeera.com/news/2026/9/29/rubio-saudi-arabias-foreign-minister-hold-talks-on-yemen-hormuz-strait?traffic_source=rss" target="_blank" rel="noopener">Rubio, Saudi Arabia&#39;s foreign minister hold talks on Yemen, Hormuz Strait</a></h3>
       <p class="summary">Top US and Saudi diplomats discuss cooperation on security challenges, including hostilities with Yemen&#39;s Houthis.</p>
       
+      
       <p class="spread">
         <span class="segs"><span class="seg" title="left" aria-hidden="true"><i></i></span><span class="seg" title="center" aria-hidden="true"><i></i></span><span class="seg" title="right" aria-hidden="true"><i></i></span><span class="seg on" title="state" aria-hidden="true"><i></i></span><span class="seg" title="indep" aria-hidden="true"><i></i></span></span>
         <span class="spread-words">2 outlets, state broadcasters</span>
@@ -913,6 +942,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
       <h3><a class="headline" href="https://www.dw.com/en/hungary-lifts-pm-peter-magyar-s-immunity-clears-way-for-probes-into-2-former-orban-ministers/a-79458651?maca=en-rss-en-all-1573-rdf" target="_blank" rel="noopener">Hungary lifts PM Peter Magyar&#39;s immunity, clears way for probes into 2 former Orban ministers</a></h3>
       <p class="summary">Prime Minister Peter Magyar has backed the move himself. Two former ministers who served under his rival Viktor Orban now face separate corruption probes.</p>
       
+      
       <p class="spread">
         <span class="segs"><span class="seg" title="left" aria-hidden="true"><i></i></span><span class="seg" title="center" aria-hidden="true"><i></i></span><span class="seg" title="right" aria-hidden="true"><i></i></span><span class="seg on" title="state" aria-hidden="true"><i></i></span><span class="seg" title="indep" aria-hidden="true"><i></i></span></span>
         <span class="spread-words">2 outlets, state broadcasters</span>
@@ -940,6 +970,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
     <article class="story">
       <h3><a class="headline" href="https://www.aljazeera.com/video/newsfeed/2026/9/29/public-transport-drivers-strike-in-manila-over-soaring-fuel-prices?traffic_source=rss" target="_blank" rel="noopener">Public transport drivers strike in Manila over rising fuel prices</a></h3>
       <p class="summary">Public transport drivers in Manila begin a three-day strike over rising fuel prices.</p>
+      
       
       <p class="spread">
         <span class="segs"><span class="seg" title="left" aria-hidden="true"><i></i></span><span class="seg" title="center" aria-hidden="true"><i></i></span><span class="seg" title="right" aria-hidden="true"><i></i></span><span class="seg on" title="state" aria-hidden="true"><i></i></span><span class="seg" title="indep" aria-hidden="true"><i></i></span></span>
@@ -970,6 +1001,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
       
     <article class="story">
       <h3><a class="headline" href="https://www.theguardian.com/us-news/2026/sep/28/tennessee-woman-execution-christa-pike" target="_blank" rel="noopener">Tennessee to execute a woman for first time in 200 years after governor denies clemency</a></h3>
+      
       
       
       <p class="spread">
@@ -1023,6 +1055,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
     </article>
     <article class="story">
       <h3><a class="headline" href="https://www.axios.com/2026/09/27/terrorism-raf-fairford-base-us-air-force" target="_blank" rel="noopener">Trump: 5 terrorism suspects in U.K. base incident were under investigation</a></h3>
+      
       
       
       <p class="spread">
@@ -1091,6 +1124,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
       <h3><a class="headline" href="https://www.theguardian.com/us-news/2026/sep/28/samuel-alito-supreme-court-oil-climate-case" target="_blank" rel="noopener">Samuel Alito steps aside in a major climate case amid scrutiny over oil stock holdings</a></h3>
       
       
+      
       <p class="spread">
         <span class="segs"><span class="seg on" title="left" aria-hidden="true"><i></i></span><span class="seg" title="center" aria-hidden="true"><i></i></span><span class="seg on" title="right" aria-hidden="true"><i></i></span><span class="seg" title="state" aria-hidden="true"><i></i></span><span class="seg on" title="indep" aria-hidden="true"><i></i></span></span>
         <span class="spread-words">4 outlets, the left, the right and independent newsrooms</span>
@@ -1148,6 +1182,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
       <h3><a class="headline" href="https://thehill.com/homenews/administration/6116636-trump-denies-iran-sanctions-relief/" target="_blank" rel="noopener">Trump denies Axios report that he offered Iran sanctions relief</a></h3>
       
       
+      
       <p class="spread">
         <span class="segs"><span class="seg" title="left" aria-hidden="true"><i></i></span><span class="seg on" title="center" aria-hidden="true"><i></i></span><span class="seg on" title="right" aria-hidden="true"><i></i></span><span class="seg on" title="state" aria-hidden="true"><i></i></span><span class="seg" title="indep" aria-hidden="true"><i></i></span></span>
         <span class="spread-words">3 outlets, the center, the right and state broadcasters</span>
@@ -1195,6 +1230,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
     </article>
     <article class="story">
       <h3><a class="headline" href="https://www.motherjones.com/politics/2026/09/nvidia-openai-rogue-ai-agency-safety-hack-regulation-oversight/" target="_blank" rel="noopener">Nvidia Thinks It Can Stop Rogue AI, Without All That Government Oversight</a></h3>
+      
       
       
       <p class="spread">
@@ -1253,6 +1289,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
       <h3><a class="headline" href="https://www.washingtonexaminer.com/news/campaigns/congressional/4746327/hegseth-pentagon-cyber-midterms-foreign-threats/" target="_blank" rel="noopener">Hegseth mobilizes Pentagon to protect midterm elections from foreign threats</a></h3>
       
       
+      
       <p class="spread">
         <span class="segs"><span class="seg" title="left" aria-hidden="true"><i></i></span><span class="seg on" title="center" aria-hidden="true"><i></i></span><span class="seg on" title="right" aria-hidden="true"><i></i></span><span class="seg" title="state" aria-hidden="true"><i></i></span><span class="seg" title="indep" aria-hidden="true"><i></i></span></span>
         <span class="spread-words">3 outlets, the center and the right</span>
@@ -1303,6 +1340,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
       <h3><a class="headline" href="https://www.themarshallproject.org/2026/09/26/texas-heat-california-cold-prison" target="_blank" rel="noopener">From Sweltering Cells to Frigid Tents: The Extreme Temperatures of Incarceration</a></h3>
       <p class="summary">While Texas faces a 2029 deadline to install AC and California debates workplace exemptions, incarcerated people endure extreme heat and freezing detention camps.</p>
       
+      
       <p class="spread">
         <span class="segs"><span class="seg" title="left" aria-hidden="true"><i></i></span><span class="seg" title="center" aria-hidden="true"><i></i></span><span class="seg" title="right" aria-hidden="true"><i></i></span><span class="seg" title="state" aria-hidden="true"><i></i></span><span class="seg on" title="indep" aria-hidden="true"><i></i></span></span>
         <span class="spread-words">one outlet, independent newsrooms</span>
@@ -1325,6 +1363,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
       <h3><a class="headline" href="https://www.thedailybeast.com/bombshell-drops-in-fbis-stephen-miller-phone-call-meltdown/" target="_blank" rel="noopener">Disclosure Drops in FBI&#39;s Stephen Miller Phone Call Disruption</a></h3>
       <p class="summary">Prosecutors are expected to charge a man soon for allegedly threatening Katie Miller, the wife of Stephen Miller, despite FBI fears that no federal crime was committed, according to a report. Justice Department prosecutors in Boston are being encouraged to bring charges even though there are internal concerns about the strength of the evidence, Bloomberg reported Monday.</p>
       
+      
       <p class="spread">
         <span class="segs"><span class="seg on" title="left" aria-hidden="true"><i></i></span><span class="seg" title="center" aria-hidden="true"><i></i></span><span class="seg" title="right" aria-hidden="true"><i></i></span><span class="seg" title="state" aria-hidden="true"><i></i></span><span class="seg" title="indep" aria-hidden="true"><i></i></span></span>
         <span class="spread-words">one outlet, the left</span>
@@ -1346,6 +1385,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
     <article class="story">
       <h3><a class="headline" href="https://www.thedailybeast.com/maga-candidate-ken-paxton-defends-his-1-day-prison-deal-for-child-sex-predator/" target="_blank" rel="noopener">MAGA Candidate Ken Paxton Defends His 1-Day Prison Deal for Child Sex Predator</a></h3>
       <p class="summary">MAGA Senate candidate Ken Paxton, the Texas Attorney General, delivered a defense of the sweetheart deal he once offered a child sex offender. The Trump-endorsed Senate candidate, whose campaign has been marred by controversy, tried to tamp down scrutiny over his soft-pedaling of a sex abuse case despite being called out by a judge at the time.</p>
+      
       
       <p class="spread">
         <span class="segs"><span class="seg on" title="left" aria-hidden="true"><i></i></span><span class="seg" title="center" aria-hidden="true"><i></i></span><span class="seg" title="right" aria-hidden="true"><i></i></span><span class="seg" title="state" aria-hidden="true"><i></i></span><span class="seg" title="indep" aria-hidden="true"><i></i></span></span>
@@ -1373,6 +1413,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
       <h3><a class="headline" href="https://kffhealthnews.org/health-industry/pharmacy-benefit-managers-pbms-drug-costs-common-ground-tennessee/" target="_blank" rel="noopener">Republicans and Democrats Find a Unifying Target: Pharmacy Benefit Managers</a></h3>
       <p class="summary">Some states have considered barring companies that own a PBM from also owning brick-and-mortar pharmacies, as CVS does. Two states have followed through. A similar proposal at the federal level has gained prominent sponsors, aligning conservative, business-friendly Republicans with Democrats traditionally more open to government regulation.</p>
       
+      
       <p class="spread">
         <span class="segs"><span class="seg" title="left" aria-hidden="true"><i></i></span><span class="seg" title="center" aria-hidden="true"><i></i></span><span class="seg" title="right" aria-hidden="true"><i></i></span><span class="seg" title="state" aria-hidden="true"><i></i></span><span class="seg on" title="indep" aria-hidden="true"><i></i></span></span>
         <span class="spread-words">one outlet, independent newsrooms</span>
@@ -1395,6 +1436,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
       <h3><a class="headline" href="https://kffhealthnews.org/elections/food-safety-concerns-midterms-kitchen-table-politics/" target="_blank" rel="noopener">Food Safety Finds a Place Among Kitchen-Table Political Issues</a></h3>
       <p class="summary">Recent outbreaks of foodborne illness and high-profile recalls have made this issue a concern of voters.</p>
       
+      
       <p class="spread">
         <span class="segs"><span class="seg" title="left" aria-hidden="true"><i></i></span><span class="seg" title="center" aria-hidden="true"><i></i></span><span class="seg" title="right" aria-hidden="true"><i></i></span><span class="seg" title="state" aria-hidden="true"><i></i></span><span class="seg on" title="indep" aria-hidden="true"><i></i></span></span>
         <span class="spread-words">one outlet, independent newsrooms</span>
@@ -1416,6 +1458,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
     <article class="story">
       <h3><a class="headline" href="https://www.foxnews.com/politics/trump-cms-faces-bipartisan-pushback-over-medicare-proposal-tied-biden-era-drug-pricing-law" target="_blank" rel="noopener">Trump CMS faces bipartisan pushback over Medicare proposal tied to Biden-era drug pricing law</a></h3>
       <p class="summary">Lawmakers say the proposed Medicare policy could make it harder for patients to access newer cancer treatments by discouraging medical innovation.</p>
+      
       
       <p class="spread">
         <span class="segs"><span class="seg" title="left" aria-hidden="true"><i></i></span><span class="seg" title="center" aria-hidden="true"><i></i></span><span class="seg on" title="right" aria-hidden="true"><i></i></span><span class="seg" title="state" aria-hidden="true"><i></i></span><span class="seg" title="indep" aria-hidden="true"><i></i></span></span>
@@ -1441,6 +1484,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
       
     <article class="story">
       <h3><a class="headline" href="https://www.axios.com/2026/09/28/spacex-starship-orbital-flight" target="_blank" rel="noopener">SpaceX brings Starship home early after first orbital flight</a></h3>
+      
       
       
       <p class="spread">
@@ -1496,6 +1540,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
       <h3><a class="headline" href="https://www.sciencenews.org/article/magnetism-kick-start-our-solar-system" target="_blank" rel="noopener">Magnetism may have helped kick-start our solar system</a></h3>
       <p class="summary">Ancient meteorites reveal a powerful magnetic field that may have helped feed the growing sun.</p>
       
+      
       <p class="spread">
         <span class="segs"><span class="seg" title="left" aria-hidden="true"><i></i></span><span class="seg" title="center" aria-hidden="true"><i></i></span><span class="seg" title="right" aria-hidden="true"><i></i></span><span class="seg" title="state" aria-hidden="true"><i></i></span><span class="seg on" title="indep" aria-hidden="true"><i></i></span></span>
         <span class="spread-words">one outlet, independent newsrooms</span>
@@ -1518,6 +1563,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
       <h3><a class="headline" href="https://www.quantamagazine.org/mathematicians-harness-randomness-to-crack-a-55-year-old-conjecture-20260928/" target="_blank" rel="noopener">Mathematicians Harness Randomness To Crack a 55-Year-Old Conjecture</a></h3>
       <p class="summary">After a long hiatus, the problem, which was likely inspired by juggling, has finally been resolved by a group of young mathematicians.</p>
       
+      
       <p class="spread">
         <span class="segs"><span class="seg" title="left" aria-hidden="true"><i></i></span><span class="seg" title="center" aria-hidden="true"><i></i></span><span class="seg" title="right" aria-hidden="true"><i></i></span><span class="seg" title="state" aria-hidden="true"><i></i></span><span class="seg on" title="indep" aria-hidden="true"><i></i></span></span>
         <span class="spread-words">one outlet, independent newsrooms</span>
@@ -1539,6 +1585,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
     <article class="story">
       <h3><a class="headline" href="https://www.sciencenews.org/article/desert-penguins-climate-el-nino" target="_blank" rel="noopener">Peru&#39;s penguins are on the brink. A super El Niño could make it worse</a></h3>
       <p class="summary">Avian flu, overfishing, and a super El Niño have decimated Peru&#39;s largest colony of Humboldt penguins. Scientists are holding out hope that their numbers will bounce back.</p>
+      
       
       <p class="spread">
         <span class="segs"><span class="seg" title="left" aria-hidden="true"><i></i></span><span class="seg" title="center" aria-hidden="true"><i></i></span><span class="seg" title="right" aria-hidden="true"><i></i></span><span class="seg" title="state" aria-hidden="true"><i></i></span><span class="seg on" title="indep" aria-hidden="true"><i></i></span></span>
@@ -1566,6 +1613,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
       <h3><a class="headline" href="https://insideclimatenews.org/news/28092026/trump-slashes-fuel-economy-standards/" target="_blank" rel="noopener">Trump Reduces Fuel-Economy Standards in Blow to Climate, Health, EV Market</a></h3>
       <p class="summary">The Trump administration Monday finalized the rollback of a major fuel economy standard for cars and trucks, a move critics say will cause more climate-warming pollution, human health problems and higher fuel costs for consumers.</p>
       
+      
       <p class="spread">
         <span class="segs"><span class="seg" title="left" aria-hidden="true"><i></i></span><span class="seg" title="center" aria-hidden="true"><i></i></span><span class="seg" title="right" aria-hidden="true"><i></i></span><span class="seg" title="state" aria-hidden="true"><i></i></span><span class="seg on" title="indep" aria-hidden="true"><i></i></span></span>
         <span class="spread-words">one outlet, independent newsrooms</span>
@@ -1587,6 +1635,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
     <article class="story">
       <h3><a class="headline" href="https://insideclimatenews.org/news/28092026/how-to-protect-yourself-from-disaster-scams/" target="_blank" rel="noopener">How to Protect Yourself From Disaster Scams</a></h3>
       <p class="summary">This story is a collaboration between Inside Climate News and Honolulu Civil Beat. All over Hawaiʻi, property owners are hoping to rebuild homes and businesses destroyed by recent disasters.</p>
+      
       
       <p class="spread">
         <span class="segs"><span class="seg" title="left" aria-hidden="true"><i></i></span><span class="seg" title="center" aria-hidden="true"><i></i></span><span class="seg" title="right" aria-hidden="true"><i></i></span><span class="seg" title="state" aria-hidden="true"><i></i></span><span class="seg on" title="indep" aria-hidden="true"><i></i></span></span>
@@ -1610,6 +1659,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
       <h3><a class="headline" href="https://www.hcn.org/articles/montanans-are-demanding-better-indian-education-setting-an-example-for-other-western-states/" target="_blank" rel="noopener">Montanans are demanding better Indian education, setting an example for other Western states</a></h3>
       <p class="summary">Experts say good education is about relationships, and a constitutional amendment doesn&#39;t hurt.</p>
       
+      
       <p class="spread">
         <span class="segs"><span class="seg" title="left" aria-hidden="true"><i></i></span><span class="seg" title="center" aria-hidden="true"><i></i></span><span class="seg" title="right" aria-hidden="true"><i></i></span><span class="seg" title="state" aria-hidden="true"><i></i></span><span class="seg on" title="indep" aria-hidden="true"><i></i></span></span>
         <span class="spread-words">one outlet, independent newsrooms</span>
@@ -1631,6 +1681,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
     <article class="story">
       <h3><a class="headline" href="https://www.motherjones.com/environment/2026/09/trump-us-forest-service-atv-dirt-bikes-off-road-vehicles-rules-trails/" target="_blank" rel="noopener">Trump Aims to Open Nearly All National Forest Trails to Dirt Bikes and ATVs</a></h3>
       <p class="summary">This story, There are many ways to enjoy the outdoors, but thrill-seekers visiting the nation&#39;s national forests often turn to motorized recreation.</p>
+      
       
       <p class="spread">
         <span class="segs"><span class="seg on" title="left" aria-hidden="true"><i></i></span><span class="seg" title="center" aria-hidden="true"><i></i></span><span class="seg" title="right" aria-hidden="true"><i></i></span><span class="seg" title="state" aria-hidden="true"><i></i></span><span class="seg" title="indep" aria-hidden="true"><i></i></span></span>
@@ -1656,6 +1707,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
       
     <article class="story">
       <h3><a class="headline" href="https://www.axios.com/2026/09/28/pope-leo-ai-fears-fake-news-trump" target="_blank" rel="noopener">Pope Leo rejects AI fake news claims after Trump calls fears a hoax</a></h3>
+      
       
       
       <p class="spread">
@@ -1703,6 +1755,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
       <h3><a class="headline" href="https://www.404media.co/fbi-hackers-say-they-wont-publish-massive-trove-of-fbi-employee-data/" target="_blank" rel="noopener">FBI Hackers Say They Won&#39;t Publish Trove of FBI Employee Data</a></h3>
       <p class="summary">ShinyHunters, the group that stole data on &quot;all FBI employees&quot; including addresses and details on their spouses, told 404 Media on Monday &quot;Since the very beginning we had made our decision that we would never publish this data. We have never intended to nor have we ever planned to.&quot;</p>
       
+      
       <p class="spread">
         <span class="segs"><span class="seg" title="left" aria-hidden="true"><i></i></span><span class="seg" title="center" aria-hidden="true"><i></i></span><span class="seg" title="right" aria-hidden="true"><i></i></span><span class="seg" title="state" aria-hidden="true"><i></i></span><span class="seg on" title="indep" aria-hidden="true"><i></i></span></span>
         <span class="spread-words">one outlet, independent newsrooms</span>
@@ -1724,6 +1777,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
     <article class="story">
       <h3><a class="headline" href="https://www.404media.co/the-end-of-privacy-is-here-with-kashmir-hill/" target="_blank" rel="noopener">The End of Privacy Is Here (with Kashmir Hill)</a></h3>
       <p class="summary">Facial recognition is everywhere now. It&#39;s in surveillance cameras; it&#39;s soon going to be in Meta&#39;s RayBan pervert glasses, and some students already did that. You now have accounts that take clips of people, run them through facial recognition software, and then post their name and other personal info for everyone to see.</p>
+      
       
       <p class="spread">
         <span class="segs"><span class="seg" title="left" aria-hidden="true"><i></i></span><span class="seg" title="center" aria-hidden="true"><i></i></span><span class="seg" title="right" aria-hidden="true"><i></i></span><span class="seg" title="state" aria-hidden="true"><i></i></span><span class="seg on" title="indep" aria-hidden="true"><i></i></span></span>
@@ -1751,6 +1805,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
       <h3><a class="headline" href="https://reason.com/2026/09/28/once-recession-proof-d-c-area-feels-pain-from-federal-workforce-reductions/" target="_blank" rel="noopener">Once Recession-Proof, D.C. Feels the Pain From Federal Workforce Reductions</a></h3>
       <p class="summary">Formerly tax-supported workers are discovering the uncertainties the private sector faces every day.</p>
       
+      
       <p class="spread">
         <span class="segs"><span class="seg" title="left" aria-hidden="true"><i></i></span><span class="seg" title="center" aria-hidden="true"><i></i></span><span class="seg on" title="right" aria-hidden="true"><i></i></span><span class="seg" title="state" aria-hidden="true"><i></i></span><span class="seg" title="indep" aria-hidden="true"><i></i></span></span>
         <span class="spread-words">one outlet, the right</span>
@@ -1777,6 +1832,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
       <h3><a class="headline" href="https://www.chalkbeat.org/chicago/2026/09/28/elecciones-junta-educacion-2026-distrito-3b-candidatos-guia-electoral/" target="_blank" rel="noopener">Elecciones de la Junta de Educación de Chicago 2026: La carrera en el Distrito 3b</a></h3>
       <p class="summary">Leer en inglés. Este reportaje se elaboró y publicó en colaboración con WBEZ, el Chicago Sun-Times y Block Club Chicago, redacción sin fines de lucro que cubre los diversos vecindarios de Chicago. Mantente informado a través del boletín de Chalkbeat Chicago, el boletín sobre educación de WBEZ y el Sun-Times, y los boletines de Block Club Chicago.</p>
       
+      
       <p class="spread">
         <span class="segs"><span class="seg" title="left" aria-hidden="true"><i></i></span><span class="seg" title="center" aria-hidden="true"><i></i></span><span class="seg" title="right" aria-hidden="true"><i></i></span><span class="seg" title="state" aria-hidden="true"><i></i></span><span class="seg on" title="indep" aria-hidden="true"><i></i></span></span>
         <span class="spread-words">one outlet, independent newsrooms</span>
@@ -1798,6 +1854,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
     <article class="story">
       <h3><a class="headline" href="https://www.chalkbeat.org/philadelphia/2026/09/28/handle-with-care-program-to-help-students-who-witness-violence-expands/" target="_blank" rel="noopener">Philadelphia expands program that flags students who witness violence outside school for more support</a></h3>
       <p class="summary">Did you know search engines like Google are changing the way you see news? Keep Chalkbeat&#39;s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. The School District of Philadelphia and the Philadelphia.</p>
+      
       
       <p class="spread">
         <span class="segs"><span class="seg" title="left" aria-hidden="true"><i></i></span><span class="seg" title="center" aria-hidden="true"><i></i></span><span class="seg" title="right" aria-hidden="true"><i></i></span><span class="seg" title="state" aria-hidden="true"><i></i></span><span class="seg on" title="indep" aria-hidden="true"><i></i></span></span>
@@ -1909,7 +1966,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
         </tr>
         <tr>
           <td>The Washington Times</td>
-          <td><span class="lean">center-right</span>Unification movement affiliated, conservative<span class="review">Quiet today: status 403</span></td>
+          <td><span class="lean">center-right</span>Unification movement affiliated, conservative</td>
         </tr>
         <tr>
           <td>Fox News</td>

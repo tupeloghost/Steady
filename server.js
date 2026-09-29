@@ -4,6 +4,7 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 const { buildEdition } = require('./pipeline');
+const { enrich } = require('./opus');
 const { render } = require('./render');
 
 const ROOT = __dirname;
@@ -27,6 +28,7 @@ async function getEdition({ force = false } = {}) {
   building = (async () => {
     const cfg = config();
     const edition = await buildEdition(cfg);
+    await enrich(edition);
     fs.writeFileSync(editionPath(d), JSON.stringify(edition, null, 2));
     // A copy that opens with no server running, for reading later or on another machine.
     fs.writeFileSync(path.join(ROOT, 'latest-edition.html'), render(edition, cfg, { standalone: true, css: css() }));

@@ -275,7 +275,10 @@ function buildStories(groups) {
       camps,
       frame: analyze(g.items),
       coverage: g.items
-        .map((i) => ({ source: i.outlet, lean: i.lean, camp: i.camp, link: i.link, asPublished: i.title }))
+        .map((i) => ({
+          source: i.outlet, lean: i.lean, camp: i.camp, owner: i.owner, state: i.state,
+          link: i.link, asPublished: i.title, text: i.summaryText || '',
+        }))
         .filter((a, idx, arr) => arr.findIndex((x) => x.source === a.source) === idx),
       weight,
       date: lead.date,

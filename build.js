@@ -10,6 +10,7 @@
 const fs = require('fs');
 const path = require('path');
 const { buildEdition } = require('./pipeline');
+const { enrich } = require('./opus');
 const { render, renderArchiveIndex } = require('./render');
 
 const ROOT = __dirname;
@@ -25,6 +26,8 @@ async function main() {
 
   const stories = edition.lead.length + edition.sections.reduce((n, s) => n + s.stories.length, 0);
   if (!stories) throw new Error('no stories were assembled, refusing to publish an empty edition');
+
+  await enrich(edition);
 
   // today's page
   fs.mkdirSync(OUT, { recursive: true });

@@ -3,3 +3,4 @@ dist/
 cache/
 latest-edition.html
 .DS_Store
+node_modules/

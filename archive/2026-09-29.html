@@ -429,6 +429,7 @@ cite {
 }
 
 .verdict-reasoning { margin: 0.375rem 0 0; color: var(--ink-mid); font-size: 0.9375rem; line-height: 1.6; }
+.verdict-by { margin: 0.375rem 0 0; font-style: italic; font-size: 0.875rem; color: var(--ink-faint); }
 .verdict-measured {
   margin: var(--gap-s) 0 0;
   font-variant-caps: all-small-caps;
@@ -634,7 +635,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
     <header class="masthead">
       <h1 class="wordmark">steady</h1>
       <p class="dateline">Tuesday, September 29, 2026</p>
-      <p class="standing">This edition was assembled once. It will not change while you read it.</p>
+      <p class="standing">Updated once each morning</p>
       <div class="appearance" id="appearance" hidden>
         <button type="button" data-theme-choice="auto">auto</button>
         <button type="button" data-theme-choice="light">light</button>
@@ -645,13 +646,13 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
     
     
     <nav class="index" aria-label="sections in this edition">
-      <a href="#lead">The widest spread</a>
+      <a href="#lead">Top stories</a>
       <a href="#world">The world</a><a href="#nation">The nation</a><a href="#justice">Courts and justice</a><a href="#health">Health</a><a href="#science">Science</a><a href="#climate">Climate and land</a><a href="#technology">Technology</a><a href="#money">Work and money</a><a href="#education">Schools</a>
     </nav>
-    <p class="legend">Under each story, the bar reads left, center, right, state, independent. A filled mark means that side carried it.</p>
+
     
     <section class="section section-lead" id="lead">
-      <h2><span>The widest spread</span></h2>
+      <h2><span>Top stories</span></h2>
       
     <article class="story story-lead">
       <h3><a class="headline" href="https://19thnews.org/2026/09/cornell-fraternity-rape-allegations-lawsuit/" target="_blank" rel="noopener">The Cornell rape allegations and lawsuit, explained</a></h3>
@@ -660,7 +661,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
       
       <p class="spread">
         <span class="segs"><span class="seg on heavy" title="left" aria-hidden="true"><i></i></span><span class="seg on" title="center" aria-hidden="true"><i></i></span><span class="seg" title="right" aria-hidden="true"><i></i></span><span class="seg on" title="state" aria-hidden="true"><i></i></span><span class="seg on" title="indep" aria-hidden="true"><i></i></span></span>
-        <span class="spread-words">6 outlets, the left, the center, state broadcasters and independent newsrooms</span>
+        <span class="spread-words">6 outlets: left, center, government-funded, independent</span>
       </p>
       
       <div class="frame">
@@ -674,7 +675,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
         </div></div>
       
       <details class="original">
-        <summary>every headline, side by side</summary>
+        <summary>See every outlet's headline</summary>
         <div class="original-body">
           <div class="camp-group">
             <p class="also-head">the left</p>
@@ -691,13 +692,13 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
             </ul>
           </div>
           <div class="camp-group">
-            <p class="also-head">state broadcasters</p>
+            <p class="also-head">government-funded outlets</p>
             <ul>
               <li><a href="https://www.france24.com/en/americas/20260929-us-prosecutors-cornell-university-gang-rape-investigation" target="_blank" rel="noopener"><span class="who">France 24</span>US prosecutors reopen Cornell university gang rape investigation</a></li>
             </ul>
           </div>
           <div class="camp-group">
-            <p class="also-head">independent newsrooms</p>
+            <p class="also-head">independent outlets</p>
             <ul>
               <li><a href="https://19thnews.org/2026/09/cornell-fraternity-rape-allegations-lawsuit/" target="_blank" rel="noopener"><span class="who">The 19th</span>The Cornell rape allegations and lawsuit, explained</a></li>
             </ul>
@@ -705,13 +706,13 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
       </details>
     </article>
     <article class="story story-lead">
-      <h3><a class="headline" href="https://www.france24.com/en/americas/20260929-openai-cancels-release-new-ai-model-safety-concerns" target="_blank" rel="noopener">OpenAI cancels release of new AI model over safety concerns</a></h3>
+      <h3><a class="headline" href="https://www.france24.com/en/americas/20260929-openai-cancels-release-new-ai-model-safety-concerns" target="_blank" rel="noopener">OpenAI cancels release of new artificial intelligence model over safety concerns</a></h3>
       
       
       
       <p class="spread">
-        <span class="segs"><span class="seg" title="left" aria-hidden="true"><i></i></span><span class="seg on" title="center" aria-hidden="true"><i></i></span><span class="seg on" title="right" aria-hidden="true"><i></i></span><span class="seg on heavy" title="state" aria-hidden="true"><i></i></span><span class="seg" title="indep" aria-hidden="true"><i></i></span></span>
-        <span class="spread-words">6 outlets, the center, the right and state broadcasters</span>
+        <span class="segs"><span class="seg on" title="left" aria-hidden="true"><i></i></span><span class="seg" title="center" aria-hidden="true"><i></i></span><span class="seg on" title="right" aria-hidden="true"><i></i></span><span class="seg on heavy" title="state" aria-hidden="true"><i></i></span><span class="seg" title="indep" aria-hidden="true"><i></i></span></span>
+        <span class="spread-words">6 outlets: left, right, government-funded</span>
       </p>
       
       <div class="frame">
@@ -719,17 +720,18 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
           <h4>What every side agrees on</h4>
           <ul class="shared">
             <li><q>OpenAI will not release its latest artificial intelligence model, Astra 6.</q><cite>France 24</cite></li>
+            <li><q>OpenAI&#39;s decision to hold back the model, called GPT-6.</q><cite>NPR</cite></li>
             <li><q>OpenAI has canceled the release of GPT-6.</q><cite>RT</cite></li>
           </ul>
         </div></div>
       
       <details class="original">
-        <summary>every headline, side by side</summary>
+        <summary>See every outlet's headline</summary>
         <div class="original-body">
           <div class="camp-group">
-            <p class="also-head">the center</p>
+            <p class="also-head">the left</p>
             <ul>
-              <li><a href="https://www.bbc.co.uk/news/articles/cm5y5nynl75ko?at_medium=RSS&amp;amp;at_campaign=rss" target="_blank" rel="noopener"><span class="who">BBC</span>OpenAI scraps rollout of new model over safety concerns</a></li>
+              <li><a href="https://www.npr.org/2026/09/29/nx-s1-5984342/openai-delays-latest-model" target="_blank" rel="noopener"><span class="who">NPR</span>OpenAI delays latest model over security concerns, as industry faces pressure</a></li>
             </ul>
           </div>
           <div class="camp-group">
@@ -739,12 +741,12 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
             </ul>
           </div>
           <div class="camp-group">
-            <p class="also-head">state broadcasters</p>
+            <p class="also-head">government-funded outlets</p>
             <ul>
               <li><a href="https://www.aljazeera.com/economy/2026/9/29/openai-scraps-release-of-latest-ai-model-over-safety-concerns?traffic_source=rss" target="_blank" rel="noopener"><span class="who">Al Jazeera</span>OpenAI cancels release of AI model GPT-6.1 Astra, citing safety concerns</a></li>
               <li><a href="https://www.rt.com/news/646400-openai-astra-altman-safety/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=RSS" target="_blank" rel="noopener"><span class="who">RT</span>OpenAI shelves new AI model after alarming tests – WSJ</a></li>
               <li><a href="https://www.dw.com/en/openai-shelves-new-ai-model-amid-safety-concerns/a-79467841?maca=en-rss-en-all-1573-rdf" target="_blank" rel="noopener"><span class="who">Deutsche Welle</span>OpenAI shelves new AI model amid safety concerns</a></li>
-              <li><a href="https://www.france24.com/en/americas/20260929-openai-cancels-release-new-ai-model-safety-concerns" target="_blank" rel="noopener"><span class="who">France 24</span>OpenAI cancels release of new AI model over safety concerns</a></li>
+              <li><a href="https://www.france24.com/en/americas/20260929-openai-cancels-release-new-ai-model-safety-concerns" target="_blank" rel="noopener"><span class="who">France 24</span>OpenAI cancels release of new artificial intelligence model over safety concerns</a></li>
             </ul>
           </div></div>
       </details>
@@ -756,7 +758,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
       
       <p class="spread">
         <span class="segs"><span class="seg on" title="left" aria-hidden="true"><i></i></span><span class="seg on" title="center" aria-hidden="true"><i></i></span><span class="seg on" title="right" aria-hidden="true"><i></i></span><span class="seg" title="state" aria-hidden="true"><i></i></span><span class="seg" title="indep" aria-hidden="true"><i></i></span></span>
-        <span class="spread-words">5 outlets, the left, the center and the right</span>
+        <span class="spread-words">5 outlets: left, center, right</span>
       </p>
       
       <div class="frame">
@@ -767,24 +769,10 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
             <li><q>The Senate passed the bipartisan Protect College Sports Act on Monday, voting 77 to 22 in favor of the overhaul of college athletics.</q><cite>Axios</cite></li>
             <li><q>The Protect College Sports Act passed 77-22 with broad bipartisan support.</q><cite>Washington Examiner</cite></li>
           </ul>
-        </div>
-        <div class="block block-only">
-          <h4>Reported on one side only</h4>
-          
-          <div class="side">
-            <p class="side-name">the left</p>
-            <p class="side-body">resoundingly, approves, measure</p>
-            
-          </div>
-          <div class="side">
-            <p class="side-name">the center</p>
-            <p class="side-body">national, athletic, association</p>
-            <p class="side-quote"><q>The Senate on Monday passed a piece of legislation that aims to address growing concerns about fairness and equity in college sports, bolstering the National Collegiate Athletic Association&#39;s (NCAA) power to enforce its rules and potentially reshaping the future of collegiate athletics for years to come.</q><cite>The Hill</cite></p>
-          </div>
         </div></div>
       
       <details class="original">
-        <summary>every headline, side by side</summary>
+        <summary>See every outlet's headline</summary>
         <div class="original-body">
           <div class="camp-group">
             <p class="also-head">the left</p>
@@ -820,7 +808,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
       
       <p class="spread">
         <span class="segs"><span class="seg" title="left" aria-hidden="true"><i></i></span><span class="seg on" title="center" aria-hidden="true"><i></i></span><span class="seg on" title="right" aria-hidden="true"><i></i></span><span class="seg on" title="state" aria-hidden="true"><i></i></span><span class="seg" title="indep" aria-hidden="true"><i></i></span></span>
-        <span class="spread-words">3 outlets, the center, the right and state broadcasters</span>
+        <span class="spread-words">3 outlets: center, right, government-funded</span>
       </p>
       
       <div class="frame">
@@ -831,19 +819,10 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
             <li><q>Seoul demanded an official explanation from Kiev for disclosing the secret transfer of two North Korean soldiers captured in Russia.</q><cite>RT</cite></li>
             <li><q>President Volodymyr Zelensky told the United Nations General Assembly last week that his troops had captured North Korean soldiers on the battlefield, and sent them to the South.</q><cite>Breitbart</cite></li>
           </ul>
-        </div>
-        <div class="block block-only">
-          <h4>Reported on one side only</h4>
-          
-          <div class="side">
-            <p class="side-name">the right</p>
-            <p class="side-body">leftist, apologize, shipped, sunday</p>
-            <p class="side-quote"><q>The leftist government of South Korea demanded a public apology on Sunday from the government of Ukraine after.</q><cite>Breitbart</cite></p>
-          </div>
         </div></div>
       
       <details class="original">
-        <summary>every headline, side by side</summary>
+        <summary>See every outlet's headline</summary>
         <div class="original-body">
           <div class="camp-group">
             <p class="also-head">the center</p>
@@ -858,7 +837,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
             </ul>
           </div>
           <div class="camp-group">
-            <p class="also-head">state broadcasters</p>
+            <p class="also-head">government-funded outlets</p>
             <ul>
               <li><a href="https://www.rt.com/news/646339-zelensky-korea-soldiers-apology/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=RSS" target="_blank" rel="noopener"><span class="who">RT</span>South Korea demands apology from Zelensky</a></li>
             </ul>
@@ -872,7 +851,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
       
       <p class="spread">
         <span class="segs"><span class="seg" title="left" aria-hidden="true"><i></i></span><span class="seg on" title="center" aria-hidden="true"><i></i></span><span class="seg" title="right" aria-hidden="true"><i></i></span><span class="seg on" title="state" aria-hidden="true"><i></i></span><span class="seg" title="indep" aria-hidden="true"><i></i></span></span>
-        <span class="spread-words">3 outlets, the center and state broadcasters</span>
+        <span class="spread-words">3 outlets: center, government-funded</span>
       </p>
       
       <div class="frame">
@@ -885,13 +864,13 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
         <div class="block block-framing">
           <h4>Same thing, different words</h4>
           <dl class="framing">
-            <dt>a crowd in the street</dt>
-            <dd><span class="who">the center</span> <b>protest</b><span class="sep"></span><span class="who">state broadcasters</span> <b>protest</b> <b>demonstration</b></dd>
+            <dt>protests</dt>
+            <dd><span class="who">the center</span> <b>protest</b><span class="sep"></span><span class="who">government-funded outlets</span> <b>protest</b> <b>demonstration</b></dd>
           </dl>
         </div></div>
       
       <details class="original">
-        <summary>every headline, side by side</summary>
+        <summary>See every outlet's headline</summary>
         <div class="original-body">
           <div class="camp-group">
             <p class="also-head">the center</p>
@@ -900,7 +879,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
             </ul>
           </div>
           <div class="camp-group">
-            <p class="also-head">state broadcasters</p>
+            <p class="also-head">government-funded outlets</p>
             <ul>
               <li><a href="https://www.dw.com/en/evicted-spanish-pensioner-to-return-home-lawyer-says/a-79467953?maca=en-rss-en-all-1573-rdf" target="_blank" rel="noopener"><span class="who">Deutsche Welle</span>Evicted Spanish pensioner to return home, lawyer says</a></li>
               <li><a href="https://www.france24.com/en/europe/20260928-evicted-spanish-pensioner-to-return-home-after-housing-protest-deal-spain-madrid" target="_blank" rel="noopener"><span class="who">France 24</span>Evicted 87-year-old Spanish pensioner to return home after deal</a></li>
@@ -915,21 +894,16 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
       
       <p class="spread">
         <span class="segs"><span class="seg" title="left" aria-hidden="true"><i></i></span><span class="seg" title="center" aria-hidden="true"><i></i></span><span class="seg" title="right" aria-hidden="true"><i></i></span><span class="seg on" title="state" aria-hidden="true"><i></i></span><span class="seg" title="indep" aria-hidden="true"><i></i></span></span>
-        <span class="spread-words">2 outlets, state broadcasters</span>
+        <span class="spread-words">2 outlets: government-funded</span>
       </p>
       
-      <aside class="verdict verdict-state-line">
-        <p class="verdict-kicker">what the coverage pattern shows</p>
-        <p class="verdict-title">Only state broadcasters have this</p>
-        <ul><li>only state funded broadcasters have this, though from rival states rather than one</li></ul>
-      </aside>
       
       
       <details class="original">
-        <summary>every headline, side by side</summary>
+        <summary>See every outlet's headline</summary>
         <div class="original-body">
           <div class="camp-group">
-            <p class="also-head">state broadcasters</p>
+            <p class="also-head">government-funded outlets</p>
             <ul>
               <li><a href="https://www.aljazeera.com/news/2026/9/29/rubio-saudi-arabias-foreign-minister-hold-talks-on-yemen-hormuz-strait?traffic_source=rss" target="_blank" rel="noopener"><span class="who">Al Jazeera</span>Rubio, Saudi Arabia&#39;s foreign minister hold talks on Yemen, Hormuz Strait</a></li>
               <li><a href="https://www.rt.com/news/646322-trump-left-saudi-arabia-to-face-houthis-alone-mearsheimer/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=RSS" target="_blank" rel="noopener"><span class="who">RT</span>Trump left Saudi Arabia to face Houthis alone – Mearsheimer to RT (VIDEO)</a></li>
@@ -944,21 +918,16 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
       
       <p class="spread">
         <span class="segs"><span class="seg" title="left" aria-hidden="true"><i></i></span><span class="seg" title="center" aria-hidden="true"><i></i></span><span class="seg" title="right" aria-hidden="true"><i></i></span><span class="seg on" title="state" aria-hidden="true"><i></i></span><span class="seg" title="indep" aria-hidden="true"><i></i></span></span>
-        <span class="spread-words">2 outlets, state broadcasters</span>
+        <span class="spread-words">2 outlets: government-funded</span>
       </p>
       
-      <aside class="verdict verdict-state-line">
-        <p class="verdict-kicker">what the coverage pattern shows</p>
-        <p class="verdict-title">Only state broadcasters have this</p>
-        <ul><li>only state funded broadcasters have this, though from rival states rather than one</li></ul>
-      </aside>
       
       
       <details class="original">
-        <summary>every headline, side by side</summary>
+        <summary>See every outlet's headline</summary>
         <div class="original-body">
           <div class="camp-group">
-            <p class="also-head">state broadcasters</p>
+            <p class="also-head">government-funded outlets</p>
             <ul>
               <li><a href="https://www.aljazeera.com/news/2026/9/29/hungary-lifts-immunity-of-prime-minister-magyar-two-orban-era-ministers?traffic_source=rss" target="_blank" rel="noopener"><span class="who">Al Jazeera</span>Hungary lifts immunity of Prime Minister Magyar, two Orban-era ministers</a></li>
               <li><a href="https://www.dw.com/en/hungary-lifts-pm-peter-magyar-s-immunity-clears-way-for-probes-into-2-former-orban-ministers/a-79458651?maca=en-rss-en-all-1573-rdf" target="_blank" rel="noopener"><span class="who">Deutsche Welle</span>Hungary lifts PM Peter Magyar&#39;s immunity, clears way for probes into 2 former Orban ministers</a></li>
@@ -967,29 +936,24 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
       </details>
     </article>
     <article class="story">
-      <h3><a class="headline" href="https://www.aljazeera.com/video/newsfeed/2026/9/29/public-transport-drivers-strike-in-manila-over-soaring-fuel-prices?traffic_source=rss" target="_blank" rel="noopener">Public transport drivers strike in Manila over rising fuel prices</a></h3>
-      <p class="summary">Public transport drivers in Manila begin a three-day strike over rising fuel prices.</p>
+      <h3><a class="headline" href="https://www.aljazeera.com/economy/2026/9/29/australia-raises-interest-rates-to-15-year-high?traffic_source=rss" target="_blank" rel="noopener">Australia raises interest rates to 15-year high</a></h3>
+      <p class="summary">Reserve Bank of Australia lifts benchmark rate to 4.6 percent amid stubborn inflation.</p>
       
       
       <p class="spread">
         <span class="segs"><span class="seg" title="left" aria-hidden="true"><i></i></span><span class="seg" title="center" aria-hidden="true"><i></i></span><span class="seg" title="right" aria-hidden="true"><i></i></span><span class="seg on" title="state" aria-hidden="true"><i></i></span><span class="seg" title="indep" aria-hidden="true"><i></i></span></span>
-        <span class="spread-words">one outlet, state broadcasters</span>
+        <span class="spread-words">1 outlet: government-funded</span>
       </p>
       
-      <aside class="verdict verdict-state-line">
-        <p class="verdict-kicker">what the coverage pattern shows</p>
-        <p class="verdict-title">Only the Qatar state broadcaster has this</p>
-        <ul><li>the only outlet carrying this is funded by the Qatar state, and no commercial or independent newsroom has picked it up</li></ul>
-      </aside>
       
       
       <details class="original">
-        <summary>every headline, side by side</summary>
+        <summary>See every outlet's headline</summary>
         <div class="original-body">
           <div class="camp-group">
-            <p class="also-head">state broadcasters</p>
+            <p class="also-head">government-funded outlets</p>
             <ul>
-              <li><a href="https://www.aljazeera.com/video/newsfeed/2026/9/29/public-transport-drivers-strike-in-manila-over-soaring-fuel-prices?traffic_source=rss" target="_blank" rel="noopener"><span class="who">Al Jazeera</span>Public transport drivers strike in Manila over soaring fuel prices</a></li>
+              <li><a href="https://www.aljazeera.com/economy/2026/9/29/australia-raises-interest-rates-to-15-year-high?traffic_source=rss" target="_blank" rel="noopener"><span class="who">Al Jazeera</span>Australia raises interest rates to 15-year high</a></li>
             </ul>
           </div></div>
       </details>
@@ -1005,7 +969,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
       
       <p class="spread">
         <span class="segs"><span class="seg on heavy" title="left" aria-hidden="true"><i></i></span><span class="seg on" title="center" aria-hidden="true"><i></i></span><span class="seg on" title="right" aria-hidden="true"><i></i></span><span class="seg" title="state" aria-hidden="true"><i></i></span><span class="seg" title="indep" aria-hidden="true"><i></i></span></span>
-        <span class="spread-words">5 outlets, the left, the center and the right</span>
+        <span class="spread-words">5 outlets: left, center, right</span>
       </p>
       
       <div class="frame">
@@ -1016,19 +980,10 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
             <li><q>If the execution proceeds, Pike would be the first woman put to death in Tennessee in more than 200 years.</q><cite>BBC</cite></li>
             <li><q>Christa Pike could be the first woman executed in Tennessee in more than 200 years.</q><cite>The New York Times</cite></li>
           </ul>
-        </div>
-        <div class="block block-only">
-          <h4>Reported on one side only</h4>
-          
-          <div class="side">
-            <p class="side-name">the left</p>
-            <p class="side-body">figures no one else gives: 50, 1995, 30 years</p>
-            <p class="side-quote"><q>Lawyers for Christa Pike, 50, convicted of killing classmate in Knoxville in 1995, ask supreme court to grant stay Christa Pike, a woman who was convicted of murder 30 years ago, is set to be put to death on Wednesday after her request for clemency was denied by Tennessee governor Bill Lee on Monday.</q><cite>The Guardian</cite></p>
-          </div>
         </div></div>
       
       <details class="original">
-        <summary>every headline, side by side</summary>
+        <summary>See every outlet's headline</summary>
         <div class="original-body">
           <div class="camp-group">
             <p class="also-head">the left</p>
@@ -1053,80 +1008,13 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
       </details>
     </article>
     <article class="story">
-      <h3><a class="headline" href="https://www.axios.com/2026/09/27/terrorism-raf-fairford-base-us-air-force" target="_blank" rel="noopener">Trump: 5 terrorism suspects in U.K. base incident were under investigation</a></h3>
-      
-      
-      
-      <p class="spread">
-        <span class="segs"><span class="seg on" title="left" aria-hidden="true"><i></i></span><span class="seg on" title="center" aria-hidden="true"><i></i></span><span class="seg" title="right" aria-hidden="true"><i></i></span><span class="seg on" title="state" aria-hidden="true"><i></i></span><span class="seg" title="indep" aria-hidden="true"><i></i></span></span>
-        <span class="spread-words">5 outlets, the left, the center and state broadcasters</span>
-      </p>
-      
-      <div class="frame">
-        <div class="block block-agreed">
-          <h4>What every side agrees on</h4>
-          <ul class="shared">
-            <li><q>Five suspects arrested by British police on suspicion of terrorism and explosives ​offenses after white vans drove towards an airbase used by US forces were all British nationals from London in their early 20s, police said on Monday.</q><cite>France 24</cite></li>
-            <li><q>British police arrested five men Sunday on suspicion of terrorism near an U.</q><cite>Axios</cite></li>
-          </ul>
-        </div>
-        <div class="block block-only">
-          <h4>Reported on one side only</h4>
-          
-          <div class="side">
-            <p class="side-name">the left</p>
-            <p class="side-body">investigators, fairford</p>
-            <p class="side-quote"><q>Investigators are examining a possible Iran connection after suspicious vehicles were stopped near RAF Fairford.</q><cite>Salon</cite></p>
-          </div>
-          <div class="side">
-            <p class="side-name">the center</p>
-            <p class="side-body">trump, sunday</p>
-            <p class="side-quote"><q>The latest: &quot;Working with Britain, it was an amazing job,&quot; Trump told reporters Sunday morning.</q><cite>Axios</cite></p>
-          </div>
-        </div>
-        <div class="block block-framing">
-          <h4>Same thing, different words</h4>
-          <dl class="framing">
-            <dt>armed men</dt>
-            <dd><span class="who">the left</span> <b>militant</b><span class="sep"></span><span class="who">the center</span> <b>terrorist</b></dd>
-            <dt>an inquiry</dt>
-            <dd><span class="who">the left</span> <b>probe</b><span class="sep"></span><span class="who">the center</span> <b>investigation</b></dd>
-          </dl>
-        </div></div>
-      
-      <details class="original">
-        <summary>every headline, side by side</summary>
-        <div class="original-body">
-          <div class="camp-group">
-            <p class="also-head">the left</p>
-            <ul>
-              <li><a href="https://www.salon.com/2026/09/27/five-arrested-near-uk-us-base-in-iran-terror-probe/" target="_blank" rel="noopener"><span class="who">Salon</span>Five arrested near UK-US base in Iran terror probe</a></li>
-              <li><a href="https://www.npr.org/2026/09/28/g-s1-145245/britain-us-base-suspected-foiled-attack" target="_blank" rel="noopener"><span class="who">NPR</span>5 men arrested near a U.S.-run base bailed as UK police probe if there&#39;s an Iran link</a></li>
-            </ul>
-          </div>
-          <div class="camp-group">
-            <p class="also-head">the center</p>
-            <ul>
-              <li><a href="https://www.bbc.co.uk/news/articles/cqrm99mm9l84o?at_medium=RSS&amp;amp;at_campaign=rss" target="_blank" rel="noopener"><span class="who">BBC</span>Five arrested as counter-terror police investigate major incident near UK airbase used by US forces</a></li>
-              <li><a href="https://www.axios.com/2026/09/27/terrorism-raf-fairford-base-us-air-force" target="_blank" rel="noopener"><span class="who">Axios</span>Trump: 5 terrorism suspects in U.K. base incident were under investigation</a></li>
-            </ul>
-          </div>
-          <div class="camp-group">
-            <p class="also-head">state broadcasters</p>
-            <ul>
-              <li><a href="https://www.france24.com/en/video/20260928-five-suspects-arrested-in-explosives-case-near-uk-airbase-were-british-nationals" target="_blank" rel="noopener"><span class="who">France 24</span>Five suspects arrested in explosives case near UK airbase were British nationals</a></li>
-            </ul>
-          </div></div>
-      </details>
-    </article>
-    <article class="story">
       <h3><a class="headline" href="https://www.theguardian.com/us-news/2026/sep/28/samuel-alito-supreme-court-oil-climate-case" target="_blank" rel="noopener">Samuel Alito steps aside in a major climate case amid scrutiny over oil stock holdings</a></h3>
       
       
       
       <p class="spread">
         <span class="segs"><span class="seg on" title="left" aria-hidden="true"><i></i></span><span class="seg" title="center" aria-hidden="true"><i></i></span><span class="seg on" title="right" aria-hidden="true"><i></i></span><span class="seg" title="state" aria-hidden="true"><i></i></span><span class="seg on" title="indep" aria-hidden="true"><i></i></span></span>
-        <span class="spread-words">4 outlets, the left, the right and independent newsrooms</span>
+        <span class="spread-words">4 outlets: left, right, independent</span>
       </p>
       
       <div class="frame">
@@ -1137,24 +1025,10 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
             <li><q>Decision from conservative justice comes before court hears case on whether fossil-fuel firms deceived US public Supreme court justice Samuel Alito recused himself on Monday from a major climate-change case after facing calls to step aside due to stock holdings in oil companies.</q><cite>The Guardian</cite></li>
             <li><q>Justice Samuel Alito decided Monday to sit out one of the most consequential climate change cases to reach the Supreme Court, but legal experts expected continuing ramifications due to his ownership of individual corporate stocks, including in the fossil fuel industry.</q><cite>Inside Climate News</cite></li>
           </ul>
-        </div>
-        <div class="block block-only">
-          <h4>Reported on one side only</h4>
-          
-          <div class="side">
-            <p class="side-name">the right</p>
-            <p class="side-body">lawsuit, against, colorado</p>
-            
-          </div>
-          <div class="side">
-            <p class="side-name">independent newsrooms</p>
-            <p class="side-body">recusal, little, late</p>
-            
-          </div>
         </div></div>
       
       <details class="original">
-        <summary>every headline, side by side</summary>
+        <summary>See every outlet's headline</summary>
         <div class="original-body">
           <div class="camp-group">
             <p class="also-head">the left</p>
@@ -1170,7 +1044,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
             </ul>
           </div>
           <div class="camp-group">
-            <p class="also-head">independent newsrooms</p>
+            <p class="also-head">independent outlets</p>
             <ul>
               <li><a href="https://insideclimatenews.org/news/28092026/alitos-recusal-from-climate-case-too-little-too-late/" target="_blank" rel="noopener"><span class="who">Inside Climate News</span>Alito&#39;s Recusal From Climate Case: Too Little, Too Late?</a></li>
             </ul>
@@ -1184,7 +1058,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
       
       <p class="spread">
         <span class="segs"><span class="seg" title="left" aria-hidden="true"><i></i></span><span class="seg on" title="center" aria-hidden="true"><i></i></span><span class="seg on" title="right" aria-hidden="true"><i></i></span><span class="seg on" title="state" aria-hidden="true"><i></i></span><span class="seg" title="indep" aria-hidden="true"><i></i></span></span>
-        <span class="spread-words">3 outlets, the center, the right and state broadcasters</span>
+        <span class="spread-words">3 outlets: center, right, government-funded</span>
       </p>
       
       <div class="frame">
@@ -1199,13 +1073,13 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
         <div class="block block-framing">
           <h4>Same thing, different words</h4>
           <dl class="framing">
-            <dt>a state you dislike</dt>
-            <dd><span class="who">the center</span> <b>regime</b><span class="sep"></span><span class="who">state broadcasters</span> <b>administration</b></dd>
+            <dt>a government</dt>
+            <dd><span class="who">the center</span> <b>regime</b><span class="sep"></span><span class="who">government-funded outlets</span> <b>administration</b></dd>
           </dl>
         </div></div>
       
       <details class="original">
-        <summary>every headline, side by side</summary>
+        <summary>See every outlet's headline</summary>
         <div class="original-body">
           <div class="camp-group">
             <p class="also-head">the center</p>
@@ -1220,7 +1094,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
             </ul>
           </div>
           <div class="camp-group">
-            <p class="also-head">state broadcasters</p>
+            <p class="also-head">government-funded outlets</p>
             <ul>
               <li><a href="https://www.aljazeera.com/news/liveblog/2026/9/29/iran-war-live-trump-says-he-did-not-offer-tehran-sanctions-relief?traffic_source=rss" target="_blank" rel="noopener"><span class="who">Al Jazeera</span>Iran war live: Trump says he did not offer Tehran sanctions relief</a></li>
             </ul>
@@ -1234,7 +1108,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
       
       <p class="spread">
         <span class="segs"><span class="seg on" title="left" aria-hidden="true"><i></i></span><span class="seg on" title="center" aria-hidden="true"><i></i></span><span class="seg on" title="right" aria-hidden="true"><i></i></span><span class="seg" title="state" aria-hidden="true"><i></i></span><span class="seg" title="indep" aria-hidden="true"><i></i></span></span>
-        <span class="spread-words">3 outlets, the left, the center and the right</span>
+        <span class="spread-words">3 outlets: left, center, right</span>
       </p>
       
       <div class="frame">
@@ -1245,24 +1119,10 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
             <li><q>On Monday, Nvidia, the multinational tech company, which has become one of the most valuable companies in the world in significant part thanks to its role in developing chips for AI processing and model training, announced the launch of a new safety platform that will monitor and contain AI agents, amid recent reports of &quot;rogue AI&quot; incidents.</q><cite>Mother Jones</cite></li>
             <li><q>Nvidia is deploying a new tool that it says can be used to prevent and contain rogue and potentially dangerous AI agents.</q><cite>Axios</cite></li>
           </ul>
-        </div>
-        <div class="block block-only">
-          <h4>Reported on one side only</h4>
-          
-          <div class="side">
-            <p class="side-name">the left</p>
-            <p class="side-body">thinks, without, oversight</p>
-            
-          </div>
-          <div class="side">
-            <p class="side-name">the right</p>
-            <p class="side-body">figures no one else gives: 100. unveils, breaking, containment, open, agent, anthropic</p>
-            <p class="side-quote"><q>Nvidia announced its new Open Agent Safety Platform on Monday with 100 industry partners, aiming to help AI developers stop their autonomous agents from escaping the systems meant to contain them, representing an industry solution to a problem that has OpenAI and Anthropic begging for government regulation.</q><cite>Breitbart</cite></p>
-          </div>
         </div></div>
       
       <details class="original">
-        <summary>every headline, side by side</summary>
+        <summary>See every outlet's headline</summary>
         <div class="original-body">
           <div class="camp-group">
             <p class="also-head">the left</p>
@@ -1285,13 +1145,59 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
       </details>
     </article>
     <article class="story">
+      <h3><a class="headline" href="https://www.axios.com/2026/09/27/terrorism-raf-fairford-base-us-air-force" target="_blank" rel="noopener">Trump: 5 terrorism suspects in U.K. base incident were under investigation</a></h3>
+      <p class="summary">British police arrested five men Sunday on suspicion of terrorism near a U.K. air base used for U.S. operations in Iran, as President Trump said the suspects had been under investigation. The latest: &quot;Working with Britain, it was an amazing job,&quot; Trump told reporters Sunday morning.</p>
+      
+      
+      <p class="spread">
+        <span class="segs"><span class="seg on" title="left" aria-hidden="true"><i></i></span><span class="seg on" title="center" aria-hidden="true"><i></i></span><span class="seg" title="right" aria-hidden="true"><i></i></span><span class="seg" title="state" aria-hidden="true"><i></i></span><span class="seg" title="indep" aria-hidden="true"><i></i></span></span>
+        <span class="spread-words">4 outlets: left, center</span>
+      </p>
+      
+      <div class="frame">
+        <div class="block block-agreed">
+          <h4>What every side agrees on</h4>
+          <ul class="shared">
+            <li><q>British police arrested five men Sunday on suspicion of terrorism near a U.</q><cite>Axios</cite></li>
+          </ul>
+        </div>
+        <div class="block block-framing">
+          <h4>Same thing, different words</h4>
+          <dl class="framing">
+            <dt>armed groups</dt>
+            <dd><span class="who">the left</span> <b>militant</b><span class="sep"></span><span class="who">the center</span> <b>terrorist</b></dd>
+            <dt>investigations</dt>
+            <dd><span class="who">the left</span> <b>probe</b><span class="sep"></span><span class="who">the center</span> <b>investigation</b></dd>
+          </dl>
+        </div></div>
+      
+      <details class="original">
+        <summary>See every outlet's headline</summary>
+        <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">the left</p>
+            <ul>
+              <li><a href="https://www.salon.com/2026/09/27/five-arrested-near-uk-us-base-in-iran-terror-probe/" target="_blank" rel="noopener"><span class="who">Salon</span>Five arrested near UK-US base in Iran terror probe</a></li>
+              <li><a href="https://www.npr.org/2026/09/28/g-s1-145245/britain-us-base-suspected-foiled-attack" target="_blank" rel="noopener"><span class="who">NPR</span>5 men arrested near a U.S.-run base bailed as UK police probe if there&#39;s an Iran link</a></li>
+            </ul>
+          </div>
+          <div class="camp-group">
+            <p class="also-head">the center</p>
+            <ul>
+              <li><a href="https://www.bbc.co.uk/news/articles/cqrm99mm9l84o?at_medium=RSS&amp;amp;at_campaign=rss" target="_blank" rel="noopener"><span class="who">BBC</span>Five arrested as counter-terror police investigate major incident near UK airbase used by US forces</a></li>
+              <li><a href="https://www.axios.com/2026/09/27/terrorism-raf-fairford-base-us-air-force" target="_blank" rel="noopener"><span class="who">Axios</span>Trump: 5 terrorism suspects in U.K. base incident were under investigation</a></li>
+            </ul>
+          </div></div>
+      </details>
+    </article>
+    <article class="story">
       <h3><a class="headline" href="https://www.washingtonexaminer.com/news/campaigns/congressional/4746327/hegseth-pentagon-cyber-midterms-foreign-threats/" target="_blank" rel="noopener">Hegseth mobilizes Pentagon to protect midterm elections from foreign threats</a></h3>
       
       
       
       <p class="spread">
         <span class="segs"><span class="seg" title="left" aria-hidden="true"><i></i></span><span class="seg on" title="center" aria-hidden="true"><i></i></span><span class="seg on" title="right" aria-hidden="true"><i></i></span><span class="seg" title="state" aria-hidden="true"><i></i></span><span class="seg" title="indep" aria-hidden="true"><i></i></span></span>
-        <span class="spread-words">3 outlets, the center and the right</span>
+        <span class="spread-words">3 outlets: center, right</span>
       </p>
       
       <div class="frame">
@@ -1302,19 +1208,10 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
             <li><q>Defense Secretary Pete Hegseth instructed the Pentagon last week to prioritize and deploy &quot;advanced intelligence and cyber capabilities&quot; to track down, disrupt and neutralize &quot;foreign actors to protect the 2026 midterm elections&quot; while.</q><cite>The Hill</cite></li>
             <li><q>Defense Secretary Pete Hegseth has assigned personnel to use &quot;advanced intelligence and cyber capabilities to identify, disrupt, and neutralize foreign interference&quot; in the upcoming elections, Axios has learned.</q><cite>Axios</cite></li>
           </ul>
-        </div>
-        <div class="block block-only">
-          <h4>Reported on one side only</h4>
-          
-          <div class="side">
-            <p class="side-name">the center</p>
-            <p class="side-body">defense, exclusive, dept, axios</p>
-            <p class="side-quote"><q>Defense Secretary Pete Hegseth has assigned personnel to use &quot;advanced intelligence and cyber capabilities to identify, disrupt, and neutralize foreign interference&quot; in the upcoming elections, Axios has learned.</q><cite>Axios</cite></p>
-          </div>
         </div></div>
       
       <details class="original">
-        <summary>every headline, side by side</summary>
+        <summary>See every outlet's headline</summary>
         <div class="original-body">
           <div class="camp-group">
             <p class="also-head">the center</p>
@@ -1342,16 +1239,16 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
       
       <p class="spread">
         <span class="segs"><span class="seg" title="left" aria-hidden="true"><i></i></span><span class="seg" title="center" aria-hidden="true"><i></i></span><span class="seg" title="right" aria-hidden="true"><i></i></span><span class="seg" title="state" aria-hidden="true"><i></i></span><span class="seg on" title="indep" aria-hidden="true"><i></i></span></span>
-        <span class="spread-words">one outlet, independent newsrooms</span>
+        <span class="spread-words">1 outlet: independent</span>
       </p>
       
       
       
       <details class="original">
-        <summary>every headline, side by side</summary>
+        <summary>See every outlet's headline</summary>
         <div class="original-body">
           <div class="camp-group">
-            <p class="also-head">independent newsrooms</p>
+            <p class="also-head">independent outlets</p>
             <ul>
               <li><a href="https://www.themarshallproject.org/2026/09/26/texas-heat-california-cold-prison" target="_blank" rel="noopener"><span class="who">The Marshall Project</span>From Sweltering Cells to Frigid Tents: The Extreme Temperatures of Incarceration</a></li>
             </ul>
@@ -1365,13 +1262,13 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
       
       <p class="spread">
         <span class="segs"><span class="seg on" title="left" aria-hidden="true"><i></i></span><span class="seg" title="center" aria-hidden="true"><i></i></span><span class="seg" title="right" aria-hidden="true"><i></i></span><span class="seg" title="state" aria-hidden="true"><i></i></span><span class="seg" title="indep" aria-hidden="true"><i></i></span></span>
-        <span class="spread-words">one outlet, the left</span>
+        <span class="spread-words">1 outlet: left</span>
       </p>
       
       
       
       <details class="original">
-        <summary>every headline, side by side</summary>
+        <summary>See every outlet's headline</summary>
         <div class="original-body">
           <div class="camp-group">
             <p class="also-head">the left</p>
@@ -1388,13 +1285,13 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
       
       <p class="spread">
         <span class="segs"><span class="seg on" title="left" aria-hidden="true"><i></i></span><span class="seg" title="center" aria-hidden="true"><i></i></span><span class="seg" title="right" aria-hidden="true"><i></i></span><span class="seg" title="state" aria-hidden="true"><i></i></span><span class="seg" title="indep" aria-hidden="true"><i></i></span></span>
-        <span class="spread-words">one outlet, the left</span>
+        <span class="spread-words">1 outlet: left</span>
       </p>
       
       
       
       <details class="original">
-        <summary>every headline, side by side</summary>
+        <summary>See every outlet's headline</summary>
         <div class="original-body">
           <div class="camp-group">
             <p class="also-head">the left</p>
@@ -1415,16 +1312,16 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
       
       <p class="spread">
         <span class="segs"><span class="seg" title="left" aria-hidden="true"><i></i></span><span class="seg" title="center" aria-hidden="true"><i></i></span><span class="seg" title="right" aria-hidden="true"><i></i></span><span class="seg" title="state" aria-hidden="true"><i></i></span><span class="seg on" title="indep" aria-hidden="true"><i></i></span></span>
-        <span class="spread-words">one outlet, independent newsrooms</span>
+        <span class="spread-words">1 outlet: independent</span>
       </p>
       
       
       
       <details class="original">
-        <summary>every headline, side by side</summary>
+        <summary>See every outlet's headline</summary>
         <div class="original-body">
           <div class="camp-group">
-            <p class="also-head">independent newsrooms</p>
+            <p class="also-head">independent outlets</p>
             <ul>
               <li><a href="https://kffhealthnews.org/health-industry/pharmacy-benefit-managers-pbms-drug-costs-common-ground-tennessee/" target="_blank" rel="noopener"><span class="who">KFF Health News</span>Republicans and Democrats Find a Unifying Target: Pharmacy Benefit Managers</a></li>
             </ul>
@@ -1438,16 +1335,16 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
       
       <p class="spread">
         <span class="segs"><span class="seg" title="left" aria-hidden="true"><i></i></span><span class="seg" title="center" aria-hidden="true"><i></i></span><span class="seg" title="right" aria-hidden="true"><i></i></span><span class="seg" title="state" aria-hidden="true"><i></i></span><span class="seg on" title="indep" aria-hidden="true"><i></i></span></span>
-        <span class="spread-words">one outlet, independent newsrooms</span>
+        <span class="spread-words">1 outlet: independent</span>
       </p>
       
       
       
       <details class="original">
-        <summary>every headline, side by side</summary>
+        <summary>See every outlet's headline</summary>
         <div class="original-body">
           <div class="camp-group">
-            <p class="also-head">independent newsrooms</p>
+            <p class="also-head">independent outlets</p>
             <ul>
               <li><a href="https://kffhealthnews.org/elections/food-safety-concerns-midterms-kitchen-table-politics/" target="_blank" rel="noopener"><span class="who">KFF Health News</span>Food Safety Finds a Place Among &#39;Kitchen-Table&#39; Political Issues</a></li>
             </ul>
@@ -1461,13 +1358,13 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
       
       <p class="spread">
         <span class="segs"><span class="seg" title="left" aria-hidden="true"><i></i></span><span class="seg" title="center" aria-hidden="true"><i></i></span><span class="seg on" title="right" aria-hidden="true"><i></i></span><span class="seg" title="state" aria-hidden="true"><i></i></span><span class="seg" title="indep" aria-hidden="true"><i></i></span></span>
-        <span class="spread-words">one outlet, the right</span>
+        <span class="spread-words">1 outlet: right</span>
       </p>
       
       
       
       <details class="original">
-        <summary>every headline, side by side</summary>
+        <summary>See every outlet's headline</summary>
         <div class="original-body">
           <div class="camp-group">
             <p class="also-head">the right</p>
@@ -1488,7 +1385,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
       
       <p class="spread">
         <span class="segs"><span class="seg on" title="left" aria-hidden="true"><i></i></span><span class="seg on" title="center" aria-hidden="true"><i></i></span><span class="seg" title="right" aria-hidden="true"><i></i></span><span class="seg on heavy" title="state" aria-hidden="true"><i></i></span><span class="seg" title="indep" aria-hidden="true"><i></i></span></span>
-        <span class="spread-words">5 outlets, the left, the center and state broadcasters</span>
+        <span class="spread-words">5 outlets: left, center, government-funded</span>
       </p>
       
       <div class="frame">
@@ -1499,19 +1396,10 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
             <li><q>Elon Musk&#39;s SpaceX&#39;s next-generation Starship rocket reached orbit for the first time despite an engine shutdown.</q><cite>Al Jazeera</cite></li>
             <li><q>Starship is key to SpaceX&#39;s commercial success and NASA&#39;s plans to land humans on the moon.</q><cite>NPR</cite></li>
           </ul>
-        </div>
-        <div class="block block-only">
-          <h4>Reported on one side only</h4>
-          
-          <div class="side">
-            <p class="side-name">the center</p>
-            <p class="side-body">earth, monday, pacific, ocean</p>
-            <p class="side-quote"><q>SpaceX&#39;s next-generation Starship rocket came back to Earth earlier than planned after its first orbital flight Monday, with an explosion visible on the company&#39;s livestream just after touchdown in the Pacific Ocean.</q><cite>Axios</cite></p>
-          </div>
         </div></div>
       
       <details class="original">
-        <summary>every headline, side by side</summary>
+        <summary>See every outlet's headline</summary>
         <div class="original-body">
           <div class="camp-group">
             <p class="also-head">the left</p>
@@ -1526,7 +1414,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
             </ul>
           </div>
           <div class="camp-group">
-            <p class="also-head">state broadcasters</p>
+            <p class="also-head">government-funded outlets</p>
             <ul>
               <li><a href="https://www.aljazeera.com/video/newsfeed/2026/9/28/fiery-end-for-spacex-starship-mission?traffic_source=rss" target="_blank" rel="noopener"><span class="who">Al Jazeera</span>Fiery end for SpaceX Starship mission</a></li>
               <li><a href="https://www.rt.com/news/646368-spacex-launches-starship-orbit/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=RSS" target="_blank" rel="noopener"><span class="who">RT</span>SpaceX Starship erupts in fireball after successful mission (VIDEOS)</a></li>
@@ -1542,16 +1430,16 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
       
       <p class="spread">
         <span class="segs"><span class="seg" title="left" aria-hidden="true"><i></i></span><span class="seg" title="center" aria-hidden="true"><i></i></span><span class="seg" title="right" aria-hidden="true"><i></i></span><span class="seg" title="state" aria-hidden="true"><i></i></span><span class="seg on" title="indep" aria-hidden="true"><i></i></span></span>
-        <span class="spread-words">one outlet, independent newsrooms</span>
+        <span class="spread-words">1 outlet: independent</span>
       </p>
       
       
       
       <details class="original">
-        <summary>every headline, side by side</summary>
+        <summary>See every outlet's headline</summary>
         <div class="original-body">
           <div class="camp-group">
-            <p class="also-head">independent newsrooms</p>
+            <p class="also-head">independent outlets</p>
             <ul>
               <li><a href="https://www.sciencenews.org/article/magnetism-kick-start-our-solar-system" target="_blank" rel="noopener"><span class="who">Science News</span>Magnetism may have helped kick-start our solar system</a></li>
             </ul>
@@ -1565,16 +1453,16 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
       
       <p class="spread">
         <span class="segs"><span class="seg" title="left" aria-hidden="true"><i></i></span><span class="seg" title="center" aria-hidden="true"><i></i></span><span class="seg" title="right" aria-hidden="true"><i></i></span><span class="seg" title="state" aria-hidden="true"><i></i></span><span class="seg on" title="indep" aria-hidden="true"><i></i></span></span>
-        <span class="spread-words">one outlet, independent newsrooms</span>
+        <span class="spread-words">1 outlet: independent</span>
       </p>
       
       
       
       <details class="original">
-        <summary>every headline, side by side</summary>
+        <summary>See every outlet's headline</summary>
         <div class="original-body">
           <div class="camp-group">
-            <p class="also-head">independent newsrooms</p>
+            <p class="also-head">independent outlets</p>
             <ul>
               <li><a href="https://www.quantamagazine.org/mathematicians-harness-randomness-to-crack-a-55-year-old-conjecture-20260928/" target="_blank" rel="noopener"><span class="who">Quanta</span>Mathematicians Harness Randomness To Crack a 55-Year-Old Conjecture</a></li>
             </ul>
@@ -1588,16 +1476,16 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
       
       <p class="spread">
         <span class="segs"><span class="seg" title="left" aria-hidden="true"><i></i></span><span class="seg" title="center" aria-hidden="true"><i></i></span><span class="seg" title="right" aria-hidden="true"><i></i></span><span class="seg" title="state" aria-hidden="true"><i></i></span><span class="seg on" title="indep" aria-hidden="true"><i></i></span></span>
-        <span class="spread-words">one outlet, independent newsrooms</span>
+        <span class="spread-words">1 outlet: independent</span>
       </p>
       
       
       
       <details class="original">
-        <summary>every headline, side by side</summary>
+        <summary>See every outlet's headline</summary>
         <div class="original-body">
           <div class="camp-group">
-            <p class="also-head">independent newsrooms</p>
+            <p class="also-head">independent outlets</p>
             <ul>
               <li><a href="https://www.sciencenews.org/article/desert-penguins-climate-el-nino" target="_blank" rel="noopener"><span class="who">Science News</span>Peru&#39;s penguins are on the brink. A super El Niño could make it worse.</a></li>
             </ul>
@@ -1615,16 +1503,16 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
       
       <p class="spread">
         <span class="segs"><span class="seg" title="left" aria-hidden="true"><i></i></span><span class="seg" title="center" aria-hidden="true"><i></i></span><span class="seg" title="right" aria-hidden="true"><i></i></span><span class="seg" title="state" aria-hidden="true"><i></i></span><span class="seg on" title="indep" aria-hidden="true"><i></i></span></span>
-        <span class="spread-words">one outlet, independent newsrooms</span>
+        <span class="spread-words">1 outlet: independent</span>
       </p>
       
       
       
       <details class="original">
-        <summary>every headline, side by side</summary>
+        <summary>See every outlet's headline</summary>
         <div class="original-body">
           <div class="camp-group">
-            <p class="also-head">independent newsrooms</p>
+            <p class="also-head">independent outlets</p>
             <ul>
               <li><a href="https://insideclimatenews.org/news/28092026/trump-slashes-fuel-economy-standards/" target="_blank" rel="noopener"><span class="who">Inside Climate News</span>Trump Slashes Fuel-Economy Standards in Blow to Climate, Health, EV Market</a></li>
             </ul>
@@ -1638,16 +1526,16 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
       
       <p class="spread">
         <span class="segs"><span class="seg" title="left" aria-hidden="true"><i></i></span><span class="seg" title="center" aria-hidden="true"><i></i></span><span class="seg" title="right" aria-hidden="true"><i></i></span><span class="seg" title="state" aria-hidden="true"><i></i></span><span class="seg on" title="indep" aria-hidden="true"><i></i></span></span>
-        <span class="spread-words">one outlet, independent newsrooms</span>
+        <span class="spread-words">1 outlet: independent</span>
       </p>
       
       
       
       <details class="original">
-        <summary>every headline, side by side</summary>
+        <summary>See every outlet's headline</summary>
         <div class="original-body">
           <div class="camp-group">
-            <p class="also-head">independent newsrooms</p>
+            <p class="also-head">independent outlets</p>
             <ul>
               <li><a href="https://insideclimatenews.org/news/28092026/how-to-protect-yourself-from-disaster-scams/" target="_blank" rel="noopener"><span class="who">Inside Climate News</span>How to Protect Yourself From Disaster Scams</a></li>
             </ul>
@@ -1661,16 +1549,16 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
       
       <p class="spread">
         <span class="segs"><span class="seg" title="left" aria-hidden="true"><i></i></span><span class="seg" title="center" aria-hidden="true"><i></i></span><span class="seg" title="right" aria-hidden="true"><i></i></span><span class="seg" title="state" aria-hidden="true"><i></i></span><span class="seg on" title="indep" aria-hidden="true"><i></i></span></span>
-        <span class="spread-words">one outlet, independent newsrooms</span>
+        <span class="spread-words">1 outlet: independent</span>
       </p>
       
       
       
       <details class="original">
-        <summary>every headline, side by side</summary>
+        <summary>See every outlet's headline</summary>
         <div class="original-body">
           <div class="camp-group">
-            <p class="also-head">independent newsrooms</p>
+            <p class="also-head">independent outlets</p>
             <ul>
               <li><a href="https://www.hcn.org/articles/montanans-are-demanding-better-indian-education-setting-an-example-for-other-western-states/" target="_blank" rel="noopener"><span class="who">High Country News</span>Montanans are demanding better Indian education, setting an example for other Western states</a></li>
             </ul>
@@ -1684,13 +1572,13 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
       
       <p class="spread">
         <span class="segs"><span class="seg on" title="left" aria-hidden="true"><i></i></span><span class="seg" title="center" aria-hidden="true"><i></i></span><span class="seg" title="right" aria-hidden="true"><i></i></span><span class="seg" title="state" aria-hidden="true"><i></i></span><span class="seg" title="indep" aria-hidden="true"><i></i></span></span>
-        <span class="spread-words">one outlet, the left</span>
+        <span class="spread-words">1 outlet: left</span>
       </p>
       
       
       
       <details class="original">
-        <summary>every headline, side by side</summary>
+        <summary>See every outlet's headline</summary>
         <div class="original-body">
           <div class="camp-group">
             <p class="also-head">the left</p>
@@ -1711,7 +1599,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
       
       <p class="spread">
         <span class="segs"><span class="seg" title="left" aria-hidden="true"><i></i></span><span class="seg on" title="center" aria-hidden="true"><i></i></span><span class="seg" title="right" aria-hidden="true"><i></i></span><span class="seg on" title="state" aria-hidden="true"><i></i></span><span class="seg" title="indep" aria-hidden="true"><i></i></span></span>
-        <span class="spread-words">3 outlets, the center and state broadcasters</span>
+        <span class="spread-words">3 outlets: center, government-funded</span>
       </p>
       
       <div class="frame">
@@ -1721,19 +1609,10 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
             <li><q>Pope Leo XIV told reporters that warnings from AI researchers should be &quot;taken seriously&quot; and are not &quot;fake news.&quot;</q><cite>Axios</cite></li>
             <li><q>Pope Leo XIV on Monday said mounting concerns about artificial intelligence software going rogue require discussions on how to regulate it, dismissing the notion that they are &quot;fake news.</q><cite>The Hill</cite></li>
           </ul>
-        </div>
-        <div class="block block-only">
-          <h4>Reported on one side only</h4>
-          
-          <div class="side">
-            <p class="side-name">the center</p>
-            <p class="side-body">monday, trump</p>
-            
-          </div>
         </div></div>
       
       <details class="original">
-        <summary>every headline, side by side</summary>
+        <summary>See every outlet's headline</summary>
         <div class="original-body">
           <div class="camp-group">
             <p class="also-head">the center</p>
@@ -1743,7 +1622,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
             </ul>
           </div>
           <div class="camp-group">
-            <p class="also-head">state broadcasters</p>
+            <p class="also-head">government-funded outlets</p>
             <ul>
               <li><a href="https://www.aljazeera.com/economy/2026/9/29/pope-leo-says-ai-risk-concerns-not-fake-news?traffic_source=rss" target="_blank" rel="noopener"><span class="who">Al Jazeera</span>Pope Leo says AI risk concerns not &#39;fake news&#39;</a></li>
             </ul>
@@ -1757,16 +1636,16 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
       
       <p class="spread">
         <span class="segs"><span class="seg" title="left" aria-hidden="true"><i></i></span><span class="seg" title="center" aria-hidden="true"><i></i></span><span class="seg" title="right" aria-hidden="true"><i></i></span><span class="seg" title="state" aria-hidden="true"><i></i></span><span class="seg on" title="indep" aria-hidden="true"><i></i></span></span>
-        <span class="spread-words">one outlet, independent newsrooms</span>
+        <span class="spread-words">1 outlet: independent</span>
       </p>
       
       
       
       <details class="original">
-        <summary>every headline, side by side</summary>
+        <summary>See every outlet's headline</summary>
         <div class="original-body">
           <div class="camp-group">
-            <p class="also-head">independent newsrooms</p>
+            <p class="also-head">independent outlets</p>
             <ul>
               <li><a href="https://www.404media.co/fbi-hackers-say-they-wont-publish-massive-trove-of-fbi-employee-data/" target="_blank" rel="noopener"><span class="who">404 Media</span>FBI Hackers Say They Won&#39;t Publish Massive Trove of FBI Employee Data</a></li>
             </ul>
@@ -1780,16 +1659,16 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
       
       <p class="spread">
         <span class="segs"><span class="seg" title="left" aria-hidden="true"><i></i></span><span class="seg" title="center" aria-hidden="true"><i></i></span><span class="seg" title="right" aria-hidden="true"><i></i></span><span class="seg" title="state" aria-hidden="true"><i></i></span><span class="seg on" title="indep" aria-hidden="true"><i></i></span></span>
-        <span class="spread-words">one outlet, independent newsrooms</span>
+        <span class="spread-words">1 outlet: independent</span>
       </p>
       
       
       
       <details class="original">
-        <summary>every headline, side by side</summary>
+        <summary>See every outlet's headline</summary>
         <div class="original-body">
           <div class="camp-group">
-            <p class="also-head">independent newsrooms</p>
+            <p class="also-head">independent outlets</p>
             <ul>
               <li><a href="https://www.404media.co/the-end-of-privacy-is-here-with-kashmir-hill/" target="_blank" rel="noopener"><span class="who">404 Media</span>The End of Privacy Is Here (with Kashmir Hill)</a></li>
             </ul>
@@ -1807,13 +1686,13 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
       
       <p class="spread">
         <span class="segs"><span class="seg" title="left" aria-hidden="true"><i></i></span><span class="seg" title="center" aria-hidden="true"><i></i></span><span class="seg on" title="right" aria-hidden="true"><i></i></span><span class="seg" title="state" aria-hidden="true"><i></i></span><span class="seg" title="indep" aria-hidden="true"><i></i></span></span>
-        <span class="spread-words">one outlet, the right</span>
+        <span class="spread-words">1 outlet: right</span>
       </p>
       
       
       
       <details class="original">
-        <summary>every headline, side by side</summary>
+        <summary>See every outlet's headline</summary>
         <div class="original-body">
           <div class="camp-group">
             <p class="also-head">the right</p>
@@ -1834,16 +1713,16 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
       
       <p class="spread">
         <span class="segs"><span class="seg" title="left" aria-hidden="true"><i></i></span><span class="seg" title="center" aria-hidden="true"><i></i></span><span class="seg" title="right" aria-hidden="true"><i></i></span><span class="seg" title="state" aria-hidden="true"><i></i></span><span class="seg on" title="indep" aria-hidden="true"><i></i></span></span>
-        <span class="spread-words">one outlet, independent newsrooms</span>
+        <span class="spread-words">1 outlet: independent</span>
       </p>
       
       
       
       <details class="original">
-        <summary>every headline, side by side</summary>
+        <summary>See every outlet's headline</summary>
         <div class="original-body">
           <div class="camp-group">
-            <p class="also-head">independent newsrooms</p>
+            <p class="also-head">independent outlets</p>
             <ul>
               <li><a href="https://www.chalkbeat.org/chicago/2026/09/28/elecciones-junta-educacion-2026-distrito-3b-candidatos-guia-electoral/" target="_blank" rel="noopener"><span class="who">Chalkbeat</span>Elecciones de la Junta de Educación de Chicago 2026: La carrera en el Distrito 3b</a></li>
             </ul>
@@ -1857,16 +1736,16 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
       
       <p class="spread">
         <span class="segs"><span class="seg" title="left" aria-hidden="true"><i></i></span><span class="seg" title="center" aria-hidden="true"><i></i></span><span class="seg" title="right" aria-hidden="true"><i></i></span><span class="seg" title="state" aria-hidden="true"><i></i></span><span class="seg on" title="indep" aria-hidden="true"><i></i></span></span>
-        <span class="spread-words">one outlet, independent newsrooms</span>
+        <span class="spread-words">1 outlet: independent</span>
       </p>
       
       
       
       <details class="original">
-        <summary>every headline, side by side</summary>
+        <summary>See every outlet's headline</summary>
         <div class="original-body">
           <div class="camp-group">
-            <p class="also-head">independent newsrooms</p>
+            <p class="also-head">independent outlets</p>
             <ul>
               <li><a href="https://www.chalkbeat.org/philadelphia/2026/09/28/handle-with-care-program-to-help-students-who-witness-violence-expands/" target="_blank" rel="noopener"><span class="who">Chalkbeat</span>Philadelphia expands program that flags students who witness violence outside school for more support</a></li>
             </ul>
@@ -1876,24 +1755,22 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
     </section>
 
     <div class="ending">
-      <p><strong>That is the entire edition.</strong></p>
-      <p>There is nothing below this line and nothing more will load. The next edition is
-      assembled tomorrow. Closing this page is the correct ending.</p>
+      <p><strong>That’s everything for today.</strong></p>
+      <p>The next edition arrives tomorrow morning.</p>
       <p class="archive-link"><a href="./">Earlier editions</a></p>
       
     <details class="colophon">
-      <summary><span>How this is put together, and who is in it</span></summary>
+      <summary><span>How this works, and which outlets are included</span></summary>
       <div class="body">
         <p>These are inputs to compare, not sources to trust. Outlets are carried across the political spectrum, including state broadcasters, precisely so that a story can be read against itself. Every outlet is labelled by lean, owner and money. Agreement across outlets that disagree is the only thing treated as evidence.</p>
-        <p>The shared account is built by taking the claims that outlets on opposite sides
-        both carry. What only one side says is listed separately rather than blended in.
-        Nothing here is written by a machine: every line is a sentence a named outlet
-        published, and the outlet is named next to it.</p>
-        <p>The verdicts are drawn from measurements: how much of the wording is identical
-        across outlets, whether the coverage rests on unnamed officials, whether any
-        document is cited, how many outlets published inside the same three hours, and
-        whether state broadcasters are carrying it harder than anyone. The evidence is
-        printed under every verdict. It can be wrong, so argue with it.</p>
+        <p>Each morning Steady reads news outlets from the left, center and right, plus
+        government-funded and independent ones. Stories that several of them covered go first.</p>
+        <p>The quotes under each story are
+        things outlets on different sides both reported, in their own words.</p>
+        <p>Headlines are reworded to remove charged language. Tap "See every outlet's headline"
+        to read the originals.</p>
+        <p>Every outlet has a political lean, and many have owners or funders with interests of
+        their own. They are listed below.</p>
         <table>
         <tr>
           <td>Mother Jones</td>
@@ -1965,7 +1842,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
         </tr>
         <tr>
           <td>The Washington Times</td>
-          <td><span class="lean">center-right</span>Unification movement affiliated, conservative<span class="review">Quiet today: status 403</span></td>
+          <td><span class="lean">center-right</span>Unification movement affiliated, conservative<span class="review">Couldn’t be reached today</span></td>
         </tr>
         <tr>
           <td>Fox News</td>
@@ -2079,7 +1956,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
           <td>CalMatters</td>
           <td><span class="lean">independent</span>nonprofit</td>
         </tr></table>
-        <p class="left-out">Wanted but unavailable:</p>
+        <p class="left-out">Outlets we couldn’t include:</p>
         <table>
         <tr><td>Associated Press</td><td>blocks automated access, no public feed</td></tr>
         <tr><td>Reuters</td><td>retired its public feeds</td></tr>

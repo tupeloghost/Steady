@@ -722,6 +722,11 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
 /* Applied before the page paints, so switching never flashes the other theme.
    Without JavaScript the control stays hidden and the system setting decides. */
 (function () {
+  // A refresh starts at the top instead of where the reader last was. A link to a
+  // section (the menu) still goes to that section.
+  try { if ('scrollRestoration' in history) history.scrollRestoration = 'manual'; } catch (e) {}
+  if (!location.hash) window.scrollTo(0, 0);
+
   var KEY = 'steady-theme';
   var saved;
   try { saved = localStorage.getItem(KEY); } catch (e) { saved = null; }
@@ -787,10 +792,10 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
       <details class="story-more">
         <summary>
           <h3 class="headline">Appeals court halts execution of Tennessee woman less than two hours before lethal injection</h3>
-          <p class="gist">State governor and supreme court earlier refused calls for clemency for Christa Pike, who was convicted of murder Tennessee &#39;s first execution of a woman in 200 years was halted by a court on Wednesday morning an hour before it was set to take place. <span class="gist-credit">The Guardian</span></p>
+          <p class="gist">Christa Pike, who was 18-years-old in 1995 when she murdered former classmate Colleen Slemmer, was scheduled to be executed Wednesday morning, but it was delayed after an appeals court stayed the execution. <span class="gist-credit">Just the News</span></p>
           
-      <p class="spread" aria-label="Covered by 8 outlets: left, center, right, government-funded">
-        <span class="spread-label">Covered by 8 outlets</span>
+      <p class="spread" aria-label="Covered by 11 outlets: left, center, right, government-funded">
+        <span class="spread-label">Covered by 11 outlets</span>
         <span class="chips"><span class="chip on" aria-hidden="true">Left</span><span class="chip on" aria-hidden="true">Center</span><span class="chip on" aria-hidden="true">Right</span><span class="chip on" aria-hidden="true">Government-funded</span><span class="chip" aria-hidden="true">Independent</span></span>
       </p>
           
@@ -798,44 +803,47 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
           <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
         </summary>
         <div class="more-body">
-          <p class="sure sure-confirmed"><span class="sure-label">How sure is this?</span> Confirmed by 8 outlets across the left, center and right.</p>
+          <p class="sure sure-confirmed"><span class="sure-label">How sure is this?</span> Confirmed by 11 outlets across the left, center and right.</p>
           
         <div class="account">
-          <p>Pike was convicted and sentenced to death in 1996 for the murder of Colleen Slemmer. <span class="gist-credit">BBC</span> Christa Pike tortured and murdered a classmate in 1995. <span class="gist-credit">The New York Times</span> The stay is merely a temporary reprieve intended to give the appeals court time to consider the appeal on its merits. <span class="gist-credit">Just the News</span></p>
-          <p>The latest: The court ordered &quot;a short stay of execution&quot; just before 9am CDT so it could consider an ongoing legal battle between Pike&#39;s attorneys and the state. <span class="gist-credit">Axios</span> The court halted the execution to give it time to consider Pike&#39;s claims that her history of severe sexual abuse had not been taken into consideration during sentencing. <span class="gist-credit">France 24</span> Pike&#39;s attorneys argue her history of child sexual abuse wasn&#39;t presented to the jury before she was sentenced to death in 1996. <span class="gist-credit">Axios</span></p>
+          <p>The Supreme Court on Wednesday ruled that Tennessee can put Christa Pike to death, lifting an eleventh-hour appeals court ruling that had paused the execution. <span class="gist-credit">The Hill</span> The U.S. Supreme Court said Wednesday night that Tennessee could move forward with death row inmate Christa Pike &#39;s execution, reversing a last-minute stay issued earlier in the day by a federal appeals court. <span class="gist-credit">Axios</span> Pike, sentenced to death over 1995 murder, had been granted stay of execution earlier on Wednesday. <span class="gist-credit">The Guardian</span></p>
+          <p>An appeals court had paused Christa Pike&#39;s execution to consider her claim that sexual abuse she faced as a child should impact her punishment. <span class="gist-credit">The Washington Post</span> The latest: The high court cleared the way for the execution in a two-sentence order that capped a rapid-fire legal battle. <span class="gist-credit">Axios</span> She had been set to die on Wednesday, the first woman executed in the state in 200 years, until a lower court paused the execution. <span class="gist-credit">The New York Times</span></p>
         </div>
           
           
           
           
         <details class="sources">
-          <summary>Sources (8)</summary>
+          <summary>Sources (11)</summary>
           <div class="original-body">
           <div class="camp-group">
             <p class="also-head">the left</p>
             <ul>
-              <li><a href="https://www.theguardian.com/us-news/2026/sep/30/tennessee-execution-halted-christa-pike" target="_blank" rel="noopener"><span class="who">The Guardian</span>Tennessee halts plan to execute woman for first time in 200 years</a></li>
-              <li><a href="https://www.washingtonpost.com/national-security/2026/09/30/execution-tennessee-woman-blocked-by-federal-court-with-hours-spare/" target="_blank" rel="noopener"><span class="who">The Washington Post</span>Execution of Tennessee woman blocked by federal court with hours to spare</a></li>
-              <li><a href="https://www.nytimes.com/2026/09/30/us/christa-pike-stay-execution-tennessee.html" target="_blank" rel="noopener"><span class="who">The New York Times</span>Court Pauses Execution of Christa Pike, Tennessee&#39;s Lone Woman on Death Row</a></li>
+              <li><a href="https://www.theguardian.com/us-news/2026/sep/30/tennessee-execution-halted-christa-pike" target="_blank" rel="noopener"><span class="who">The Guardian</span>Tennessee execution of Christa Pike can go ahead, US supreme court rules</a></li>
+              <li><a href="https://www.washingtonpost.com/national-security/2026/09/30/execution-tennessee-woman-blocked-by-federal-court-with-hours-spare/" target="_blank" rel="noopener"><span class="who">The Washington Post</span>Supreme Court allows execution of Tennessee woman to proceed after delay</a></li>
+              <li><a href="https://www.nytimes.com/2026/09/30/us/christa-pike-stay-execution-tennessee.html" target="_blank" rel="noopener"><span class="who">The New York Times</span>Supreme Court Allows Execution of Christa Pike, Tennessee&#39;s Lone Woman on Death Row</a></li>
             </ul>
           </div>
           <div class="camp-group">
             <p class="also-head">the center</p>
             <ul>
-              <li><a href="https://www.bbc.co.uk/news/articles/cw20vxxn876no?at_medium=RSS&amp;amp;at_campaign=rss" target="_blank" rel="noopener"><span class="who">BBC</span>Execution of US murderer Christa Pike halted shortly before it was due to happen</a></li>
-              <li><a href="https://www.axios.com/local/nashville/2026/09/30/christa-pike-execution-stayed-appeals-court" target="_blank" rel="noopener"><span class="who">Axios</span>Tennessee inmate Christa Pike&#39;s execution halted an hour beforehand</a></li>
+              <li><a href="https://www.bbc.co.uk/news/articles/cq8r6rjdvlx6o?at_medium=RSS&amp;amp;at_campaign=rss" target="_blank" rel="noopener"><span class="who">BBC</span>US Supreme Court allows execution of Christa Pike to go ahead</a></li>
+              <li><a href="https://thehill.com/regulation/court-battles/6121917-supreme-court-crista-pike-execution-tennessee/" target="_blank" rel="noopener"><span class="who">The Hill</span>Supreme Court allows execution of Christa Pike to go forward</a></li>
+              <li><a href="https://www.axios.com/local/nashville/2026/09/30/christa-pike-execution-stayed-appeals-court" target="_blank" rel="noopener"><span class="who">Axios</span>SCOTUS says Tennessee can move forward with Christa Pike&#39;s execution</a></li>
             </ul>
           </div>
           <div class="camp-group">
             <p class="also-head">the right</p>
             <ul>
-              <li><a href="https://justthenews.com/government/courts-law/appeals-court-stays-execution-tennessee-woman?utm_source=justthenews.com&amp;amp;utm_medium=feed&amp;amp;utm_campaign=external-news-aggregators" target="_blank" rel="noopener"><span class="who">Just the News</span>Court halts execution of Tennessee woman, 50, convicted of murder 30 years ago</a></li>
+              <li><a href="https://nypost.com/2026/09/30/us-news/supreme-court-clears-the-way-for-christa-pikes-historic-execution-in-tennessee-to-move-forward/" target="_blank" rel="noopener"><span class="who">New York Post</span>Supreme Court clears the way for Christa Pike&#39;s historic execution in Tennessee to move forward</a></li>
+              <li><a href="https://www.dailywire.com/news/federal-court-halts-execution-at-last-minute-for-woman-who-kept-piece-of-victims-skull" target="_blank" rel="noopener"><span class="who">The Daily Wire</span>Federal Court Halts Execution At Last Minute For Woman Who Kept Piece Of Victim&#39;s Skull</a></li>
+              <li><a href="https://www.breitbart.com/crime/2026/09/30/appeals-court-stops-rare-execution-of-female-killer-an-hour-before-she-was-to-be-put-to-death-in-tennessee/" target="_blank" rel="noopener"><span class="who">Breitbart</span>Appeals Court Stops Rare Execution of Female Killer an Hour Before She Was to Be Put to Death in Tennessee</a></li>
+              <li><a href="https://justthenews.com/government/courts-law/supreme-court-rules-tennessee-can-execute-christa-pike-after-lower-court?utm_source=justthenews.com&amp;amp;utm_medium=feed&amp;amp;utm_campaign=external-news-aggregators" target="_blank" rel="noopener"><span class="who">Just the News</span>Supreme Court rules Tennessee can execute Christa Pike after lower court issues stay</a></li>
             </ul>
           </div>
           <div class="camp-group">
             <p class="also-head">government-funded outlets</p>
             <ul>
-              <li><a href="https://www.aljazeera.com/news/2026/9/30/us-appeals-court-halts-tennessee-execution-of-christa-pike?traffic_source=rss" target="_blank" rel="noopener"><span class="who">Al Jazeera</span>US appeals court halts Tennessee execution of Christa Pike</a></li>
               <li><a href="https://www.france24.com/en/americas/20260930-appeals-court-halts-execution-of-tennessee-woman-less-than-two-hours-before-lethal-injection" target="_blank" rel="noopener"><span class="who">France 24</span>Appeals court halts execution of Tennessee woman less than two hours before lethal injection</a></li>
             </ul>
           </div></div>
@@ -846,55 +854,55 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
     <article class="story story-lead">
       <details class="story-more">
         <summary>
-          <h3 class="headline">Fed watchdog clears former chair Powell in renovation probe</h3>
-          <p class="gist">A Federal Reserve watchdog found no criminal wrongdoing by former chair Jerome Powell in its investigation of the central bank&#39;s expensive headquarters renovation, according to a report released on Wednesday. <span class="gist-credit">Axios</span></p>
+          <h3 class="headline">Passengers Overpower Terrorist Hijacker, Stop 9/11-Style Plane Attack</h3>
+          <p class="gist">A knife-wielding Omani co-pilot repeatedly stabbed his Emirati captain and tried to nosedive a packed Tel Aviv-bound jetliner on Wednesday, sending it falling 18,000 feet before a band of heroic Israeli passengers smashed into the cockpit and wrestled the attacker to the floor, according to Israeli officials and passenger accounts. <span class="gist-credit">The Daily Wire</span></p>
           
-      <p class="spread" aria-label="Covered by 4 outlets: left, center, right">
-        <span class="spread-label">Covered by 4 outlets</span>
-        <span class="chips"><span class="chip on" aria-hidden="true">Left</span><span class="chip on" aria-hidden="true">Center</span><span class="chip on" aria-hidden="true">Right</span><span class="chip" aria-hidden="true">Government-funded</span><span class="chip" aria-hidden="true">Independent</span></span>
+      <p class="spread" aria-label="Covered by 6 outlets: left, center, right, government-funded">
+        <span class="spread-label">Covered by 6 outlets</span>
+        <span class="chips"><span class="chip on" aria-hidden="true">Left</span><span class="chip on" aria-hidden="true">Center</span><span class="chip on" aria-hidden="true">Right</span><span class="chip on" aria-hidden="true">Government-funded</span><span class="chip" aria-hidden="true">Independent</span></span>
       </p>
           
           
           <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
         </summary>
         <div class="more-body">
-          <p class="sure sure-confirmed"><span class="sure-label">How sure is this?</span> Confirmed by 4 outlets across the left, center and right.</p>
+          <p class="sure sure-confirmed"><span class="sure-label">How sure is this?</span> Confirmed by 6 outlets across the left, center and right.</p>
           
         <div class="account">
-          <p>Trump criticized $2.4bn rehab amid attempts to pressure then Fed chair Jerome Powell into lowering interest rates. <span class="gist-credit">The Guardian</span> Why it matters: The findings effectively clear Powell after the Justice Department opened a criminal investigation into then-Fed chair, which became public in January. <span class="gist-credit">Axios</span> The Federal Reserve &#39;s internal watchdog said on Wednesday that the agency has broadly mismanaged an expansive building renovation project but did not find any criminal violations, as alleged by Trump administration prosecutors. <span class="gist-credit">The Guardian</span></p>
-          <p>The finding brings Powell closer to beating back the accusations by allies of President Donald. <span class="gist-credit">Washington Examiner</span> What they&#39;re saying: &quot;At no point during our evaluation did we find reasonable grounds to believe that a violation of federal criminal law had occurred requiring a referral to the U.S. Attorney General,&quot; the Office of Inspector General wrote in the report. <span class="gist-credit">Axios</span> The Fed&#39;s inspector general said that a variety of missteps by its board of governors inflated the cost of the $2.4bn renovation. <span class="gist-credit">The Guardian</span></p>
+          <p>A pilot has been arrested and is being questioned after another pilot was stabbed, officials say. <span class="gist-credit">BBC</span> As the plane went into a spin and began to fall, passengers and crew members got into the cockpit, subdued the pilot and diverted the flight to land in Saudi Arabia, Israel&#39;s leader says. <span class="gist-credit">NPR</span> The pilot who was repeatedly stabbed by his co-pilot during Wednesday&#39;s attempted terror attack aboard a flight bound for Israel has been identified as Indian national Smit Machchhar, and accounts emerging from the aircraft credit his fight for control with helping alert passengers to the danger unfolding inside the cockpit. <span class="gist-credit">The Daily Wire</span></p>
+          <p>Flydubai passenger Yaniv Hayoun is considered the hero of the flight after he put the attacker in a chokehold and dragged him out of the cockpit before returning and grabbing the plane&#39;s controls. <span class="gist-credit">Just the News</span> A replacement Flydubai aircraft has landed in Israel, carrying passengers from the flight on which a pilot was stabbed. <span class="gist-credit">Al Jazeera</span> His struggle also helped alert the crew and passengers to what was happening inside the cockpit, prompting passengers to breach the flight deck and subdue the co-pilot. <span class="gist-credit">The Daily Wire</span></p>
         </div>
           
           
           
-        <div class="block block-framing">
-          <h4>Same thing, different words</h4>
-          <dl class="framing">
-            <dt>investigations</dt>
-            <dd><span class="who">the center</span> <b>probe</b> <b>investigation</b><span class="sep"></span><span class="who">the right</span> <b>probe</b></dd>
-          </dl>
-        </div>
           
         <details class="sources">
-          <summary>Sources (4)</summary>
+          <summary>Sources (6)</summary>
           <div class="original-body">
           <div class="camp-group">
             <p class="also-head">the left</p>
             <ul>
-              <li><a href="https://www.theguardian.com/business/2026/sep/30/federal-reserve-watchdog-building-renovation" target="_blank" rel="noopener"><span class="who">The Guardian</span>Federal Reserve watchdog finds no criminal violations for building renovation cost overruns</a></li>
+              <li><a href="https://www.npr.org/2026/09/30/nx-s1-5985806/flydubai-flight-dubai-tel-aviv-israel" target="_blank" rel="noopener"><span class="who">NPR</span>On flight to Israel, pilot is stabbed, plane plunges before passengers tackle attacker</a></li>
             </ul>
           </div>
           <div class="camp-group">
             <p class="also-head">the center</p>
             <ul>
-              <li><a href="https://thehill.com/business/6120881-powell-cleared-fed-renovation-report/" target="_blank" rel="noopener"><span class="who">The Hill</span>Fed watchdog finds no criminality in renovation probe</a></li>
-              <li><a href="https://www.axios.com/2026/09/30/fed-powell-ig-building" target="_blank" rel="noopener"><span class="who">Axios</span>Fed watchdog clears former chair Powell in renovation probe</a></li>
+              <li><a href="https://www.bbc.co.uk/news/articles/cqjdv7pmj9dno?at_medium=RSS&amp;amp;at_campaign=rss" target="_blank" rel="noopener"><span class="who">BBC</span>What we know about stabbing on Flydubai flight to Israel</a></li>
             </ul>
           </div>
           <div class="camp-group">
             <p class="also-head">the right</p>
             <ul>
-              <li><a href="https://www.washingtonexaminer.com/news/investigations/4748622/federal-reserve-watchdog-finds-no-illegal-conduct-jay-powell-building-renovations/" target="_blank" rel="noopener"><span class="who">Washington Examiner</span>Federal Reserve watchdog finds no illegal conduct from Jay Powell in building renovations</a></li>
+              <li><a href="https://www.dailywire.com/news/meet-the-bloodied-pilot-stabbed-in-terror-attack-who-kept-fighting-to-save-passengers" target="_blank" rel="noopener"><span class="who">The Daily Wire</span>Meet The Bloodied Pilot Stabbed In Terror Attack Who Kept Fighting To Save Passengers</a></li>
+              <li><a href="https://justthenews.com/world/middle-east/passengers-recall-harrowing-moments-during-flydubai-flight-i-was-just-sure-i-was?utm_source=justthenews.com&amp;amp;utm_medium=feed&amp;amp;utm_campaign=external-news-aggregators" target="_blank" rel="noopener"><span class="who">Just the News</span>Passengers recall harrowing moments during FlyDubai flight: &#39;I was just sure I was going to die&#39;</a></li>
+            </ul>
+          </div>
+          <div class="camp-group">
+            <p class="also-head">government-funded outlets</p>
+            <ul>
+              <li><a href="https://www.aljazeera.com/video/newsfeed/2026/9/30/flydubai-passengers-arrive-in-tel-aviv-after-pilot-stabbing?traffic_source=rss" target="_blank" rel="noopener"><span class="who">Al Jazeera</span>Flydubai passengers arrive in Tel Aviv after pilot stabbing</a></li>
+              <li><a href="https://www.france24.com/en/like-a-rollercoaster-passengers-describe-harrowing-flydubai-flight" target="_blank" rel="noopener"><span class="who">France 24</span>Like a &#39;rollercoaster&#39;: passengers describe harrowing flydubai flight</a></li>
             </ul>
           </div></div>
         </details>
@@ -904,48 +912,54 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
     <article class="story story-lead">
       <details class="story-more">
         <summary>
-          <h3 class="headline">Pentagon says it has formally completed withdrawal of US troops from Iraq</h3>
-          <p class="gist">The Pentagon announced on Wednesday that it has formally completed its withdrawal of US troops from Iraq, two years after the withdrawal was agreed to and 12 years since the US mission to fight the Islamic State started. <span class="gist-credit">The Guardian</span></p>
+          <h3 class="headline">Pennsylvania reports fifth measles-related death of the year amid outbreak</h3>
+          <p class="gist">Measles outbreak in the state has now reached 39 counties, with 943 confirmed cases and 176 hospitalizations Pennsylvania has reported its fifth measles-associated death of 2026 as the state&#39;s ongoing outbreak climbs to 943 confirmed cases across 39 counties. <span class="gist-credit">The Guardian</span></p>
           
-      <p class="spread" aria-label="Covered by 4 outlets: left, center, government-funded">
-        <span class="spread-label">Covered by 4 outlets</span>
-        <span class="chips"><span class="chip on" aria-hidden="true">Left</span><span class="chip on" aria-hidden="true">Center</span><span class="chip" aria-hidden="true">Right</span><span class="chip on" aria-hidden="true">Government-funded</span><span class="chip" aria-hidden="true">Independent</span></span>
+      <p class="spread" aria-label="Covered by 5 outlets: left, center, right, government-funded">
+        <span class="spread-label">Covered by 5 outlets</span>
+        <span class="chips"><span class="chip on" aria-hidden="true">Left</span><span class="chip on" aria-hidden="true">Center</span><span class="chip on" aria-hidden="true">Right</span><span class="chip on" aria-hidden="true">Government-funded</span><span class="chip" aria-hidden="true">Independent</span></span>
       </p>
           
           
           <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
         </summary>
         <div class="more-body">
-          <p class="sure sure-confirmed"><span class="sure-label">How sure is this?</span> Confirmed by 4 outlets across the left and center.</p>
+          <p class="sure sure-confirmed"><span class="sure-label">How sure is this?</span> Confirmed by 5 outlets across the left, center and right.</p>
           
         <div class="account">
-          <p>The withdrawal of coalition forces, under a deal agreed two years ago, was a key demand of the Iraqi government. <span class="gist-credit">BBC</span> The withdrawal ends two decades of foreign intervention in Iraq as part of &#39;global dispute over terror&#39; and anti-ISIL fight. <span class="gist-credit">Al Jazeera</span></p>
-          <p>The last US troops left an air base in northern Iraq under a deal between Baghdad and Washington. <span class="gist-credit">France 24</span></p>
+          <p>The Pennsylvania Department of Health said the person was from Lancaster County and was unvaccinated. <span class="gist-credit">New York Post</span> Cases have more than doubled since August as a dispute with federal health officials over the death count continues. <span class="gist-credit">Al Jazeera</span> Pennsylvania had previously reported four measles-related deaths, including an 18 year old, a 40-year-old woman, and two infants who died last month, all of whom were not vaccinated. <span class="gist-credit">Washington Examiner</span></p>
+          <p>Of the thousands of measles cases reported in the U.S. this year, 95% of sick individuals did not receive the measles, mumps, and rubella vaccine, according to the Centers for Disease Control and Prevention. <span class="gist-credit">Washington Examiner</span> The CDC has accounted for only two deaths related to the measles outbreak on its website, with Gov. Josh Shapiro (D-PA) blaming Health and Human Services Secretary Robert F. <span class="gist-credit">Washington Examiner</span> Kennedy Jr. for the severity of the outbreak and planning to refuse any federal aid until all of the Pennsylvania deaths are accounted for. <span class="gist-credit">Washington Examiner</span></p>
         </div>
           
           
           
           
         <details class="sources">
-          <summary>Sources (4)</summary>
+          <summary>Sources (5)</summary>
           <div class="original-body">
           <div class="camp-group">
             <p class="also-head">the left</p>
             <ul>
-              <li><a href="https://www.theguardian.com/us-news/2026/sep/30/pentagon-formal-withdrawal-troops-iraq" target="_blank" rel="noopener"><span class="who">The Guardian</span>Pentagon says it has formally completed withdrawal of US troops from Iraq</a></li>
+              <li><a href="https://www.theguardian.com/us-news/2026/sep/30/pennsylvania-reports-fifth-measles-related-death" target="_blank" rel="noopener"><span class="who">The Guardian</span>Pennsylvania reports fifth measles-related death of the year amid outbreak</a></li>
             </ul>
           </div>
           <div class="camp-group">
             <p class="also-head">the center</p>
             <ul>
-              <li><a href="https://www.bbc.co.uk/news/articles/c65ym1dyn92mo?at_medium=RSS&amp;amp;at_campaign=rss" target="_blank" rel="noopener"><span class="who">BBC</span>Last UK and US troops leave Iraq as anti-Islamic State mission ends</a></li>
+              <li><a href="https://thehill.com/policy/healthcare/6121738-pennsylvania-reports-fifth-measles-related-death/" target="_blank" rel="noopener"><span class="who">The Hill</span>Pennsylvania records 5th measles-related death this year</a></li>
+            </ul>
+          </div>
+          <div class="camp-group">
+            <p class="also-head">the right</p>
+            <ul>
+              <li><a href="https://nypost.com/2026/09/30/health/pennsylvania-records-fifth-measles-death-as-country-sees-worst-outbreak-in-35-years/" target="_blank" rel="noopener"><span class="who">New York Post</span>Pennsylvania records fifth measles death as country sees worst outbreak in 35 years</a></li>
+              <li><a href="https://www.washingtonexaminer.com/policy/healthcare/4749509/pennsylvania-fifth-measles-death-us-outbreak/" target="_blank" rel="noopener"><span class="who">Washington Examiner</span>Pennsylvania reports fifth measles death as US outbreak escalates</a></li>
             </ul>
           </div>
           <div class="camp-group">
             <p class="also-head">government-funded outlets</p>
             <ul>
-              <li><a href="https://www.aljazeera.com/news/2026/9/30/pentagon-says-us-troop-withdrawal-from-iraq-is-complete?traffic_source=rss" target="_blank" rel="noopener"><span class="who">Al Jazeera</span>Pentagon says US troop withdrawal from Iraq is complete</a></li>
-              <li><a href="https://www.france24.com/en/video/20260930-mixed-reactions-in-iraq-on-final-day-of-us-led-coalition-withdrawal" target="_blank" rel="noopener"><span class="who">France 24</span>Mixed reactions in Iraq on final day of US-led coalition withdrawal</a></li>
+              <li><a href="https://www.aljazeera.com/news/2026/9/30/pennsylvania-confirms-fifth-measles-associated-death-as-us-outbreak-grows?traffic_source=rss" target="_blank" rel="noopener"><span class="who">Al Jazeera</span>Pennsylvania confirms fifth measles-associated death as US outbreak grows</a></li>
             </ul>
           </div></div>
         </details>
@@ -957,6 +971,99 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
     <section class="section" id="local">
       <h2><span>Local: Gilpin County and the foothills</span></h2>
       
+    <article class="story">
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">Clear Creek High steps off in style for Homecoming Parade</h3>
+          <p class="gist">Before Clear Creek High School could celebrate a football win over the St. Mary&#39;s Pirates Sept. 24, they celebrated with an annual tradition: a parade down the center of Idaho Springs. <span class="gist-credit">Clear Creek Courant</span></p>
+          
+      <p class="spread"><span class="spread-label">Reported by Clear Creek Courant</span></p>
+          
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          
+          
+          
+          
+          
+          
+        <details class="sources">
+          <summary>Sources (1)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">local outlets</p>
+            <ul>
+              <li><a href="https://www.clearcreekcourant.com/news/clear-creek-high-steps-off-in-style-for-homecoming-parade/article_84afb715-f0d1-4f52-845f-1b36b484f87d.html" target="_blank" rel="noopener"><span class="who">Clear Creek Courant</span>Clear Creek High steps off in style for Homecoming Parade</a></li>
+            </ul>
+          </div></div>
+        </details>
+        </div>
+      </details>
+    </article>
+    <article class="story">
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">Senior health event draws professionals, community together</h3>
+          
+          
+      <p class="spread"><span class="spread-label">Reported by Clear Creek Courant</span></p>
+          
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          
+          
+          
+          
+          
+          
+        <details class="sources">
+          <summary>Sources (1)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">local outlets</p>
+            <ul>
+              <li><a href="https://www.clearcreekcourant.com/community/senior-health-event-draws-professionals-community-together/article_dcab0acd-cf94-4153-997e-cf86f2f0ad51.html" target="_blank" rel="noopener"><span class="who">Clear Creek Courant</span>Senior health event draws professionals, community together</a></li>
+            </ul>
+          </div></div>
+        </details>
+        </div>
+      </details>
+    </article>
+    <article class="story">
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">Idaho Springs skate park celebrates first anniversary</h3>
+          
+          
+      <p class="spread"><span class="spread-label">Reported by Clear Creek Courant</span></p>
+          
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          
+          
+          
+          
+          
+          
+        <details class="sources">
+          <summary>Sources (1)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">local outlets</p>
+            <ul>
+              <li><a href="https://www.clearcreekcourant.com/news/idaho-springs-skate-park-celebrates-first-anniversary/article_dd899e4b-207e-499f-b8db-fc33540c6ef7.html" target="_blank" rel="noopener"><span class="who">Clear Creek Courant</span>Idaho Springs skate park celebrates first anniversary</a></li>
+            </ul>
+          </div></div>
+        </details>
+        </div>
+      </details>
+    </article>
     <article class="story">
       <details class="story-more">
         <summary>
@@ -1068,12 +1175,12 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
     <article class="story">
       <details class="story-more">
         <summary>
-          <h3 class="headline">The Cornell rape allegations and lawsuit, explained</h3>
-          <p class="gist">A New York prosecutor has reopened an investigation into gang rape allegations at a Cornell University fraternity in response to a lawsuit filed by a woman who says she was sexually assaulted in 2024 by seven students after being plied with alcohol and drugs. <span class="gist-credit">France 24</span></p>
+          <h3 class="headline">Israel PM says pilot of rerouted flight tried to crash plane</h3>
+          <p class="gist">A flight from Dubai to Tel Aviv was diverted to Saudi Arabia on Wednesday for an emergency landing after a &quot;brawl&quot; between the pilots. <span class="gist-credit">Breitbart</span></p>
           
-      <p class="spread" aria-label="Covered by 4 outlets: center, government-funded, independent">
-        <span class="spread-label">Covered by 4 outlets</span>
-        <span class="chips"><span class="chip" aria-hidden="true">Left</span><span class="chip on" aria-hidden="true">Center</span><span class="chip" aria-hidden="true">Right</span><span class="chip on" aria-hidden="true">Government-funded</span><span class="chip on" aria-hidden="true">Independent</span></span>
+      <p class="spread" aria-label="Covered by 5 outlets: right, government-funded">
+        <span class="spread-label">Covered by 5 outlets</span>
+        <span class="chips"><span class="chip" aria-hidden="true">Left</span><span class="chip" aria-hidden="true">Center</span><span class="chip on" aria-hidden="true">Right</span><span class="chip on" aria-hidden="true">Government-funded</span><span class="chip" aria-hidden="true">Independent</span></span>
       </p>
           
           
@@ -1083,40 +1190,29 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
           
           
         <div class="account">
-          <p>The woman alleges she was drugged and raped at a fraternity house at the university two years ago. <span class="gist-credit">BBC</span> A criminal investigation into allegations that a Cornell University student was gang raped by seven fraternity members in 2024 is fueling a new push by House Democratic women to strengthen federal protections against sexual violence on college campuses. <span class="gist-credit">Axios</span> A New York prosecutor announced Monday that he was reopening an investigation of the alleged 2024 gang-rape of a student at a Cornell University fraternity house after a weekend of outcry from public figures. <span class="gist-credit">The 19th</span></p>
-          <p>Why it matters: The Democratic Women&#39;s Caucus is calling on congressional Republicans and the Trump administration to strengthen Title IX protections, arguing that the administration&#39;s changes to the civil rights law could leave students more vulnerable. <span class="gist-credit">Axios</span> Lawyers for the student, known as Jane Doe, filed a civil lawsuit earlier this month against the university and the alleged perpetrators, known online as the &quot;Cornell seven.&quot; <span class="gist-credit">The 19th</span></p>
+          <p>Flydubai flight diverts to Saudi Arabia after cockpit emergency, as Netanyahu alleges a crash attempt. <span class="gist-credit">Al Jazeera</span> A Flydubai service from the UAE to Israel made an emergency landing after the copilot stabbed the captain. <span class="gist-credit">Deutsche Welle</span> The Boeing 737 was reportedly carrying 174 passengers, including 27 children. <span class="gist-credit">RT</span></p>
+          <p>Eyewitnesses said he attempted to crash the plane before he was subdued by passengers. <span class="gist-credit">Deutsche Welle</span> Passengers gave a similar account of the incident on board, describing a fight for control after the plane suddenly fell, losing around 17,000 feet of altitude in the span of a minute, according to the Flightradar24 website. <span class="gist-credit">France 24</span> About two hours into the flight, the aircraft transmitted emergency signals, including a code indicating possible hijacking, according to flight-tracking service Flightradar24. <span class="gist-credit">RT</span></p>
         </div>
           
           
           
-        <div class="block block-framing">
-          <h4>Same thing, different words</h4>
-          <dl class="framing">
-            <dt>investigations</dt>
-            <dd><span class="who">the center</span> <b>investigation</b><span class="sep"></span><span class="who">government-funded outlets</span> <b>investigation</b> <b>probe</b><span class="sep"></span><span class="who">independent outlets</span> <b>investigation</b></dd>
-          </dl>
-        </div>
           
         <details class="sources">
-          <summary>Sources (4)</summary>
+          <summary>Sources (5)</summary>
           <div class="original-body">
           <div class="camp-group">
-            <p class="also-head">the center</p>
+            <p class="also-head">the right</p>
             <ul>
-              <li><a href="https://www.bbc.co.uk/news/articles/cmpq0r1ljpqwo?at_medium=RSS&amp;amp;at_campaign=rss" target="_blank" rel="noopener"><span class="who">BBC</span>What we know about Cornell University frat house rape investigation</a></li>
-              <li><a href="https://www.axios.com/2026/09/30/cornell-rape-allegations-house-democratic-women-title-ix" target="_blank" rel="noopener"><span class="who">Axios</span>Exclusive: Cornell rape allegations fuel House Democratic women&#39;s Title IX push</a></li>
+              <li><a href="https://www.breitbart.com/europe/2026/09/30/israel-bound-flydubai-flight-diverted-to-saudi-arabia-after-brawl-between-pilots/" target="_blank" rel="noopener"><span class="who">Breitbart</span>Update: Israel-Bound Flydubai Flight Diverted to Saudi Arabia After Attempted Hijacking</a></li>
             </ul>
           </div>
           <div class="camp-group">
             <p class="also-head">government-funded outlets</p>
             <ul>
-              <li><a href="https://www.france24.com/en/video/20260930-prosecutor-reopens-probe-into-cornell-gang-rape-allegations" target="_blank" rel="noopener"><span class="who">France 24</span>Prosecutor reopens probe into Cornell gang rape allegations</a></li>
-            </ul>
-          </div>
-          <div class="camp-group">
-            <p class="also-head">independent outlets</p>
-            <ul>
-              <li><a href="https://19thnews.org/2026/09/cornell-fraternity-rape-allegations-lawsuit/" target="_blank" rel="noopener"><span class="who">The 19th</span>The Cornell rape allegations and lawsuit, explained</a></li>
+              <li><a href="https://www.aljazeera.com/news/2026/9/30/flydubai-fz1073-timeline-how-the-israel-bound-flight-emergency-unfolded?traffic_source=rss" target="_blank" rel="noopener"><span class="who">Al Jazeera</span>Flydubai FZ1073 timeline: How the Israel-bound flight emergency unfolded</a></li>
+              <li><a href="https://www.rt.com/news/646469-russian-ukrainian-pilots-brawl/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=RSS" target="_blank" rel="noopener"><span class="who">RT</span>Israel-bound flight diverted after death-dive and pilot stabbing: As it happened</a></li>
+              <li><a href="https://www.dw.com/en/flydubai-pilot-investigated-over-possible-attempt-to-crash-tel-aviv-bound-flight/a-79484761?maca=en-rss-en-all-1573-rdf" target="_blank" rel="noopener"><span class="who">Deutsche Welle</span>Flydubai pilot investigated over possible attempt to crash Tel Aviv-bound flight</a></li>
+              <li><a href="https://www.france24.com/en/video/20260930-israel-pm-says-pilot-of-rerouted-flight-tried-to-crash-plane" target="_blank" rel="noopener"><span class="who">France 24</span>Israel PM says pilot of rerouted flight tried to crash plane</a></li>
             </ul>
           </div></div>
         </details>
@@ -1126,12 +1222,12 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
     <article class="story">
       <details class="story-more">
         <summary>
-          <h3 class="headline">Forced landing of Israel-bound flight: What we know so far</h3>
-          <p class="gist">As the plane went into a spin and began to fall, a passenger and crew members got into the cockpit, subdued the pilot and diverted the flight to land in Saudi Arabia, Israel&#39;s leader says. <span class="gist-credit">NPR</span></p>
+          <h3 class="headline">Paramount takeover of Warner Bros. Discovery clears legal hurdle</h3>
+          <p class="gist">A federal judge on Wednesday approved a settlement clearing Paramount&#39;s takeover of Warner Bros. <span class="gist-credit">France 24</span></p>
           
-      <p class="spread" aria-label="Covered by 4 outlets: left, government-funded">
-        <span class="spread-label">Covered by 4 outlets</span>
-        <span class="chips"><span class="chip on" aria-hidden="true">Left</span><span class="chip" aria-hidden="true">Center</span><span class="chip" aria-hidden="true">Right</span><span class="chip on" aria-hidden="true">Government-funded</span><span class="chip" aria-hidden="true">Independent</span></span>
+      <p class="spread" aria-label="Covered by 3 outlets: right, government-funded">
+        <span class="spread-label">Covered by 3 outlets</span>
+        <span class="chips"><span class="chip" aria-hidden="true">Left</span><span class="chip" aria-hidden="true">Center</span><span class="chip on" aria-hidden="true">Right</span><span class="chip on" aria-hidden="true">Government-funded</span><span class="chip" aria-hidden="true">Independent</span></span>
       </p>
           
           
@@ -1141,28 +1237,79 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
           
           
         <div class="account">
-          <p>Israel&#39;s prime minister said one of the pilots stabbed the other and then tried to crash the plane. <span class="gist-credit">Al Jazeera</span> A Flydubai service from the UAE to Israel made an emergency landing after one pilot stabbed another. <span class="gist-credit">Deutsche Welle</span></p>
-          <p>Officials are investigating whether this was a deliberate attempt to crash the plane. <span class="gist-credit">Deutsche Welle</span> Passengers gave a similar account of the incident on board, describing a fight for control after the plane suddenly fell, losing around 17,000 feet of altitude in the span of a minute, according to the Flightradar24 website. <span class="gist-credit">France 24</span></p>
+          <p>The deal could now be finalized as early as next week. <span class="gist-credit">Just the News</span> Mammoth deal has raised questions about corporate consolidation and editorial independence in media. <span class="gist-credit">Al Jazeera</span></p>
+          <p>Discovery after 12 US states challenged the deal on antitrust grounds. <span class="gist-credit">France 24</span></p>
         </div>
           
           
           
           
         <details class="sources">
-          <summary>Sources (4)</summary>
+          <summary>Sources (3)</summary>
           <div class="original-body">
           <div class="camp-group">
-            <p class="also-head">the left</p>
+            <p class="also-head">the right</p>
             <ul>
-              <li><a href="https://www.npr.org/2026/09/30/nx-s1-5985806/flydubai-flight-dubai-tel-aviv-israel" target="_blank" rel="noopener"><span class="who">NPR</span>A pilot stabs the other pilot and tries to crash their flight to Tel Aviv, Israel says</a></li>
+              <li><a href="https://justthenews.com/government/courts-law/judge-approves-paramount-settlement-states-clearing-way-warner-bros-merger?utm_source=justthenews.com&amp;amp;utm_medium=feed&amp;amp;utm_campaign=external-news-aggregators" target="_blank" rel="noopener"><span class="who">Just the News</span>Judge approves Paramount settlement with states, clearing way for Warner Bros merger</a></li>
             </ul>
           </div>
           <div class="camp-group">
             <p class="also-head">government-funded outlets</p>
             <ul>
-              <li><a href="https://www.aljazeera.com/news/2026/9/30/what-happened-on-diverted-flydubai-flight-from-dubai-to-tel-aviv?traffic_source=rss" target="_blank" rel="noopener"><span class="who">Al Jazeera</span>What happened on diverted Flydubai flight from Dubai to Tel Aviv?</a></li>
-              <li><a href="https://www.dw.com/en/flydubai-pilot-investigated-over-possible-attempt-to-crash-tel-aviv-bound-flight/a-79484761?maca=en-rss-en-all-1573-rdf" target="_blank" rel="noopener"><span class="who">Deutsche Welle</span>Flydubai pilot investigated over possible attempt to crash Tel Aviv-bound flight</a></li>
-              <li><a href="https://www.france24.com/en/video/20260930-israel-pm-says-pilot-of-rerouted-flight-tried-to-crash-plane" target="_blank" rel="noopener"><span class="who">France 24</span>Israel PM says pilot of rerouted flight tried to crash plane</a></li>
+              <li><a href="https://www.aljazeera.com/news/2026/9/30/us-judge-approves-settlement-allowing-paramount-to-acquire-warner-bros?traffic_source=rss" target="_blank" rel="noopener"><span class="who">Al Jazeera</span>US judge approves settlement allowing Paramount to acquire Warner Bros</a></li>
+              <li><a href="https://www.france24.com/en/americas/20260930-paramount-takeover-of-warner-bros-discovery-clears-legal-hurdle" target="_blank" rel="noopener"><span class="who">France 24</span>Paramount takeover of Warner Bros. Discovery clears legal hurdle</a></li>
+            </ul>
+          </div></div>
+        </details>
+        </div>
+      </details>
+    </article>
+    <article class="story">
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">Fed watchdog clears former chair Powell in renovation probe</h3>
+          <p class="gist">A Federal Reserve watchdog found no criminal wrongdoing by former chair Jerome Powell in its investigation of the central bank&#39;s expensive headquarters renovation, according to a report released on Wednesday. <span class="gist-credit">Axios</span></p>
+          
+      <p class="spread" aria-label="Covered by 3 outlets: center, government-funded">
+        <span class="spread-label">Covered by 3 outlets</span>
+        <span class="chips"><span class="chip" aria-hidden="true">Left</span><span class="chip on" aria-hidden="true">Center</span><span class="chip" aria-hidden="true">Right</span><span class="chip on" aria-hidden="true">Government-funded</span><span class="chip" aria-hidden="true">Independent</span></span>
+      </p>
+          
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          
+          
+        <div class="account">
+          <p>The Federal Reserve&#39;s watchdog on Wednesday found no grounds for a criminal referral over a roughly $1 billion cost overrun on renovations to the central bank&#39;s Washington buildings, while faulting project oversight. <span class="gist-credit">France 24</span> Why it matters: The findings effectively clear Powell after the Justice Department opened a criminal investigation into then-Fed chair, which became public in January. <span class="gist-credit">Axios</span> Trump to renew his call for former Fed chief Jerome Powell to resign. <span class="gist-credit">France 24</span></p>
+          <p>The watchdog added that it &quot;did not identify administrative misconduct during our evaluation.&quot; <span class="gist-credit">Axios</span> Yes, but: While the report clears Powell, it faults Fed management and oversight of the project as construction costs more than doubled to $2.5 billion. <span class="gist-credit">Axios</span> Flashback: The renovation became a flashpoint in President Trump&#39;s broader campaign against Powell and the Fed. <span class="gist-credit">Axios</span></p>
+        </div>
+          
+          
+          
+        <div class="block block-framing">
+          <h4>Same thing, different words</h4>
+          <dl class="framing">
+            <dt>investigations</dt>
+            <dd><span class="who">the center</span> <b>investigation</b> <b>probe</b><span class="sep"></span><span class="who">government-funded outlets</span> <b>oversight</b></dd>
+          </dl>
+        </div>
+          
+        <details class="sources">
+          <summary>Sources (3)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">the center</p>
+            <ul>
+              <li><a href="https://www.axios.com/2026/09/30/fed-powell-ig-building" target="_blank" rel="noopener"><span class="who">Axios</span>Fed watchdog clears former chair Powell in renovation probe</a></li>
+            </ul>
+          </div>
+          <div class="camp-group">
+            <p class="also-head">government-funded outlets</p>
+            <ul>
+              <li><a href="https://www.aljazeera.com/news/2026/9/30/us-fed-watchdog-finds-no-criminal-wrongdoing-in-powell-era-renovation-costs?traffic_source=rss" target="_blank" rel="noopener"><span class="who">Al Jazeera</span>US Fed watchdog finds no criminal wrongdoing in Powell-era renovation costs</a></li>
+              <li><a href="https://www.france24.com/en/americas/20260930-trump-renews-calls-for-former-federal-reserve-chief-jerome-powell-resignation" target="_blank" rel="noopener"><span class="who">France 24</span>Trump renews calls for former Federal Reserve chief Jerome Powell&#39;s resignation</a></li>
             </ul>
           </div></div>
         </details>
@@ -1207,56 +1354,6 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
             <p class="also-head">independent outlets</p>
             <ul>
               <li><a href="https://insideclimatenews.org/news/30092026/europe-heat-wave-deaths/" target="_blank" rel="noopener"><span class="who">Inside Climate News</span>Mass Heat Wave Deaths in Europe Show Climate Extremes Are Outpacing Adaptation Efforts</a></li>
-            </ul>
-          </div></div>
-        </details>
-        </div>
-      </details>
-    </article>
-    <article class="story">
-      <details class="story-more">
-        <summary>
-          <h3 class="headline">UK-France &#39;one in, one out&#39; migrant exchange deal is scrapped</h3>
-          <p class="gist">A British-French agreement aimed at reducing the number of people trying to cross the English Channel in small boats has been scrapped, London said Wednesday. The pilot programme was intended to break the business model of &quot;people smugglers&quot; by exchanging undocumented migrants who had made the crossing for people who legally applied for asylum. <span class="gist-credit">France 24</span></p>
-          
-      <p class="spread" aria-label="Covered by 2 outlets: center, government-funded">
-        <span class="spread-label">Covered by 2 outlets</span>
-        <span class="chips"><span class="chip" aria-hidden="true">Left</span><span class="chip on" aria-hidden="true">Center</span><span class="chip" aria-hidden="true">Right</span><span class="chip on" aria-hidden="true">Government-funded</span><span class="chip" aria-hidden="true">Independent</span></span>
-      </p>
-          
-          
-          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
-        </summary>
-        <div class="more-body">
-          
-          
-        <div class="account">
-          <p>Some 1,500 people have been removed to France since the scheme began just over a year ago. <span class="gist-credit">BBC</span></p>
-        </div>
-          
-          
-          
-        <div class="block block-framing">
-          <h4>Same thing, different words</h4>
-          <dl class="framing">
-            <dt>immigrants</dt>
-            <dd><span class="who">the center</span> <b>migrant</b><span class="sep"></span><span class="who">government-funded outlets</span> <b>undocumented</b> <b>migrant</b></dd>
-          </dl>
-        </div>
-          
-        <details class="sources">
-          <summary>Sources (2)</summary>
-          <div class="original-body">
-          <div class="camp-group">
-            <p class="also-head">the center</p>
-            <ul>
-              <li><a href="https://www.bbc.co.uk/news/articles/c64gvnv4eqylo?at_medium=RSS&amp;amp;at_campaign=rss" target="_blank" rel="noopener"><span class="who">BBC</span>UK-France &#39;one in, one out&#39; migrant scheme scrapped</a></li>
-            </ul>
-          </div>
-          <div class="camp-group">
-            <p class="also-head">government-funded outlets</p>
-            <ul>
-              <li><a href="https://www.france24.com/en/europe/20260930-uk-france-one-in-one-out-migrant-exchange-deal-is-scrapped" target="_blank" rel="noopener"><span class="who">France 24</span>UK-France &#39;one in, one out&#39; migrant exchange deal is scrapped</a></li>
             </ul>
           </div></div>
         </details>
@@ -1313,48 +1410,56 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
     <article class="story">
       <details class="story-more">
         <summary>
-          <h3 class="headline">U.S. Forces Withdraw From Iraq After 23 Years</h3>
-          <p class="gist">More than two decades after the United States invaded Iraq, American forces have completed their withdrawal from the country, marking the end of the Operation Inherent Resolve mission in Iraq. <span class="gist-credit">The Daily Wire</span></p>
+          <h3 class="headline">Musk returns to Trump world for Pentagon war study</h3>
+          <p class="gist">SpaceX CEO Elon Musk, Anduril Industries founder Palmer Luckey and former House Speaker Newt Gingrich will lead a Pentagon study of the future of warfare dubbed &quot;Project Meridian,&quot; Defense Secretary Pete Hegseth announced Wednesday. <span class="gist-credit">Axios</span></p>
           
-      <p class="spread" aria-label="Covered by 4 outlets: left, right, government-funded">
-        <span class="spread-label">Covered by 4 outlets</span>
-        <span class="chips"><span class="chip on" aria-hidden="true">Left</span><span class="chip" aria-hidden="true">Center</span><span class="chip on" aria-hidden="true">Right</span><span class="chip on" aria-hidden="true">Government-funded</span><span class="chip" aria-hidden="true">Independent</span></span>
+      <p class="spread" aria-label="Covered by 5 outlets: left, center, right">
+        <span class="spread-label">Covered by 5 outlets</span>
+        <span class="chips"><span class="chip on" aria-hidden="true">Left</span><span class="chip on" aria-hidden="true">Center</span><span class="chip on" aria-hidden="true">Right</span><span class="chip" aria-hidden="true">Government-funded</span><span class="chip" aria-hidden="true">Independent</span></span>
       </p>
           
           
           <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
         </summary>
         <div class="more-body">
-          <p class="sure sure-confirmed"><span class="sure-label">How sure is this?</span> Confirmed by 4 outlets across the left and right.</p>
+          <p class="sure sure-confirmed"><span class="sure-label">How sure is this?</span> Confirmed by 5 outlets across the left, center and right.</p>
           
         <div class="account">
-          <p>The U.S. has withdrawn its final troops from Iraq, leaving its defense future uncertain. <span class="gist-credit">NPR</span> Trump celebrated the withdrawal of US troops from Iraq on Wednesday and insisting that his war with Iran won&#39;t drag on for decades. <span class="gist-credit">New York Post</span> Iraq marks US troop withdrawal with &#39;Sovereignty Days&#39;, symbolising a shift after decades of foreign military presence. <span class="gist-credit">Al Jazeera</span></p>
-          <p>U.S. forces will continue the counter-ISIS mission in Syria alongside coalition partners and the Syrian government. <span class="gist-credit">The Daily Wire</span> &quot;Job well done to the tens of thousands of American service members, diplomats, and civilian personnel who answered the call in Iraq,&quot; Adm. <span class="gist-credit">The Daily Wire</span></p>
+          <p>A year after his tenure at Doge, the SpaceX CEO is back in the Trump administration&#39;s good graces Pete Hegseth announced on Wednesday that Elon Musk will co-lead a government project to study the future of warfare, marking the SpaceX CEO&#39;s first return to government since he ran the chaotic, so-called &quot;department of government efficiency&quot;, or Doge. <span class="gist-credit">The Guardian</span> Why it matters: It&#39;s Musk&#39;s first official role advising the Trump administration since his very public feud last year with President Trump after departing DOGE. <span class="gist-credit">Axios</span> Hegseth, during a &quot; State of the Force &quot; address Wednesday at the Marine Corps Base in Quantico, Virginia, announced &quot; Project Meridian,&quot; which is aimed at identifying the weapons and technologies the military may require down the road. <span class="gist-credit">The Daily Beast</span></p>
+          <p>War Secretary Pete Hegseth announced Wednesday that Musk will co-lead Project Meridian, a new Pentagon initiative tasked with looking years and even decades ahead to identify emerging domains of warfare and the capabilities the U.S. military will need to dominate them. <span class="gist-credit">Fox News</span> He has since reconciled with Trump. <span class="gist-credit">Axios</span></p>
         </div>
           
           
           
+        <div class="block block-framing">
+          <h4>Same thing, different words</h4>
+          <dl class="framing">
+            <dt>a government</dt>
+            <dd><span class="who">the left</span> <b>government</b> <b>administration</b><span class="sep"></span><span class="who">the center</span> <b>administration</b><span class="sep"></span><span class="who">the right</span> <b>administration</b></dd>
+          </dl>
+        </div>
           
         <details class="sources">
-          <summary>Sources (4)</summary>
+          <summary>Sources (5)</summary>
           <div class="original-body">
           <div class="camp-group">
             <p class="also-head">the left</p>
             <ul>
-              <li><a href="https://www.npr.org/2026/09/30/g-s1-145604/up-first-newsletter-iraq-us-troops-scotus-deportations-trump-ai" target="_blank" rel="noopener"><span class="who">NPR</span>U.S. forces exit Iraq amid Iran war.</a></li>
+              <li><a href="https://www.thedailybeast.com/pete-hegseth-calls-up-draft-dodger-83-to-chart-militarys-future/" target="_blank" rel="noopener"><span class="who">The Daily Beast</span>Hegseth Calls Up Draft-Dodger, 83, to Chart Military&#39;s Future</a></li>
+              <li><a href="https://www.theguardian.com/technology/2026/sep/30/pete-hegseth-elon-musk-taskforce-warfare" target="_blank" rel="noopener"><span class="who">The Guardian</span>Pete Hegseth appoints Elon Musk to US taskforce on future of warfare</a></li>
+            </ul>
+          </div>
+          <div class="camp-group">
+            <p class="also-head">the center</p>
+            <ul>
+              <li><a href="https://thehill.com/policy/defense/6121765-pete-hegseth-takeaways-command-warfare-base/" target="_blank" rel="noopener"><span class="who">The Hill</span>7 takeaways from Hegseth&#39;s address to officers: Warfare&#39;s future, faith and a new base</a></li>
+              <li><a href="https://www.axios.com/2026/09/30/pentagon-hegseth-musk-gingrich-anduril" target="_blank" rel="noopener"><span class="who">Axios</span>Musk returns to Trump world for Pentagon war study</a></li>
             </ul>
           </div>
           <div class="camp-group">
             <p class="also-head">the right</p>
             <ul>
-              <li><a href="https://nypost.com/2026/09/30/us-news/trump-celebrates-departure-of-last-us-forces-from-iraq-23-years-after-invasion/" target="_blank" rel="noopener"><span class="who">New York Post</span>Trump celebrates departure of last US forces from Iraq 23 years after invasion: &#39;We&#39;re getting the hell out&#39;</a></li>
-              <li><a href="https://www.dailywire.com/news/u-s-forces-withdraw-from-iraq-after-23-years" target="_blank" rel="noopener"><span class="who">The Daily Wire</span>U.S. Forces Withdraw From Iraq After 23 Years</a></li>
-            </ul>
-          </div>
-          <div class="camp-group">
-            <p class="also-head">government-funded outlets</p>
-            <ul>
-              <li><a href="https://www.aljazeera.com/news/2026/9/30/how-does-iraqs-security-change-after-us-forces-withdraw?traffic_source=rss" target="_blank" rel="noopener"><span class="who">Al Jazeera</span>How does Iraq&#39;s security change after US forces withdraw?</a></li>
+              <li><a href="https://www.foxnews.com/politics/elon-musk-lands-new-trump-admin-role-shaping-future-american-warfare" target="_blank" rel="noopener"><span class="who">Fox News</span>Elon Musk lands new Trump administration role shaping future of American warfare</a></li>
             </ul>
           </div></div>
         </details>
@@ -1413,8 +1518,8 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
     <article class="story">
       <details class="story-more">
         <summary>
-          <h3 class="headline">Democrats block bill restricting lawmakers from trading stocks</h3>
-          <p class="gist">Senate Democrats on Wednesday blocked a bill sponsored by vulnerable GOP incumbent Sen. Pete Ricketts (Neb.) <span class="gist-credit">The Hill</span></p>
+          <h3 class="headline">Jack Smith faces new lawsuit over congressional phone records</h3>
+          <p class="gist">Smith obtained the phone records of several senators through a subpoena and secured a non-disclosure order from the court preventing the mobile carrier from notifying the lawmakers affected. <span class="gist-credit">Just the News</span></p>
           
       <p class="spread" aria-label="Covered by 3 outlets: left, center, right">
         <span class="spread-label">Covered by 3 outlets</span>
@@ -1428,8 +1533,8 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
           <p class="sure sure-confirmed"><span class="sure-label">How sure is this?</span> Confirmed by 3 outlets across the left, center and right.</p>
           
         <div class="account">
-          <p>A Republican measure to limit, but not bar, congressional stock trading faltered in the Senate as Democrats thwarted a G.O.P. <span class="gist-credit">The New York Times</span> The Ratepayer Protection Act, sponsored by Sen. Jon Husted (R-OH), fell three votes short of the 60 needed to overcome a filibuster and begin debate. <span class="gist-credit">Washington Examiner</span> All but four Democrats opposed the measure, despite the overwhelming support it received in the House earlier this month. <span class="gist-credit">Washington Examiner</span></p>
-          <p>The Democrats who voted in favor were Sens. <span class="gist-credit">Washington Examiner</span> The bill would require state regulators to consider standards for new data centers and hyperscalers that consume over 100 megawatts of electricity to cover the costs of new generation, transmission, and infrastructure upgrades. <span class="gist-credit">Washington Examiner</span> However, Democrats have argued the measure is toothless because it does not set a federal standard and is voluntary. <span class="gist-credit">Washington Examiner</span></p>
+          <p>It was a bit tense watching Jack Smith get grilled before the Senate Judiciary Committee on Tuesday. <span class="gist-credit">Salon</span> What they&#39;re saying: &quot;Through his Arctic Frost witch hunt that targeted conservatives across America and even the President of the United States, Jack Smith perpetrated one of the worst abuses of government power in our nation&#39;s history,&quot; Blackburn said. <span class="gist-credit">Axios</span> During his testimony, the former special counsel defended himself against accusations of partisanship in his failed effort to prosecute. <span class="gist-credit">Salon</span></p>
+          <p>&quot;This lawsuit is solely about holding Mr. Smith accountable and ensuring that our nation&#39;s justice system can never again be weaponized against the American people. <span class="gist-credit">Axios</span> The disruption of the current era has made the 2024 presidential campaign feel like it was a decade ago, but it&#39;s important to recall that Smith secured indictments on Trump&#39;s role in the Jan. <span class="gist-credit">Salon</span> 6 attack on the U.S. Capitol, and the other on his alleged mishandling of government records, including the classified documents he had stored at Mar-a-Lago. <span class="gist-credit">Salon</span></p>
         </div>
           
           
@@ -1441,19 +1546,19 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
           <div class="camp-group">
             <p class="also-head">the left</p>
             <ul>
-              <li><a href="https://www.nytimes.com/2026/09/30/us/politics/democrats-block-stock-trading-bill.html" target="_blank" rel="noopener"><span class="who">The New York Times</span>Democrats Block Stock-Trading Bill, Denying the G.O.P. a Pre-Midterm Win</a></li>
+              <li><a href="https://www.salon.com/2026/09/30/we-all-need-jack-smiths-defiance-right-now/" target="_blank" rel="noopener"><span class="who">Salon</span>We all need Jack Smith&#39;s defiance right now</a></li>
             </ul>
           </div>
           <div class="camp-group">
             <p class="also-head">the center</p>
             <ul>
-              <li><a href="https://thehill.com/homenews/senate/6120528-senate-blocks-gop-stock-bill/" target="_blank" rel="noopener"><span class="who">The Hill</span>Democrats block bill restricting lawmakers from trading stocks</a></li>
+              <li><a href="https://www.axios.com/2026/09/30/jack-smith-arctic-frost-phone-records-lawsuit-blackburn" target="_blank" rel="noopener"><span class="who">Axios</span>Jack Smith faces new lawsuit over congressional phone records</a></li>
             </ul>
           </div>
           <div class="camp-group">
             <p class="also-head">the right</p>
             <ul>
-              <li><a href="https://www.washingtonexaminer.com/news/senate/4748289/democrats-block-jon-husted-data-center-bill-ratepayer-protection-act/" target="_blank" rel="noopener"><span class="who">Washington Examiner</span>Democrats deny GOP a midterm win by blocking Husted data center bill</a></li>
+              <li><a href="https://justthenews.com/government/courts-law/blackburn-sues-jack-smith-accessing-her-phone-records?utm_source=justthenews.com&amp;amp;utm_medium=feed&amp;amp;utm_campaign=external-news-aggregators" target="_blank" rel="noopener"><span class="who">Just the News</span>Tennessee Sen. Blackburn sues ex-prosecutor Jack Smith for accessing her phone records</a></li>
             </ul>
           </div></div>
         </details>
@@ -1463,61 +1568,11 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
     <article class="story">
       <details class="story-more">
         <summary>
-          <h3 class="headline">Rural MAHA Followers Say Trump Health Policies Haven&#39;t Reached Their Communities</h3>
-          <p class="gist">A new poll from the Associated Press and KFF shows that while half of rural voters support the Trump administration&#39;s Make America Healthy Again policies, most also say those policies have not benefited their communities. <span class="gist-credit">Mother Jones</span></p>
+          <h3 class="headline">Kristi Noem, former Trump homeland security chief, files for divorce</h3>
+          <p class="gist">Former Department of Homeland Security (DHS) secretary Kristi Noem has filed for divorce from her husband Bryon Noem following months of speculation about the couple&#39;s marriage. <span class="gist-credit">Breitbart</span></p>
           
-      <p class="spread" aria-label="Covered by 3 outlets: left, independent">
-        <span class="spread-label">Covered by 3 outlets</span>
-        <span class="chips"><span class="chip on" aria-hidden="true">Left</span><span class="chip" aria-hidden="true">Center</span><span class="chip" aria-hidden="true">Right</span><span class="chip" aria-hidden="true">Government-funded</span><span class="chip on" aria-hidden="true">Independent</span></span>
-      </p>
-          <p class="flag-line">Only the left is running this</p>
-          
-          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
-        </summary>
-        <div class="more-body">
-          
-          
-        <div class="account">
-          <p>Aaron Schwartz / Aaron Schwartz, Getty Images. <span class="gist-credit">The Daily Beast</span> About 7 out of 10 rural voters went for Donald Trump in the 2024 election. <span class="gist-credit">Mother Jones</span> About 8 in 10 rural voters, an important voting bloc for Trump and fellow Republicans in recent elections, said the Trump administration&#39;s policies have had a negative effect or no impact on the health of people where they live. <span class="gist-credit">KFF Health News</span></p>
-          <p>Rural voters were a crucial voting bloc for Donald. <span class="gist-credit">The Daily Beast</span> Most MAHA supporters, 68%, also feel this way, according to the national survey of more than 2,000 rural registered voters. <span class="gist-credit">KFF Health News</span> 68 percent of those who self-identified as MAHA supporters agreed: while they support Health Secretary Robert F. <span class="gist-credit">Mother Jones</span></p>
-        </div>
-          
-          
-      <aside class="verdict verdict-one-sided">
-        <p class="verdict-kicker">Worth knowing about this coverage</p>
-        <p class="verdict-title">Only the left is running this</p>
-        <ul><li>reported by Mother Jones, The Daily Beast, and no outlet from the other side</li></ul>
-      </aside>
-          
-          
-        <details class="sources">
-          <summary>Sources (3)</summary>
-          <div class="original-body">
-          <div class="camp-group">
-            <p class="also-head">the left</p>
-            <ul>
-              <li><a href="https://www.motherjones.com/politics/2026/09/rural-voters-like-maha-they-just-dont-think-its-working/" target="_blank" rel="noopener"><span class="who">Mother Jones</span>Rural Voters Like MAHA. They Just Don&#39;t Think It&#39;s Working.</a></li>
-              <li><a href="https://www.thedailybeast.com/rural-maha-voters-turn-on-trump-and-give-grim-diagnosis/" target="_blank" rel="noopener"><span class="who">The Daily Beast</span>Rural MAHA Voters Turn on Trump and Give Grim Diagnosis</a></li>
-            </ul>
-          </div>
-          <div class="camp-group">
-            <p class="also-head">independent outlets</p>
-            <ul>
-              <li><a href="https://kffhealthnews.org/rural-health/kff-ap-poll-rural-voters-maha-make-america-healthy-again-local-impact-midterms/" target="_blank" rel="noopener"><span class="who">KFF Health News</span>Rural MAHA Followers Say Trump Health Policies Haven&#39;t Reached Their Communities</a></li>
-            </ul>
-          </div></div>
-        </details>
-        </div>
-      </details>
-    </article>
-    <article class="story">
-      <details class="story-more">
-        <summary>
-          <h3 class="headline">US immigration judge allows cold war-era law to deport Wisconsin mosque&#39;s president</h3>
-          <p class="gist">An immigration judge has ruled that the U.S. government can deport the leader of Wisconsin&#39;s largest mosque on national security grounds based on his pro-Palestinian advocacy and past convictions in Israel. <span class="gist-credit">Washington Examiner</span></p>
-          
-      <p class="spread" aria-label="Covered by 3 outlets: left, right">
-        <span class="spread-label">Covered by 3 outlets</span>
+      <p class="spread" aria-label="Covered by 4 outlets: left, right">
+        <span class="spread-label">Covered by 4 outlets</span>
         <span class="chips"><span class="chip on" aria-hidden="true">Left</span><span class="chip" aria-hidden="true">Center</span><span class="chip on" aria-hidden="true">Right</span><span class="chip" aria-hidden="true">Government-funded</span><span class="chip" aria-hidden="true">Independent</span></span>
       </p>
           
@@ -1525,37 +1580,30 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
           <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
         </summary>
         <div class="more-body">
-          <p class="sure sure-confirmed"><span class="sure-label">How sure is this?</span> Confirmed by 3 outlets across the left and right.</p>
+          <p class="sure sure-confirmed"><span class="sure-label">How sure is this?</span> Confirmed by 4 outlets across the left and right.</p>
           
         <div class="account">
-          <p>When one track failed, Trump administration rushed immigration case of Palestine rights advocate Salah Sarsour. <span class="gist-credit">The Guardian</span> Sasour was born in the Israeli-occupied West Bank and was imprisoned in Israel in 1988 after confessing to throwing a Molotov cocktail and stones at Israeli military personnel. <span class="gist-credit">Just the News</span> On Wednesday, Judge Jayme Salinardi determined that Islamic Society of Milwaukee. <span class="gist-credit">Washington Examiner</span></p>
-          <p>He was also convicted in 1995 of attempting to possess weapons. <span class="gist-credit">Just the News</span> Salah Sarsour, a US permanent resident for nearly three decades, was detained by US Immigration and Customs Enforcement in March. <span class="gist-credit">The Guardian</span> President Salah Sarsour, 53, can be removed from the United States under an immigration provision invoked by Secretary of State Marco Rubio last year. <span class="gist-credit">Washington Examiner</span></p>
+          <p>Noem cites irreconcilable differences in filing that comes after husband Bryon Noem involved in tabloid scandal Kristi Noem, who was fired by Donald. <span class="gist-credit">The Guardian</span></p>
         </div>
           
           
           
-        <div class="block block-framing">
-          <h4>Same thing, different words</h4>
-          <dl class="framing">
-            <dt>a government</dt>
-            <dd><span class="who">the left</span> <b>administration</b><span class="sep"></span><span class="who">the right</span> <b>government</b></dd>
-          </dl>
-        </div>
           
         <details class="sources">
-          <summary>Sources (3)</summary>
+          <summary>Sources (4)</summary>
           <div class="original-body">
           <div class="camp-group">
             <p class="also-head">the left</p>
             <ul>
-              <li><a href="https://www.theguardian.com/us-news/2026/sep/30/salah-sarsour-mosque-president-deportation-wisconsin" target="_blank" rel="noopener"><span class="who">The Guardian</span>US immigration judge allows cold war-era law to deport Wisconsin mosque&#39;s president</a></li>
+              <li><a href="https://www.theguardian.com/us-news/2026/sep/30/kristi-noem-divorce" target="_blank" rel="noopener"><span class="who">The Guardian</span>Kristi Noem, former Trump homeland security chief, files for divorce</a></li>
+              <li><a href="https://www.washingtonpost.com/politics/2026/09/29/former-dhs-secretary-kristi-l-noem-files-divorce/" target="_blank" rel="noopener"><span class="who">The Washington Post</span>Former DHS secretary Kristi L. Noem files for divorce</a></li>
+              <li><a href="https://www.nytimes.com/2026/09/30/us/kristi-noem-divorce-byron-husband.html" target="_blank" rel="noopener"><span class="who">The New York Times</span>Kristi Noem Files for Divorce From Bryon Noem After 34 Years of Marriage</a></li>
             </ul>
           </div>
           <div class="camp-group">
             <p class="also-head">the right</p>
             <ul>
-              <li><a href="https://www.washingtonexaminer.com/policy/immigration/4748450/judge-deport-wisconsin-mosque-leader-national-security-grounds-no-criminal-record/" target="_blank" rel="noopener"><span class="who">Washington Examiner</span>Judge rules US can deport Wisconsin mosque leader over national security</a></li>
-              <li><a href="https://justthenews.com/government/courts-law/us-can-deport-leader-large-mosque-over-national-security-concerns-immigration?utm_source=justthenews.com&amp;amp;utm_medium=feed&amp;amp;utm_campaign=external-news-aggregators" target="_blank" rel="noopener"><span class="who">Just the News</span>US can deport leader of large mosque over national security concerns, immigration judge rules</a></li>
+              <li><a href="https://www.breitbart.com/politics/2026/09/30/court-documents-kristi-noem-filed-for-divorce-following-husband-bryons-reported-cross-dressing/" target="_blank" rel="noopener"><span class="who">Breitbart</span>Court Documents: Kristi Noem Filed for Divorce Following Husband Bryon&#39;s Reported Cross-Dressing</a></li>
             </ul>
           </div></div>
         </details>
@@ -1565,23 +1613,22 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
     <article class="story">
       <details class="story-more">
         <summary>
-          <h3 class="headline">Dems block data center electricity bill, calling it toothless</h3>
-          <p class="gist">Senate Democrats have blocked a bill that seeks to address data center electricity costs, calling it ineffective and &quot;toothless,&quot; though the legislation passed the House with significant bipartisan support. <span class="gist-credit">The Hill</span></p>
+          <h3 class="headline">Trump says &#39;only a Hispanic could survive&#39; fall from White House ballroom</h3>
+          <p class="gist">Trump said during a Hispanic Heritage Month event on Wednesday that only Hispanics could survive a fall from the site of the White House ballroom. <span class="gist-credit">The Hill</span></p>
           
-      <p class="spread" aria-label="Covered by 3 outlets: center, right">
+      <p class="spread" aria-label="Covered by 3 outlets: left, center">
         <span class="spread-label">Covered by 3 outlets</span>
-        <span class="chips"><span class="chip" aria-hidden="true">Left</span><span class="chip on" aria-hidden="true">Center</span><span class="chip on" aria-hidden="true">Right</span><span class="chip" aria-hidden="true">Government-funded</span><span class="chip" aria-hidden="true">Independent</span></span>
+        <span class="chips"><span class="chip on" aria-hidden="true">Left</span><span class="chip on" aria-hidden="true">Center</span><span class="chip" aria-hidden="true">Right</span><span class="chip" aria-hidden="true">Government-funded</span><span class="chip" aria-hidden="true">Independent</span></span>
       </p>
           
           
           <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
         </summary>
         <div class="more-body">
-          <p class="sure sure-confirmed"><span class="sure-label">How sure is this?</span> Confirmed by 3 outlets across the center and right.</p>
+          <p class="sure sure-confirmed"><span class="sure-label">How sure is this?</span> Confirmed by 3 outlets across the left and center.</p>
           
         <div class="account">
-          <p>Democrats blocked a push to tackle one of the key issues driving this midterm election cycle, and may have given a vulnerable Republican a political lifeline in the process. <span class="gist-credit">Fox News</span> The bill&#39;s failure nonetheless gives Republicans a new line of attack against Democrats in the closing weeks of the Nov. <span class="gist-credit">New York Post</span> Republicans&#39; effort to crack down on rising electricity costs caused by the boom in data centers across the country was stifled on Wednesday by Senate Minority Leader Chuck Schumer, D-N.Y., and Democrats, despite cruising through the House in a bipartisan vote. <span class="gist-credit">Fox News</span></p>
-          <p>, and Maggie Hassan, D-N.H., ranks to support the bill. <span class="gist-credit">Fox News</span> The Ratepayer Protection Act, would have created a standard for AI companies and the data centers they run to bear the brunt of electricity costs, an issue that has become a predominant concern for voters this midterm cycle. <span class="gist-credit">Fox News</span> &quot;While Americans are demanding real guardrails on AI and data centers, Republicans are offering a toothless messaging bill. <span class="gist-credit">Fox News</span></p>
+          <p>The president made the remark in the East Room after inviting the event&#39;s attendees to step onto the floor of the new ballroom outside. <span class="gist-credit">The Hill</span></p>
         </div>
           
           
@@ -1591,16 +1638,66 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
           <summary>Sources (3)</summary>
           <div class="original-body">
           <div class="camp-group">
-            <p class="also-head">the center</p>
+            <p class="also-head">the left</p>
             <ul>
-              <li><a href="https://thehill.com/policy/energy-environment/6119834-senate-data-center-bill-ratepayer-protection-act/" target="_blank" rel="noopener"><span class="who">The Hill</span>Dems block data center electricity bill, calling it &#39;toothless&#39;</a></li>
+              <li><a href="https://www.washingtonpost.com/politics/2026/09/30/trump-says-only-hispanic-could-survive-fall-ballroom-site/" target="_blank" rel="noopener"><span class="who">The Washington Post</span>Trump says &#39;only Hispanic&#39; could survive fall at ballroom site</a></li>
+              <li><a href="https://www.nytimes.com/2026/09/30/us/politics/trump-hispanic-heritage-month.html" target="_blank" rel="noopener"><span class="who">The New York Times</span>In Wooing Wavering Hispanic Voters, Trump Talks ICE, His Ballroom and Himself</a></li>
             </ul>
           </div>
           <div class="camp-group">
+            <p class="also-head">the center</p>
+            <ul>
+              <li><a href="https://thehill.com/homenews/administration/6121943-trump-white-house-ballroom-hispanic-heritage-month/" target="_blank" rel="noopener"><span class="who">The Hill</span>Trump says &#39;only a Hispanic could survive&#39; fall from White House ballroom</a></li>
+            </ul>
+          </div></div>
+        </details>
+        </div>
+      </details>
+    </article>
+    <article class="story">
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">Pentagon data breach exposes Social Security numbers, personal info of 2.76M US military, civilian personnel</h3>
+          <p class="gist">A Pentagon personnel system breach has reportedly exposed Social Security numbers and military job details of more than 3 million people. <span class="gist-credit">RT</span></p>
+          
+      <p class="spread" aria-label="Covered by 3 outlets: right, government-funded">
+        <span class="spread-label">Covered by 3 outlets</span>
+        <span class="chips"><span class="chip" aria-hidden="true">Left</span><span class="chip" aria-hidden="true">Center</span><span class="chip on" aria-hidden="true">Right</span><span class="chip on" aria-hidden="true">Government-funded</span><span class="chip" aria-hidden="true">Independent</span></span>
+      </p>
+          <p class="flag-line">Only the right is running this</p>
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          
+          
+        <div class="account">
+          <p>A Pentagon official said the breach affected 2.76 million living people and another 294,000 who are deceased. <span class="gist-credit">Just the News</span> Unauthorized users accessed unencrypted files containing Social Security numbers and military or civilian employment information between October 2025 and July 2026. <span class="gist-credit">Fox News</span> The Defense Manpower Data Center (DMDC) discovered the vulnerability in a file-sharing system on July 16 and notified affected individuals Sept. <span class="gist-credit">Fox News</span></p>
+          <p>The disclosure follows a separate breach of the FBI&#39;s jobs website. <span class="gist-credit">RT</span> A Pentagon official said a few unauthorized users accessed personally identifiable information through the DMDC system during the roughly nine-month period. <span class="gist-credit">Fox News</span> DMDC maintains more than 60 million records overall, including on active-duty and reserve troops, civilian employees, contractors, retirees, veterans, and military family members. <span class="gist-credit">RT</span></p>
+        </div>
+          
+          
+      <aside class="verdict verdict-one-sided">
+        <p class="verdict-kicker">Worth knowing about this coverage</p>
+        <p class="verdict-title">Only the right is running this</p>
+        <ul><li>reported by Fox News, Just the News, and no outlet from the other side</li></ul>
+      </aside>
+          
+          
+        <details class="sources">
+          <summary>Sources (3)</summary>
+          <div class="original-body">
+          <div class="camp-group">
             <p class="also-head">the right</p>
             <ul>
-              <li><a href="https://www.foxnews.com/politics/dems-kill-republicans-chances-lowering-americans-electricity-bills-key-election-flashpoint" target="_blank" rel="noopener"><span class="who">Fox News</span>Dems kill Republican&#39;s chances of lowering Americans&#39; electricity bills in key election flashpoint</a></li>
-              <li><a href="https://nypost.com/2026/09/30/business/schumer-senate-democrats-block-bill-to-address-ai-data-center-costs/" target="_blank" rel="noopener"><span class="who">New York Post</span>Chuck Schumer, Senate Dems block bill to address AI data center costs</a></li>
+              <li><a href="https://www.foxnews.com/politics/pentagon-data-breach-exposes-social-security-numbers-personal-info-military-civilian-personnel" target="_blank" rel="noopener"><span class="who">Fox News</span>Pentagon data breach exposes Social Security numbers, personal info of 2.76M US military, civilian personnel</a></li>
+              <li><a href="https://justthenews.com/government/security/pentagon-data-breach-reveals-info-more-27-million-us-military-and-civilian?utm_source=justthenews.com&amp;amp;utm_medium=feed&amp;amp;utm_campaign=external-news-aggregators" target="_blank" rel="noopener"><span class="who">Just the News</span>Pentagon data breach exposes info of more than 2.7 million US military and civilian personnel</a></li>
+            </ul>
+          </div>
+          <div class="camp-group">
+            <p class="also-head">government-funded outlets</p>
+            <ul>
+              <li><a href="https://www.rt.com/news/646412-pengaton-personal-data-breach/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=RSS" target="_blank" rel="noopener"><span class="who">RT</span>Pentagon breach exposed data on over 3 million people – media</a></li>
             </ul>
           </div></div>
         </details>
@@ -1611,6 +1708,49 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
     <section class="section" id="justice">
       <h2><span>Courts and justice</span></h2>
       
+    <article class="story">
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">Salah Sarsour, Islamic Leader in Wisconsin, Can Be Deported, Judge Rules</h3>
+          <p class="gist">Salah Sarsour, a vocal supporter of Palestinian rights who leads the state&#39;s largest Islamic group, says the case is politically motivated and plans to appeal the decision. <span class="gist-credit">The New York Times</span></p>
+          
+      <p class="spread" aria-label="Covered by 2 outlets: left, government-funded">
+        <span class="spread-label">Covered by 2 outlets</span>
+        <span class="chips"><span class="chip on" aria-hidden="true">Left</span><span class="chip" aria-hidden="true">Center</span><span class="chip" aria-hidden="true">Right</span><span class="chip on" aria-hidden="true">Government-funded</span><span class="chip" aria-hidden="true">Independent</span></span>
+      </p>
+          
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          
+          
+        <div class="account">
+          <p>Sarsour&#39;s lawyers say the decision threatens free speech protections and plan to fight the ruling. <span class="gist-credit">Al Jazeera</span></p>
+        </div>
+          
+          
+          
+          
+        <details class="sources">
+          <summary>Sources (2)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">the left</p>
+            <ul>
+              <li><a href="https://www.nytimes.com/2026/09/30/us/salah-sarsour-deportation-wisconsin.html" target="_blank" rel="noopener"><span class="who">The New York Times</span>Salah Sarsour, Islamic Leader in Wisconsin, Can Be Deported, Judge Rules</a></li>
+            </ul>
+          </div>
+          <div class="camp-group">
+            <p class="also-head">government-funded outlets</p>
+            <ul>
+              <li><a href="https://www.aljazeera.com/news/2026/9/30/us-judge-rules-wisconsin-mosque-leader-salah-sarsour-can-be-deported?traffic_source=rss" target="_blank" rel="noopener"><span class="who">Al Jazeera</span>US judge rules Wisconsin mosque leader Salah Sarsour can be deported</a></li>
+            </ul>
+          </div></div>
+        </details>
+        </div>
+      </details>
+    </article>
     <article class="story">
       <details class="story-more">
         <summary>
@@ -1629,8 +1769,8 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
           
           
         <div class="account">
-          <p>The alleged illegal voting included the 2022, 2024, and the 2026 primaries. <span class="gist-credit">Just the News</span> The ten defendants, who are originally from Liberia, Canada, South Africa, Brazil, Bosnia, Germany, Ghana, and Lithuania, allegedly lied to election officials and told them they were U.S. citizens so they could register to vote. <span class="gist-credit">Fox News</span></p>
-          <p>The foreign nationals charged hail from Brazil, Ghana, and Liberia. <span class="gist-credit">Just the News</span> &quot; Voter fraud erodes the public&#39;s trust in our electoral system, and it&#39;s vital to our democratic process that we do everything that we can to restore that trust,&quot; Blanche said in a press conference announcing the charges. <span class="gist-credit">Fox News</span></p>
+          <p>The alleged illegal voting included the 2022, 2024, and the 2026 primaries. <span class="gist-credit">Just the News</span> The ten defendants, originally from Liberia, Canada, South Africa, Brazil, Bosnia, Germany, Ghana and Lithuania, allegedly lied to election officials and told them they were U.S. citizens so they could register to vote. <span class="gist-credit">Fox News</span></p>
+          <p>The foreign nationals charged hail from Brazil, Ghana, and Liberia. <span class="gist-credit">Just the News</span> &quot; Voter fraud erodes the public&#39;s trust in our electoral system, and it&#39;s vital to our democratic process that we do everything that we can to restore that trust,&quot; Blanche said at a news conference announcing the charges. <span class="gist-credit">Fox News</span></p>
         </div>
           
           
@@ -1687,43 +1827,6 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
             <p class="also-head">independent outlets</p>
             <ul>
               <li><a href="https://www.404media.co/chatgpt-fake-witnesses-testimony-stephen-aarons-new-mexico/" target="_blank" rel="noopener"><span class="who">404 Media</span>Lawyer Cites ChatGPT-Invented Fake Witnesses in Murder Appeal</a></li>
-            </ul>
-          </div></div>
-        </details>
-        </div>
-      </details>
-    </article>
-    <article class="story">
-      <details class="story-more">
-        <summary>
-          <h3 class="headline">Minnesota federal judges face DOJ misconduct complaint after speaking to media during active lawsuits</h3>
-          <p class="gist">The Justice Department announced indictments Wednesday against 10 foreign nationals accused of election-related offenses in Minnesota and filed a novel judicial misconduct complaint targeting nearly the state&#39;s entire active federal district court bench, escalating the Trump administration&#39;s quarrels with judges in the state. Attorney General Todd Blanche said the complaint, filed with the 8th U.S. <span class="gist-credit">Washington Examiner</span></p>
-          
-      <p class="spread" aria-label="Covered by 1 outlet: right">
-        <span class="spread-label">Covered by 1 outlet</span>
-        <span class="chips"><span class="chip" aria-hidden="true">Left</span><span class="chip" aria-hidden="true">Center</span><span class="chip on" aria-hidden="true">Right</span><span class="chip" aria-hidden="true">Government-funded</span><span class="chip" aria-hidden="true">Independent</span></span>
-      </p>
-          
-          
-          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
-        </summary>
-        <div class="more-body">
-          <p class="sure sure-single"><span class="sure-label">How sure is this?</span> Only one outlet has reported this so far.</p>
-          
-        <div class="account">
-          <p>He accused the judges of discussing pending cases and displaying bias against the Department of Homeland Security, calling for their recusal from civil and criminal cases involving the agency. <span class="gist-credit">Washington Examiner</span></p>
-        </div>
-          
-          
-          
-          
-        <details class="sources">
-          <summary>Sources (1)</summary>
-          <div class="original-body">
-          <div class="camp-group">
-            <p class="also-head">the right</p>
-            <ul>
-              <li><a href="https://www.washingtonexaminer.com/news/justice/4748560/minnesota-federal-judges-doj-complaint-speaking-media-during-active-lawsuits/" target="_blank" rel="noopener"><span class="who">Washington Examiner</span>Minnesota federal judges face DOJ misconduct complaint after speaking to media during active lawsuits</a></li>
             </ul>
           </div></div>
         </details>
@@ -1819,12 +1922,12 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
     <article class="story">
       <details class="story-more">
         <summary>
-          <h3 class="headline">Ad About Welfare Fraud Draws MAGA Criticism</h3>
-          <p class="gist">Far-right influencers piled on Gov. Sarah Huckabee Sanders, President Trump&#39;s former press secretary, over a campaign ad about Medicaid work requirements in Arkansas. <span class="gist-credit">The New York Times</span></p>
+          <h3 class="headline">RFK Jr.: Medical AI Will Soon Be &#39;Better Informed than any Doctor in the Country&#39;</h3>
+          <p class="gist">Health Secretary Robert J. Kennedy Jr. told a Washington audience on Tuesday that AI could soon give patients &quot;a second opinion that is much better informed than any doctor in the country,&quot; part of a wide-ranging pitch for AI in medicine at the Make America Healthy Again Summit. <span class="gist-credit">Breitbart</span></p>
           
-      <p class="spread" aria-label="Covered by 1 outlet: left">
+      <p class="spread" aria-label="Covered by 1 outlet: right">
         <span class="spread-label">Covered by 1 outlet</span>
-        <span class="chips"><span class="chip on" aria-hidden="true">Left</span><span class="chip" aria-hidden="true">Center</span><span class="chip" aria-hidden="true">Right</span><span class="chip" aria-hidden="true">Government-funded</span><span class="chip" aria-hidden="true">Independent</span></span>
+        <span class="chips"><span class="chip" aria-hidden="true">Left</span><span class="chip" aria-hidden="true">Center</span><span class="chip on" aria-hidden="true">Right</span><span class="chip" aria-hidden="true">Government-funded</span><span class="chip" aria-hidden="true">Independent</span></span>
       </p>
           
           
@@ -1841,9 +1944,9 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
           <summary>Sources (1)</summary>
           <div class="original-body">
           <div class="camp-group">
-            <p class="also-head">the left</p>
+            <p class="also-head">the right</p>
             <ul>
-              <li><a href="https://www.nytimes.com/2026/09/29/us/sarah-huckabee-sanders-campaign-ad.html" target="_blank" rel="noopener"><span class="who">The New York Times</span>Ad About Welfare Fraud Draws MAGA Backlash</a></li>
+              <li><a href="https://www.breitbart.com/tech/2026/09/30/rfk-jr-medical-ai-will-soon-be-better-informed-than-any-doctor-in-the-country/" target="_blank" rel="noopener"><span class="who">Breitbart</span>RFK Jr.: Medical AI Will Soon Be &#39;Better Informed than any Doctor in the Country&#39;</a></li>
             </ul>
           </div></div>
         </details>
@@ -1966,6 +2069,43 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
     <article class="story">
       <details class="story-more">
         <summary>
+          <h3 class="headline">EU Weighs Delaying Methane Rules as Energy Prices Rise</h3>
+          <p class="gist">Amid political pressure and rising energy prices, the European Commission is considering pausing a part of its methane regulation, which is set to take effect in January. The move comes after French. <span class="gist-credit">Inside Climate News</span></p>
+          
+      <p class="spread" aria-label="Covered by 1 outlet: independent">
+        <span class="spread-label">Covered by 1 outlet</span>
+        <span class="chips"><span class="chip" aria-hidden="true">Left</span><span class="chip" aria-hidden="true">Center</span><span class="chip" aria-hidden="true">Right</span><span class="chip" aria-hidden="true">Government-funded</span><span class="chip on" aria-hidden="true">Independent</span></span>
+      </p>
+          
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          <p class="sure sure-single"><span class="sure-label">How sure is this?</span> Only one outlet has reported this so far.</p>
+          
+        <div class="account">
+          <p>Concerned climate policy experts and investor groups warn against weakening the regulation. <span class="gist-credit">Inside Climate News</span></p>
+        </div>
+          
+          
+          
+          
+        <details class="sources">
+          <summary>Sources (1)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">independent outlets</p>
+            <ul>
+              <li><a href="https://insideclimatenews.org/news/30092026/european-commission-plans-to-delay-methane-rules/" target="_blank" rel="noopener"><span class="who">Inside Climate News</span>EU Weighs Delaying Methane Rules as Energy Prices Rise</a></li>
+            </ul>
+          </div></div>
+        </details>
+        </div>
+      </details>
+    </article>
+    <article class="story">
+      <details class="story-more">
+        <summary>
           <h3 class="headline">Meta Announces Large Solar Purchase Agreement in Texas, But It&#39;s Powering Some Data Centers With Gas</h3>
           <p class="gist">Apex Clean Energy and Meta have entered into a power purchase agreement that allows the technology company to financially benefit from energy generated from a solar project in Gonzales County, Texas. The 144-megawatt project wouldn&#39;t have been built without Meta&#39;s backing, the energy developer said. <span class="gist-credit">Inside Climate News</span></p>
           
@@ -1994,80 +2134,6 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
             <p class="also-head">independent outlets</p>
             <ul>
               <li><a href="https://insideclimatenews.org/news/30092026/meta-texas-solar-purchase-smaller-than-data-center-gas-plant/" target="_blank" rel="noopener"><span class="who">Inside Climate News</span>Meta Announces Large Solar Purchase Agreement in Texas, But It&#39;s Powering Some Data Centers With Gas</a></li>
-            </ul>
-          </div></div>
-        </details>
-        </div>
-      </details>
-    </article>
-    <article class="story">
-      <details class="story-more">
-        <summary>
-          <h3 class="headline">Study of Groundwater Near Fracking Sites Finds Low Radium Levels, but Raises Concerns About Increased Salinity</h3>
-          <p class="gist">Testing in a limited number of shallow aquifers near fracking sites in southwestern Pennsylvania found low levels of radium overall, but there aren&#39;t yet enough samples to draw firm conclusions about the region as a whole, according to a new report from researchers at Penn State University. <span class="gist-credit">Inside Climate News</span></p>
-          
-      <p class="spread" aria-label="Covered by 1 outlet: independent">
-        <span class="spread-label">Covered by 1 outlet</span>
-        <span class="chips"><span class="chip" aria-hidden="true">Left</span><span class="chip" aria-hidden="true">Center</span><span class="chip" aria-hidden="true">Right</span><span class="chip" aria-hidden="true">Government-funded</span><span class="chip on" aria-hidden="true">Independent</span></span>
-      </p>
-          
-          
-          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
-        </summary>
-        <div class="more-body">
-          <p class="sure sure-single"><span class="sure-label">How sure is this?</span> Only one outlet has reported this so far.</p>
-          
-        <div class="account">
-          <p>Researchers highlighted the challenges of studying this issue in western Pennsylvania, which has a long history of industrial pollution. <span class="gist-credit">Inside Climate News</span></p>
-        </div>
-          
-          
-          
-          
-        <details class="sources">
-          <summary>Sources (1)</summary>
-          <div class="original-body">
-          <div class="camp-group">
-            <p class="also-head">independent outlets</p>
-            <ul>
-              <li><a href="https://insideclimatenews.org/news/30092026/pennsylvania-fracking-groundwater-pollution/" target="_blank" rel="noopener"><span class="who">Inside Climate News</span>Study of Groundwater Near Fracking Sites Finds Low Radium Levels, but Raises Concerns About Increased Salinity</a></li>
-            </ul>
-          </div></div>
-        </details>
-        </div>
-      </details>
-    </article>
-    <article class="story">
-      <details class="story-more">
-        <summary>
-          <h3 class="headline">Renewables boom faces a Trump-era cliff</h3>
-          <p class="gist">America is adding record amounts of clean power despite. President Trump&#39;s opposition to wind and solar, but the industry&#39;s top trade group warns the growth could fall off a &quot;cliff&quot; as soon as 2028. Why it matters: The disconnect illustrates the long lag between energy policy and what actually gets built, raising the stakes for a bipartisan permitting deal under negotiation now in the Senate. <span class="gist-credit">Axios</span></p>
-          
-      <p class="spread" aria-label="Covered by 1 outlet: center">
-        <span class="spread-label">Covered by 1 outlet</span>
-        <span class="chips"><span class="chip" aria-hidden="true">Left</span><span class="chip on" aria-hidden="true">Center</span><span class="chip" aria-hidden="true">Right</span><span class="chip" aria-hidden="true">Government-funded</span><span class="chip" aria-hidden="true">Independent</span></span>
-      </p>
-          
-          
-          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
-        </summary>
-        <div class="more-body">
-          <p class="sure sure-single"><span class="sure-label">How sure is this?</span> Only one outlet has reported this so far.</p>
-          
-        <div class="account">
-          <p>&quot;If the administration continues to block the permitting of clean power, you&#39;ll start to see a cliff,&quot; said Grumet, who said the drop could become apparent in 2028 or 2029. <span class="gist-credit">Axios</span></p>
-        </div>
-          
-          
-          
-          
-        <details class="sources">
-          <summary>Sources (1)</summary>
-          <div class="original-body">
-          <div class="camp-group">
-            <p class="also-head">the center</p>
-            <ul>
-              <li><a href="https://www.axios.com/2026/09/30/renewables-boom-trump-cliff" target="_blank" rel="noopener"><span class="who">Axios</span>Renewables boom faces a Trump-era cliff</a></li>
             </ul>
           </div></div>
         </details>
@@ -2115,6 +2181,44 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
     <article class="story">
       <details class="story-more">
         <summary>
+          <h3 class="headline">Someone Torturing LLMs in a Robot Prison Has Triggered the Dumbest Debate in AI Yet</h3>
+          <p class="gist">The &quot;AI Torture Chamber&quot; has opened an upsetting and absurd window into the effective altruist obsession with &quot;model welfare.&quot; <span class="gist-credit">404 Media</span></p>
+          
+      <p class="spread" aria-label="Covered by 1 outlet: independent">
+        <span class="spread-label">Covered by 1 outlet</span>
+        <span class="chips"><span class="chip" aria-hidden="true">Left</span><span class="chip" aria-hidden="true">Center</span><span class="chip" aria-hidden="true">Right</span><span class="chip" aria-hidden="true">Government-funded</span><span class="chip on" aria-hidden="true">Independent</span></span>
+      </p>
+          
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          <p class="sure sure-single"><span class="sure-label">How sure is this?</span> Only one outlet has reported this so far.</p>
+          
+        <div class="account">
+          <p>One of the most heated discussions occurring on X at the moment is about the ethics of a GitHub project in which a person is running Saw-like &quot;torture&quot; and &quot;pain&quot; experiments on a series of locally hosted large language models, causing a series of effective altruists and people who believe LLMs are sentient to beg GitHub to delete the project on the grounds that the AI is suffering and that this glorified text adventure game is somehow cruel. <span class="gist-credit">404 Media</span> The saga is an outgrowth of several recent papers and blog posts that have prompted a tiresome conversation about AI consciousness and the idea of &quot;model welfare,&quot; which is essentially worrying about the &quot;mental health&quot; of AI bots and agents. <span class="gist-credit">404 Media</span></p>
+          <p>Humoring the idea that LLMs are or could be conscious is a third-rail topic among many people who study and criticize AI. <span class="gist-credit">404 Media</span> Put simply: LLMs are not conscious and the technology they are built upon, scraping and being trained on human text and other content, does not offer any plausible path to consciousness. <span class="gist-credit">404 Media</span></p>
+        </div>
+          
+          
+          
+          
+        <details class="sources">
+          <summary>Sources (1)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">independent outlets</p>
+            <ul>
+              <li><a href="https://www.404media.co/someone-torturing-llms-in-a-robot-prison-has-triggered-the-dumbest-debate-in-ai-yet/" target="_blank" rel="noopener"><span class="who">404 Media</span>Someone &#39;Torturing&#39; LLMs in a Robot Prison Has Triggered the Dumbest Debate in AI Yet</a></li>
+            </ul>
+          </div></div>
+        </details>
+        </div>
+      </details>
+    </article>
+    <article class="story">
+      <details class="story-more">
+        <summary>
           <h3 class="headline">USPS To Put Cameras in Trucks That Scan Roads for Community Safety</h3>
           <p class="gist">The United States Postal Service is running a pilot program to put cameras in its mail carrier trucks that continuously scan roads and signs, map roadways and sidewalks, and improve &quot;community safety,&quot; according to a letter posted by a labor union and a statement from the agency to 404 Media. <span class="gist-credit">404 Media</span></p>
           
@@ -2144,44 +2248,6 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
             <p class="also-head">independent outlets</p>
             <ul>
               <li><a href="https://www.404media.co/usps-to-put-cameras-in-trucks-that-scan-roads-for-community-safety/" target="_blank" rel="noopener"><span class="who">404 Media</span>USPS To Put Cameras in Trucks That Scan Roads for &#39;Community Safety&#39;</a></li>
-            </ul>
-          </div></div>
-        </details>
-        </div>
-      </details>
-    </article>
-    <article class="story">
-      <details class="story-more">
-        <summary>
-          <h3 class="headline">Internet Infrastructure Services Empower Deepfake Abuse, New Study Finds</h3>
-          <p class="gist">Cloudflare, Google, and Proton were among the &quot;dominant&quot; infrastructure providers to sites dedicated to hosting abusive content, the study found. <span class="gist-credit">404 Media</span></p>
-          
-      <p class="spread" aria-label="Covered by 1 outlet: independent">
-        <span class="spread-label">Covered by 1 outlet</span>
-        <span class="chips"><span class="chip" aria-hidden="true">Left</span><span class="chip" aria-hidden="true">Center</span><span class="chip" aria-hidden="true">Right</span><span class="chip" aria-hidden="true">Government-funded</span><span class="chip on" aria-hidden="true">Independent</span></span>
-      </p>
-          
-          
-          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
-        </summary>
-        <div class="more-body">
-          <p class="sure sure-single"><span class="sure-label">How sure is this?</span> Only one outlet has reported this so far.</p>
-          
-        <div class="account">
-          <p>Abusive, sexually explicit deepfakes have only become easier to make and more widespread in the last nine years. <span class="gist-credit">404 Media</span> Since we first covered deepfakes when they appeared in 2017, they&#39;ve never been the stuff of dark web sites or shadowy networks. <span class="gist-credit">404 Media</span></p>
-          <p>The most prominent hosts of non-consensual, AI-generated imagery are supported by some of the biggest web infrastructure providers in the world, getting their hosting, email, advertising, and content management systems from these companies. <span class="gist-credit">404 Media</span> Despite years of knowledge about these popular sites, big tech companies continue providing infrastructure services that prop up abuse imagery, even though their own terms of service often prohibit illegal and harmful content, the study claims. <span class="gist-credit">404 Media</span></p>
-        </div>
-          
-          
-          
-          
-        <details class="sources">
-          <summary>Sources (1)</summary>
-          <div class="original-body">
-          <div class="camp-group">
-            <p class="also-head">independent outlets</p>
-            <ul>
-              <li><a href="https://www.404media.co/deepfake-abuse-sites-infrastructure-providers-study/" target="_blank" rel="noopener"><span class="who">404 Media</span>Internet Infrastructure Services Empower Deepfake Abuse, New Study Finds</a></li>
             </ul>
           </div></div>
         </details>
@@ -2229,6 +2295,43 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
     <article class="story">
       <details class="story-more">
         <summary>
+          <h3 class="headline">SEE IT: Which Lawmakers Spent The Most Taxpayer Money On Dining Out Last Year</h3>
+          <p class="gist">American taxpayers footed nearly $7 million last year for meals and housing costs claimed by members of the U.S. House of Representatives, and a new report reveals which lawmakers spent the most. The reimbursement program, launched three years ago, is designed to ease the financial burden on representatives who maintain homes in their districts while also living and working in Washington. <span class="gist-credit">The Daily Wire</span></p>
+          
+      <p class="spread" aria-label="Covered by 1 outlet: right">
+        <span class="spread-label">Covered by 1 outlet</span>
+        <span class="chips"><span class="chip" aria-hidden="true">Left</span><span class="chip" aria-hidden="true">Center</span><span class="chip on" aria-hidden="true">Right</span><span class="chip" aria-hidden="true">Government-funded</span><span class="chip" aria-hidden="true">Independent</span></span>
+      </p>
+          
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          <p class="sure sure-single"><span class="sure-label">How sure is this?</span> Only one outlet has reported this so far.</p>
+          
+        <div class="account">
+          <p>Lawmakers can be reimbursed for &quot;ordinary and necessary expenses,&quot; including meals and lodging, on days the House is in session or they are attending committee business in Washington. <span class="gist-credit">The Daily Wire</span> Lawmakers whose primary residence is within 50 miles of the Capitol generally cannot claim lodging expenses, except in &quot;extraordinary circumstances,&quot; according to the Congressional Handbook. <span class="gist-credit">The Daily Wire</span></p>
+        </div>
+          
+          
+          
+          
+        <details class="sources">
+          <summary>Sources (1)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">the right</p>
+            <ul>
+              <li><a href="https://www.dailywire.com/news/see-it-which-lawmakers-spent-the-most-taxpayer-money-on-dining-out-last-year" target="_blank" rel="noopener"><span class="who">The Daily Wire</span>SEE IT: Which Lawmakers Spent The Most Taxpayer Money On Dining Out Last Year</a></li>
+            </ul>
+          </div></div>
+        </details>
+        </div>
+      </details>
+    </article>
+    <article class="story">
+      <details class="story-more">
+        <summary>
           <h3 class="headline">Good news in US inflation report boosts chances Fed won&#39;t hike rates</h3>
           <p class="gist">Traders see about a 35% chance of an October rate hike, down from ​about 45% following White House pressure Good economic news boosted Wall Street&#39;s main indexes on Wednesday, as a softer-than-anticipated inflation reading buoyed up hopes that the Federal Reserve might not hike rates as soon ⁠as next month. <span class="gist-credit">The Guardian</span></p>
           
@@ -2267,51 +2370,8 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
     <article class="story">
       <details class="story-more">
         <summary>
-          <h3 class="headline">Donor Gives $3 Billion to Carnegie Mellon, the Largest University Gift Ever</h3>
-          <p class="gist">The donation by Kenneth Griffin, intended mostly to help build a campus in Miami, was the biggest single gift in the history of U.S. higher education. <span class="gist-credit">The New York Times</span></p>
-          
-      <p class="spread" aria-label="Covered by 2 outlets: left">
-        <span class="spread-label">Covered by 2 outlets</span>
-        <span class="chips"><span class="chip on" aria-hidden="true">Left</span><span class="chip" aria-hidden="true">Center</span><span class="chip" aria-hidden="true">Right</span><span class="chip" aria-hidden="true">Government-funded</span><span class="chip" aria-hidden="true">Independent</span></span>
-      </p>
-          <p class="flag-line">Only the left is running this</p>
-          
-          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
-        </summary>
-        <div class="more-body">
-          <p class="sure sure-thin"><span class="sure-label">How sure is this?</span> Only 2 outlets have this, and the headline makes a big claim. Worth waiting for more reporting.</p>
-          
-        <div class="account">
-          <p>Griffin, 57, is the founder and CEO of Citadel, described as the most profitable hedge fund in history. <span class="gist-credit">The Guardian</span></p>
-        </div>
-          
-          
-      <aside class="verdict verdict-one-sided">
-        <p class="verdict-kicker">Worth knowing about this coverage</p>
-        <p class="verdict-title">Only the left is running this</p>
-        <ul><li>reported by The Guardian, The New York Times, and no outlet from the other side</li></ul>
-      </aside>
-          
-          
-        <details class="sources">
-          <summary>Sources (2)</summary>
-          <div class="original-body">
-          <div class="camp-group">
-            <p class="also-head">the left</p>
-            <ul>
-              <li><a href="https://www.theguardian.com/us-news/2026/sep/30/carnegie-mellon-historic-donation" target="_blank" rel="noopener"><span class="who">The Guardian</span>Hedge fund CEO gives $3bn to Carnegie Mellon University in historic donation</a></li>
-              <li><a href="https://www.nytimes.com/2026/09/30/us/3-billion-donation-carnegie-mellon-largest-university-gift.html" target="_blank" rel="noopener"><span class="who">The New York Times</span>Donor Gives $3 Billion to Carnegie Mellon, the Largest University Gift Ever</a></li>
-            </ul>
-          </div></div>
-        </details>
-        </div>
-      </details>
-    </article>
-    <article class="story">
-      <details class="story-more">
-        <summary>
-          <h3 class="headline">La Raza: Peter Gonzales, Distrito 3a</h3>
-          <p class="gist">Did you know search engines like Google are changing the way you see news? Keep Chalkbeat&#39;s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. [this newsletter signup embed should appear about 25% of the way through your story. paste your story text above and below it. <span class="gist-credit">Chalkbeat</span></p>
+          <h3 class="headline">Parents predicted problems after NYC overhauled after-school contracts. They were right</h3>
+          <p class="gist">Did you know search engines like Google are changing the way you see news? Keep Chalkbeat&#39;s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. Parents at several schools across New York City last spring were outraged when they lost beloved after-school providers in a contract overhaul overseen by the Department of Youth and Community Development. <span class="gist-credit">Chalkbeat</span></p>
           
       <p class="spread" aria-label="Covered by 1 outlet: independent">
         <span class="spread-label">Covered by 1 outlet</span>
@@ -2324,6 +2384,9 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
         <div class="more-body">
           <p class="sure sure-single"><span class="sure-label">How sure is this?</span> Only one outlet has reported this so far.</p>
           
+        <div class="account">
+          <p>Parents rallied, wrote letters, and submitted petitions to keep the after-school programs they had come to rely on. <span class="gist-credit">Chalkbeat</span> Now, some parents say their warnings have come to bear, as some of the new after-school programs have struggled to hire staff and get off the ground several weeks into the school year, leaving parents exasperated and children with few options when the school day ends. <span class="gist-credit">Chalkbeat</span></p>
+        </div>
           
           
           
@@ -2334,7 +2397,45 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
           <div class="camp-group">
             <p class="also-head">independent outlets</p>
             <ul>
-              <li><a href="https://www.chalkbeat.org/chicago/2026/09/30/la-raza-norma-rios-sierra-distrito-3a/" target="_blank" rel="noopener"><span class="who">Chalkbeat</span>La Raza: Norma Ríos-Sierra, Distrito 3a</a></li>
+              <li><a href="https://www.chalkbeat.org/newyork/2026/09/30/nyc-after-school-contract-overhaul-sparks-staffing-shortages-parent-frustration/" target="_blank" rel="noopener"><span class="who">Chalkbeat</span>Parents predicted problems after NYC overhauled after-school contracts. They were right.</a></li>
+            </ul>
+          </div></div>
+        </details>
+        </div>
+      </details>
+    </article>
+    <article class="story">
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">Chicago School Board Election 2026: The race in District 8b, the Loop, Brighton Park</h3>
+          <p class="gist">Stay informed with Chalkbeat Chicago&#39;s newsletter, WBEZ and the Sun-Times&#39; education newsletter, and Block Club Chicago&#39;s newsletters. Juan Ignacio González, a veteran Chicago. Police Department detective and local coffee shop owner, is running against college student Alexander Angeles to represent District 8b, a long, narrow swath that stretches from the Loop all the way southwest to Chicago Lawn. <span class="gist-credit">Chalkbeat</span></p>
+          
+      <p class="spread" aria-label="Covered by 1 outlet: independent">
+        <span class="spread-label">Covered by 1 outlet</span>
+        <span class="chips"><span class="chip" aria-hidden="true">Left</span><span class="chip" aria-hidden="true">Center</span><span class="chip" aria-hidden="true">Right</span><span class="chip" aria-hidden="true">Government-funded</span><span class="chip on" aria-hidden="true">Independent</span></span>
+      </p>
+          
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          <p class="sure sure-single"><span class="sure-label">How sure is this?</span> Only one outlet has reported this so far.</p>
+          
+        <div class="account">
+          <p>Angeles joined the race as a write-in candidate at the end of August. <span class="gist-credit">Chalkbeat</span> Earlier this summer, the Chicago election authority kicked incumbent and Mayor Brandon Johnson appointee Cydney Wallace off the ballot due to challenges to her petition signatures. <span class="gist-credit">Chalkbeat</span></p>
+          <p>Gonzalez, a Back of the Yards resident, said he was motivated to run for school board after hearing from parents who were concerned about students being used as &quot;political pawns&quot; on May Day. <span class="gist-credit">Chalkbeat</span> The Chicago Teachers Union and Chicago Public Schools reached an agreement to keep schools open on May 1 while allowing civic actions after some back-and-forth over whether to call off school for demonstrations. <span class="gist-credit">Chalkbeat</span></p>
+        </div>
+          
+          
+          
+          
+        <details class="sources">
+          <summary>Sources (1)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">independent outlets</p>
+            <ul>
+              <li><a href="https://www.chalkbeat.org/chicago/2026/09/24/school-board-election-2026-district-8b-candidate-voter-guide/" target="_blank" rel="noopener"><span class="who">Chalkbeat</span>Chicago School Board Election 2026: The race in District 8b, the Loop, Brighton Park</a></li>
             </ul>
           </div></div>
         </details>
@@ -2348,8 +2449,8 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
     <article class="story">
       <details class="story-more">
         <summary>
-          <h3 class="headline">An adorable new snow leopard cub was just born at the Bronx Zoo: &#39;One of the world&#39;s most elusive big cats&#39;</h3>
-          <p class="gist">Often called &quot;ghosts of the mountain,&quot; snow leopards are a very elusive cat species. Now, a new arrival can be seen at the Bronx Zoo. <span class="gist-credit">Good Good Good</span></p>
+          <h3 class="headline">New study links sustained arts education to lower chronic absenteeism in schools</h3>
+          <p class="gist">Researchers estimated 25.4% of four-year music students were chronically absent, compared with 37.3% of students without four consecutive years of music. <span class="gist-credit">Good Good Good</span></p>
           
       <p class="spread"><span class="spread-label">Reported by Good Good Good</span></p>
           
@@ -2369,7 +2470,38 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
           <div class="camp-group">
             <p class="also-head">good news outlets</p>
             <ul>
-              <li><a href="https://www.goodgoodgood.co/articles/bronx-zoo-snow-leopard-cub" target="_blank" rel="noopener"><span class="who">Good Good Good</span>An adorable new snow leopard cub was just born at the Bronx Zoo: &#39;One of the world&#39;s most elusive big cats&#39;</a></li>
+              <li><a href="https://www.goodgoodgood.co/articles/arts-education-linked-to-chronic-absenteeism" target="_blank" rel="noopener"><span class="who">Good Good Good</span>New study links sustained arts education to lower chronic absenteeism in schools</a></li>
+            </ul>
+          </div></div>
+        </details>
+        </div>
+      </details>
+    </article>
+    <article class="story">
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">Fat Bear Week just crowned its winner. Google is celebrating with an animation</h3>
+          <p class="gist">The 12th annual Fat Bear Week has come to a close, and Google added a fun interactive surprise for the occasion. <span class="gist-credit">Good Good Good</span></p>
+          
+      <p class="spread"><span class="spread-label">Reported by Good Good Good</span></p>
+          
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          
+          
+          
+          
+          
+          
+        <details class="sources">
+          <summary>Sources (1)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">good news outlets</p>
+            <ul>
+              <li><a href="https://www.goodgoodgood.co/articles/fat-bear-week-google-animation" target="_blank" rel="noopener"><span class="who">Good Good Good</span>Fat Bear Week just crowned its winner. Google is celebrating with a viral animation</a></li>
             </ul>
           </div></div>
         </details>
@@ -2401,37 +2533,6 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
             <p class="also-head">good news outlets</p>
             <ul>
               <li><a href="https://www.goodnewsnetwork.org/new-gobi-desert-fossil-rewrites-a-chapter-of-mammal-evolution/" target="_blank" rel="noopener"><span class="who">Good News Network</span>New Gobi Desert Fossil Rewrites a Chapter of Mammal Evolution</a></li>
-            </ul>
-          </div></div>
-        </details>
-        </div>
-      </details>
-    </article>
-    <article class="story">
-      <details class="story-more">
-        <summary>
-          <h3 class="headline">This baby elephant fell into a well just a few days after she was born: &#39;Now she has her entire life ahead of her&#39;</h3>
-          <p class="gist">Today, Korbessa is affectionately called &quot;little frog&quot; by her four favorite keepers. <span class="gist-credit">Good Good Good</span></p>
-          
-      <p class="spread"><span class="spread-label">Reported by Good Good Good</span></p>
-          
-          
-          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
-        </summary>
-        <div class="more-body">
-          
-          
-          
-          
-          
-          
-        <details class="sources">
-          <summary>Sources (1)</summary>
-          <div class="original-body">
-          <div class="camp-group">
-            <p class="also-head">good news outlets</p>
-            <ul>
-              <li><a href="https://www.goodgoodgood.co/articles/baby-elephant-korbessa-rescue-well" target="_blank" rel="noopener"><span class="who">Good Good Good</span>This baby elephant fell into a well just a few days after she was born: &#39;Now she has her entire life ahead of her&#39;</a></li>
             </ul>
           </div></div>
         </details>
@@ -2706,7 +2807,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
         </tr>
         <tr>
           <td>Clear Creek Courant</td>
-          <td><span class="lean">local</span>Colorado Trust for Local News, nonprofit<span class="review">Couldn’t be reached today</span></td>
+          <td><span class="lean">local</span>Colorado Trust for Local News, nonprofit</td>
         </tr>
         <tr>
           <td>Canyon Courier</td>

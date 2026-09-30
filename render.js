@@ -269,6 +269,11 @@ ${standalone ? `<style>${css}</style>` : '<link rel="stylesheet" href="style.css
 /* Applied before the page paints, so switching never flashes the other theme.
    Without JavaScript the control stays hidden and the system setting decides. */
 (function () {
+  // A refresh starts at the top instead of where the reader last was. A link to a
+  // section (the menu) still goes to that section.
+  try { if ('scrollRestoration' in history) history.scrollRestoration = 'manual'; } catch (e) {}
+  if (!location.hash) window.scrollTo(0, 0);
+
   var KEY = 'steady-theme';
   var saved;
   try { saved = localStorage.getItem(KEY); } catch (e) { saved = null; }

@@ -348,6 +348,24 @@ function verdict(sig) {
 
 /* ------------------------------------------------------------------- assemble */
 
+// Words that make a big claim. When a claim like this rests on one outlet, the reader
+// is told it is unconfirmed rather than left to assume it is settled.
+const BIG_CLAIM = /\b(so extreme|record[- ]breaking|record[- ]shattering|biggest ever|worst ever|largest ever|strongest ever|of all time|never (been )?seen|first ever|unprecedented|off the charts|historic|doesn'?t (even )?have a (scientific )?(name|word)|nobody (saw|expected)|changes? everything|game[- ]?changer|miracle|breakthrough|cures?|cured|reverses? aging|proves?|debunk(s|ed)?|bombshell|will (destroy|end|save|change)|could (destroy|end|save|change) (the world|everything|humanity))\b/i;
+
+function howSure(items, outlets, camps) {
+  const sides = camps.filter((c) => ['left', 'center', 'right'].includes(c));
+  const bigClaim = items.some((i) => BIG_CLAIM.test(i.title));
+  if (outlets.length >= 3 && sides.length >= 2) {
+    return { level: 'confirmed', text: 'Confirmed by ' + outlets.length + ' outlets across the ' + sides.join(', ').replace(/, ([^,]*)$/, ' and $1') + '.' };
+  }
+  if (outlets.length === 1 && bigClaim) {
+    return { level: 'unconfirmed', text: 'Only one outlet has reported this, and the headline makes a big claim. Treat it as unconfirmed for now.' };
+  }
+  if (outlets.length === 1) return { level: 'single', text: 'Only one outlet has reported this so far.' };
+  if (bigClaim && sides.length < 2) return { level: 'thin', text: 'Only ' + outlets.length + ' outlets have this, and the headline makes a big claim. Worth waiting for more reporting.' };
+  return { level: 'some', text: 'Reported by ' + outlets.length + ' outlets.' };
+}
+
 function analyze(items) {
   const camps = [...new Set(items.map((i) => i.camp))];
   const nonState = camps.filter((c) => c !== 'state');
@@ -364,6 +382,7 @@ function analyze(items) {
     framing: framingSplits(items, camps),
     signals: sig,
     verdict: verdict(sig),
+    sure: howSure(items, [...new Set(items.map((i) => i.outlet))], camps),
   };
 }
 

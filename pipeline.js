@@ -262,8 +262,11 @@ function buildStories(groups) {
 
     // A story carried by outlets that disagree with each other outranks a story
     // carried by more outlets that all agree.
+    // Reporting from the last day outranks a story that has been sitting around.
+    const fresh = lead.date && Date.now() - lead.date < 30 * 60 * 60 * 1000;
     const weight = outlets.length * 3 + camps.length * 7
       + (independents.length ? 2 : 0)
+      + (fresh ? 5 : 0)
       + (isLocal ? -9 : 0);
 
     return {
@@ -362,7 +365,13 @@ function selectEdition(allStories) {
 
 /* ----------------------------------------------------------------------- edition */
 
-async function buildEdition(CONFIG) {
+// Editions are dated by the reader's clock, not UTC, so an evening build is not
+// labelled tomorrow.
+function coloradoDate(d = new Date()) {
+  return d.toLocaleDateString('en-CA', { timeZone: 'America/Denver' });
+}
+
+async function buildEdition(CONFIG, { seenLinks = new Set() } = {}) {
   const results = await Promise.all(CONFIG.sources.map(readSource));
   const now = Date.now();
 
@@ -384,6 +393,8 @@ async function buildEdition(CONFIG) {
   for (const { src, items: raw } of results) {
     for (const it of raw) {
       if (!isReporting(it)) continue;
+      // Already in a recent edition: skip it, so each morning is new reporting.
+      if (seenLinks.has(it.link.split('?')[0].replace(/\/$/, ''))) continue;
       if (src.section && NOT_SECTION_NEWS.test(it.title)) continue;
       if (src.placeFilter && !FOOTHILLS.test(it.title + ' ' + stripHtml(it.summary || '').slice(0, 600))) continue;
       const age = it.date ? now - it.date : null;
@@ -461,7 +472,7 @@ async function buildEdition(CONFIG) {
   const clean = (s) => { const { names, weight, ...rest } = s; return rest; };
 
   return {
-    date: new Date().toISOString().slice(0, 10),
+    date: coloradoDate(),
     builtAt: now,
     lead: lead.map(clean),
     sections: sections.map((s) => ({
@@ -475,4 +486,4 @@ async function buildEdition(CONFIG) {
   };
 }
 
-module.exports = { buildEdition, readSource, parseFeed, classify, clusterItems };
+module.exports = { coloradoDate, buildEdition, readSource, parseFeed, classify, clusterItems };

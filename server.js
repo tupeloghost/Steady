@@ -16,7 +16,7 @@ if (!fs.existsSync(CACHE)) fs.mkdirSync(CACHE, { recursive: true });
 
 const config = () => JSON.parse(fs.readFileSync(path.join(ROOT, 'sources.json'), 'utf8'));
 const css = () => fs.readFileSync(path.join(PUBLIC, 'style.css'), 'utf8');
-const today = () => new Date().toISOString().slice(0, 10);
+const today = () => new Date().toLocaleDateString('en-CA', { timeZone: 'America/Denver' });
 const editionPath = (d) => path.join(CACHE, 'edition-' + d + '.json');
 
 let building = null;

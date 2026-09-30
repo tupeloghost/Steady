@@ -9,7 +9,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const { buildEdition } = require('./pipeline');
+const { buildEdition, coloradoDate } = require('./pipeline');
 const { enrich } = require('./opus');
 const { render, renderArchiveIndex } = require('./render');
 
@@ -21,8 +21,25 @@ async function main() {
   const config = JSON.parse(fs.readFileSync(path.join(ROOT, 'sources.json'), 'utf8'));
   const css = fs.readFileSync(path.join(ROOT, 'public', 'style.css'), 'utf8');
 
-  process.stdout.write('Reading ' + config.sources.length + ' feeds\n');
-  const edition = await buildEdition(config);
+  // Every article link from the past week's editions, except today's, so a rebuild
+  // later the same morning does not throw away its own stories.
+  const today = coloradoDate();
+  const seenLinks = new Set();
+  if (fs.existsSync(ARCHIVE)) {
+    const weekAgo = coloradoDate(new Date(Date.now() - 7 * 24 * 60 * 60 * 1000));
+    for (const f of fs.readdirSync(ARCHIVE)) {
+      const d = f.slice(0, 10);
+      if (!/^\d{4}-\d{2}-\d{2}\.html$/.test(f) || d >= today || d < weekAgo) continue;
+      const html = fs.readFileSync(path.join(ARCHIVE, f), 'utf8');
+      for (const m of html.matchAll(/<a href="(https?:\/\/[^"]+)" target="_blank"/g)) {
+        seenLinks.add(m[1].replace(/&amp;/g, '&').split('?')[0].replace(/\/$/, ''));
+      }
+    }
+  }
+
+  process.stdout.write('Reading ' + config.sources.length + ' feeds, skipping '
+    + seenLinks.size + ' articles already shown this week\n');
+  const edition = await buildEdition(config, { seenLinks });
 
   const stories = edition.lead.length + edition.sections.reduce((n, s) => n + s.stories.length, 0);
   if (!stories) throw new Error('no stories were assembled, refusing to publish an empty edition');

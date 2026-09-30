@@ -2,8 +2,14 @@ name: Publish today's edition
 
 on:
   schedule:
-    # 11:30 UTC is 7:30 in the morning Eastern, 4:30 Pacific.
-    - cron: '30 11 * * *'
+    # GitHub starts scheduled jobs late when it is busy, sometimes by hours, so the
+    # edition is attempted three times before dawn in Colorado. Whichever runs first
+    # publishes; the later ones refresh it with anything newer.
+    # 09:07, 11:07 and 13:07 UTC are 3:07, 5:07 and 7:07 in Colorado (an hour earlier
+    # in winter).
+    - cron: '7 9 * * *'
+    - cron: '7 11 * * *'
+    - cron: '7 13 * * *'
   # A "Run workflow" button on GitHub, for rebuilding by hand.
   workflow_dispatch:
 

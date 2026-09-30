@@ -86,6 +86,16 @@ function accountHtml(story, gist) {
         </div>`;
 }
 
+// How sure the reader can be. Local and good news are usually single source by
+// nature, so only a big claim earns a note there.
+function sureHtml(story) {
+  const sure = story.frame.sure;
+  if (!sure) return '';
+  if (story.section && !['unconfirmed', 'thin'].includes(sure.level)) return '';
+  if (sure.level === 'some') return '';
+  return `<p class="sure sure-${esc(sure.level)}"><span class="sure-label">How sure is this?</span> ${esc(sure.text)}</p>`;
+}
+
 function framingHtml(story) {
   const f = story.frame.framing;
   if (!f.length) return '';
@@ -137,9 +147,12 @@ function storyHtml(story, { lead = false } = {}) {
           ${gist ? `<p class="gist">${esc(gist.text)} <span class="gist-credit">${esc(gist.credit)}</span></p>` : ''}
           ${spreadHtml(story)}
           ${flag ? `<p class="flag-line">${esc(flag.title)}</p>` : ''}
+          ${!flag && story.frame.sure && ['unconfirmed', 'thin'].includes(story.frame.sure.level)
+            ? `<p class="flag-line">Unconfirmed: one source, big claim</p>` : ''}
           <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
         </summary>
         <div class="more-body">
+          ${sureHtml(story)}
           ${accountHtml(story, gist)}
           ${story.ai && story.ai.differences ? `<p class="brief-diff">${esc(story.ai.differences)}</p>` : ''}
           ${verdictHtml(story)}

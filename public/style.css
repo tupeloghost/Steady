@@ -352,6 +352,22 @@ details.story-more[open] .cue-close { display: inline; }
   @keyframes open-up { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
 }
 
+/* ---------------------------------------------------------------- how sure */
+
+.sure {
+  margin: 0 0 var(--gap-m);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--ink-mid);
+}
+.sure-label {
+  display: block;
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+}
+.sure-unconfirmed .sure-label, .sure-thin .sure-label { color: var(--flag-edge); }
+
 /* ------------------------------------------------------------- the account */
 
 .account p {

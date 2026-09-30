@@ -103,7 +103,6 @@ const BEAT_WORDS = {
   justice: ['court', 'judge', 'lawsuit', 'prison', 'police', 'sentenced', 'indicted', 'prosecutor', 'jail', 'sheriff', 'attorney general', 'plea', 'convicted', 'appeal', 'civil rights', 'detention', 'deportation', 'incarcerat', 'parole', 'charges'],
   technology: ['algorithm', 'artificial intelligence', 'chatbot', 'privacy', 'surveillance', 'software', 'semiconductor', 'social media', 'platform', 'cybersecurity', 'data broker', 'facial recognition', 'crypto', 'startup', 'chatgpt', 'openai', 'encryption', 'app store'],
   money: ['inflation', 'wages', 'tariff', 'unemployment', 'layoffs', 'union', 'strike', 'economy', 'recession', 'interest rate', 'federal reserve', 'tax', 'bankruptcy', 'shareholders', 'housing costs', 'rent', 'grocery prices', 'jobs report', 'pension'],
-  education: ['school', 'students', 'teachers', 'university', 'college', 'campus', 'curriculum', 'classroom', 'tuition', 'district'],
 };
 
 function classify(item, src) {
@@ -234,8 +233,8 @@ function normalize(v) {
 
 const DAY = 24 * 60 * 60 * 1000;
 
-const BEAT_ORDER = ['world', 'nation', 'justice', 'health', 'science', 'climate', 'technology', 'money', 'education'];
-const BEAT_ROOM = { world: 5, nation: 6, justice: 3, health: 3, science: 4, climate: 4, technology: 3, money: 3, education: 2 };
+const BEAT_ORDER = ['world', 'nation', 'justice', 'health', 'science', 'climate', 'technology', 'money'];
+const BEAT_ROOM = { world: 5, nation: 6, justice: 3, health: 3, science: 4, climate: 4, technology: 3, money: 3 };
 
 const MAX_PER_OUTLET = 3;
 const MAX_PER_OUTLET_PER_BEAT = 2;

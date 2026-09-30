@@ -16,7 +16,6 @@
     "climate": "Climate and land",
     "technology": "Technology",
     "money": "Work and money",
-    "education": "Schools",
     "local": "Local: Gilpin County and the foothills",
     "good": "Good news"
   },
@@ -454,16 +453,6 @@
       "beat": "nation",
       "scope": "national",
       "url": "https://www.votebeat.org/arc/outboundfeeds/rss/"
-    },
-    {
-      "id": "chalkbeat",
-      "outlet": "Chalkbeat",
-      "lean": "independent",
-      "camp": "independent",
-      "owner": "nonprofit",
-      "beat": "education",
-      "scope": "national",
-      "url": "https://www.chalkbeat.org/arc/outboundfeeds/rss/"
     },
     {
       "id": "19th",

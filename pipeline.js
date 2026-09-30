@@ -466,8 +466,9 @@ async function buildEdition(CONFIG, { seenLinks = new Set() } = {}) {
   };
   const local = sectionStories('local', 6, 3);
   const good = sectionStories('good', 5, 2);
-  if (local.length) sections.unshift({ beat: 'local', stories: local });
+  // Good news, then local, close the page.
   if (good.length) sections.push({ beat: 'good', stories: good });
+  if (local.length) sections.push({ beat: 'local', stories: local });
 
   const clean = (s) => { const { names, weight, ...rest } = s; return rest; };
 

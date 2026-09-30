@@ -466,9 +466,9 @@ async function buildEdition(CONFIG, { seenLinks = new Set() } = {}) {
   };
   const local = sectionStories('local', 6, 3);
   const good = sectionStories('good', 5, 2);
-  // Good news, then local, close the page.
-  if (good.length) sections.push({ beat: 'good', stories: good });
+  // Local, then good news, close the page, so every edition ends on a good note.
   if (local.length) sections.push({ beat: 'local', stories: local });
+  if (good.length) sections.push({ beat: 'good', stories: good });
 
   const clean = (s) => { const { names, weight, ...rest } = s; return rest; };
 

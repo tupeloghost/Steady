@@ -146,7 +146,7 @@ function gistOf(story) {
   return null;
 }
 
-function storyHtml(story, { lead = false, date = '', sectionTitle = '' } = {}) {
+function storyHtml(story, { lead = false, date = '', sectionTitle = '', relay = '' } = {}) {
   const gist = gistOf(story);
   const flag = story.ai ? story.ai.verdict : story.frame.verdict;
   return `
@@ -168,11 +168,13 @@ function storyHtml(story, { lead = false, date = '', sectionTitle = '' } = {}) {
           ${verdictHtml(story)}
           ${framingHtml(story)}
           ${outletsHtml(story)}
-          <p class="feedback-link"><a href="${esc(feedbackUrl({
+          ${relay
+            ? `<p class="feedback-link"><button type="button" data-feedback data-story="${esc(story.headline)}" data-section="${esc(sectionTitle)}" hidden>Feedback on this story</button></p>`
+            : `<p class="feedback-link"><a href="${esc(feedbackUrl({
             title: 'Feedback: ' + story.headline.slice(0, 80),
             about: 'Story: ' + story.headline + '\nSection: ' + sectionTitle,
             date,
-          }))}" target="_blank" rel="noopener">Feedback on this story</a></p>
+          }))}" target="_blank" rel="noopener">Feedback on this story</a></p>`}
         </div>
       </details>
     </article>`;
@@ -217,6 +219,7 @@ function sourcesHtml(edition, config) {
 }
 
 function render(edition, config, { standalone = false, css = '', archiveLink = null } = {}) {
+  const relay = config.feedbackUrl || '';
   const total = edition.lead.length + edition.sections.reduce((n, s) => n + s.stories.length, 0);
 
   const empty = total ? '' : `
@@ -235,13 +238,13 @@ function render(edition, config, { standalone = false, css = '', archiveLink = n
   const lead = edition.lead.length ? `
     <section class="section section-lead" id="lead">
       <h2><span>Top stories</span></h2>
-      ${edition.lead.map((s) => storyHtml(s, { lead: true, date: edition.date, sectionTitle: 'Top stories' })).join('')}
+      ${edition.lead.map((s) => storyHtml(s, { lead: true, date: edition.date, sectionTitle: 'Top stories', relay })).join('')}
     </section>` : '';
 
   const sections = edition.sections.map((s) => `
     <section class="section" id="${esc(s.beat)}">
       <h2><span>${esc(s.title)}</span></h2>
-      ${s.stories.map((st) => storyHtml(st, { date: edition.date, sectionTitle: s.title })).join('')}
+      ${s.stories.map((st) => storyHtml(st, { date: edition.date, sectionTitle: s.title, relay })).join('')}
     </section>`).join('');
 
   const body = `
@@ -270,7 +273,58 @@ function render(edition, config, { standalone = false, css = '', archiveLink = n
       ${sourcesHtml(edition, config)}
     </div>
   </main>
-  <a class="feedback-button" href="${esc(feedbackUrl({ title: 'Feedback', about: 'About: the page in general', date: edition.date }))}" target="_blank" rel="noopener">Feedback</a>`;
+  ${relay ? `<button type="button" class="feedback-button" data-feedback data-story="" data-section="" hidden>Feedback</button>
+  <dialog class="feedback-box" id="feedback-box" aria-labelledby="feedback-title">
+    <form method="dialog" id="feedback-form">
+      <h2 id="feedback-title">Feedback</h2>
+      <p class="feedback-about" id="feedback-about"></p>
+      <label for="feedback-note">What did you notice?</label>
+      <textarea id="feedback-note" name="note" rows="5" maxlength="2000" required></textarea>
+      <input type="text" name="website" id="feedback-website" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <p class="feedback-status" id="feedback-status" role="status"></p>
+      <div class="feedback-actions">
+        <button type="button" id="feedback-cancel">Cancel</button>
+        <button type="submit" id="feedback-send">Send</button>
+      </div>
+    </form>
+  </dialog>
+  <script>
+  (function () {
+    var URL_ = ${JSON.stringify(relay)}, EDITION = ${JSON.stringify(edition.date)};
+    var box = document.getElementById('feedback-box');
+    if (!box || !box.showModal || !window.fetch) return;   // older browsers: no button
+    var form = document.getElementById('feedback-form'), note = document.getElementById('feedback-note'),
+        about = document.getElementById('feedback-about'), status = document.getElementById('feedback-status'),
+        send = document.getElementById('feedback-send'), trap = document.getElementById('feedback-website');
+    var current = { story: '', section: '' };
+    var openers = document.querySelectorAll('[data-feedback]');
+    for (var i = 0; i < openers.length; i++) {
+      openers[i].hidden = false;
+      openers[i].addEventListener('click', function (e) {
+        e.preventDefault();
+        current = { story: this.dataset.story || '', section: this.dataset.section || '' };
+        about.textContent = current.story ? 'About: ' + current.story : 'About the page in general';
+        status.textContent = ''; send.disabled = false; note.value = '';
+        box.showModal(); note.focus();
+      });
+    }
+    document.getElementById('feedback-cancel').addEventListener('click', function () { box.close(); });
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (note.value.trim().length < 3) { status.textContent = 'Type a note first.'; return; }
+      send.disabled = true; status.textContent = 'Sending';
+      fetch(URL_, { method: 'POST', headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ note: note.value, story: current.story, section: current.section, edition: EDITION, website: trap.value }) })
+        .then(function (r) { return r.json().then(function (j) { return { ok: r.ok && j.ok, error: j.error }; }); })
+        .then(function (r) {
+          if (!r.ok) throw new Error(r.error || 'failed');
+          status.textContent = 'Sent. Thank you.';
+          setTimeout(function () { box.close(); }, 1200);
+        })
+        .catch(function () { status.textContent = 'That did not send. Check your connection and try again.'; send.disabled = false; });
+    });
+  })();
+  </script>` : `<a class="feedback-button" href="${esc(feedbackUrl({ title: 'Feedback', about: 'About: the page in general', date: edition.date }))}" target="_blank" rel="noopener">Feedback</a>`}`;
 
   return `<!doctype html>
 <html lang="en">

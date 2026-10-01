@@ -1,0 +1,12 @@
+{
+  "name": "steady-feedback-relay",
+  "private": true,
+  "description": "Takes a reader's note from the Steady page and files it as a GitHub issue.",
+  "scripts": {
+    "deploy": "wrangler deploy",
+    "dev": "wrangler dev"
+  },
+  "devDependencies": {
+    "wrangler": "^4.145.0"
+  }
+}

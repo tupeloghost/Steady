@@ -1,0 +1,18 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "steady-feedback",
+  "main": "src/index.js",
+  "compatibility_date": "2026-09-30",
+  "observability": { "enabled": true },
+  "vars": {
+    "REPO": "tupeloghost/Steady",
+    "ALLOWED_ORIGIN": "https://tupeloghost.github.io"
+  },
+  // At most five notes a minute from one address, so the form cannot be used to flood
+  // the repository.
+  "ratelimits": [
+    { "name": "LIMITER", "namespace_id": "1001", "simple": { "limit": 5, "period": 60 } }
+  ]
+  // GITHUB_TOKEN is a secret, set with `wrangler secret put GITHUB_TOKEN`. It is a
+  // fine grained token that can only write issues on this one repository.
+}

@@ -77,6 +77,16 @@ function verdictHtml(story) {
       </aside>`;
 }
 
+// Feedback opens a pre-filled note on the project's GitHub page, labelled so it can be
+// found again. The story and edition are filled in so the reader only writes the note.
+const FEEDBACK_REPO = 'tupeloghost/Steady';
+
+function feedbackUrl({ title, about, date }) {
+  const body = 'What I noticed:\n\n\n\n---\n' + about + '\nEdition: ' + date;
+  return 'https://github.com/' + FEEDBACK_REPO + '/issues/new?labels=feedback'
+    + '&title=' + encodeURIComponent(title) + '&body=' + encodeURIComponent(body);
+}
+
 function accountHtml(story, gist) {
   const paragraphs = fullerAccount(story, { alreadyShown: gist ? gist.text : '' });
   if (!paragraphs.length) return '';
@@ -136,7 +146,7 @@ function gistOf(story) {
   return null;
 }
 
-function storyHtml(story, { lead = false } = {}) {
+function storyHtml(story, { lead = false, date = '', sectionTitle = '' } = {}) {
   const gist = gistOf(story);
   const flag = story.ai ? story.ai.verdict : story.frame.verdict;
   return `
@@ -158,6 +168,11 @@ function storyHtml(story, { lead = false } = {}) {
           ${verdictHtml(story)}
           ${framingHtml(story)}
           ${outletsHtml(story)}
+          <p class="feedback-link"><a href="${esc(feedbackUrl({
+            title: 'Feedback: ' + story.headline.slice(0, 80),
+            about: 'Story: ' + story.headline + '\nSection: ' + sectionTitle,
+            date,
+          }))}" target="_blank" rel="noopener">Feedback on this story</a></p>
         </div>
       </details>
     </article>`;
@@ -220,13 +235,13 @@ function render(edition, config, { standalone = false, css = '', archiveLink = n
   const lead = edition.lead.length ? `
     <section class="section section-lead" id="lead">
       <h2><span>Top stories</span></h2>
-      ${edition.lead.map((s) => storyHtml(s, { lead: true })).join('')}
+      ${edition.lead.map((s) => storyHtml(s, { lead: true, date: edition.date, sectionTitle: 'Top stories' })).join('')}
     </section>` : '';
 
   const sections = edition.sections.map((s) => `
     <section class="section" id="${esc(s.beat)}">
       <h2><span>${esc(s.title)}</span></h2>
-      ${s.stories.map((st) => storyHtml(st)).join('')}
+      ${s.stories.map((st) => storyHtml(st, { date: edition.date, sectionTitle: s.title })).join('')}
     </section>`).join('');
 
   const body = `
@@ -254,7 +269,8 @@ function render(edition, config, { standalone = false, css = '', archiveLink = n
       ${archiveLink ? `<p class="archive-link"><a href="${esc(archiveLink)}">Earlier editions</a></p>` : ''}
       ${sourcesHtml(edition, config)}
     </div>
-  </main>`;
+  </main>
+  <a class="feedback-button" href="${esc(feedbackUrl({ title: 'Feedback', about: 'About: the page in general', date: edition.date }))}" target="_blank" rel="noopener">Feedback</a>`;
 
   return `<!doctype html>
 <html lang="en">

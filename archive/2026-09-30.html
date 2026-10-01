@@ -648,6 +648,41 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
 }
 .review { display: block; margin-top: 0.25rem; color: var(--ink-faint); font-size: 0.8125rem; font-style: italic; }
 
+/* ----------------------------------------------------------------- feedback */
+
+.feedback-link { margin: var(--gap-m) 0 0; }
+.feedback-link a {
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.13em;
+  font-size: 0.9375rem;
+  color: var(--ink-faint);
+  text-decoration: none;
+  border-bottom: 1px solid var(--rule);
+}
+.feedback-link a:hover { color: var(--ink-soft); border-bottom-color: var(--accent-soft); }
+.feedback-link a:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
+
+/* Always within reach while reading, and quiet enough not to pull the eye. */
+.feedback-button {
+  position: fixed;
+  right: 1rem;
+  bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+  z-index: 10;
+  padding: 0.5rem 0.875rem;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  background: var(--paper-2);
+  color: var(--ink-soft);
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.12em;
+  font-size: 0.9375rem;
+  line-height: 1;
+  text-decoration: none;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.08);
+}
+.feedback-button:hover { color: var(--ink); border-color: var(--accent-soft); }
+.feedback-button:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
+
 /* ------------------------------------------------------------------ archive */
 
 .archive-link { margin-top: var(--gap-m); }
@@ -709,6 +744,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
 }
 
 @media print {
+  .feedback-button, .feedback-link { display: none; }
   body { background: #fff; color: #000; padding: 0; font-size: 10.5pt; }
   details { display: none; }
   .index { border-color: #000; }
@@ -848,6 +884,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
             </ul>
           </div></div>
         </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Appeals%20court%20halts%20execution%20of%20Tennessee%20woman%20less%20than%20two%20hours%20before%20leth&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Appeals%20court%20halts%20execution%20of%20Tennessee%20woman%20less%20than%20two%20hours%20before%20lethal%20injection%0ASection%3A%20Top%20stories%0AEdition%3A%202026-09-30" target="_blank" rel="noopener">Feedback on this story</a></p>
         </div>
       </details>
     </article>
@@ -906,6 +943,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
             </ul>
           </div></div>
         </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Passengers%20Overpower%20Terrorist%20Hijacker%2C%20Stop%209%2F11-Style%20Plane%20Attack&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Passengers%20Overpower%20Terrorist%20Hijacker%2C%20Stop%209%2F11-Style%20Plane%20Attack%0ASection%3A%20Top%20stories%0AEdition%3A%202026-09-30" target="_blank" rel="noopener">Feedback on this story</a></p>
         </div>
       </details>
     </article>
@@ -963,6 +1001,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
             </ul>
           </div></div>
         </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Pennsylvania%20reports%20fifth%20measles-related%20death%20of%20the%20year%20amid%20outbreak&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Pennsylvania%20reports%20fifth%20measles-related%20death%20of%20the%20year%20amid%20outbreak%0ASection%3A%20Top%20stories%0AEdition%3A%202026-09-30" target="_blank" rel="noopener">Feedback on this story</a></p>
         </div>
       </details>
     </article>
@@ -1015,6 +1054,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
             </ul>
           </div></div>
         </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Israel%20PM%20says%20pilot%20of%20rerouted%20flight%20tried%20to%20crash%20plane&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Israel%20PM%20says%20pilot%20of%20rerouted%20flight%20tried%20to%20crash%20plane%0ASection%3A%20The%20world%0AEdition%3A%202026-09-30" target="_blank" rel="noopener">Feedback on this story</a></p>
         </div>
       </details>
     </article>
@@ -1060,6 +1100,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
             </ul>
           </div></div>
         </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Paramount%20takeover%20of%20Warner%20Bros.%20Discovery%20clears%20legal%20hurdle&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Paramount%20takeover%20of%20Warner%20Bros.%20Discovery%20clears%20legal%20hurdle%0ASection%3A%20The%20world%0AEdition%3A%202026-09-30" target="_blank" rel="noopener">Feedback on this story</a></p>
         </div>
       </details>
     </article>
@@ -1112,6 +1153,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
             </ul>
           </div></div>
         </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Fed%20watchdog%20clears%20former%20chair%20Powell%20in%20renovation%20probe&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Fed%20watchdog%20clears%20former%20chair%20Powell%20in%20renovation%20probe%0ASection%3A%20The%20world%0AEdition%3A%202026-09-30" target="_blank" rel="noopener">Feedback on this story</a></p>
         </div>
       </details>
     </article>
@@ -1156,6 +1198,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
             </ul>
           </div></div>
         </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Mass%20Heat%20Wave%20Deaths%20in%20Europe%20Show%20Climate%20Extremes%20Are%20Outpacing%20Adaptation%20E&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Mass%20Heat%20Wave%20Deaths%20in%20Europe%20Show%20Climate%20Extremes%20Are%20Outpacing%20Adaptation%20Efforts%0ASection%3A%20The%20world%0AEdition%3A%202026-09-30" target="_blank" rel="noopener">Feedback on this story</a></p>
         </div>
       </details>
     </article>
@@ -1199,6 +1242,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
             </ul>
           </div></div>
         </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20African%20leaders%20herald%20%2416B%20Dangote%20oil%20refinery%20in%20Kenya&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20African%20leaders%20herald%20%2416B%20Dangote%20oil%20refinery%20in%20Kenya%0ASection%3A%20The%20world%0AEdition%3A%202026-09-30" target="_blank" rel="noopener">Feedback on this story</a></p>
         </div>
       </details>
     </article>
@@ -1262,6 +1306,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
             </ul>
           </div></div>
         </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Musk%20returns%20to%20Trump%20world%20for%20Pentagon%20war%20study&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Musk%20returns%20to%20Trump%20world%20for%20Pentagon%20war%20study%0ASection%3A%20The%20nation%0AEdition%3A%202026-09-30" target="_blank" rel="noopener">Feedback on this story</a></p>
         </div>
       </details>
     </article>
@@ -1311,6 +1356,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
             </ul>
           </div></div>
         </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%205%20Weeks%20To%20Go%3A%20Everything%20You%20Need%20To%20Know%20About%20Where%20The%20Midterms%20Stand&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%205%20Weeks%20To%20Go%3A%20Everything%20You%20Need%20To%20Know%20About%20Where%20The%20Midterms%20Stand%0ASection%3A%20The%20nation%0AEdition%3A%202026-09-30" target="_blank" rel="noopener">Feedback on this story</a></p>
         </div>
       </details>
     </article>
@@ -1361,6 +1407,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
             </ul>
           </div></div>
         </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Jack%20Smith%20faces%20new%20lawsuit%20over%20congressional%20phone%20records&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Jack%20Smith%20faces%20new%20lawsuit%20over%20congressional%20phone%20records%0ASection%3A%20The%20nation%0AEdition%3A%202026-09-30" target="_blank" rel="noopener">Feedback on this story</a></p>
         </div>
       </details>
     </article>
@@ -1406,6 +1453,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
             </ul>
           </div></div>
         </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Kristi%20Noem%2C%20former%20Trump%20homeland%20security%20chief%2C%20files%20for%20divorce&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Kristi%20Noem%2C%20former%20Trump%20homeland%20security%20chief%2C%20files%20for%20divorce%0ASection%3A%20The%20nation%0AEdition%3A%202026-09-30" target="_blank" rel="noopener">Feedback on this story</a></p>
         </div>
       </details>
     </article>
@@ -1413,7 +1461,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
       <details class="story-more">
         <summary>
           <h3 class="headline">Trump says &#39;only a Hispanic could survive&#39; fall from White House ballroom</h3>
-          <p class="gist">Trump said during a Hispanic Heritage Month event on Wednesday that only Hispanics could survive a fall from the site of the White House ballroom. <span class="gist-credit">The Hill</span></p>
+          <p class="gist">Trump said during a Hispanic Heritage Month event Wednesday that only Hispanics could survive a fall from the site of the White House ballroom. <span class="gist-credit">The Hill</span></p>
           
       <p class="spread" aria-label="Covered by 3 outlets: left, center">
         <span class="spread-label">Covered by 3 outlets</span>
@@ -1450,6 +1498,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
             </ul>
           </div></div>
         </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Trump%20says%20&#39;only%20a%20Hispanic%20could%20survive&#39;%20fall%20from%20White%20House%20ballroom&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Trump%20says%20&#39;only%20a%20Hispanic%20could%20survive&#39;%20fall%20from%20White%20House%20ballroom%0ASection%3A%20The%20nation%0AEdition%3A%202026-09-30" target="_blank" rel="noopener">Feedback on this story</a></p>
         </div>
       </details>
     </article>
@@ -1500,6 +1549,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
             </ul>
           </div></div>
         </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Pentagon%20data%20breach%20exposes%20Social%20Security%20numbers%2C%20personal%20info%20of%202.76M%20US%20&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Pentagon%20data%20breach%20exposes%20Social%20Security%20numbers%2C%20personal%20info%20of%202.76M%20US%20military%2C%20civilian%20personnel%0ASection%3A%20The%20nation%0AEdition%3A%202026-09-30" target="_blank" rel="noopener">Feedback on this story</a></p>
         </div>
       </details>
     </article>
@@ -1547,50 +1597,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
             </ul>
           </div></div>
         </details>
-        </div>
-      </details>
-    </article>
-    <article class="story">
-      <details class="story-more">
-        <summary>
-          <h3 class="headline">Blanche announces charges against 10 permanent residents accused of Minnesota voter fraud</h3>
-          <p class="gist">Attorney General Todd Blanche announced indictments of 10 lawful permanent residents accused of noncitizen voting in Minnesota elections since 2022. <span class="gist-credit">Fox News</span></p>
-          
-      <p class="spread" aria-label="Covered by 2 outlets: right">
-        <span class="spread-label">Covered by 2 outlets</span>
-        <span class="chips"><span class="chip" aria-hidden="true">Left</span><span class="chip" aria-hidden="true">Center</span><span class="chip on" aria-hidden="true">Right</span><span class="chip" aria-hidden="true">Government-funded</span><span class="chip" aria-hidden="true">Independent</span></span>
-      </p>
-          <p class="flag-line">Only the right is running this</p>
-          
-          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
-        </summary>
-        <div class="more-body">
-          
-          
-        <div class="account">
-          <p>The alleged illegal voting included the 2022, 2024, and the 2026 primaries. <span class="gist-credit">Just the News</span> The ten defendants, originally from Liberia, Canada, South Africa, Brazil, Bosnia, Germany, Ghana and Lithuania, allegedly lied to election officials and told them they were U.S. citizens so they could register to vote. <span class="gist-credit">Fox News</span></p>
-          <p>The foreign nationals charged hail from Brazil, Ghana, and Liberia. <span class="gist-credit">Just the News</span> &quot; Voter fraud erodes the public&#39;s trust in our electoral system, and it&#39;s vital to our democratic process that we do everything that we can to restore that trust,&quot; Blanche said at a news conference announcing the charges. <span class="gist-credit">Fox News</span></p>
-        </div>
-          
-          
-      <aside class="verdict verdict-one-sided">
-        <p class="verdict-kicker">Worth knowing about this coverage</p>
-        <p class="verdict-title">Only the right is running this</p>
-        <ul><li>reported by Fox News, Just the News, and no outlet from the other side</li></ul>
-      </aside>
-          
-          
-        <details class="sources">
-          <summary>Sources (2)</summary>
-          <div class="original-body">
-          <div class="camp-group">
-            <p class="also-head">the right</p>
-            <ul>
-              <li><a href="https://www.foxnews.com/politics/blanche-announces-charges-against-10-permanent-residents-accused-minnesota-voter-fraud" target="_blank" rel="noopener"><span class="who">Fox News</span>Blanche announces charges against 10 permanent residents accused of Minnesota voter fraud</a></li>
-              <li><a href="https://justthenews.com/nation/crime/todd-blanche-announces-charges-against-10-foreigners-allegedly-voting-illegally?utm_source=justthenews.com&amp;amp;utm_medium=feed&amp;amp;utm_campaign=external-news-aggregators" target="_blank" rel="noopener"><span class="who">Just the News</span>Todd Blanche announces charges against 10 foreigners for allegedly voting illegally</a></li>
-            </ul>
-          </div></div>
-        </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Salah%20Sarsour%2C%20Islamic%20Leader%20in%20Wisconsin%2C%20Can%20Be%20Deported%2C%20Judge%20Rules&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Salah%20Sarsour%2C%20Islamic%20Leader%20in%20Wisconsin%2C%20Can%20Be%20Deported%2C%20Judge%20Rules%0ASection%3A%20Courts%20and%20justice%0AEdition%3A%202026-09-30" target="_blank" rel="noopener">Feedback on this story</a></p>
         </div>
       </details>
     </article>
@@ -1629,6 +1636,42 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
             </ul>
           </div></div>
         </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Lawyer%20Cites%20ChatGPT-Invented%20Fake%20Witnesses%20in%20Murder%20Appeal&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Lawyer%20Cites%20ChatGPT-Invented%20Fake%20Witnesses%20in%20Murder%20Appeal%0ASection%3A%20Courts%20and%20justice%0AEdition%3A%202026-09-30" target="_blank" rel="noopener">Feedback on this story</a></p>
+        </div>
+      </details>
+    </article>
+    <article class="story">
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">Federal Judge Orders Bureau of Prisons to Restore Union Protections</h3>
+          <p class="gist">In his ruling, Judge Vernon D. Oliver cited public statements from the bureau&#39;s director that hurt the agency&#39;s case in court. <span class="gist-credit">The New York Times</span></p>
+          
+      <p class="spread" aria-label="Covered by 1 outlet: left">
+        <span class="spread-label">Covered by 1 outlet</span>
+        <span class="chips"><span class="chip on" aria-hidden="true">Left</span><span class="chip" aria-hidden="true">Center</span><span class="chip" aria-hidden="true">Right</span><span class="chip" aria-hidden="true">Government-funded</span><span class="chip" aria-hidden="true">Independent</span></span>
+      </p>
+          
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          <p class="sure sure-single"><span class="sure-label">How sure is this?</span> Only one outlet has reported this so far.</p>
+          
+          
+          
+          
+          
+        <details class="sources">
+          <summary>Sources (1)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">the left</p>
+            <ul>
+              <li><a href="https://www.nytimes.com/2026/09/30/us/politics/bureau-prisons-union-contract.html" target="_blank" rel="noopener"><span class="who">The New York Times</span>Federal Judge Orders Bureau of Prisons to Restore Union Protections</a></li>
+            </ul>
+          </div></div>
+        </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Federal%20Judge%20Orders%20Bureau%20of%20Prisons%20to%20Restore%20Union%20Protections&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Federal%20Judge%20Orders%20Bureau%20of%20Prisons%20to%20Restore%20Union%20Protections%0ASection%3A%20Courts%20and%20justice%0AEdition%3A%202026-09-30" target="_blank" rel="noopener">Feedback on this story</a></p>
         </div>
       </details>
     </article>
@@ -1677,6 +1720,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
             </ul>
           </div></div>
         </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20US%20Poised%20To%20Boot%20Legal%20Immigrants%20From%20Medicaid%2C%20Including%20Refugees%20and%20Sex-Tra&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20US%20Poised%20To%20Boot%20Legal%20Immigrants%20From%20Medicaid%2C%20Including%20Refugees%20and%20Sex-Trafficking%20Victims%0ASection%3A%20Health%0AEdition%3A%202026-09-30" target="_blank" rel="noopener">Feedback on this story</a></p>
         </div>
       </details>
     </article>
@@ -1715,6 +1759,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
             </ul>
           </div></div>
         </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Drugs%20Are%20Widely%20Used%20To%20Sedate%20Dementia%20Patients.%20Her%20Sons%20Wanted%20To%20Keep%20Her%20O&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Drugs%20Are%20Widely%20Used%20To%20Sedate%20Dementia%20Patients.%20Her%20Sons%20Wanted%20To%20Keep%20Her%20Off%20Them%0ASection%3A%20Health%0AEdition%3A%202026-09-30" target="_blank" rel="noopener">Feedback on this story</a></p>
         </div>
       </details>
     </article>
@@ -1749,6 +1794,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
             </ul>
           </div></div>
         </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20RFK%20Jr.%3A%20Medical%20AI%20Will%20Soon%20Be%20&#39;Better%20Informed%20than%20any%20Doctor%20in%20the%20Country&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20RFK%20Jr.%3A%20Medical%20AI%20Will%20Soon%20Be%20&#39;Better%20Informed%20than%20any%20Doctor%20in%20the%20Country&#39;%0ASection%3A%20Health%0AEdition%3A%202026-09-30" target="_blank" rel="noopener">Feedback on this story</a></p>
         </div>
       </details>
     </article>
@@ -1787,6 +1833,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
             </ul>
           </div></div>
         </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20A%20new%20map%20points%20out%20U.S.%20rivers%20most%20worth%20protecting&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20A%20new%20map%20points%20out%20U.S.%20rivers%20most%20worth%20protecting%0ASection%3A%20Science%0AEdition%3A%202026-09-30" target="_blank" rel="noopener">Feedback on this story</a></p>
         </div>
       </details>
     </article>
@@ -1824,6 +1871,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
             </ul>
           </div></div>
         </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Surprisingly%20Complex%20Waves%20Reveal%20the%20Brain&#39;s%20Inner%20Workings&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Surprisingly%20Complex%20Waves%20Reveal%20the%20Brain&#39;s%20Inner%20Workings%0ASection%3A%20Science%0AEdition%3A%202026-09-30" target="_blank" rel="noopener">Feedback on this story</a></p>
         </div>
       </details>
     </article>
@@ -1858,6 +1906,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
             </ul>
           </div></div>
         </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Exhaling%20may%20speed%20up%20reaction%20times&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Exhaling%20may%20speed%20up%20reaction%20times%0ASection%3A%20Science%0AEdition%3A%202026-09-30" target="_blank" rel="noopener">Feedback on this story</a></p>
         </div>
       </details>
     </article>
@@ -1899,6 +1948,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
             </ul>
           </div></div>
         </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20EU%20Weighs%20Delaying%20Methane%20Rules%20as%20Energy%20Prices%20Rise&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20EU%20Weighs%20Delaying%20Methane%20Rules%20as%20Energy%20Prices%20Rise%0ASection%3A%20Climate%20and%20land%0AEdition%3A%202026-09-30" target="_blank" rel="noopener">Feedback on this story</a></p>
         </div>
       </details>
     </article>
@@ -1936,6 +1986,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
             </ul>
           </div></div>
         </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Meta%20Announces%20Large%20Solar%20Purchase%20Agreement%20in%20Texas%2C%20But%20It&#39;s%20Powering%20Some%20D&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Meta%20Announces%20Large%20Solar%20Purchase%20Agreement%20in%20Texas%2C%20But%20It&#39;s%20Powering%20Some%20Data%20Centers%20With%20Gas%0ASection%3A%20Climate%20and%20land%0AEdition%3A%202026-09-30" target="_blank" rel="noopener">Feedback on this story</a></p>
         </div>
       </details>
     </article>
@@ -1970,6 +2021,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
             </ul>
           </div></div>
         </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Montanans%20are%20demanding%20better%20Indian%20education%2C%20setting%20an%20example%20for%20other%20We&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Montanans%20are%20demanding%20better%20Indian%20education%2C%20setting%20an%20example%20for%20other%20Western%20states%0ASection%3A%20Climate%20and%20land%0AEdition%3A%202026-09-30" target="_blank" rel="noopener">Feedback on this story</a></p>
         </div>
       </details>
     </article>
@@ -2012,6 +2064,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
             </ul>
           </div></div>
         </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Someone%20Torturing%20LLMs%20in%20a%20Robot%20Prison%20Has%20Triggered%20the%20Dumbest%20Debate%20in%20AI%20&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Someone%20Torturing%20LLMs%20in%20a%20Robot%20Prison%20Has%20Triggered%20the%20Dumbest%20Debate%20in%20AI%20Yet%0ASection%3A%20Technology%0AEdition%3A%202026-09-30" target="_blank" rel="noopener">Feedback on this story</a></p>
         </div>
       </details>
     </article>
@@ -2050,6 +2103,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
             </ul>
           </div></div>
         </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20USPS%20To%20Put%20Cameras%20in%20Trucks%20That%20Scan%20Roads%20for%20Community%20Safety&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20USPS%20To%20Put%20Cameras%20in%20Trucks%20That%20Scan%20Roads%20for%20Community%20Safety%0ASection%3A%20Technology%0AEdition%3A%202026-09-30" target="_blank" rel="noopener">Feedback on this story</a></p>
         </div>
       </details>
     </article>
@@ -2084,6 +2138,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
             </ul>
           </div></div>
         </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20AI%20companies%20want%20to%20embed%20safety%20evaluators%2C%20but%20countries%20need%20their%20own&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20AI%20companies%20want%20to%20embed%20safety%20evaluators%2C%20but%20countries%20need%20their%20own%0ASection%3A%20Technology%0AEdition%3A%202026-09-30" target="_blank" rel="noopener">Feedback on this story</a></p>
         </div>
       </details>
     </article>
@@ -2091,6 +2146,41 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
     <section class="section" id="money">
       <h2><span>Work and money</span></h2>
       
+    <article class="story">
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">Federal Reserve watchdog finds no criminal violations for building renovation cost overruns</h3>
+          <p class="gist">Trump criticized $2.4bn rehab amid attempts to pressure then Fed chair Jerome Powell into lowering interest rates. An internal watchdog said the Federal Reserve mismanaged costs associated with a $2.4bn renovation of its Washington DC headquarters, but noted that no criminal violations occurred, according to a report released on Wednesday. <span class="gist-credit">The Guardian</span></p>
+          
+      <p class="spread" aria-label="Covered by 1 outlet: left">
+        <span class="spread-label">Covered by 1 outlet</span>
+        <span class="chips"><span class="chip on" aria-hidden="true">Left</span><span class="chip" aria-hidden="true">Center</span><span class="chip" aria-hidden="true">Right</span><span class="chip" aria-hidden="true">Government-funded</span><span class="chip" aria-hidden="true">Independent</span></span>
+      </p>
+          
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          <p class="sure sure-single"><span class="sure-label">How sure is this?</span> Only one outlet has reported this so far.</p>
+          
+          
+          
+          
+          
+        <details class="sources">
+          <summary>Sources (1)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">the left</p>
+            <ul>
+              <li><a href="https://www.theguardian.com/business/2026/sep/30/federal-reserve-watchdog-building-renovation" target="_blank" rel="noopener"><span class="who">The Guardian</span>Federal Reserve watchdog finds no criminal violations for building renovation cost overruns</a></li>
+            </ul>
+          </div></div>
+        </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Federal%20Reserve%20watchdog%20finds%20no%20criminal%20violations%20for%20building%20renovation%20co&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Federal%20Reserve%20watchdog%20finds%20no%20criminal%20violations%20for%20building%20renovation%20cost%20overruns%0ASection%3A%20Work%20and%20money%0AEdition%3A%202026-09-30" target="_blank" rel="noopener">Feedback on this story</a></p>
+        </div>
+      </details>
+    </article>
     <article class="story">
       <details class="story-more">
         <summary>
@@ -2125,25 +2215,27 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
             </ul>
           </div></div>
         </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20SEE%20IT%3A%20Which%20Lawmakers%20Spent%20The%20Most%20Taxpayer%20Money%20On%20Dining%20Out%20Last%20Year&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20SEE%20IT%3A%20Which%20Lawmakers%20Spent%20The%20Most%20Taxpayer%20Money%20On%20Dining%20Out%20Last%20Year%0ASection%3A%20Work%20and%20money%0AEdition%3A%202026-09-30" target="_blank" rel="noopener">Feedback on this story</a></p>
         </div>
       </details>
     </article>
+    </section>
+    <section class="section" id="local">
+      <h2><span>Local: Gilpin County and the foothills</span></h2>
+      
     <article class="story">
       <details class="story-more">
         <summary>
-          <h3 class="headline">Good news in US inflation report boosts chances Fed won&#39;t hike rates</h3>
-          <p class="gist">Traders see about a 35% chance of an October rate hike, down from ​about 45% following White House pressure Good economic news boosted Wall Street&#39;s main indexes on Wednesday, as a softer-than-anticipated inflation reading buoyed up hopes that the Federal Reserve might not hike rates as soon ⁠as next month. <span class="gist-credit">The Guardian</span></p>
+          <h3 class="headline">Clear Creek High steps off in style for Homecoming Parade</h3>
+          <p class="gist">Before Clear Creek High School could celebrate a football win over the St. Mary&#39;s Pirates Sept. 24, they celebrated with an annual tradition: a parade down the center of Idaho Springs. <span class="gist-credit">Clear Creek Courant</span></p>
           
-      <p class="spread" aria-label="Covered by 1 outlet: left">
-        <span class="spread-label">Covered by 1 outlet</span>
-        <span class="chips"><span class="chip on" aria-hidden="true">Left</span><span class="chip" aria-hidden="true">Center</span><span class="chip" aria-hidden="true">Right</span><span class="chip" aria-hidden="true">Government-funded</span><span class="chip" aria-hidden="true">Independent</span></span>
-      </p>
+      <p class="spread"><span class="spread-label">Reported by Clear Creek Courant</span></p>
           
           
           <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
         </summary>
         <div class="more-body">
-          <p class="sure sure-single"><span class="sure-label">How sure is this?</span> Only one outlet has reported this so far.</p>
+          
           
           
           
@@ -2153,19 +2245,80 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
           <summary>Sources (1)</summary>
           <div class="original-body">
           <div class="camp-group">
-            <p class="also-head">the left</p>
+            <p class="also-head">local outlets</p>
             <ul>
-              <li><a href="https://www.theguardian.com/business/2026/sep/30/inflation-report-interest-rates-fed" target="_blank" rel="noopener"><span class="who">The Guardian</span>Good news in US inflation report boosts chances Fed won&#39;t hike rates</a></li>
+              <li><a href="https://www.clearcreekcourant.com/news/clear-creek-high-steps-off-in-style-for-homecoming-parade/article_84afb715-f0d1-4f52-845f-1b36b484f87d.html" target="_blank" rel="noopener"><span class="who">Clear Creek Courant</span>Clear Creek High steps off in style for Homecoming Parade</a></li>
             </ul>
           </div></div>
         </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Clear%20Creek%20High%20steps%20off%20in%20style%20for%20Homecoming%20Parade&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Clear%20Creek%20High%20steps%20off%20in%20style%20for%20Homecoming%20Parade%0ASection%3A%20Local%3A%20Gilpin%20County%20and%20the%20foothills%0AEdition%3A%202026-09-30" target="_blank" rel="noopener">Feedback on this story</a></p>
         </div>
       </details>
     </article>
-    </section>
-    <section class="section" id="local">
-      <h2><span>Local: Gilpin County and the foothills</span></h2>
-      
+    <article class="story">
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">Senior health event draws professionals, community together</h3>
+          
+          
+      <p class="spread"><span class="spread-label">Reported by Clear Creek Courant</span></p>
+          
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          
+          
+          
+          
+          
+          
+        <details class="sources">
+          <summary>Sources (1)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">local outlets</p>
+            <ul>
+              <li><a href="https://www.clearcreekcourant.com/community/senior-health-event-draws-professionals-community-together/article_dcab0acd-cf94-4153-997e-cf86f2f0ad51.html" target="_blank" rel="noopener"><span class="who">Clear Creek Courant</span>Senior health event draws professionals, community together</a></li>
+            </ul>
+          </div></div>
+        </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Senior%20health%20event%20draws%20professionals%2C%20community%20together&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Senior%20health%20event%20draws%20professionals%2C%20community%20together%0ASection%3A%20Local%3A%20Gilpin%20County%20and%20the%20foothills%0AEdition%3A%202026-09-30" target="_blank" rel="noopener">Feedback on this story</a></p>
+        </div>
+      </details>
+    </article>
+    <article class="story">
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">Idaho Springs skate park celebrates first anniversary</h3>
+          
+          
+      <p class="spread"><span class="spread-label">Reported by Clear Creek Courant</span></p>
+          
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          
+          
+          
+          
+          
+          
+        <details class="sources">
+          <summary>Sources (1)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">local outlets</p>
+            <ul>
+              <li><a href="https://www.clearcreekcourant.com/news/idaho-springs-skate-park-celebrates-first-anniversary/article_dd899e4b-207e-499f-b8db-fc33540c6ef7.html" target="_blank" rel="noopener"><span class="who">Clear Creek Courant</span>Idaho Springs skate park celebrates first anniversary</a></li>
+            </ul>
+          </div></div>
+        </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Idaho%20Springs%20skate%20park%20celebrates%20first%20anniversary&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Idaho%20Springs%20skate%20park%20celebrates%20first%20anniversary%0ASection%3A%20Local%3A%20Gilpin%20County%20and%20the%20foothills%0AEdition%3A%202026-09-30" target="_blank" rel="noopener">Feedback on this story</a></p>
+        </div>
+      </details>
+    </article>
     <article class="story">
       <details class="story-more">
         <summary>
@@ -2198,6 +2351,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
             </ul>
           </div></div>
         </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Boulder%20County%20commits%20%2411%20million%20to%20help%20San%20Lazaro%20residents%20buy%20their%20mobile&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Boulder%20County%20commits%20%2411%20million%20to%20help%20San%20Lazaro%20residents%20buy%20their%20mobile%20home%20park%0ASection%3A%20Local%3A%20Gilpin%20County%20and%20the%20foothills%0AEdition%3A%202026-09-30" target="_blank" rel="noopener">Feedback on this story</a></p>
         </div>
       </details>
     </article>
@@ -2232,6 +2386,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
             </ul>
           </div></div>
         </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Boulder%20County&#39;s%20wildfire%20risk%20eased%20after%20summer%20rain.%20Fall%20winds%20and%20drought%20r&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Boulder%20County&#39;s%20wildfire%20risk%20eased%20after%20summer%20rain.%20Fall%20winds%20and%20drought%20remain%20concerns%0ASection%3A%20Local%3A%20Gilpin%20County%20and%20the%20foothills%0AEdition%3A%202026-09-30" target="_blank" rel="noopener">Feedback on this story</a></p>
         </div>
       </details>
     </article>
@@ -2267,6 +2422,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
             </ul>
           </div></div>
         </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Across%20the%20Aisle%3A%20Boulder%20County%20could%20expand%20to%20five%20commissioners&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Across%20the%20Aisle%3A%20Boulder%20County%20could%20expand%20to%20five%20commissioners%0ASection%3A%20Local%3A%20Gilpin%20County%20and%20the%20foothills%0AEdition%3A%202026-09-30" target="_blank" rel="noopener">Feedback on this story</a></p>
         </div>
       </details>
     </article>
@@ -2302,6 +2458,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
             </ul>
           </div></div>
         </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20New%20study%20links%20sustained%20arts%20education%20to%20lower%20chronic%20absenteeism%20in%20schools&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20New%20study%20links%20sustained%20arts%20education%20to%20lower%20chronic%20absenteeism%20in%20schools%0ASection%3A%20Good%20news%0AEdition%3A%202026-09-30" target="_blank" rel="noopener">Feedback on this story</a></p>
         </div>
       </details>
     </article>
@@ -2333,6 +2490,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
             </ul>
           </div></div>
         </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Fat%20Bear%20Week%20just%20crowned%20its%20winner.%20Google%20is%20celebrating%20with%20an%20animation&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Fat%20Bear%20Week%20just%20crowned%20its%20winner.%20Google%20is%20celebrating%20with%20an%20animation%0ASection%3A%20Good%20news%0AEdition%3A%202026-09-30" target="_blank" rel="noopener">Feedback on this story</a></p>
         </div>
       </details>
     </article>
@@ -2364,6 +2522,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
             </ul>
           </div></div>
         </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20New%20Gobi%20Desert%20Fossil%20Rewrites%20a%20Chapter%20of%20Mammal%20Evolution&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20New%20Gobi%20Desert%20Fossil%20Rewrites%20a%20Chapter%20of%20Mammal%20Evolution%0ASection%3A%20Good%20news%0AEdition%3A%202026-09-30" target="_blank" rel="noopener">Feedback on this story</a></p>
         </div>
       </details>
     </article>
@@ -2395,6 +2554,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
             </ul>
           </div></div>
         </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Chris%20Evans%20Puts%20His%20Limelight%20on%20a%20Bonded%20Dog%20Pair%20with%20Cute%20Video%2C%20Immediately&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Chris%20Evans%20Puts%20His%20Limelight%20on%20a%20Bonded%20Dog%20Pair%20with%20Cute%20Video%2C%20Immediately%20Sees%20Them%20Adopted%0ASection%3A%20Good%20news%0AEdition%3A%202026-09-30" target="_blank" rel="noopener">Feedback on this story</a></p>
         </div>
       </details>
     </article>
@@ -2426,6 +2586,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
             </ul>
           </div></div>
         </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20I%20stopped%20reading%20bad%20news%20for%2048%20hours.%20Here&#39;s%20what%20happened&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20I%20stopped%20reading%20bad%20news%20for%2048%20hours.%20Here&#39;s%20what%20happened%0ASection%3A%20Good%20news%0AEdition%3A%202026-09-30" target="_blank" rel="noopener">Feedback on this story</a></p>
         </div>
       </details>
     </article>
@@ -2631,7 +2792,7 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
         </tr>
         <tr>
           <td>Clear Creek Courant</td>
-          <td><span class="lean">local</span>Colorado Trust for Local News, nonprofit<span class="review">Couldn’t be reached today</span></td>
+          <td><span class="lean">local</span>Colorado Trust for Local News, nonprofit</td>
         </tr>
         <tr>
           <td>Canyon Courier</td>
@@ -2692,5 +2853,6 @@ details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
     </details>
     </div>
   </main>
+  <a class="feedback-button" href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AAbout%3A%20the%20page%20in%20general%0AEdition%3A%202026-09-30" target="_blank" rel="noopener">Feedback</a>
 </body>
 </html>

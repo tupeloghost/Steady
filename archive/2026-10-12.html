@@ -1,0 +1,2671 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Steady</title>
+<meta name="description" content="Top stories read across the spectrum, condensed to what every side agrees on.">
+<meta name="robots" content="noindex, nofollow">
+<style>/* ============================================================== Steady, styles */
+
+:root {
+  --paper:      #f8f5ee;
+  --paper-2:    #fdfcf7;
+  --paper-sunk: #f1ede3;
+  --ink:        #1f1e1c;
+  --ink-mid:    #494641;
+  --ink-soft:   #6b675f;
+  --ink-faint:  #99948a;
+  --rule:       #ddd7c9;
+  --rule-soft:  #ebe6d9;
+  --accent:     #3a5750;
+  --accent-soft:#8aa39b;
+  --focus:      #7b968d;
+
+  --flag-bg:    #f4edda;
+  --flag-edge:  #a98d45;
+  --flag-ink:   #6a5518;
+
+  --serif: "Hoefler Text", "Iowan Old Style", Charter, "Palatino Linotype", Palatino, Georgia, serif;
+  --sans: ui-sans-serif, -apple-system, "SF Pro Text", "Segoe UI", system-ui, sans-serif;
+
+  --measure: 37rem;
+  --gap-xs: 0.375rem;
+  --gap-s:  0.75rem;
+  --gap-m:  1.25rem;
+  --gap-l:  2rem;
+  --gap-xl: 3.5rem;
+}
+
+/* Dark applies when the system asks for it and the reader has not overridden it,
+   or when the reader has chosen it outright. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+--paper:      #14140f;
+    --paper-2:    #1a1a16;
+    --paper-sunk: #1e1e19;
+    --ink:        #eae4d6;
+    --ink-mid:    #b6b0a2;
+    --ink-soft:   #969084;
+    --ink-faint:  #6e6a60;
+    --rule:       #2f2e27;
+    --rule-soft:  #26251f;
+    --accent:     #a6c0b6;
+    --accent-soft:#5c7069;
+    --focus:      #708881;
+
+    --flag-bg:    #221f14;
+    --flag-edge:  #8b7333;
+    --flag-ink:   #dcc491;
+  }
+}
+
+:root[data-theme="dark"] {
+--paper:      #14140f;
+    --paper-2:    #1a1a16;
+    --paper-sunk: #1e1e19;
+    --ink:        #eae4d6;
+    --ink-mid:    #b6b0a2;
+    --ink-soft:   #969084;
+    --ink-faint:  #6e6a60;
+    --rule:       #2f2e27;
+    --rule-soft:  #26251f;
+    --accent:     #a6c0b6;
+    --accent-soft:#5c7069;
+    --focus:      #708881;
+
+    --flag-bg:    #221f14;
+    --flag-edge:  #8b7333;
+    --flag-ink:   #dcc491;
+}
+
+* { box-sizing: border-box; }
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0 1.25rem 7rem;
+  background: var(--paper);
+  color: var(--ink);
+  font: 400 1.0625rem/1.7 var(--serif);
+  font-variant-numeric: oldstyle-nums proportional-nums;
+  font-kerning: normal;
+  font-feature-settings: "liga" 1, "kern" 1;
+  hanging-punctuation: first last;
+  text-rendering: optimizeLegibility;
+}
+
+main { max-width: var(--measure); margin: 0 auto; }
+a { color: inherit; }
+::selection { background: var(--paper-sunk); }
+
+/* Small caps set in the text face, which reads as typography rather than as a label. */
+.caps {
+  font-family: var(--serif);
+  font-variant-caps: all-small-caps;
+  font-variant-numeric: normal;
+  letter-spacing: 0.1em;
+}
+
+/* ---------------------------------------------------------------------- head */
+
+.masthead {
+  padding: 5.5rem 0 1.5rem;
+  text-align: center;
+}
+
+.wordmark {
+  margin: 0;
+  font-size: 1.875rem;
+  font-weight: 400;
+  letter-spacing: 0.34em;
+  text-indent: 0.34em;
+  color: var(--ink);
+}
+
+.mission {
+  max-width: 27rem;
+  margin: 1rem auto 0;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: var(--ink-mid);
+}
+
+.dateline {
+  margin: 1.5rem 0 0;
+  font-variant-caps: all-small-caps;
+  font-variant-numeric: oldstyle-nums;
+  letter-spacing: 0.16em;
+  font-size: 1rem;
+  color: var(--ink-mid);
+}
+
+.standing {
+  margin: 0.25rem 0 0;
+  font-style: italic;
+  font-size: 0.9375rem;
+  color: var(--ink-faint);
+}
+
+/* --------------------------------------------------------------------- index */
+
+.index {
+  margin: 0;
+  padding: 0.75rem 0;
+  border-top: 3px double var(--rule);
+  border-bottom: 1px solid var(--rule);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.25rem 1.25rem;
+}
+
+.index a {
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.13em;
+  font-size: 0.9375rem;
+  color: var(--ink-faint);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+.index a:hover { color: var(--ink); border-bottom-color: var(--accent-soft); }
+.index a:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
+
+.appearance {
+  margin: var(--gap-m) 0 0;
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.appearance button {
+  appearance: none;
+  background: none;
+  border: 0;
+  padding: 0 0 1px;
+  cursor: pointer;
+  font-family: var(--serif);
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.13em;
+  font-size: 0.875rem;
+  color: var(--ink-faint);
+  border-bottom: 1px solid transparent;
+}
+.appearance button:hover { color: var(--ink-soft); }
+.appearance button:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
+.appearance button[aria-pressed="true"] { color: var(--ink); border-bottom-color: var(--accent-soft); }
+
+.legend {
+  margin: var(--gap-s) 0 0;
+  text-align: center;
+  font-style: italic;
+  font-size: 0.875rem;
+  color: var(--ink-faint);
+}
+
+/* ------------------------------------------------------------------ sections */
+
+.section { margin: var(--gap-xl) 0 0; scroll-margin-top: 1.5rem; }
+
+.section h2 {
+  margin: 0 0 var(--gap-m);
+  font-weight: 400;
+  font-size: 1rem;
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.22em;
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.125rem;
+  text-align: center;
+}
+.section h2::before,
+.section h2::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--rule);
+}
+
+.section-lead h2 { color: var(--ink); letter-spacing: 0.26em; }
+.section-lead h2::before,
+.section-lead h2::after { background: var(--accent-soft); }
+
+/* ------------------------------------------------------------------- stories */
+
+.story {
+  padding: var(--gap-l) 0 var(--gap-xl);
+  border-bottom: 1px solid var(--rule-soft);
+}
+.section .story:last-child { border-bottom: 0; }
+
+.story h3 {
+  margin: 0;
+  font-size: 1.375rem;
+  font-weight: 400;
+  line-height: 1.34;
+  letter-spacing: -0.008em;
+  text-wrap: balance;
+}
+
+a.headline {
+  text-decoration: none;
+  background-image: linear-gradient(var(--accent-soft), var(--accent-soft));
+  background-size: 0 1px;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  transition: background-size 220ms ease;
+}
+a.headline:hover { background-size: 100% 1px; }
+a.headline:focus-visible { outline: 2px solid var(--focus); outline-offset: 4px; }
+
+.summary {
+  margin: var(--gap-s) 0 0;
+  color: var(--ink-mid);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.story-lead { padding-top: var(--gap-m); }
+.story-lead h3 {
+  font-size: clamp(1.75rem, 5.2vw, 2.125rem);
+  line-height: 1.18;
+  letter-spacing: -0.018em;
+}
+.story-lead .summary { font-size: 1.0625rem; }
+
+/* ------------------------------------------------------- tap a story to open */
+
+details.story-more > summary {
+  display: block;
+  list-style: none;
+  cursor: pointer;
+  /* undo the small caps link style other summaries use */
+  font: inherit;
+  font-variant-caps: normal;
+  letter-spacing: normal;
+  color: inherit;
+  border: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+details.story-more > summary::-webkit-details-marker { display: none; }
+details.story-more > summary:hover { color: inherit; }
+details.story-more > summary:hover .headline { color: var(--accent); }
+details.story-more > summary:focus-visible { outline: 2px solid var(--focus); outline-offset: 6px; }
+
+.story .headline { transition: color 160ms ease; }
+
+.gist {
+  margin: var(--gap-s) 0 0;
+  font-size: 1.0625rem;
+  line-height: 1.68;
+  color: var(--ink-mid);
+}
+.story-lead .gist { font-size: 1.125rem; }
+.gist-credit {
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.1em;
+  font-size: 0.875rem;
+  color: var(--ink-faint);
+  white-space: nowrap;
+}
+
+.flag-line {
+  margin: var(--gap-s) 0 0;
+  padding-left: 0.75rem;
+  border-left: 2px solid var(--flag-edge);
+  font-size: 0.9375rem;
+  color: var(--flag-ink);
+}
+
+.more-cue {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  margin-top: var(--gap-m);
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.14em;
+  font-size: 0.9375rem;
+  color: var(--accent);
+}
+.more-cue::after {
+  content: "";
+  width: 0.4rem;
+  height: 0.4rem;
+  border-right: 1px solid currentColor;
+  border-bottom: 1px solid currentColor;
+  transform: translateY(-0.12rem) rotate(45deg);
+  transition: transform 180ms ease;
+}
+details.story-more[open] .more-cue::after { transform: translateY(0.12rem) rotate(-135deg); }
+.cue-close { display: none; }
+details.story-more[open] .cue-open { display: none; }
+details.story-more[open] .cue-close { display: inline; }
+
+.more-body { margin-top: var(--gap-m); }
+.more-body > :first-child { margin-top: 0; }
+.more-body .brief-diff { margin-bottom: var(--gap-m); }
+.block-outlets { margin-top: var(--gap-m); }
+.block-outlets .original-body { margin-top: 0; }
+
+@media (prefers-reduced-motion: no-preference) {
+  details.story-more[open] .more-body { animation: open-up 220ms ease-out; }
+  @keyframes open-up { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
+}
+
+/* ---------------------------------------------------------------- how sure */
+
+.sure {
+  margin: 0 0 var(--gap-m);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--ink-mid);
+}
+.sure-label {
+  display: block;
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+}
+.sure-unconfirmed .sure-label, .sure-thin .sure-label { color: var(--flag-edge); }
+
+/* ------------------------------------------------------------- the account */
+
+.account p {
+  margin: 0 0 var(--gap-m);
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: var(--ink);
+}
+.account p:last-child { margin-bottom: 0; }
+.account + * { margin-top: var(--gap-l); }
+
+details.sources { margin-top: var(--gap-l); }
+details.sources > summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+details.sources > summary::after {
+  content: "";
+  width: 0.35rem;
+  height: 0.35rem;
+  border-right: 1px solid currentColor;
+  border-bottom: 1px solid currentColor;
+  transform: translateY(-0.1rem) rotate(45deg);
+}
+details.sources[open] > summary::after { transform: translateY(0.1rem) rotate(-135deg); }
+details.sources .original-body { margin-top: var(--gap-s); }
+
+/* -------------------------------------------------------------- the brief */
+
+.brief { margin: var(--gap-s) 0 0; }
+.brief-text { margin: 0; font-size: 1.0625rem; line-height: 1.7; color: var(--ink); }
+.story-lead .brief-text { font-size: 1.125rem; }
+.brief-diff { margin: var(--gap-s) 0 0; font-size: 1rem; line-height: 1.7; color: var(--ink-mid); font-style: italic; }
+.brief-credit {
+  margin: var(--gap-xs) 0 0;
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.1em;
+  font-size: 0.875rem;
+  color: var(--ink-faint);
+}
+
+/* ------------------------------------------------------- the spectrum spread */
+
+.spread {
+  margin: var(--gap-m) 0 0;
+  font-variant-caps: all-small-caps;
+  font-variant-numeric: oldstyle-nums;
+  letter-spacing: 0.08em;
+  font-size: 0.9375rem;
+}
+
+.spread-label { display: block; color: var(--ink-faint); margin-bottom: 0.25rem; }
+
+.chips { display: flex; flex-wrap: wrap; gap: 0.25rem 0.75rem; }
+
+/* A side that did not cover the story is present but faded, so the gap shows. */
+.chip { color: var(--ink-faint); opacity: 0.45; padding-bottom: 1px; }
+.chip.on { color: var(--ink); opacity: 1; box-shadow: inset 0 -2px 0 var(--accent-soft); }
+
+/* ------------------------------------------------------------------ the frame */
+
+.frame { margin: var(--gap-m) 0 0; }
+.block + .block { margin-top: var(--gap-m); }
+
+.more-body h4 {
+  margin: 0 0 var(--gap-s);
+  font-weight: 400;
+  font-size: 0.9375rem;
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+}
+
+.frame ul { margin: 0; padding: 0; list-style: none; }
+
+/* agreement: the load bearing part, given the most presence */
+.block-agreed {
+  position: relative;
+  padding: var(--gap-m) 0 var(--gap-m) var(--gap-m);
+  border-left: 2px solid var(--accent);
+  background: linear-gradient(90deg, var(--paper-2), transparent 72%);
+}
+.block-agreed::after {
+  content: "\201D";
+  position: absolute;
+  top: 0.125rem;
+  right: 0.25rem;
+  font-size: 3.5rem;
+  line-height: 1;
+  color: var(--rule);
+  pointer-events: none;
+}
+
+.shared li { margin: 0 0 var(--gap-s); }
+.shared li:last-child { margin-bottom: 0; }
+
+q { quotes: none; color: var(--ink-mid); font-size: 0.9375rem; line-height: 1.65; }
+cite {
+  display: block;
+  margin-top: 0.1875rem;
+  font-style: normal;
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.12em;
+  font-size: 0.875rem;
+  color: var(--ink-faint);
+}
+
+/* divergence: set apart so it never reads as part of the agreed account */
+.block-only { padding-left: var(--gap-m); border-left: 2px solid var(--rule); }
+
+.side + .side { margin-top: var(--gap-s); padding-top: var(--gap-s); border-top: 1px solid var(--rule-soft); }
+
+.side-name {
+  margin: 0;
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.12em;
+  font-size: 0.9375rem;
+  color: var(--ink-soft);
+}
+
+.side-body { margin: 0.25rem 0 0; color: var(--ink-mid); font-size: 0.9375rem; line-height: 1.65; }
+.side-quote { margin: 0.5rem 0 0; }
+
+/* the vocabulary split */
+.framing { margin: 0; }
+.framing dt {
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.1em;
+  font-size: 0.9375rem;
+  color: var(--ink-faint);
+}
+.framing dd {
+  margin: 0.1875rem 0 var(--gap-s);
+  color: var(--ink-soft);
+  font-size: 0.9375rem;
+  line-height: 1.7;
+}
+.framing dd:last-child { margin-bottom: 0; }
+.framing .who {
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.08em;
+  color: var(--ink-faint);
+}
+.framing b { font-weight: 400; color: var(--ink); box-shadow: inset 0 -1px 0 var(--accent-soft); }
+.framing .sep::before { content: "  ·  "; color: var(--ink-faint); }
+
+/* ----------------------------------------------------------------- the verdict */
+
+.verdict {
+  margin: var(--gap-m) 0 0;
+  padding: var(--gap-s) var(--gap-m) var(--gap-m);
+  background: var(--flag-bg);
+  border-left: 2px solid var(--flag-edge);
+}
+
+.verdict-kicker {
+  margin: 0;
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.16em;
+  font-size: 0.875rem;
+  color: var(--flag-edge);
+}
+
+.verdict-title {
+  margin: 0.125rem 0 0;
+  font-size: 1.125rem;
+  line-height: 1.32;
+  color: var(--flag-ink);
+}
+
+.verdict-reasoning { margin: 0.375rem 0 0; color: var(--ink-mid); font-size: 0.9375rem; line-height: 1.6; }
+.verdict-by { margin: 0.375rem 0 0; font-style: italic; font-size: 0.875rem; color: var(--ink-faint); }
+.verdict-measured {
+  margin: var(--gap-s) 0 0;
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.14em;
+  font-size: 0.8125rem;
+  color: var(--flag-edge);
+}
+.verdict ul { margin: var(--gap-xs) 0 0; padding-left: 1rem; }
+.verdict li { margin: 0.1875rem 0; color: var(--ink-mid); font-size: 0.9375rem; line-height: 1.6; }
+
+/* ---------------------------------------------------------- side by side list */
+
+details.original { margin: var(--gap-m) 0 0; }
+
+details > summary {
+  cursor: pointer;
+  list-style: none;
+  display: inline-block;
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.13em;
+  font-size: 0.9375rem;
+  color: var(--ink-faint);
+  border-bottom: 1px solid var(--rule);
+}
+details > summary::-webkit-details-marker { display: none; }
+details > summary:hover { color: var(--ink-soft); border-bottom-color: var(--accent-soft); }
+details > summary:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
+details[open] > summary { color: var(--ink-soft); }
+
+.original-body {
+  margin: var(--gap-s) 0 0;
+  padding: var(--gap-m);
+  background: var(--paper-sunk);
+}
+
+.camp-group + .camp-group { margin-top: var(--gap-m); }
+
+.also-head {
+  margin: 0 0 var(--gap-xs);
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.14em;
+  font-size: 0.9375rem;
+  color: var(--ink-faint);
+}
+
+.original-body ul { margin: 0; padding: 0; list-style: none; }
+.original-body li { margin: 0.4375rem 0; font-size: 0.9375rem; line-height: 1.55; }
+.original-body a { color: var(--ink-mid); text-decoration: none; }
+.original-body a:hover { color: var(--ink); }
+.original-body a:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.original-body .who {
+  display: block;
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.1em;
+  font-size: 0.8125rem;
+  color: var(--ink-faint);
+}
+
+/* --------------------------------------------------------------------- foot */
+
+.empty { padding: var(--gap-l) 0; color: var(--ink-mid); }
+.empty p { margin: 0; }
+
+.ending {
+  margin: var(--gap-xl) 0 0;
+  padding-top: var(--gap-l);
+  border-top: 3px double var(--rule);
+  color: var(--ink-faint);
+  font-size: 0.9375rem;
+  line-height: 1.75;
+  text-align: center;
+}
+.ending p { margin: 0 0 var(--gap-s); }
+.ending strong { font-weight: 400; font-style: italic; color: var(--ink-mid); }
+
+details.colophon { margin-top: var(--gap-l); text-align: left; }
+details.colophon > summary { display: block; text-align: center; border-bottom: 0; }
+details.colophon > summary span { border-bottom: 1px solid var(--rule); }
+details.colophon .body { margin-top: var(--gap-m); line-height: 1.75; }
+details.colophon table { width: 100%; border-collapse: collapse; margin-top: var(--gap-s); }
+details.colophon td {
+  padding: 0.5rem 0.875rem 0.5rem 0;
+  border-bottom: 1px solid var(--rule-soft);
+  vertical-align: top;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
+.left-out { margin-top: var(--gap-l); }
+
+.lean {
+  display: block;
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.12em;
+  font-size: 0.8125rem;
+  color: var(--ink-faint);
+}
+.review { display: block; margin-top: 0.25rem; color: var(--ink-faint); font-size: 0.8125rem; font-style: italic; }
+
+/* ----------------------------------------------------------------- feedback */
+
+.feedback-link { margin: var(--gap-m) 0 0; }
+.feedback-link a, .feedback-link button {
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.13em;
+  font-size: 0.9375rem;
+  color: var(--ink-faint);
+  text-decoration: none;
+  border-bottom: 1px solid var(--rule);
+}
+.feedback-link a:hover, .feedback-link button:hover { color: var(--ink-soft); border-bottom-color: var(--accent-soft); }
+.feedback-link a:focus-visible, .feedback-link button:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
+
+button.feedback-button, .feedback-link button { font-family: var(--serif); cursor: pointer; }
+.feedback-link button { background: none; border: 0; border-bottom: 1px solid var(--rule); padding: 0 0 1px; }
+
+.feedback-box {
+  width: min(28rem, calc(100vw - 2rem));
+  padding: 1.5rem;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  background: var(--paper-2);
+  color: var(--ink);
+  font-family: var(--serif);
+}
+.feedback-box::backdrop { background: rgba(0, 0, 0, 0.45); }
+.feedback-box h2 { margin: 0; font-size: 1.25rem; font-weight: 400; }
+.feedback-about { margin: 0.375rem 0 1rem; font-size: 0.9375rem; line-height: 1.5; color: var(--ink-soft); }
+.feedback-box label { display: block; margin-bottom: 0.375rem; font-size: 1rem; color: var(--ink-mid); }
+.feedback-box textarea {
+  width: 100%;
+  padding: 0.625rem 0.75rem;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  background: var(--paper);
+  color: var(--ink);
+  font: 400 1.0625rem/1.5 var(--serif);
+  resize: vertical;
+}
+.feedback-box textarea:focus-visible { outline: 2px solid var(--focus); outline-offset: 1px; }
+#feedback-website { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.feedback-status { min-height: 1.5rem; margin: 0.5rem 0 0; font-size: 0.9375rem; color: var(--ink-soft); }
+.feedback-actions { display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 0.5rem; }
+.feedback-actions button {
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  background: none;
+  color: var(--ink-soft);
+  font: 400 1rem/1 var(--serif);
+  cursor: pointer;
+}
+.feedback-actions button[type="submit"] { background: var(--accent); border-color: var(--accent); color: var(--paper); }
+.feedback-actions button:disabled { opacity: 0.5; cursor: default; }
+.feedback-actions button:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+/* Always within reach while reading, and quiet enough not to pull the eye. */
+.feedback-button {
+  position: fixed;
+  right: 1rem;
+  bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+  z-index: 10;
+  padding: 0.5rem 0.875rem;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  background: var(--paper-2);
+  color: var(--ink-soft);
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.12em;
+  font-size: 0.9375rem;
+  line-height: 1;
+  text-decoration: none;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.08);
+}
+.feedback-button:hover { color: var(--ink); border-color: var(--accent-soft); }
+.feedback-button:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
+
+/* ------------------------------------------------------------------ archive */
+
+.archive-link { margin-top: var(--gap-m); }
+.archive-link a {
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.13em;
+  font-size: 0.9375rem;
+  color: var(--ink-soft);
+  text-decoration: none;
+  border-bottom: 1px solid var(--rule);
+}
+.archive-link a:hover { color: var(--ink); border-bottom-color: var(--accent-soft); }
+.archive-link a:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
+
+.archive-list {
+  margin: var(--gap-l) 0 0;
+  padding: 0;
+  list-style: none;
+  border-top: 3px double var(--rule);
+}
+.archive-list li { border-bottom: 1px solid var(--rule-soft); }
+.archive-list a {
+  display: block;
+  padding: 0.875rem 0;
+  text-decoration: none;
+  color: var(--ink-mid);
+  text-align: center;
+}
+.archive-list a:hover { color: var(--ink); }
+.archive-list a:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+/* -------------------------------------------------------------------- narrow */
+
+@media (max-width: 34rem) {
+  /* Phones: larger type and a little more air, since this is read in a hand. */
+  body { padding: 0 1.125rem 4rem; font-size: 1.125rem; }
+  .masthead { padding-top: 3rem; }
+  .wordmark { font-size: 1.625rem; letter-spacing: 0.3em; text-indent: 0.3em; }
+  .mission { font-size: 1.0625rem; }
+  .story-lead h3 { font-size: 1.625rem; }
+  .story h3 { font-size: 1.375rem; line-height: 1.3; }
+  .gist, .story-lead .gist { font-size: 1.125rem; line-height: 1.7; }
+  .account p { font-size: 1.125rem; line-height: 1.75; }
+  .spread { letter-spacing: 0.05em; }
+  .chips { gap: 0.25rem 0.625rem; }
+  .gist-credit, .spread, .more-cue, details > summary, .index a, .dateline { font-size: 1rem; }
+  q, .verdict li, .framing dd, .original-body li { font-size: 1.0625rem; }
+  .verdict-title { font-size: 1.1875rem; }
+  .block-agreed, .block-only { padding-left: 0.875rem; }
+  .block-agreed::after { display: none; }
+  .original-body { padding: 0.875rem; }
+  .section h2 { letter-spacing: 0.16em; font-size: 1.0625rem; }
+  .more-cue { padding: 0.5rem 0; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  main { animation: settle 520ms ease-out both; }
+  @keyframes settle { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: none; } }
+}
+
+@media print {
+  .feedback-button, .feedback-link { display: none; }
+  body { background: #fff; color: #000; padding: 0; font-size: 10.5pt; }
+  details { display: none; }
+  .index { border-color: #000; }
+  .verdict { border-left: 2px solid #000; background: #f3f3f3; }
+  .block-agreed { background: none; border-left: 2px solid #000; }
+  .block-agreed::after { display: none; }
+  .section, .story { break-inside: avoid-page; }
+}
+</style>
+<script>
+/* Applied before the page paints, so switching never flashes the other theme.
+   Without JavaScript the control stays hidden and the system setting decides. */
+(function () {
+  // A refresh starts at the top instead of where the reader last was. A link to a
+  // section (the menu) still goes to that section.
+  try { if ('scrollRestoration' in history) history.scrollRestoration = 'manual'; } catch (e) {}
+  if (!location.hash) window.scrollTo(0, 0);
+
+  var KEY = 'steady-theme';
+  var saved;
+  try { saved = localStorage.getItem(KEY); } catch (e) { saved = null; }
+  if (saved === 'dark' || saved === 'light') document.documentElement.dataset.theme = saved;
+
+  function paint(choice) {
+    var box = document.getElementById('appearance');
+    if (!box) return;
+    box.hidden = false;
+    var buttons = box.querySelectorAll('button');
+    for (var i = 0; i < buttons.length; i++) {
+      buttons[i].setAttribute('aria-pressed', String(buttons[i].dataset.themeChoice === choice));
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    var current = document.documentElement.dataset.theme || 'auto';
+    paint(current);
+    var box = document.getElementById('appearance');
+    if (!box) return;
+    box.addEventListener('click', function (e) {
+      var choice = e.target && e.target.dataset && e.target.dataset.themeChoice;
+      if (!choice) return;
+      if (choice === 'auto') {
+        delete document.documentElement.dataset.theme;
+        try { localStorage.removeItem(KEY); } catch (err) {}
+      } else {
+        document.documentElement.dataset.theme = choice;
+        try { localStorage.setItem(KEY, choice); } catch (err) {}
+      }
+      paint(choice);
+    });
+  });
+})();
+</script>
+</head>
+<body>
+  <main>
+    <header class="masthead">
+      <h1 class="wordmark">Steady</h1>
+      <p class="mission">Each morning, Steady reads the news from the left, the right and everything in between, and tells you what happened in plain, calm words.</p>
+      <p class="dateline">Monday, October 12, 2026</p>
+      <p class="standing">Updated once each morning</p>
+      <div class="appearance" id="appearance" hidden>
+        <button type="button" data-theme-choice="auto">auto</button>
+        <button type="button" data-theme-choice="light">light</button>
+        <button type="button" data-theme-choice="dark">dark</button>
+      </div>
+    </header>
+
+    
+    
+    <nav class="index" aria-label="sections in this edition">
+      <a href="#lead">Top stories</a>
+      <a href="#world">The world</a><a href="#nation">The nation</a><a href="#justice">Courts and justice</a><a href="#health">Health</a><a href="#science">Science</a><a href="#climate">Climate and land</a><a href="#technology">Technology</a><a href="#money">Work and money</a><a href="#local">Local</a><a href="#good">Good news</a>
+    </nav>
+
+    
+    <section class="section section-lead" id="lead">
+      <h2><span>Top stories</span></h2>
+      
+    <article class="story story-lead">
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">Feds Raid Home Of Ilhan Omar As Criminal Probe Expands</h3>
+          <p class="gist">Federal agents searched Representative Ilhan Omar &#39;s home on Monday morning as part of a criminal investigation, according to the Department of Justice and reports in the Associated Press and Fox News. <span class="gist-credit">The Guardian</span></p>
+          
+      <p class="spread" aria-label="Covered by 15 outlets: left, center, right, government-funded">
+        <span class="spread-label">Covered by 15 outlets</span>
+        <span class="chips"><span class="chip on" aria-hidden="true">Left</span><span class="chip on" aria-hidden="true">Center</span><span class="chip on" aria-hidden="true">Right</span><span class="chip on" aria-hidden="true">Government-funded</span><span class="chip" aria-hidden="true">Independent</span></span>
+      </p>
+          
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          <p class="sure sure-confirmed"><span class="sure-label">How sure is this?</span> Confirmed by 15 outlets across the left, center and right.</p>
+          
+        <div class="account">
+          <p>Trump critic, said the search was &quot;an attempt to target political enemies&quot; and she &quot;will not be silenced&quot;. <span class="gist-credit">BBC</span> Top House Democrats question the &#39;corrupt weaponization&#39; of federal government against Trump&#39;s adversaries Ilhan Omar &#39;s Democratic colleagues have condemned federal agents&#39; search of the Minnesota congresswoman&#39;s home on Monday morning, describing it as &quot;deeply &quot; and emblematic of the Trump administration &#39;s &quot;corrupt weaponization&quot; of the US government. <span class="gist-credit">The Guardian</span> The search takes place within the 60-day window of the midterm elections, when the Justice Department has historically avoided such investigative steps related to political candidates. <span class="gist-credit">The New York Times</span></p>
+          <p>The home of Rep. Ilhan Omar, D-Minn, was raided early Monday morning by Homeland Security Investigations (HSI), a source familiar with the matter told Fox News Digital. <span class="gist-credit">Fox News</span> Rep. Ilhan Omar (D-MN) broke her silence Monday after Homeland Security agents raided her Washington, D.C., home earlier in the morning. <span class="gist-credit">The Daily Wire</span> The search is reportedly related to a criminal fraud investigation into the Somali-born congresswoman&#39;s immigration paperwork. <span class="gist-credit">Just the News</span></p>
+        </div>
+          
+          
+          
+        <div class="block block-framing">
+          <h4>Same thing, different words</h4>
+          <dl class="framing">
+            <dt>a government</dt>
+            <dd><span class="who">the left</span> <b>government</b> <b>administration</b><span class="sep"></span><span class="who">the right</span> <b>administration</b><span class="sep"></span><span class="who">government-funded outlets</span> <b>authorities</b></dd>
+            <dt>investigations</dt>
+            <dd><span class="who">the left</span> <b>investigation</b><span class="sep"></span><span class="who">the center</span> <b>probe</b><span class="sep"></span><span class="who">the right</span> <b>investigation</b> <b>probe</b><span class="sep"></span><span class="who">government-funded outlets</span> <b>investigation</b></dd>
+          </dl>
+        </div>
+          
+        <details class="sources">
+          <summary>Sources (15)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">the left</p>
+            <ul>
+              <li><a href="https://www.salon.com/2026/10/12/federal-agents-search-rep-ilhan-omars-d-c-home/" target="_blank" rel="noopener"><span class="who">Salon</span>Federal agents search Rep. Ilhan Omar&#39;s D.C. home</a></li>
+              <li><a href="https://www.theguardian.com/us-news/2026/oct/12/democrats-reaction-ilhan-omar-federal-raid-home-trump" target="_blank" rel="noopener"><span class="who">The Guardian</span>Democrats rebuke federal raid of Ilhan Omar&#39;s home: &#39;rogue abuse of power&#39;</a></li>
+              <li><a href="https://www.npr.org/2026/10/12/nx-s1-5998856/federal-agents-search-congressperson-home-dc-doj" target="_blank" rel="noopener"><span class="who">NPR</span>Federal agents search Rep. Ilhan Omar&#39;s DC home, DOJ says it approved the warrant</a></li>
+              <li><a href="https://www.nytimes.com/2026/10/12/us/politics/ilhan-omar-home-searched.html" target="_blank" rel="noopener"><span class="who">The New York Times</span>Federal Agents Search Home of Rep. Ilhan Omar</a></li>
+            </ul>
+          </div>
+          <div class="camp-group">
+            <p class="also-head">the center</p>
+            <ul>
+              <li><a href="https://www.bbc.co.uk/news/articles/cvp8glg97393o?at_medium=RSS&amp;amp;at_campaign=rss" target="_blank" rel="noopener"><span class="who">BBC</span>Immigration agents search Congresswoman Ilhan Omar&#39;s home</a></li>
+              <li><a href="https://thehill.com/homenews/administration/6143427-beyer-calls-omar-raid-corrupt/" target="_blank" rel="noopener"><span class="who">The Hill</span>Democrat rips &#39;insanely corrupt&#39; raid on Omar&#39;s home</a></li>
+              <li><a href="https://www.axios.com/2026/10/12/ilhan-omar-search-immigration" target="_blank" rel="noopener"><span class="who">Axios</span>Feds search Rep. Ilhan Omar&#39;s home in immigration probe</a></li>
+            </ul>
+          </div>
+          <div class="camp-group">
+            <p class="also-head">the right</p>
+            <ul>
+              <li><a href="https://www.foxnews.com/politics/ilhan-omars-home-dc-searched-hsi-pre-dawn-raid" target="_blank" rel="noopener"><span class="who">Fox News</span>Federal agents raid Ilhan Omar&#39;s DC home amid immigration fraud investigation</a></li>
+              <li><a href="https://www.washingtonexaminer.com/news/house/4763092/ilhan-omar-raid-washington-home-investigation-doj/" target="_blank" rel="noopener"><span class="who">Washington Examiner</span>Ilhan Omar says she will &#39;not be silenced&#39; following raid on Washington home</a></li>
+              <li><a href="https://www.dailywire.com/news/ilhan-omar-responds-after-feds-raid-her-home" target="_blank" rel="noopener"><span class="who">The Daily Wire</span>Ilhan Omar Responds After Feds Raid Her Home</a></li>
+              <li><a href="https://www.breitbart.com/politics/2026/10/12/report-ilhan-omars-home-targeted-for-pre-dawn-immigration-raid/" target="_blank" rel="noopener"><span class="who">Breitbart</span>Report: Ilhan Omar&#39;s Home Targeted for Pre-Dawn Immigration Raid</a></li>
+              <li><a href="https://justthenews.com/government/federal-agents-raid-democratic-rep-ilhan-omars-dc-residence-report?utm_source=justthenews.com&amp;amp;utm_medium=feed&amp;amp;utm_campaign=external-news-aggregators" target="_blank" rel="noopener"><span class="who">Just the News</span>Federal agents raid Democratic Rep Ilhan Omar&#39;s DC residence: report</a></li>
+            </ul>
+          </div>
+          <div class="camp-group">
+            <p class="also-head">government-funded outlets</p>
+            <ul>
+              <li><a href="https://www.aljazeera.com/news/2026/10/12/trump-critic-democratic-rep-ilhan-omars-home-searched-by-federal-agents?traffic_source=rss" target="_blank" rel="noopener"><span class="who">Al Jazeera</span>US agents search home of Ilhan Omar, Trump critic and Congress member</a></li>
+              <li><a href="https://www.dw.com/en/us-federal-agents-search-home-of-trump-critic-ilhan-omar/a-79643360?maca=en-rss-en-all-1573-rdf" target="_blank" rel="noopener"><span class="who">Deutsche Welle</span>US federal agents search home of Trump critic Ilhan Omar</a></li>
+              <li><a href="https://www.france24.com/en/americas/20261012-us-federal-agents-raid-home-of-democratic-congresswoman-and-trump-critic-ilhan-omar" target="_blank" rel="noopener"><span class="who">France 24</span>US federal agents raid home of Democratic congresswoman and Trump critic Ilhan Omar</a></li>
+            </ul>
+          </div></div>
+        </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Feds%20Raid%20Home%20Of%20Ilhan%20Omar%20As%20Criminal%20Probe%20Expands&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Feds%20Raid%20Home%20Of%20Ilhan%20Omar%20As%20Criminal%20Probe%20Expands%0ASection%3A%20Top%20stories%0AEdition%3A%202026-10-12" target="_blank" rel="noopener">Feedback on this story</a></p>
+        </div>
+      </details>
+    </article>
+    <article class="story story-lead">
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">Two U.S. professors win Nobel prize in economics</h3>
+          <p class="gist">Hall and Columbia University&#39;s Michael Woodford won the Nobel Prize in economics for research on how policymakers can stabilize economies, the Royal Swedish Academy of Sciences said on Monday. <span class="gist-credit">Axios</span></p>
+          
+      <p class="spread" aria-label="Covered by 3 outlets: left, center, government-funded">
+        <span class="spread-label">Covered by 3 outlets</span>
+        <span class="chips"><span class="chip on" aria-hidden="true">Left</span><span class="chip on" aria-hidden="true">Center</span><span class="chip" aria-hidden="true">Right</span><span class="chip on" aria-hidden="true">Government-funded</span><span class="chip" aria-hidden="true">Independent</span></span>
+      </p>
+          
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          <p class="sure sure-confirmed"><span class="sure-label">How sure is this?</span> Confirmed by 3 outlets across the left and center.</p>
+          
+        <div class="account">
+          <p>Hall and Michael Woodford got the Nobel for developing economic models that help governments and central banks respond more effectively to booms and recessions. <span class="gist-credit">Deutsche Welle</span> Why it matters: Their work helped shape how central banks set interest rates and communicate policy. <span class="gist-credit">Axios</span></p>
+        </div>
+          
+          
+          
+          
+        <details class="sources">
+          <summary>Sources (3)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">the left</p>
+            <ul>
+              <li><a href="https://www.npr.org/2026/10/09/nx-s1-5996634/nobel-prize-in-economics" target="_blank" rel="noopener"><span class="who">NPR</span>2 Americans win Nobel Prize in economics for work on boom-bust cycles</a></li>
+            </ul>
+          </div>
+          <div class="camp-group">
+            <p class="also-head">the center</p>
+            <ul>
+              <li><a href="https://www.axios.com/2026/10/12/nobel-prize-economics-2026-hall-woodford" target="_blank" rel="noopener"><span class="who">Axios</span>Two U.S. professors win Nobel prize in economics</a></li>
+            </ul>
+          </div>
+          <div class="camp-group">
+            <p class="also-head">government-funded outlets</p>
+            <ul>
+              <li><a href="https://www.dw.com/en/nobel-prize-in-economics-goes-to-pair-of-us-economists/a-79638025?maca=en-rss-en-all-1573-rdf" target="_blank" rel="noopener"><span class="who">Deutsche Welle</span>Nobel Prize in Economics goes to pair of US economists</a></li>
+            </ul>
+          </div></div>
+        </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Two%20U.S.%20professors%20win%20Nobel%20prize%20in%20economics&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Two%20U.S.%20professors%20win%20Nobel%20prize%20in%20economics%0ASection%3A%20Top%20stories%0AEdition%3A%202026-10-12" target="_blank" rel="noopener">Feedback on this story</a></p>
+        </div>
+      </details>
+    </article>
+    <article class="story story-lead">
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">India&#39;s opposition leader marches with thousands against election chief</h3>
+          <p class="gist">Opposition parties say revisions to the list of eligible voters favor Prime Minister Narendra Modi&#39;s party. <span class="gist-credit">NPR</span></p>
+          
+      <p class="spread" aria-label="Covered by 4 outlets: left, government-funded">
+        <span class="spread-label">Covered by 4 outlets</span>
+        <span class="chips"><span class="chip on" aria-hidden="true">Left</span><span class="chip" aria-hidden="true">Center</span><span class="chip" aria-hidden="true">Right</span><span class="chip on" aria-hidden="true">Government-funded</span><span class="chip" aria-hidden="true">Independent</span></span>
+      </p>
+          
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          
+          
+        <div class="account">
+          <p>Intensifying their demand for Chief Election Commissioner Gyanesh Kumar&#39;s resignation, opposition parties are holding a march to the Supreme Court. <span class="gist-credit">Deutsche Welle</span> Opposition parties and supporters of the so-called &quot;cockroach&quot; youth movement marched towards the country&#39;s Supreme Court on Monday, in the latest show of objections against the recent removal of millions of names from voters lists. <span class="gist-credit">France 24</span> Authorities have removed more than 130 million names from the voter roll. <span class="gist-credit">NPR</span></p>
+          <p>The latest rally followed a weekend of unrest in Delhi, when police detained thousands of protesters, including leaders of the youth-led Cockroach Janta Party (CJP), who are also asking for the election body&#39;s special revision of electoral rolls to be halted. <span class="gist-credit">RT</span> Critics say the move is likely to benefit Prime Minister Narendra Modi&#39;s ruling party, and are demanding India&#39;s election chief step down over what they describe as misconduct. <span class="gist-credit">France 24</span> The march was stopped by police barricades a few hundred meters from the top court. <span class="gist-credit">RT</span></p>
+        </div>
+          
+          
+          
+          
+        <details class="sources">
+          <summary>Sources (4)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">the left</p>
+            <ul>
+              <li><a href="https://www.npr.org/2026/10/12/nx-s1-5998831/india-opposition-protests" target="_blank" rel="noopener"><span class="who">NPR</span>India&#39;s opposition parties march to top court as protests over voter lists escalate</a></li>
+            </ul>
+          </div>
+          <div class="camp-group">
+            <p class="also-head">government-funded outlets</p>
+            <ul>
+              <li><a href="https://rt-english.com/india/647091-india-congress-delhi-protest/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=RSS" target="_blank" rel="noopener"><span class="who">RT</span>Indian opposition marches to Supreme Court over voter rolls (VIDEO)</a></li>
+              <li><a href="https://www.dw.com/en/india-news-opposition-parties-march-to-supreme-court/live-79638649?maca=en-rss-en-all-1573-rdf" target="_blank" rel="noopener"><span class="who">Deutsche Welle</span>India news: Opposition parties march to Supreme Court</a></li>
+              <li><a href="https://www.france24.com/en/india-s-opposition-leader-marches-with-thousands-against-election-chief" target="_blank" rel="noopener"><span class="who">France 24</span>India&#39;s opposition leader marches with thousands against election chief</a></li>
+            </ul>
+          </div></div>
+        </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20India&#39;s%20opposition%20leader%20marches%20with%20thousands%20against%20election%20chief&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20India&#39;s%20opposition%20leader%20marches%20with%20thousands%20against%20election%20chief%0ASection%3A%20Top%20stories%0AEdition%3A%202026-10-12" target="_blank" rel="noopener">Feedback on this story</a></p>
+        </div>
+      </details>
+    </article>
+    </section>
+    
+    <section class="section" id="world">
+      <h2><span>The world</span></h2>
+      
+    <article class="story">
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">Pope Leo To Undergo Surgery</h3>
+          <p class="gist">Pope Leo continues working after lung surgery announcement. <span class="gist-credit">Al Jazeera</span></p>
+          
+      <p class="spread" aria-label="Covered by 3 outlets: right, government-funded">
+        <span class="spread-label">Covered by 3 outlets</span>
+        <span class="chips"><span class="chip" aria-hidden="true">Left</span><span class="chip" aria-hidden="true">Center</span><span class="chip on" aria-hidden="true">Right</span><span class="chip on" aria-hidden="true">Government-funded</span><span class="chip" aria-hidden="true">Independent</span></span>
+      </p>
+          
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          
+          
+        <div class="account">
+          <p>The case of Pope Leo shows how small lung nodules are often found during routine health checks. <span class="gist-credit">Deutsche Welle</span> The 71-year-old pontiff told the gathering that doctors found a &quot;localized&quot; nodule, a small, dense area of tissue that is generally non-cancerous and rarely causes symptoms. <span class="gist-credit">The Daily Wire</span> Quick treatment is generally advised before nodules can grow to become larger life-threatening masses. <span class="gist-credit">Deutsche Welle</span></p>
+          <p>&quot;Recently, during some medical tests, doctors discovered a localized nodule in my lung,&quot; the pope said to the crowd at St. Peter&#39;s Square during his noon prayer. <span class="gist-credit">The Daily Wire</span> The pope later took to social media to share the news and thank everyone for their prayers. <span class="gist-credit">The Daily Wire</span> Dear friends, during some recent medical examinations, the doctors found a small, localized nodule in my lung. <span class="gist-credit">The Daily Wire</span></p>
+        </div>
+          
+          
+          
+          
+        <details class="sources">
+          <summary>Sources (3)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">the right</p>
+            <ul>
+              <li><a href="https://www.dailywire.com/news/pope-leo-to-undergo-surgery" target="_blank" rel="noopener"><span class="who">The Daily Wire</span>Pope Leo To Undergo Surgery</a></li>
+            </ul>
+          </div>
+          <div class="camp-group">
+            <p class="also-head">government-funded outlets</p>
+            <ul>
+              <li><a href="https://www.aljazeera.com/video/newsfeed/2026/10/12/pope-leo-continues-working-after-lung-surgery-announcement?traffic_source=rss" target="_blank" rel="noopener"><span class="who">Al Jazeera</span>Pope Leo continues working after lung surgery announcement</a></li>
+              <li><a href="https://www.dw.com/en/pope-lung-nodule-could-it-be-cancer/a-79641503?maca=en-rss-en-all-1573-rdf" target="_blank" rel="noopener"><span class="who">Deutsche Welle</span>Pope lung nodule: Could it be cancer?</a></li>
+            </ul>
+          </div></div>
+        </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Pope%20Leo%20To%20Undergo%20Surgery&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Pope%20Leo%20To%20Undergo%20Surgery%0ASection%3A%20The%20world%0AEdition%3A%202026-10-12" target="_blank" rel="noopener">Feedback on this story</a></p>
+        </div>
+      </details>
+    </article>
+    <article class="story">
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">Hundreds of French supermarkets hit by a cyberattack that defrosted refrigeration systems</h3>
+          <p class="gist">Hundreds of French supermarkets saw their refrigeration systems defrosted, spoiling tons of frozen food. <span class="gist-credit">Deutsche Welle</span></p>
+          
+      <p class="spread" aria-label="Covered by 2 outlets: center, government-funded">
+        <span class="spread-label">Covered by 2 outlets</span>
+        <span class="chips"><span class="chip" aria-hidden="true">Left</span><span class="chip on" aria-hidden="true">Center</span><span class="chip" aria-hidden="true">Right</span><span class="chip on" aria-hidden="true">Government-funded</span><span class="chip" aria-hidden="true">Independent</span></span>
+      </p>
+          
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          
+          
+        <div class="account">
+          <p>Hundreds of stores were targeted by the overnight hack, which spoiled fresh and frozen food estimated to be worth millions of euros. <span class="gist-credit">BBC</span> The attack has raised serious questions about food security across Europe. <span class="gist-credit">Deutsche Welle</span></p>
+        </div>
+          
+          
+          
+          
+        <details class="sources">
+          <summary>Sources (2)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">the center</p>
+            <ul>
+              <li><a href="https://www.bbc.co.uk/news/articles/crq5nzxv9q4yo?at_medium=RSS&amp;amp;at_campaign=rss" target="_blank" rel="noopener"><span class="who">BBC</span>Fridges in French supermarkets hit by cyber attack</a></li>
+            </ul>
+          </div>
+          <div class="camp-group">
+            <p class="also-head">government-funded outlets</p>
+            <ul>
+              <li><a href="https://www.dw.com/en/hundreds-of-french-supermarkets-hit-by-a-cyberattack-that-defrosted-refrigeration-systems/a-79646097?maca=en-rss-en-all-1573-rdf" target="_blank" rel="noopener"><span class="who">Deutsche Welle</span>Hundreds of French supermarkets hit by a cyberattack that defrosted refrigeration systems</a></li>
+            </ul>
+          </div></div>
+        </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Hundreds%20of%20French%20supermarkets%20hit%20by%20a%20cyberattack%20that%20defrosted%20refrigeratio&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Hundreds%20of%20French%20supermarkets%20hit%20by%20a%20cyberattack%20that%20defrosted%20refrigeration%20systems%0ASection%3A%20The%20world%0AEdition%3A%202026-10-12" target="_blank" rel="noopener">Feedback on this story</a></p>
+        </div>
+      </details>
+    </article>
+    <article class="story">
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">Thousands of Indians march to Supreme Court to oust election chief</h3>
+          <p class="gist">The march follows a chaotic weekend in Delhi which saw thousands of protesters detained by police. <span class="gist-credit">BBC</span></p>
+          
+      <p class="spread" aria-label="Covered by 2 outlets: center, government-funded">
+        <span class="spread-label">Covered by 2 outlets</span>
+        <span class="chips"><span class="chip" aria-hidden="true">Left</span><span class="chip on" aria-hidden="true">Center</span><span class="chip" aria-hidden="true">Right</span><span class="chip on" aria-hidden="true">Government-funded</span><span class="chip" aria-hidden="true">Independent</span></span>
+      </p>
+          
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          
+          
+        <div class="account">
+          <p>Protesters in New Delhi continue to take to the streets demanding the country&#39;s top election commissioner resign. <span class="gist-credit">France 24</span> Frustrations have been mounting after an investigation in a leading newspaper revealed concerns had been raised within the body, over the revision of voter lists. <span class="gist-credit">France 24</span></p>
+        </div>
+          
+          
+          
+        <div class="block block-framing">
+          <h4>Same thing, different words</h4>
+          <dl class="framing">
+            <dt>protests</dt>
+            <dd><span class="who">the center</span> <b>protest</b> <b>protesters</b><span class="sep"></span><span class="who">government-funded outlets</span> <b>protest</b> <b>protesters</b></dd>
+          </dl>
+        </div>
+          
+        <details class="sources">
+          <summary>Sources (2)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">the center</p>
+            <ul>
+              <li><a href="https://www.bbc.co.uk/news/articles/cwr5y2lgr4gdo?at_medium=RSS&amp;amp;at_campaign=rss" target="_blank" rel="noopener"><span class="who">BBC</span>Thousands march to Indian Supreme Court to demand election chief resign</a></li>
+            </ul>
+          </div>
+          <div class="camp-group">
+            <p class="also-head">government-funded outlets</p>
+            <ul>
+              <li><a href="https://www.france24.com/en/thousands-of-indians-march-to-supreme-court-to-oust-election-chief" target="_blank" rel="noopener"><span class="who">France 24</span>Thousands of Indians march to Supreme Court to oust election chief</a></li>
+            </ul>
+          </div></div>
+        </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Thousands%20of%20Indians%20march%20to%20Supreme%20Court%20to%20oust%20election%20chief&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Thousands%20of%20Indians%20march%20to%20Supreme%20Court%20to%20oust%20election%20chief%0ASection%3A%20The%20world%0AEdition%3A%202026-10-12" target="_blank" rel="noopener">Feedback on this story</a></p>
+        </div>
+      </details>
+    </article>
+    <article class="story">
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">Starlink India launch: Why Elon Musk is still waiting</h3>
+          <p class="gist">Despite securing key approvals, the Starlink satellite internet service remains in regulatory limbo, raising questions about security clearances, competition and India&#39;s investment climate. <span class="gist-credit">Deutsche Welle</span></p>
+          
+      <p class="spread" aria-label="Covered by 2 outlets: government-funded">
+        <span class="spread-label">Covered by 2 outlets</span>
+        <span class="chips"><span class="chip" aria-hidden="true">Left</span><span class="chip" aria-hidden="true">Center</span><span class="chip" aria-hidden="true">Right</span><span class="chip on" aria-hidden="true">Government-funded</span><span class="chip" aria-hidden="true">Independent</span></span>
+      </p>
+          
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          
+          
+        <div class="account">
+          <p>With US-India relations &quot;nose-diving&quot; amid an unclosed trade deal, and Washington adding to the visa and other curbs on Indian IT companies and workers, New Delhi has no reason to humor Musk, the Hindu BusinessLine said on Monday. <span class="gist-credit">RT</span> He also argued that Starlink would give consumers more choice and promised affordable prices, without announcing a subscription rate. <span class="gist-credit">RT</span></p>
+          <p>India&#39;s Communications Ministry rejected allegations of favoritism last week, describing its satellite licensing framework as &quot;fair and non-discriminatory.&quot; <span class="gist-credit">RT</span> Starlink, Ambani&#39;s Jio Satellite Communications, and Bharti Group-backed Eutelsat OneWeb are all undergoing security assessments before they can receive spectrum and begin commercial operations. <span class="gist-credit">RT</span></p>
+        </div>
+          
+          
+          
+          
+        <details class="sources">
+          <summary>Sources (2)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">government-funded outlets</p>
+            <ul>
+              <li><a href="https://rt-english.com/india/647085-india-musk-starlink-favors/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=RSS" target="_blank" rel="noopener"><span class="who">RT</span>India won&#39;t give special favors to Starlink despite Musk&#39;s jabs – media</a></li>
+              <li><a href="https://www.dw.com/en/starlink-india-launch-why-elon-musk-is-still-waiting/a-79643043?maca=en-rss-en-all-1573-rdf" target="_blank" rel="noopener"><span class="who">Deutsche Welle</span>Starlink India launch: Why Elon Musk is still waiting</a></li>
+            </ul>
+          </div></div>
+        </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Starlink%20India%20launch%3A%20Why%20Elon%20Musk%20is%20still%20waiting&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Starlink%20India%20launch%3A%20Why%20Elon%20Musk%20is%20still%20waiting%0ASection%3A%20The%20world%0AEdition%3A%202026-10-12" target="_blank" rel="noopener">Feedback on this story</a></p>
+        </div>
+      </details>
+    </article>
+    <article class="story">
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">German police arrest child-groping robot (Videos)</h3>
+          <p class="gist">Police in Cologne have seized a robot after it was filmed sexually harassing a 16-year-old girl. <span class="gist-credit">RT</span></p>
+          
+      <p class="spread" aria-label="Covered by 1 outlet: government-funded">
+        <span class="spread-label">Covered by 1 outlet</span>
+        <span class="chips"><span class="chip" aria-hidden="true">Left</span><span class="chip" aria-hidden="true">Center</span><span class="chip" aria-hidden="true">Right</span><span class="chip on" aria-hidden="true">Government-funded</span><span class="chip" aria-hidden="true">Independent</span></span>
+      </p>
+          
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          <p class="sure sure-single"><span class="sure-label">How sure is this?</span> Only one outlet has reported this so far.</p>
+          
+        <div class="account">
+          <p>The teenage girl was standing outside a fast food restaurant with her friends when the robot approached her from behind and made obscene motions, the statement continued. <span class="gist-credit">RT</span> Shortly afterwards, officers found the robot in the trunk of a nearby car and confiscated it, along with the mobile phones of its 16-year-old owner and his 19-year-old accomplice. <span class="gist-credit">RT</span></p>
+          <p>The red and gold robot, modeled on Marvel&#39;s &#39;Iron Man&#39;, was seen in an evidence photo clad in a white vest, a gold chain, and a stick-on mustache. <span class="gist-credit">RT</span></p>
+        </div>
+          
+          
+          
+          
+        <details class="sources">
+          <summary>Sources (1)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">government-funded outlets</p>
+            <ul>
+              <li><a href="https://rt-english.com/news/647101-germany-robot-sexual-harassment/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=RSS" target="_blank" rel="noopener"><span class="who">RT</span>German police &#39;arrest&#39; child-groping robot (VIDEOS)</a></li>
+            </ul>
+          </div></div>
+        </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20German%20police%20arrest%20child-groping%20robot%20(Videos)&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20German%20police%20arrest%20child-groping%20robot%20(Videos)%0ASection%3A%20The%20world%0AEdition%3A%202026-10-12" target="_blank" rel="noopener">Feedback on this story</a></p>
+        </div>
+      </details>
+    </article>
+    </section>
+    <section class="section" id="nation">
+      <h2><span>The nation</span></h2>
+      
+    <article class="story">
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">Trump claims Russia and Ukraine agree to energy ceasefire</h3>
+          <p class="gist">Trump has announced an &quot;immediate&quot; energy ceasefire between Russia and Ukraine. <span class="gist-credit">RT</span></p>
+          
+      <p class="spread" aria-label="Covered by 8 outlets: left, center, right, government-funded">
+        <span class="spread-label">Covered by 8 outlets</span>
+        <span class="chips"><span class="chip on" aria-hidden="true">Left</span><span class="chip on" aria-hidden="true">Center</span><span class="chip on" aria-hidden="true">Right</span><span class="chip on" aria-hidden="true">Government-funded</span><span class="chip" aria-hidden="true">Independent</span></span>
+      </p>
+          
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          <p class="sure sure-confirmed"><span class="sure-label">How sure is this?</span> Confirmed by 8 outlets across the left, center and right.</p>
+          
+        <div class="account">
+          <p>Despite the US president announcing energy infrastructure would not be targeted strikes have continued, Ukraine says. <span class="gist-credit">BBC</span> Ukraine&#39;s Vladimir Zelensky has demanded a 60-day ceasefire to hold presidential elections US. <span class="gist-credit">RT</span> Less than 24 hours after Donald. <span class="gist-credit">Deutsche Welle</span></p>
+          <p>Ukrainian President Volodymyr Zelensky tells Axios the announcement &quot;was news for me. <span class="gist-credit">Axios</span> Elitsa Gadeva explains what this would mean for both sides. <span class="gist-credit">France 24</span> The announcement comes as Trump has intensified pressure on Ukrainian. <span class="gist-credit">Fox News</span></p>
+        </div>
+          
+          
+          
+        <div class="block block-framing">
+          <h4>Same thing, different words</h4>
+          <dl class="framing">
+            <dt>military strikes</dt>
+            <dd><span class="who">the center</span> <b>strike</b> <b>attack</b><span class="sep"></span><span class="who">the right</span> <b>strike</b> <b>attack</b><span class="sep"></span><span class="who">government-funded outlets</span> <b>strike</b></dd>
+          </dl>
+        </div>
+          
+        <details class="sources">
+          <summary>Sources (8)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">the left</p>
+            <ul>
+              <li><a href="https://www.npr.org/2026/10/12/nx-s1-5998614/trump-russia-ukraine-energy-ceasefire" target="_blank" rel="noopener"><span class="who">NPR</span>Russia hits Ukraine gas facilities after Trump claims &#39;energy ceasefire&#39;</a></li>
+            </ul>
+          </div>
+          <div class="camp-group">
+            <p class="also-head">the center</p>
+            <ul>
+              <li><a href="https://www.bbc.co.uk/news/articles/cvlyd4pdlwkxo?at_medium=RSS&amp;amp;at_campaign=rss" target="_blank" rel="noopener"><span class="who">BBC</span>Six Ukrainian energy sites hit by Russia since Trump announced ceasefire, Zelensky says</a></li>
+              <li><a href="https://www.axios.com/2026/10/11/trump-russia-ukraine-energy-ceasefire-zelensky" target="_blank" rel="noopener"><span class="who">Axios</span>Trump claims Russia and Ukraine agree to energy ceasefire</a></li>
+            </ul>
+          </div>
+          <div class="camp-group">
+            <p class="also-head">the right</p>
+            <ul>
+              <li><a href="https://www.foxnews.com/politics/trump-announces-immediate-energy-ceasefire-between-russia-ukraine" target="_blank" rel="noopener"><span class="who">Fox News</span>Trump announces immediate energy ceasefire between Russia and Ukraine</a></li>
+              <li><a href="https://www.breitbart.com/europe/2026/10/11/trump-announces-ukraine-russia-ceasefire-on-strikes-against-energy-infrastructure/" target="_blank" rel="noopener"><span class="who">Breitbart</span>Trump Announces Ukraine-Russia Ceasefire on Energy Infrastructure Strikes... Zelensky Offers Elections</a></li>
+            </ul>
+          </div>
+          <div class="camp-group">
+            <p class="also-head">government-funded outlets</p>
+            <ul>
+              <li><a href="https://rt-english.com/news/647045-russia-ukraine-energy-ceasefire-trump/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=RSS" target="_blank" rel="noopener"><span class="who">RT</span>Russia and Ukraine agree to energy ceasefire – Trump</a></li>
+              <li><a href="https://www.dw.com/en/ukraine-says-russia-launched-strikes-hours-after-donald-trump-announced-an-energy-ceasefire/a-79640911?maca=en-rss-en-all-1573-rdf" target="_blank" rel="noopener"><span class="who">Deutsche Welle</span>Ukraine says Russia launched strikes hours after Donald Trump announced an &#39;energy ceasefire&#39;</a></li>
+              <li><a href="https://www.france24.com/en/ukraine-zelensky-says-learned-of-trump-s-energy-ceasefire-through-media" target="_blank" rel="noopener"><span class="who">France 24</span>Ukraine: Zelensky says learned of Trump&#39;s &#39;energy ceasefire&#39; through media</a></li>
+            </ul>
+          </div></div>
+        </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Trump%20claims%20Russia%20and%20Ukraine%20agree%20to%20energy%20ceasefire&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Trump%20claims%20Russia%20and%20Ukraine%20agree%20to%20energy%20ceasefire%0ASection%3A%20The%20nation%0AEdition%3A%202026-10-12" target="_blank" rel="noopener">Feedback on this story</a></p>
+        </div>
+      </details>
+    </article>
+    <article class="story">
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">Tropical tracker: Timeline of the 2026 Atlantic Hurricane Season</h3>
+          <p class="gist">Photos and video capture the hurricane&#39;s aftermath as flooded streets, damaged homes and scattered debris reveal the storm&#39;s full impact. <span class="gist-credit">Fox News</span></p>
+          
+      <p class="spread" aria-label="Covered by 3 outlets: left, center, right">
+        <span class="spread-label">Covered by 3 outlets</span>
+        <span class="chips"><span class="chip on" aria-hidden="true">Left</span><span class="chip on" aria-hidden="true">Center</span><span class="chip on" aria-hidden="true">Right</span><span class="chip" aria-hidden="true">Government-funded</span><span class="chip" aria-hidden="true">Independent</span></span>
+      </p>
+          
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          <p class="sure sure-confirmed"><span class="sure-label">How sure is this?</span> Confirmed by 3 outlets across the left, center and right.</p>
+          
+        <div class="account">
+          <p>Each year, the Atlantic Hurricane Season officially runs from June 1 through Nov. <span class="gist-credit">The Hill</span> Communities are beginning to assess the damage left behind by a powerful hurricane that tore through the region, leaving homes damaged, roads flooded and neighborhoods littered with debris. <span class="gist-credit">Fox News</span> Follow along as we track each storm throughout the season. <span class="gist-credit">The Hill</span></p>
+          <p>Photos from some of the hardest-hit areas show the scale of the destruction as residents and emergency crews begin the long process of cleaning up and rebuilding. <span class="gist-credit">Fox News</span> HOW THE Violent Category 2 Storm UNFOLDED Across FLORIDA AND GULF Coast Isaias criticized into the Florida Panhandle near Destin on Friday, Oct. <span class="gist-credit">Fox News</span> 9, as a Category 2 hurricane with maximum sustained winds of 105 mph, bringing destructive winds, dangerous storm surge and widespread flooding. <span class="gist-credit">Fox News</span></p>
+        </div>
+          
+          
+          
+          
+        <details class="sources">
+          <summary>Sources (3)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">the left</p>
+            <ul>
+              <li><a href="https://www.nytimes.com/2026/10/11/us/hurricane-isaias-damage-photos-video.html" target="_blank" rel="noopener"><span class="who">The New York Times</span>Hurricane Isaias&#39;s Aftermath in Video and Pictures</a></li>
+            </ul>
+          </div>
+          <div class="camp-group">
+            <p class="also-head">the center</p>
+            <ul>
+              <li><a href="https://thehill.com/policy/energy-environment/5918384-tropical-tracker-timeline-of-the-2026-atlantic-hurricane-season/" target="_blank" rel="noopener"><span class="who">The Hill</span>Tropical tracker: Timeline of the 2026 Atlantic Hurricane Season</a></li>
+            </ul>
+          </div>
+          <div class="camp-group">
+            <p class="also-head">the right</p>
+            <ul>
+              <li><a href="https://www.foxnews.com/politics/hurricane-isaias-devastating-aftermath-comes-into-focus-striking-images" target="_blank" rel="noopener"><span class="who">Fox News</span>Hurricane Isaias&#39; devastating aftermath comes into focus in striking images</a></li>
+            </ul>
+          </div></div>
+        </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Tropical%20tracker%3A%20Timeline%20of%20the%202026%20Atlantic%20Hurricane%20Season&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Tropical%20tracker%3A%20Timeline%20of%20the%202026%20Atlantic%20Hurricane%20Season%0ASection%3A%20The%20nation%0AEdition%3A%202026-10-12" target="_blank" rel="noopener">Feedback on this story</a></p>
+        </div>
+      </details>
+    </article>
+    <article class="story">
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">Mamdani says ICE agents who shot man in New York looked like mass shooters</h3>
+          <p class="gist">Sunday on MS NOW&#39;s &quot;Connect,&quot; New York City Mayor Zohran Mamdani said U.S. Immigration and Customs Enforcement (ICE) should cease all operations in New York City. <span class="gist-credit">Breitbart</span></p>
+          
+      <p class="spread" aria-label="Covered by 3 outlets: left, right, government-funded">
+        <span class="spread-label">Covered by 3 outlets</span>
+        <span class="chips"><span class="chip on" aria-hidden="true">Left</span><span class="chip" aria-hidden="true">Center</span><span class="chip on" aria-hidden="true">Right</span><span class="chip on" aria-hidden="true">Government-funded</span><span class="chip" aria-hidden="true">Independent</span></span>
+      </p>
+          
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          <p class="sure sure-confirmed"><span class="sure-label">How sure is this?</span> Confirmed by 3 outlets across the left and right.</p>
+          
+        <div class="account">
+          <p>Mayor calls for end to agency&#39;s operations in city after agents shot and wounded man with five-year-old in car. <span class="gist-credit">The Guardian</span> City spokesperson says the mayor&#39;s calls for reform are not connected to police response to an ICE shooting last week. <span class="gist-credit">Al Jazeera</span></p>
+        </div>
+          
+          
+          
+          
+        <details class="sources">
+          <summary>Sources (3)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">the left</p>
+            <ul>
+              <li><a href="https://www.theguardian.com/us-news/2026/oct/12/mamdani-ice-new-york-shooting" target="_blank" rel="noopener"><span class="who">The Guardian</span>Mamdani says ICE agents who shot man in New York looked like &#39;mass shooters&#39;</a></li>
+            </ul>
+          </div>
+          <div class="camp-group">
+            <p class="also-head">the right</p>
+            <ul>
+              <li><a href="https://www.breitbart.com/clips/2026/10/11/mamdani-ice-should-not-be-in-new-york-city-at-all/" target="_blank" rel="noopener"><span class="who">Breitbart</span>Mamdani: ICE Should Not Be in New York City At All</a></li>
+            </ul>
+          </div>
+          <div class="camp-group">
+            <p class="also-head">government-funded outlets</p>
+            <ul>
+              <li><a href="https://www.aljazeera.com/news/2026/10/12/zohran-mamdani-orders-use-of-force-review-for-new-york-city-police?traffic_source=rss" target="_blank" rel="noopener"><span class="who">Al Jazeera</span>Zohran Mamdani orders use-of-force review for New York City police</a></li>
+            </ul>
+          </div></div>
+        </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Mamdani%20says%20ICE%20agents%20who%20shot%20man%20in%20New%20York%20looked%20like%20mass%20shooters&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Mamdani%20says%20ICE%20agents%20who%20shot%20man%20in%20New%20York%20looked%20like%20mass%20shooters%0ASection%3A%20The%20nation%0AEdition%3A%202026-10-12" target="_blank" rel="noopener">Feedback on this story</a></p>
+        </div>
+      </details>
+    </article>
+    <article class="story">
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">Elon Musk Gives Record Amounts to Republican Groups Ahead of Midterms</h3>
+          <p class="gist">The tech mogul funneled over $276M this summer into Republican campaigns and PACs to bolster GOP candidates ahead of midterms. <span class="gist-credit">Just the News</span></p>
+          
+      <p class="spread" aria-label="Covered by 3 outlets: left, center, right">
+        <span class="spread-label">Covered by 3 outlets</span>
+        <span class="chips"><span class="chip on" aria-hidden="true">Left</span><span class="chip on" aria-hidden="true">Center</span><span class="chip on" aria-hidden="true">Right</span><span class="chip" aria-hidden="true">Government-funded</span><span class="chip" aria-hidden="true">Independent</span></span>
+      </p>
+          
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          <p class="sure sure-confirmed"><span class="sure-label">How sure is this?</span> Confirmed by 3 outlets across the left, center and right.</p>
+          
+        <div class="account">
+          <p>Tech trillionaire Elon Musk gave $276 million to several Republican super PACs and organizations over the past three months, as the GOP faces headwinds ahead of the midterm elections. <span class="gist-credit">The Hill</span> Win McNamee / Getty Images Elon Musk is pouring amounts of money into trying to save Republicans from a midterm wipeout. <span class="gist-credit">The Daily Beast</span> This brings the Tesla and SpaceX CEO&#39;s total contributions so far to $366 million. <span class="gist-credit">The Hill</span></p>
+          <p>The Tesla mogul, 55, has thrown an astonishing $366 million at groups backing GOP candidates ahead of the Nov. <span class="gist-credit">The Daily Beast</span> Sources familiar with Musk&#39;s fundraising told the newspaper, which describes his donations as some of the largest in U.S. history, that he&#39;s given even more in undisclosed donations over the past two election cycles. <span class="gist-credit">The Daily Beast</span> Recipients include the Senate Leadership Fund, Congressional Leadership Fund, his own America PAC, the Republican Governors Association, and the Republican Attorneys General Association, along with the Lone Star Liberty PAC, which supports embattled Texas GOP Senate nominee Ken Paxton. <span class="gist-credit">The Daily Beast</span></p>
+        </div>
+          
+          
+          
+          
+        <details class="sources">
+          <summary>Sources (3)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">the left</p>
+            <ul>
+              <li><a href="https://www.thedailybeast.com/elon-musks-jaw-dropping-secret-scramble-to-save-trump-at-midterms-exposed" target="_blank" rel="noopener"><span class="who">The Daily Beast</span>Elon Musk Gives Record Amounts to Republican Groups Ahead of Midterms</a></li>
+            </ul>
+          </div>
+          <div class="camp-group">
+            <p class="also-head">the center</p>
+            <ul>
+              <li><a href="https://thehill.com/policy/technology/6143347-musk-donated-millions-gop-midterms/" target="_blank" rel="noopener"><span class="who">The Hill</span>Musk throws $276M behind Republicans in midterms</a></li>
+            </ul>
+          </div>
+          <div class="camp-group">
+            <p class="also-head">the right</p>
+            <ul>
+              <li><a href="https://justthenews.com/politics-policy/elections/elon-musk-becomes-largest-midterm-donor-aims-rescue-senate-republican?utm_source=justthenews.com&amp;amp;utm_medium=feed&amp;amp;utm_campaign=external-news-aggregators" target="_blank" rel="noopener"><span class="who">Just the News</span>Elon Musk becomes largest midterm donor, aims to rescue Senate Republican majority</a></li>
+            </ul>
+          </div></div>
+        </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Elon%20Musk%20Gives%20Record%20Amounts%20to%20Republican%20Groups%20Ahead%20of%20Midterms&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Elon%20Musk%20Gives%20Record%20Amounts%20to%20Republican%20Groups%20Ahead%20of%20Midterms%0ASection%3A%20The%20nation%0AEdition%3A%202026-10-12" target="_blank" rel="noopener">Feedback on this story</a></p>
+        </div>
+      </details>
+    </article>
+    <article class="story">
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">Judge halts Trump administration&#39;s taxpayer-funded ads</h3>
+          <p class="gist">A federal judge has ordered Donald Trump&#39;s administration to temporarily halt the broadcast of taxpayer-funded television ads promoting the president ahead of the 3 November midterm elections. <span class="gist-credit">The Guardian</span></p>
+          
+      <p class="spread" aria-label="Covered by 3 outlets: left, center, right">
+        <span class="spread-label">Covered by 3 outlets</span>
+        <span class="chips"><span class="chip on" aria-hidden="true">Left</span><span class="chip on" aria-hidden="true">Center</span><span class="chip on" aria-hidden="true">Right</span><span class="chip" aria-hidden="true">Government-funded</span><span class="chip" aria-hidden="true">Independent</span></span>
+      </p>
+          
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          <p class="sure sure-confirmed"><span class="sure-label">How sure is this?</span> Confirmed by 3 outlets across the left, center and right.</p>
+          
+        <div class="account">
+          <p>New York judge also orders administration to cancel remaining portion of a $20m advertising purchase. <span class="gist-credit">The Guardian</span> The ruling was made by U.S. District Judge Ana Reyes. <span class="gist-credit">Just the News</span> Why it matters: The ruling temporarily blocks the ads weeks before November&#39;s midterm elections as multiple lawsuits challenging the Trump administration&#39;s use of taxpayer money play out in court. <span class="gist-credit">Axios</span></p>
+          <p>A similar lawsuit, filed by the Democratic National Committee, was filed in D.C. federal court earlier this month. <span class="gist-credit">Axios</span> Trump pledged to pay for the ads himself after both lawsuits were filed, though the White House told Axios there were no plans to reimburse the government for millions already spent on the ads. <span class="gist-credit">Axios</span> Driving the news: The plaintiffs in the New York lawsuit allege that the Trump administration exceeded congressional authorization and violated restrictions on publicity and propaganda. <span class="gist-credit">Axios</span></p>
+        </div>
+          
+          
+          
+        <div class="block block-framing">
+          <h4>Same thing, different words</h4>
+          <dl class="framing">
+            <dt>a government</dt>
+            <dd><span class="who">the left</span> <b>administration</b><span class="sep"></span><span class="who">the center</span> <b>administration</b><span class="sep"></span><span class="who">the right</span> <b>administration</b> <b>government</b></dd>
+          </dl>
+        </div>
+          
+        <details class="sources">
+          <summary>Sources (3)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">the left</p>
+            <ul>
+              <li><a href="https://www.theguardian.com/us-news/2026/oct/12/judge-orders-halt-taxpayer-funded-pro-trump-ads" target="_blank" rel="noopener"><span class="who">The Guardian</span>Federal judge orders temporary halt to taxpayer-funded pro-Trump TV ads</a></li>
+            </ul>
+          </div>
+          <div class="camp-group">
+            <p class="also-head">the center</p>
+            <ul>
+              <li><a href="https://www.axios.com/2026/10/12/trump-taxpayer-funded-ads-judge-order" target="_blank" rel="noopener"><span class="who">Axios</span>Judge halts Trump administration&#39;s taxpayer-funded ads</a></li>
+            </ul>
+          </div>
+          <div class="camp-group">
+            <p class="also-head">the right</p>
+            <ul>
+              <li><a href="https://justthenews.com/government/white-house/federal-judge-orders-trump-administration-halt-work-one-day-historic-dc?utm_source=justthenews.com&amp;amp;utm_medium=feed&amp;amp;utm_campaign=external-news-aggregators" target="_blank" rel="noopener"><span class="who">Just the News</span>Federal judge orders Trump administration to halt work for one day on historic DC public golf course</a></li>
+            </ul>
+          </div></div>
+        </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Judge%20halts%20Trump%20administration&#39;s%20taxpayer-funded%20ads&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Judge%20halts%20Trump%20administration&#39;s%20taxpayer-funded%20ads%0ASection%3A%20The%20nation%0AEdition%3A%202026-10-12" target="_blank" rel="noopener">Feedback on this story</a></p>
+        </div>
+      </details>
+    </article>
+    <article class="story">
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">Darline Graham Flees After Debate Flub</h3>
+          <p class="gist">Democratic South Carolina U.S. Senate candidate Annie Andrews and Republican Sen. Darline Graham clashed during a U.S. Senate election debate. <span class="gist-credit">Fox News</span></p>
+          
+      <p class="spread" aria-label="Covered by 4 outlets: left, right">
+        <span class="spread-label">Covered by 4 outlets</span>
+        <span class="chips"><span class="chip on" aria-hidden="true">Left</span><span class="chip" aria-hidden="true">Center</span><span class="chip on" aria-hidden="true">Right</span><span class="chip" aria-hidden="true">Government-funded</span><span class="chip" aria-hidden="true">Independent</span></span>
+      </p>
+          
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          <p class="sure sure-confirmed"><span class="sure-label">How sure is this?</span> Confirmed by 4 outlets across the left and right.</p>
+          
+        <div class="account">
+          <p>Annie Andrews, the Democratic challenger, accused Senator Darline Graham of taking her cues from President Trump. <span class="gist-credit">The New York Times</span> Graham debated Dr. Annie Andrews, a Democrat, as the pair worked to become the next senator for the state. <span class="gist-credit">The Daily Beast</span> Graham said she is &quot;concerned about the socialist Democrats,&quot; asserting that after Hamas terrorists slaughtered Israelis on Oct. <span class="gist-credit">Fox News</span></p>
+          <p>After it was over, Graham appeared to flee the scene, opting to skip talking to reporters and try to &quot;spin&quot; her performance as a win, as is typical of candidates and their surrogates after debates. <span class="gist-credit">The Daily Beast</span> She&#39;s only going to join them,&quot; Graham declared. <span class="gist-credit">Fox News</span> While candidates will always send surrogates to head to the &quot;spin room,&quot; candidates themselves will sometimes show face after a debate. <span class="gist-credit">The Daily Beast</span></p>
+        </div>
+          
+          
+          
+          
+        <details class="sources">
+          <summary>Sources (4)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">the left</p>
+            <ul>
+              <li><a href="https://www.thedailybeast.com/nepo-senator-darline-graham-fled-after-debate-flub-against-annie-andrews" target="_blank" rel="noopener"><span class="who">The Daily Beast</span>Darline Graham Flees After Debate Flub</a></li>
+              <li><a href="https://www.washingtonpost.com/politics/2026/10/11/takeaways-first-south-carolina-senate-debate-between-darline-graham-annie-andrews/" target="_blank" rel="noopener"><span class="who">The Washington Post</span>Takeaways from first S.C. Senate debate between Darline Graham, Annie Andrews</a></li>
+              <li><a href="https://www.nytimes.com/2026/10/11/us/south-carolina-senate-debate.html" target="_blank" rel="noopener"><span class="who">The New York Times</span>Can a Democrat Beat Darline Graham? 5 Takeaways From the South Carolina Senate Debate</a></li>
+            </ul>
+          </div>
+          <div class="camp-group">
+            <p class="also-head">the right</p>
+            <ul>
+              <li><a href="https://www.foxnews.com/politics/sc-dem-senate-candidate-claims-stand-party-graham-ties-socialist-democrats" target="_blank" rel="noopener"><span class="who">Fox News</span>SC Dem Senate candidate claims she will stand up to her party as Graham ties her to &#39;socialist Democrats&#39;</a></li>
+            </ul>
+          </div></div>
+        </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Darline%20Graham%20Flees%20After%20Debate%20Flub&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Darline%20Graham%20Flees%20After%20Debate%20Flub%0ASection%3A%20The%20nation%0AEdition%3A%202026-10-12" target="_blank" rel="noopener">Feedback on this story</a></p>
+        </div>
+      </details>
+    </article>
+    </section>
+    <section class="section" id="justice">
+      <h2><span>Courts and justice</span></h2>
+      
+    <article class="story">
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">Texas appeals order requiring prison air conditioning, saying it puts operations at risk</h3>
+          <p class="gist">TDCJ, which estimates climate control will cost $1.5 billion, said the federal judge&#39;s order imposes &quot;disruption and confusion&quot; on the country&#39;s largest prison system. <span class="gist-credit">The Texas Tribune</span></p>
+          
+      <p class="spread" aria-label="Covered by 1 outlet: independent">
+        <span class="spread-label">Covered by 1 outlet</span>
+        <span class="chips"><span class="chip" aria-hidden="true">Left</span><span class="chip" aria-hidden="true">Center</span><span class="chip" aria-hidden="true">Right</span><span class="chip" aria-hidden="true">Government-funded</span><span class="chip on" aria-hidden="true">Independent</span></span>
+      </p>
+          
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          <p class="sure sure-single"><span class="sure-label">How sure is this?</span> Only one outlet has reported this so far.</p>
+          
+          
+          
+          
+          
+        <details class="sources">
+          <summary>Sources (1)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">independent outlets</p>
+            <ul>
+              <li><a href="https://feeds.texastribune.org/link/16799/17494462/texas-prison-air-conditioning-lawsuit-appeal" target="_blank" rel="noopener"><span class="who">The Texas Tribune</span>Texas appeals order requiring prison air conditioning, saying it puts operations at risk</a></li>
+            </ul>
+          </div></div>
+        </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Texas%20appeals%20order%20requiring%20prison%20air%20conditioning%2C%20saying%20it%20puts%20operations&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Texas%20appeals%20order%20requiring%20prison%20air%20conditioning%2C%20saying%20it%20puts%20operations%20at%20risk%0ASection%3A%20Courts%20and%20justice%0AEdition%3A%202026-10-12" target="_blank" rel="noopener">Feedback on this story</a></p>
+        </div>
+      </details>
+    </article>
+    <article class="story">
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">Obama Judge Blocks Deportation of Criminal Migrant Shot by ICE in NYC After Allegedly Trying to Ram Agents with His Car</h3>
+          <p class="gist">A federal judge nominated to the bench by Barack Obama has blocked DHS from deporting Dominican national Oscar Belgal. <span class="gist-credit">Breitbart</span></p>
+          
+      <p class="spread" aria-label="Covered by 1 outlet: right">
+        <span class="spread-label">Covered by 1 outlet</span>
+        <span class="chips"><span class="chip" aria-hidden="true">Left</span><span class="chip" aria-hidden="true">Center</span><span class="chip on" aria-hidden="true">Right</span><span class="chip" aria-hidden="true">Government-funded</span><span class="chip" aria-hidden="true">Independent</span></span>
+      </p>
+          
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          <p class="sure sure-single"><span class="sure-label">How sure is this?</span> Only one outlet has reported this so far.</p>
+          
+          
+          
+          
+          
+        <details class="sources">
+          <summary>Sources (1)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">the right</p>
+            <ul>
+              <li><a href="https://www.breitbart.com/immigration/2026/10/12/obama-judge-blocks-deportation-criminal-migrant-shot-by-ice-new-york/" target="_blank" rel="noopener"><span class="who">Breitbart</span>Obama Judge Blocks Deportation of Criminal Migrant Shot by ICE in NYC After Allegedly Trying to Ram Agents with His Car</a></li>
+            </ul>
+          </div></div>
+        </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Obama%20Judge%20Blocks%20Deportation%20of%20Criminal%20Migrant%20Shot%20by%20ICE%20in%20NYC%20After%20Alle&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Obama%20Judge%20Blocks%20Deportation%20of%20Criminal%20Migrant%20Shot%20by%20ICE%20in%20NYC%20After%20Allegedly%20Trying%20to%20Ram%20Agents%20with%20His%20Car%0ASection%3A%20Courts%20and%20justice%0AEdition%3A%202026-10-12" target="_blank" rel="noopener">Feedback on this story</a></p>
+        </div>
+      </details>
+    </article>
+    <article class="story">
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">Fugitive in Venezuela Money Laundering Cases to Appear in U.S. Court</h3>
+          <p class="gist">Álvaro Pulido Vargas faces federal charges in Florida related to what prosecutors described as money laundering and bribery schemes. It is not clear when or where he was arrested. <span class="gist-credit">The New York Times</span></p>
+          
+      <p class="spread" aria-label="Covered by 1 outlet: left">
+        <span class="spread-label">Covered by 1 outlet</span>
+        <span class="chips"><span class="chip on" aria-hidden="true">Left</span><span class="chip" aria-hidden="true">Center</span><span class="chip" aria-hidden="true">Right</span><span class="chip" aria-hidden="true">Government-funded</span><span class="chip" aria-hidden="true">Independent</span></span>
+      </p>
+          
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          <p class="sure sure-single"><span class="sure-label">How sure is this?</span> Only one outlet has reported this so far.</p>
+          
+          
+          
+          
+          
+        <details class="sources">
+          <summary>Sources (1)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">the left</p>
+            <ul>
+              <li><a href="https://www.nytimes.com/2026/10/12/us/venezeula-money-laundering-arrest.html" target="_blank" rel="noopener"><span class="who">The New York Times</span>Fugitive in Venezuela Money Laundering Cases to Appear in U.S. Court</a></li>
+            </ul>
+          </div></div>
+        </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Fugitive%20in%20Venezuela%20Money%20Laundering%20Cases%20to%20Appear%20in%20U.S.%20Court&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Fugitive%20in%20Venezuela%20Money%20Laundering%20Cases%20to%20Appear%20in%20U.S.%20Court%0ASection%3A%20Courts%20and%20justice%0AEdition%3A%202026-10-12" target="_blank" rel="noopener">Feedback on this story</a></p>
+        </div>
+      </details>
+    </article>
+    </section>
+    <section class="section" id="health">
+      <h2><span>Health</span></h2>
+      
+    <article class="story">
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">China Puts Border City on Alert over Russia Suspected Plague Case</h3>
+          <p class="gist">A regional center for disease control and prevention (CDC) in Hulunbuir, Inner Mongolia, China, issued an announcement implementing &quot;plague risk prevention&quot; protocol in response to an alleged case of pneumonic plague in neighboring Siberia, Russia, Chinese state media reported on Monday. <span class="gist-credit">Breitbart</span></p>
+          
+      <p class="spread" aria-label="Covered by 1 outlet: right">
+        <span class="spread-label">Covered by 1 outlet</span>
+        <span class="chips"><span class="chip" aria-hidden="true">Left</span><span class="chip" aria-hidden="true">Center</span><span class="chip on" aria-hidden="true">Right</span><span class="chip" aria-hidden="true">Government-funded</span><span class="chip" aria-hidden="true">Independent</span></span>
+      </p>
+          
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          <p class="sure sure-single"><span class="sure-label">How sure is this?</span> Only one outlet has reported this so far.</p>
+          
+          
+          
+          
+          
+        <details class="sources">
+          <summary>Sources (1)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">the right</p>
+            <ul>
+              <li><a href="https://www.breitbart.com/health/2026/10/12/china-puts-border-city-on-alert-over-russia-suspected-plague-case/" target="_blank" rel="noopener"><span class="who">Breitbart</span>China Puts Border City on Alert over Russia Suspected Plague Case</a></li>
+            </ul>
+          </div></div>
+        </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20China%20Puts%20Border%20City%20on%20Alert%20over%20Russia%20Suspected%20Plague%20Case&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20China%20Puts%20Border%20City%20on%20Alert%20over%20Russia%20Suspected%20Plague%20Case%0ASection%3A%20Health%0AEdition%3A%202026-10-12" target="_blank" rel="noopener">Feedback on this story</a></p>
+        </div>
+      </details>
+    </article>
+    <article class="story">
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">Anti-vaxxers target Texas measles doctors to cast doubt on deaths amid outbreak</h3>
+          <p class="gist">Children&#39;s Health Defense and RFK Jr publicly dispute recent measles deaths to &#39;distract&#39; from damage caused and question vaccines, experts say. The six-year-old girl at the children&#39;s hospital in Lubbock, Texas, burned with fever and struggled to breathe. <span class="gist-credit">The Guardian</span></p>
+          
+      <p class="spread" aria-label="Covered by 1 outlet: left">
+        <span class="spread-label">Covered by 1 outlet</span>
+        <span class="chips"><span class="chip on" aria-hidden="true">Left</span><span class="chip" aria-hidden="true">Center</span><span class="chip" aria-hidden="true">Right</span><span class="chip" aria-hidden="true">Government-funded</span><span class="chip" aria-hidden="true">Independent</span></span>
+      </p>
+          
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          <p class="sure sure-single"><span class="sure-label">How sure is this?</span> Only one outlet has reported this so far.</p>
+          
+        <div class="account">
+          <p>Doctors soon put her on a ventilator, snaking a thick tube down the child&#39;s throat so a machine could breathe for her; they placed IVs to rehydrate her tiny body and they prescribed antibiotics for any bacterial infections that may have taken hold in the weeks she had spent at home battling measles. <span class="gist-credit">The Guardian</span></p>
+        </div>
+          
+          
+          
+          
+        <details class="sources">
+          <summary>Sources (1)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">the left</p>
+            <ul>
+              <li><a href="https://www.theguardian.com/us-news/2026/oct/12/anti-vaxxers-measles-doctors-texas-deaths" target="_blank" rel="noopener"><span class="who">The Guardian</span>Anti-vaxxers target Texas measles doctors to cast doubt on deaths amid outbreak</a></li>
+            </ul>
+          </div></div>
+        </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Anti-vaxxers%20target%20Texas%20measles%20doctors%20to%20cast%20doubt%20on%20deaths%20amid%20outbreak&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Anti-vaxxers%20target%20Texas%20measles%20doctors%20to%20cast%20doubt%20on%20deaths%20amid%20outbreak%0ASection%3A%20Health%0AEdition%3A%202026-10-12" target="_blank" rel="noopener">Feedback on this story</a></p>
+        </div>
+      </details>
+    </article>
+    <article class="story">
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">Campaign And Hospital Deny Claim That James Talarico Went To Ohio Mental Hospital</h3>
+          <p class="gist">James Talarico&#39;s Senate campaign is officially denying rumors that his two-week absence from the public eye was the result of a mental health crisis. &quot;This is a lie designed to promote a pathetic conspiracy theory. Last week James Talarico was home in Austin, Texas, recovering from the flu,&quot; campaign spokesman JT Ennis said in a statement Sunday afternoon. <span class="gist-credit">The Daily Wire</span></p>
+          
+      <p class="spread" aria-label="Covered by 1 outlet: right">
+        <span class="spread-label">Covered by 1 outlet</span>
+        <span class="chips"><span class="chip" aria-hidden="true">Left</span><span class="chip" aria-hidden="true">Center</span><span class="chip on" aria-hidden="true">Right</span><span class="chip" aria-hidden="true">Government-funded</span><span class="chip" aria-hidden="true">Independent</span></span>
+      </p>
+          
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          <p class="sure sure-single"><span class="sure-label">How sure is this?</span> Only one outlet has reported this so far.</p>
+          
+        <div class="account">
+          <p>Later on Sunday, the Lindner Center of Hope, where it was claimed that Talarico sought treatment, also released a statement denying that he&#39;d ever been a patient there. <span class="gist-credit">The Daily Wire</span> Ennis and the mental health facility were both responding to a social media post on Sunday by conservative media personality Nick Sortor and self-described &quot;right-wing provocateur&quot; Rhein Amacher, which included an audio recording of a woman who is purportedly an employee at the Lindner Center of Hope, a mental health facility in Mason, Ohio. <span class="gist-credit">The Daily Wire</span></p>
+          <p>In the recording, the woman appeared to suggest that a James Talarico had recently been discharged from the facility, telling the callers she could not locate more detailed information because the discharge was so recent. <span class="gist-credit">The Daily Wire</span></p>
+        </div>
+          
+          
+          
+          
+        <details class="sources">
+          <summary>Sources (1)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">the right</p>
+            <ul>
+              <li><a href="https://www.dailywire.com/news/campaign-denies-claim-that-james-talaricos-flu-was-mental-health-crisis" target="_blank" rel="noopener"><span class="who">The Daily Wire</span>Campaign And Hospital Deny Claim That James Talarico Went To Ohio Mental Hospital</a></li>
+            </ul>
+          </div></div>
+        </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Campaign%20And%20Hospital%20Deny%20Claim%20That%20James%20Talarico%20Went%20To%20Ohio%20Mental%20Hospita&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Campaign%20And%20Hospital%20Deny%20Claim%20That%20James%20Talarico%20Went%20To%20Ohio%20Mental%20Hospital%0ASection%3A%20Health%0AEdition%3A%202026-10-12" target="_blank" rel="noopener">Feedback on this story</a></p>
+        </div>
+      </details>
+    </article>
+    </section>
+    <section class="section" id="science">
+      <h2><span>Science</span></h2>
+      
+    <article class="story">
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">Scarred blood vessels may be one clue to APOE4&#39;s Alzheimer&#39;s risk</h3>
+          <p class="gist">Scientists know APOE4 raises Alzheimer&#39;s risk. A surprising change in blood vessel cells may help explain how. <span class="gist-credit">Science News</span></p>
+          
+      <p class="spread" aria-label="Covered by 1 outlet: independent">
+        <span class="spread-label">Covered by 1 outlet</span>
+        <span class="chips"><span class="chip" aria-hidden="true">Left</span><span class="chip" aria-hidden="true">Center</span><span class="chip" aria-hidden="true">Right</span><span class="chip" aria-hidden="true">Government-funded</span><span class="chip on" aria-hidden="true">Independent</span></span>
+      </p>
+          
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          <p class="sure sure-single"><span class="sure-label">How sure is this?</span> Only one outlet has reported this so far.</p>
+          
+          
+          
+          
+          
+        <details class="sources">
+          <summary>Sources (1)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">independent outlets</p>
+            <ul>
+              <li><a href="https://www.sciencenews.org/article/scar-tissue-blood-vessels-alzheimers" target="_blank" rel="noopener"><span class="who">Science News</span>Scarred blood vessels may be one clue to APOE4&#39;s Alzheimer&#39;s risk</a></li>
+            </ul>
+          </div></div>
+        </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Scarred%20blood%20vessels%20may%20be%20one%20clue%20to%20APOE4&#39;s%20Alzheimer&#39;s%20risk&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Scarred%20blood%20vessels%20may%20be%20one%20clue%20to%20APOE4&#39;s%20Alzheimer&#39;s%20risk%0ASection%3A%20Science%0AEdition%3A%202026-10-12" target="_blank" rel="noopener">Feedback on this story</a></p>
+        </div>
+      </details>
+    </article>
+    </section>
+    <section class="section" id="climate">
+      <h2><span>Climate and land</span></h2>
+      
+    <article class="story">
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">When climate change brings the heat, what happens to a mighty redwood</h3>
+          <p class="gist">In heat wave-like temperatures, coast redwoods&#39; photosynthesis slows down, which may put one of Earth&#39;s most efficient carbon storers in jeopardy. <span class="gist-credit">Science News</span></p>
+          
+      <p class="spread" aria-label="Covered by 1 outlet: independent">
+        <span class="spread-label">Covered by 1 outlet</span>
+        <span class="chips"><span class="chip" aria-hidden="true">Left</span><span class="chip" aria-hidden="true">Center</span><span class="chip" aria-hidden="true">Right</span><span class="chip" aria-hidden="true">Government-funded</span><span class="chip on" aria-hidden="true">Independent</span></span>
+      </p>
+          
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          <p class="sure sure-single"><span class="sure-label">How sure is this?</span> Only one outlet has reported this so far.</p>
+          
+          
+          
+          
+          
+        <details class="sources">
+          <summary>Sources (1)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">independent outlets</p>
+            <ul>
+              <li><a href="https://www.sciencenews.org/article/climate-change-heat-redwood-temperature" target="_blank" rel="noopener"><span class="who">Science News</span>When climate change brings the heat, what happens to a mighty redwood?</a></li>
+            </ul>
+          </div></div>
+        </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20When%20climate%20change%20brings%20the%20heat%2C%20what%20happens%20to%20a%20mighty%20redwood&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20When%20climate%20change%20brings%20the%20heat%2C%20what%20happens%20to%20a%20mighty%20redwood%0ASection%3A%20Climate%20and%20land%0AEdition%3A%202026-10-12" target="_blank" rel="noopener">Feedback on this story</a></p>
+        </div>
+      </details>
+    </article>
+    <article class="story">
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">Watersheds near Río Frijoles bear the brunt of wildfire</h3>
+          <p class="gist">In the aftermath of drought, wildfire and floods in northern New Mexico, residents who rely on a centuries-old irrigation system are concerned about water quality. <span class="gist-credit">High Country News</span></p>
+          
+      <p class="spread" aria-label="Covered by 1 outlet: independent">
+        <span class="spread-label">Covered by 1 outlet</span>
+        <span class="chips"><span class="chip" aria-hidden="true">Left</span><span class="chip" aria-hidden="true">Center</span><span class="chip" aria-hidden="true">Right</span><span class="chip" aria-hidden="true">Government-funded</span><span class="chip on" aria-hidden="true">Independent</span></span>
+      </p>
+          
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          <p class="sure sure-single"><span class="sure-label">How sure is this?</span> Only one outlet has reported this so far.</p>
+          
+          
+          
+          
+          
+        <details class="sources">
+          <summary>Sources (1)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">independent outlets</p>
+            <ul>
+              <li><a href="https://www.hcn.org/articles/watersheds-near-rio-frijoles-bear-the-brunt-of-wildfire/" target="_blank" rel="noopener"><span class="who">High Country News</span>Watersheds near Río Frijoles bear the brunt of wildfire</a></li>
+            </ul>
+          </div></div>
+        </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Watersheds%20near%20R%C3%ADo%20Frijoles%20bear%20the%20brunt%20of%20wildfire&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Watersheds%20near%20R%C3%ADo%20Frijoles%20bear%20the%20brunt%20of%20wildfire%0ASection%3A%20Climate%20and%20land%0AEdition%3A%202026-10-12" target="_blank" rel="noopener">Feedback on this story</a></p>
+        </div>
+      </details>
+    </article>
+    <article class="story">
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">As Rival Resorts Battle in a Bahamas Court, a Threatened Conch&#39;s Nursery Is Caught in the Middle</h3>
+          <p class="gist">Queen conch larvae drift for two to three weeks before settling into seagrass, where their first food grows on the thin green blades. This is where they spend most of their first year, buried in the sand. <span class="gist-credit">Inside Climate News</span></p>
+          
+      <p class="spread" aria-label="Covered by 1 outlet: independent">
+        <span class="spread-label">Covered by 1 outlet</span>
+        <span class="chips"><span class="chip" aria-hidden="true">Left</span><span class="chip" aria-hidden="true">Center</span><span class="chip" aria-hidden="true">Right</span><span class="chip" aria-hidden="true">Government-funded</span><span class="chip on" aria-hidden="true">Independent</span></span>
+      </p>
+          
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          <p class="sure sure-single"><span class="sure-label">How sure is this?</span> Only one outlet has reported this so far.</p>
+          
+        <div class="account">
+          <p>Scientists who study conch say the species&#39; habitat needs are more important than the needs of either property. <span class="gist-credit">Inside Climate News</span></p>
+        </div>
+          
+          
+          
+          
+        <details class="sources">
+          <summary>Sources (1)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">independent outlets</p>
+            <ul>
+              <li><a href="https://insideclimatenews.org/news/11102026/bahamas-development-seagrass-conch-legal-battle/" target="_blank" rel="noopener"><span class="who">Inside Climate News</span>As Rival Resorts Battle in a Bahamas Court, a Threatened Conch&#39;s Nursery Is Caught in the Middle</a></li>
+            </ul>
+          </div></div>
+        </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20As%20Rival%20Resorts%20Battle%20in%20a%20Bahamas%20Court%2C%20a%20Threatened%20Conch&#39;s%20Nursery%20Is%20Caug&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20As%20Rival%20Resorts%20Battle%20in%20a%20Bahamas%20Court%2C%20a%20Threatened%20Conch&#39;s%20Nursery%20Is%20Caught%20in%20the%20Middle%0ASection%3A%20Climate%20and%20land%0AEdition%3A%202026-10-12" target="_blank" rel="noopener">Feedback on this story</a></p>
+        </div>
+      </details>
+    </article>
+    <article class="story">
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">Unpacking the Environmental Issues in Susan Collins&#39; Tough Race in Maine</h3>
+          <p class="gist">From our collaborating partner &quot;Living on Earth,&quot; public radio&#39;s environmental news magazine, an interview by host Steve Curwood with veteran Maine journalist Kevin Miller. The closely watched race for U.S. Senate in Maine is pitting two environmentally concerned candidates against each other. <span class="gist-credit">Inside Climate News</span></p>
+          
+      <p class="spread" aria-label="Covered by 1 outlet: independent">
+        <span class="spread-label">Covered by 1 outlet</span>
+        <span class="chips"><span class="chip" aria-hidden="true">Left</span><span class="chip" aria-hidden="true">Center</span><span class="chip" aria-hidden="true">Right</span><span class="chip" aria-hidden="true">Government-funded</span><span class="chip on" aria-hidden="true">Independent</span></span>
+      </p>
+          
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          <p class="sure sure-single"><span class="sure-label">How sure is this?</span> Only one outlet has reported this so far.</p>
+          
+        <div class="account">
+          <p>The incumbent senator, once endorsed by the League of Conservation Voters, is facing strong headwinds due in part to her fealty to the Trump administration. <span class="gist-credit">Inside Climate News</span></p>
+        </div>
+          
+          
+          
+          
+        <details class="sources">
+          <summary>Sources (1)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">independent outlets</p>
+            <ul>
+              <li><a href="https://insideclimatenews.org/news/10102026/susan-collins-election-environmental-issues/" target="_blank" rel="noopener"><span class="who">Inside Climate News</span>Unpacking the Environmental Issues in Susan Collins&#39; Tough Race in Maine</a></li>
+            </ul>
+          </div></div>
+        </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Unpacking%20the%20Environmental%20Issues%20in%20Susan%20Collins&#39;%20Tough%20Race%20in%20Maine&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Unpacking%20the%20Environmental%20Issues%20in%20Susan%20Collins&#39;%20Tough%20Race%20in%20Maine%0ASection%3A%20Climate%20and%20land%0AEdition%3A%202026-10-12" target="_blank" rel="noopener">Feedback on this story</a></p>
+        </div>
+      </details>
+    </article>
+    </section>
+    <section class="section" id="technology">
+      <h2><span>Technology</span></h2>
+      
+    <article class="story">
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">Cops can creep on Airbnb</h3>
+          <p class="gist">Good Monday morning. Today&#39;s big story is an investigation from Joseph about cops and an AI tool that takes data from sites like Airbnb and Zillow and identifies specific properties. The internet is full of photos of the interiors of people&#39;s homes, from real estate and rental listings to short-term stays, and that data is in the hands of law enforcement. <span class="gist-credit">404 Media</span></p>
+          
+      <p class="spread" aria-label="Covered by 1 outlet: independent">
+        <span class="spread-label">Covered by 1 outlet</span>
+        <span class="chips"><span class="chip" aria-hidden="true">Left</span><span class="chip" aria-hidden="true">Center</span><span class="chip" aria-hidden="true">Right</span><span class="chip" aria-hidden="true">Government-funded</span><span class="chip on" aria-hidden="true">Independent</span></span>
+      </p>
+          
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          <p class="sure sure-single"><span class="sure-label">How sure is this?</span> Only one outlet has reported this so far.</p>
+          
+        <div class="account">
+          <p>AI Company Lets Cops Pinpoint Specific Houses Based on a Single Interior Photo. <span class="gist-credit">404 Media</span> Now, Raven, made by a company called Graylark Technologies, has added features that let cops analyze the interior of homes. <span class="gist-credit">404 Media</span></p>
+        </div>
+          
+          
+          
+          
+        <details class="sources">
+          <summary>Sources (1)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">independent outlets</p>
+            <ul>
+              <li><a href="https://www.404media.co/cops-can-creep-on-airbnb/" target="_blank" rel="noopener"><span class="who">404 Media</span>Cops can creep on Airbnb</a></li>
+            </ul>
+          </div></div>
+        </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Cops%20can%20creep%20on%20Airbnb&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Cops%20can%20creep%20on%20Airbnb%0ASection%3A%20Technology%0AEdition%3A%202026-10-12" target="_blank" rel="noopener">Feedback on this story</a></p>
+        </div>
+      </details>
+    </article>
+    <article class="story">
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">AI Company Lets Cops Pinpoint Specific Houses Based on a Single Interior Photo</h3>
+          <p class="gist">Raven, previously called GeoSpy, lets cops figure out what specific Airbnb or Zillow property a photo was taken in. <span class="gist-credit">404 Media</span></p>
+          
+      <p class="spread" aria-label="Covered by 1 outlet: independent">
+        <span class="spread-label">Covered by 1 outlet</span>
+        <span class="chips"><span class="chip" aria-hidden="true">Left</span><span class="chip" aria-hidden="true">Center</span><span class="chip" aria-hidden="true">Right</span><span class="chip" aria-hidden="true">Government-funded</span><span class="chip on" aria-hidden="true">Independent</span></span>
+      </p>
+          
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          <p class="sure sure-single"><span class="sure-label">How sure is this?</span> Only one outlet has reported this so far.</p>
+          
+        <div class="account">
+          <p>The tool, called Raven, shows the increasing power of AI capabilities available to local law enforcement agencies. <span class="gist-credit">404 Media</span> Now, Raven, made by a company called Graylark Technologies, has added features that let cops analyze the interior of homes. <span class="gist-credit">404 Media</span> In a post on LinkedIn earlier this month, Graylark CEO Daniel Heinen wrote the company was introducing &quot;the ability to geolocate interior images across millions of short-term rental units worldwide.&quot; <span class="gist-credit">404 Media</span></p>
+          <p>An accompanying demo video shows someone taking a photo from X of a washer/dryer unit inside a building. <span class="gist-credit">404 Media</span> They upload it to Raven, select &quot;Find Property: Interior and exterior property geolocation,&quot; and then choose a region to search. <span class="gist-credit">404 Media</span></p>
+        </div>
+          
+          
+          
+          
+        <details class="sources">
+          <summary>Sources (1)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">independent outlets</p>
+            <ul>
+              <li><a href="https://www.404media.co/ai-company-lets-cops-pinpoint-specific-houses-based-on-a-single-interior-photo/" target="_blank" rel="noopener"><span class="who">404 Media</span>AI Company Lets Cops Pinpoint Specific Houses Based on a Single Interior Photo</a></li>
+            </ul>
+          </div></div>
+        </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20AI%20Company%20Lets%20Cops%20Pinpoint%20Specific%20Houses%20Based%20on%20a%20Single%20Interior%20Photo&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20AI%20Company%20Lets%20Cops%20Pinpoint%20Specific%20Houses%20Based%20on%20a%20Single%20Interior%20Photo%0ASection%3A%20Technology%0AEdition%3A%202026-10-12" target="_blank" rel="noopener">Feedback on this story</a></p>
+        </div>
+      </details>
+    </article>
+    </section>
+    <section class="section" id="money">
+      <h2><span>Work and money</span></h2>
+      
+    <article class="story">
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">US&#39;s Reagan-era economic promises return as Trump&#39;s AI-fueled growth fantasy</h3>
+          <p class="gist">&#39;Even if AI supercharged the economy, its impact on the government&#39;s finances would be muted&#39; Back through political history to the age of Ronald Reagan, Republicans have repeatedly promised the US public that tax cuts would pay for themselves, firing up economic growth and filling the government&#39;s coffers. <span class="gist-credit">The Guardian</span></p>
+          
+      <p class="spread" aria-label="Covered by 1 outlet: left">
+        <span class="spread-label">Covered by 1 outlet</span>
+        <span class="chips"><span class="chip on" aria-hidden="true">Left</span><span class="chip" aria-hidden="true">Center</span><span class="chip" aria-hidden="true">Right</span><span class="chip" aria-hidden="true">Government-funded</span><span class="chip" aria-hidden="true">Independent</span></span>
+      </p>
+          
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          <p class="sure sure-single"><span class="sure-label">How sure is this?</span> Only one outlet has reported this so far.</p>
+          
+        <div class="account">
+          <p>The promise never really panned out. <span class="gist-credit">The Guardian</span></p>
+        </div>
+          
+          
+          
+          
+        <details class="sources">
+          <summary>Sources (1)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">the left</p>
+            <ul>
+              <li><a href="https://www.theguardian.com/business/2026/oct/11/trump-ai-economy-reagan" target="_blank" rel="noopener"><span class="who">The Guardian</span>US&#39;s Reagan-era economic promises return as Trump&#39;s AI-fueled growth fantasy</a></li>
+            </ul>
+          </div></div>
+        </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20US&#39;s%20Reagan-era%20economic%20promises%20return%20as%20Trump&#39;s%20AI-fueled%20growth%20fantasy&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20US&#39;s%20Reagan-era%20economic%20promises%20return%20as%20Trump&#39;s%20AI-fueled%20growth%20fantasy%0ASection%3A%20Work%20and%20money%0AEdition%3A%202026-10-12" target="_blank" rel="noopener">Feedback on this story</a></p>
+        </div>
+      </details>
+    </article>
+    </section>
+    <section class="section" id="local">
+      <h2><span>Local: Gilpin County and the foothills</span></h2>
+      
+    <article class="story">
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">Take a break at new Conifer game, coffee &amp; brew stop</h3>
+          
+          
+      <p class="spread"><span class="spread-label">Reported by Canyon Courier</span></p>
+          
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          
+          
+          
+          
+          
+          
+        <details class="sources">
+          <summary>Sources (1)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">local outlets</p>
+            <ul>
+              <li><a href="https://www.canyoncourier.com/news/take-a-break-at-new-conifer-game-coffee-brew-stop/article_50f9b02a-ffef-4507-b4c1-def207374479.html" target="_blank" rel="noopener"><span class="who">Canyon Courier</span>Take a break at new Conifer game, coffee &amp; brew stop</a></li>
+            </ul>
+          </div></div>
+        </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Take%20a%20break%20at%20new%20Conifer%20game%2C%20coffee%20%26%20brew%20stop&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Take%20a%20break%20at%20new%20Conifer%20game%2C%20coffee%20%26%20brew%20stop%0ASection%3A%20Local%3A%20Gilpin%20County%20and%20the%20foothills%0AEdition%3A%202026-10-12" target="_blank" rel="noopener">Feedback on this story</a></p>
+        </div>
+      </details>
+    </article>
+    <article class="story">
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">Conifer&#39;s Cheers bar going out with a Boo</h3>
+          
+          
+      <p class="spread"><span class="spread-label">Reported by Canyon Courier</span></p>
+          
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          
+          
+          
+          
+          
+          
+        <details class="sources">
+          <summary>Sources (1)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">local outlets</p>
+            <ul>
+              <li><a href="https://www.canyoncourier.com/news/conifer-s-cheers-bar-going-out-with-a-boo/article_8b9bcbc0-91af-4d72-b418-80cf4a39adac.html" target="_blank" rel="noopener"><span class="who">Canyon Courier</span>Conifer&#39;s &#39;Cheers&#39; bar going out with a &#39;Boo&#39;</a></li>
+            </ul>
+          </div></div>
+        </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Conifer&#39;s%20Cheers%20bar%20going%20out%20with%20a%20Boo&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Conifer&#39;s%20Cheers%20bar%20going%20out%20with%20a%20Boo%0ASection%3A%20Local%3A%20Gilpin%20County%20and%20the%20foothills%0AEdition%3A%202026-10-12" target="_blank" rel="noopener">Feedback on this story</a></p>
+        </div>
+      </details>
+    </article>
+    <article class="story">
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">Proposed treatment center in Evergreen draws opposition</h3>
+          
+          
+      <p class="spread"><span class="spread-label">Reported by Canyon Courier</span></p>
+          
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          
+          
+          
+          
+          
+          
+        <details class="sources">
+          <summary>Sources (1)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">local outlets</p>
+            <ul>
+              <li><a href="https://www.canyoncourier.com/news/proposed-treatment-center-in-evergreen-draws-opposition/article_31faab98-4b6b-4534-b7f6-caa5e9d8e6a8.html" target="_blank" rel="noopener"><span class="who">Canyon Courier</span>Proposed treatment center in Evergreen draws opposition</a></li>
+            </ul>
+          </div></div>
+        </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Proposed%20treatment%20center%20in%20Evergreen%20draws%20opposition&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Proposed%20treatment%20center%20in%20Evergreen%20draws%20opposition%0ASection%3A%20Local%3A%20Gilpin%20County%20and%20the%20foothills%0AEdition%3A%202026-10-12" target="_blank" rel="noopener">Feedback on this story</a></p>
+        </div>
+      </details>
+    </article>
+    </section>
+    <section class="section" id="good">
+      <h2><span>Good news</span></h2>
+      
+    <article class="story">
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">Montana High School Softball Player Discovered Long-Lost Sister on Opposing Team</h3>
+          <p class="gist">A softball diamond in Montana was the scene of a larger-than-life family reunion. Like something out of Field of Dreams, a teen softball player had lined up against an out-of-state team for an August match, and her long-lost biological sister was on the opposite roster. Samantha Rensvold was adopted as an infant. <span class="gist-credit">Good News Network</span></p>
+          
+      <p class="spread"><span class="spread-label">Reported by Good News Network</span></p>
+          
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          
+          
+          
+          
+          
+          
+        <details class="sources">
+          <summary>Sources (1)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">good news outlets</p>
+            <ul>
+              <li><a href="https://www.goodnewsnetwork.org/montana-high-school-softball-player-discovered-long-lost-sister-on-opposing-team/" target="_blank" rel="noopener"><span class="who">Good News Network</span>Montana High School Softball Player Discovered Long-Lost Sister on Opposing Team</a></li>
+            </ul>
+          </div></div>
+        </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Montana%20High%20School%20Softball%20Player%20Discovered%20Long-Lost%20Sister%20on%20Opposing%20Team&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Montana%20High%20School%20Softball%20Player%20Discovered%20Long-Lost%20Sister%20on%20Opposing%20Team%0ASection%3A%20Good%20news%0AEdition%3A%202026-10-12" target="_blank" rel="noopener">Feedback on this story</a></p>
+        </div>
+      </details>
+    </article>
+    <article class="story">
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">Like Caring for a Pet, the App That Lets You Know if Your Neighborhood Tree Is Thirsty</h3>
+          <p class="gist">An open-source app has thousands of Berliners adopting and watering city trees as if they were their pets, helping keep the city green amid repeated summer heatwaves. <span class="gist-credit">Good News Network</span></p>
+          
+      <p class="spread"><span class="spread-label">Reported by Good News Network</span></p>
+          
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          
+          
+          
+          
+          
+          
+        <details class="sources">
+          <summary>Sources (1)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">good news outlets</p>
+            <ul>
+              <li><a href="https://www.goodnewsnetwork.org/like-caring-for-a-pet-the-app-that-lets-you-know-if-your-neighborhood-tree-is-thirsty/" target="_blank" rel="noopener"><span class="who">Good News Network</span>&#39;Like Caring for a Pet&#39; – the App That Lets You Know if Your Neighborhood Tree Is Thirsty</a></li>
+            </ul>
+          </div></div>
+        </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Like%20Caring%20for%20a%20Pet%2C%20the%20App%20That%20Lets%20You%20Know%20if%20Your%20Neighborhood%20Tree%20Is%20T&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Like%20Caring%20for%20a%20Pet%2C%20the%20App%20That%20Lets%20You%20Know%20if%20Your%20Neighborhood%20Tree%20Is%20Thirsty%0ASection%3A%20Good%20news%0AEdition%3A%202026-10-12" target="_blank" rel="noopener">Feedback on this story</a></p>
+        </div>
+      </details>
+    </article>
+    <article class="story">
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">Putting a ring on it: the plan to green London&#39;s beloved edges</h3>
+          <p class="gist">Ten million people will benefit from a more biodiverse capital, say the organisers of an ambitious project to reconnect its wilder spaces. <span class="gist-credit">Positive News</span></p>
+          
+      <p class="spread"><span class="spread-label">Reported by Positive News</span></p>
+          
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          
+          
+          
+          
+          
+          
+        <details class="sources">
+          <summary>Sources (1)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">good news outlets</p>
+            <ul>
+              <li><a href="https://www.positive.news/society/putting-a-ring-on-it-the-plan-to-green-londons-beloved-edges/" target="_blank" rel="noopener"><span class="who">Positive News</span>Putting a ring on it: the plan to green London&#39;s beloved edges</a></li>
+            </ul>
+          </div></div>
+        </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Putting%20a%20ring%20on%20it%3A%20the%20plan%20to%20green%20London&#39;s%20beloved%20edges&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Putting%20a%20ring%20on%20it%3A%20the%20plan%20to%20green%20London&#39;s%20beloved%20edges%0ASection%3A%20Good%20news%0AEdition%3A%202026-10-12" target="_blank" rel="noopener">Feedback on this story</a></p>
+        </div>
+      </details>
+    </article>
+    <article class="story">
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">How to quiet performance anxiety, according to sport psychology</h3>
+          <p class="gist">BY THE OPTIMIST Daily EDITORIAL Team You know that moment. The job interview is starting in 30 seconds, and your brain decides now is the perfect time to replay every mistake you&#39;ve ever made. Or you&#39;re halfway through a presentation when a small stumble pulls your focus completely off the material. <span class="gist-credit">The Optimist Daily</span></p>
+          
+      <p class="spread"><span class="spread-label">Reported by The Optimist Daily</span></p>
+          
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          
+          
+        <div class="account">
+          <p>Kamphoff&#39;s four performance tools Learn, burn, return. <span class="gist-credit">The Optimist Daily</span></p>
+        </div>
+          
+          
+          
+          
+        <details class="sources">
+          <summary>Sources (1)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">good news outlets</p>
+            <ul>
+              <li><a href="https://www.optimistdaily.com/2026/10/how-to-quiet-performance-anxiety-according-to-sport-psychology/" target="_blank" rel="noopener"><span class="who">The Optimist Daily</span>How to quiet performance anxiety, according to sport psychology</a></li>
+            </ul>
+          </div></div>
+        </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20How%20to%20quiet%20performance%20anxiety%2C%20according%20to%20sport%20psychology&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20How%20to%20quiet%20performance%20anxiety%2C%20according%20to%20sport%20psychology%0ASection%3A%20Good%20news%0AEdition%3A%202026-10-12" target="_blank" rel="noopener">Feedback on this story</a></p>
+        </div>
+      </details>
+    </article>
+    <article class="story">
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">Australia sets a new renewable energy record, with rooftop solar leading the way</h3>
+          <p class="gist">BY THE OPTIMIST Daily EDITORIAL Team On Saturday, September 22, solar and wind met 80.4 percent of demand on Australia&#39;s national electricity market, with the grid covering the eastern states, South Australia, and the Australian Capital Territory. <span class="gist-credit">The Optimist Daily</span></p>
+          
+      <p class="spread"><span class="spread-label">Reported by The Optimist Daily</span></p>
+          
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          
+          
+        <div class="account">
+          <p>For about 30 minutes around lunchtime, rooftop panels on homes and businesses across the country carried more than half of the total load by themselves. <span class="gist-credit">The Optimist Daily</span> Large-scale solar and wind farms covered most of the rest, with hydro adding around one percent. <span class="gist-credit">The Optimist Daily</span> Rooftop solar as a grid-scale contributor More than 4.3 million Australian households now have rooftop solar installed. <span class="gist-credit">The Optimist Daily</span></p>
+          <p>Saturday&#39;s record showed what those installations add up to in practice: enough distributed generation to carry the country through the middle of the day without needing much from the main grid at all. <span class="gist-credit">The Optimist Daily</span> Energy Minister Chris Bowen called it &quot;more clean, cheap, sovereign energy powering our homes and businesses than ever before,&quot; and said more records should be expected as the transition continues. <span class="gist-credit">The Optimist Daily</span> Why these records will keep falling Dr. Dylan McConnel l, an energy systems researcher at the University of New South Wales, called it &quot;record season&quot; for renewables. <span class="gist-credit">The Optimist Daily</span></p>
+        </div>
+          
+          
+          
+          
+        <details class="sources">
+          <summary>Sources (1)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">good news outlets</p>
+            <ul>
+              <li><a href="https://www.optimistdaily.com/2026/10/australia-sets-a-new-renewable-energy-record-with-rooftop-solar-leading-the-way/" target="_blank" rel="noopener"><span class="who">The Optimist Daily</span>Australia sets a new renewable energy record, with rooftop solar leading the way</a></li>
+            </ul>
+          </div></div>
+        </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Australia%20sets%20a%20new%20renewable%20energy%20record%2C%20with%20rooftop%20solar%20leading%20the%20way&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Australia%20sets%20a%20new%20renewable%20energy%20record%2C%20with%20rooftop%20solar%20leading%20the%20way%0ASection%3A%20Good%20news%0AEdition%3A%202026-10-12" target="_blank" rel="noopener">Feedback on this story</a></p>
+        </div>
+      </details>
+    </article>
+    </section>
+
+    <div class="ending">
+      <p><strong>That’s everything for today.</strong></p>
+      <p>The next edition arrives tomorrow morning.</p>
+      <p class="archive-link"><a href="./">Earlier editions</a></p>
+      
+    <details class="colophon">
+      <summary><span>How this works, and which outlets are included</span></summary>
+      <div class="body">
+        <p>These are inputs to compare, not sources to trust. Outlets are carried across the political spectrum, including state broadcasters, precisely so that a story can be read against itself. Every outlet is labelled by lean, owner and money. Agreement across outlets that disagree is the only thing treated as evidence.</p>
+        <p>Each morning Steady reads news outlets from the left, center and right, plus
+        government-funded and independent ones. Stories that several of them covered go first.</p>
+        <p>The quotes under each story are
+        things outlets on different sides both reported, in their own words.</p>
+        <p>Headlines are reworded to remove charged language. Tap "See every outlet's headline"
+        to read the originals.</p>
+        <p>Every outlet has a political lean, and many have owners or funders with interests of
+        their own. They are listed below.</p>
+        <table>
+        <tr>
+          <td>Mother Jones</td>
+          <td><span class="lean">left</span>nonprofit, reader funded, openly progressive</td>
+        </tr>
+        <tr>
+          <td>The Daily Beast</td>
+          <td><span class="lean">left</span>IAC, commercial</td>
+        </tr>
+        <tr>
+          <td>Salon</td>
+          <td><span class="lean">left</span>commercial, openly progressive</td>
+        </tr>
+        <tr>
+          <td>The Guardian</td>
+          <td><span class="lean">center-left</span>Scott Trust, no shareholders, declared left politics</td>
+        </tr>
+        <tr>
+          <td>NPR</td>
+          <td><span class="lean">center-left</span>nonprofit network, federal funding under dispute</td>
+        </tr>
+        <tr>
+          <td>The Washington Post</td>
+          <td><span class="lean">center-left</span>Jeff Bezos, sole owner</td>
+        </tr>
+        <tr>
+          <td>The New York Times</td>
+          <td><span class="lean">center-left</span>public company, Sulzberger family control</td>
+        </tr>
+        <tr>
+          <td>CNN</td>
+          <td><span class="lean">center-left</span>Warner Bros Discovery, commercial</td>
+        </tr>
+        <tr>
+          <td>Politico</td>
+          <td><span class="lean">center-left</span>Axel Springer, commercial</td>
+        </tr>
+        <tr>
+          <td>BBC</td>
+          <td><span class="lean">center</span>UK licence fee, level set by government</td>
+        </tr>
+        <tr>
+          <td>The Hill</td>
+          <td><span class="lean">center</span>Nexstar, commercial</td>
+        </tr>
+        <tr>
+          <td>Axios</td>
+          <td><span class="lean">center</span>Cox Enterprises, commercial</td>
+        </tr>
+        <tr>
+          <td>Christian Science Monitor</td>
+          <td><span class="lean">center</span>church owned nonprofit, editorially independent</td>
+        </tr>
+        <tr>
+          <td>The Wall Street Journal</td>
+          <td><span class="lean">center-right</span>News Corp, Murdoch family</td>
+        </tr>
+        <tr>
+          <td>Reason</td>
+          <td><span class="lean">center-right</span>nonprofit, libertarian by charter</td>
+        </tr>
+        <tr>
+          <td>National Review</td>
+          <td><span class="lean">center-right</span>nonprofit, conservative by charter</td>
+        </tr>
+        <tr>
+          <td>The Dispatch</td>
+          <td><span class="lean">center-right</span>subscriber funded, conservative</td>
+        </tr>
+        <tr>
+          <td>The Washington Times</td>
+          <td><span class="lean">center-right</span>Unification movement affiliated, conservative<span class="review">Couldn’t be reached today</span></td>
+        </tr>
+        <tr>
+          <td>Fox News</td>
+          <td><span class="lean">right</span>Fox Corporation, Murdoch family</td>
+        </tr>
+        <tr>
+          <td>New York Post</td>
+          <td><span class="lean">right</span>News Corp, Murdoch family</td>
+        </tr>
+        <tr>
+          <td>Washington Examiner</td>
+          <td><span class="lean">right</span>Clarity Media, Philip Anschutz</td>
+        </tr>
+        <tr>
+          <td>The Daily Wire</td>
+          <td><span class="lean">right</span>commercial, openly conservative</td>
+        </tr>
+        <tr>
+          <td>Breitbart</td>
+          <td><span class="lean">right</span>commercial, openly right wing</td>
+        </tr>
+        <tr>
+          <td>Just the News</td>
+          <td><span class="lean">right</span>commercial, conservative</td>
+        </tr>
+        <tr>
+          <td>Al Jazeera</td>
+          <td><span class="lean">state</span>funded by the government of Qatar</td>
+        </tr>
+        <tr>
+          <td>RT</td>
+          <td><span class="lean">state</span>funded by the Russian state</td>
+        </tr>
+        <tr>
+          <td>Deutsche Welle</td>
+          <td><span class="lean">state</span>funded by the German federal government</td>
+        </tr>
+        <tr>
+          <td>France 24</td>
+          <td><span class="lean">state</span>funded by the French state</td>
+        </tr>
+        <tr>
+          <td>ProPublica</td>
+          <td><span class="lean">independent</span>nonprofit, donor funded</td>
+        </tr>
+        <tr>
+          <td>Reveal</td>
+          <td><span class="lean">independent</span>nonprofit</td>
+        </tr>
+        <tr>
+          <td>ICIJ</td>
+          <td><span class="lean">independent</span>nonprofit consortium</td>
+        </tr>
+        <tr>
+          <td>The Marshall Project</td>
+          <td><span class="lean">independent</span>nonprofit</td>
+        </tr>
+        <tr>
+          <td>KFF Health News</td>
+          <td><span class="lean">independent</span>endowed nonprofit</td>
+        </tr>
+        <tr>
+          <td>404 Media</td>
+          <td><span class="lean">independent</span>journalist owned, subscriber funded</td>
+        </tr>
+        <tr>
+          <td>The Markup</td>
+          <td><span class="lean">independent</span>nonprofit</td>
+        </tr>
+        <tr>
+          <td>Rest of World</td>
+          <td><span class="lean">independent</span>nonprofit</td>
+        </tr>
+        <tr>
+          <td>Science News</td>
+          <td><span class="lean">independent</span>nonprofit membership society</td>
+        </tr>
+        <tr>
+          <td>Quanta</td>
+          <td><span class="lean">independent</span>Simons Foundation</td>
+        </tr>
+        <tr>
+          <td>Undark</td>
+          <td><span class="lean">independent</span>Knight Foundation, MIT program</td>
+        </tr>
+        <tr>
+          <td>Inside Climate News</td>
+          <td><span class="lean">independent</span>nonprofit</td>
+        </tr>
+        <tr>
+          <td>High Country News</td>
+          <td><span class="lean">independent</span>nonprofit, reader supported</td>
+        </tr>
+        <tr>
+          <td>Votebeat</td>
+          <td><span class="lean">independent</span>nonprofit, nonpartisan by charter</td>
+        </tr>
+        <tr>
+          <td>The 19th</td>
+          <td><span class="lean">independent</span>nonprofit, gender lens</td>
+        </tr>
+        <tr>
+          <td>The Texas Tribune</td>
+          <td><span class="lean">independent</span>nonprofit</td>
+        </tr>
+        <tr>
+          <td>CalMatters</td>
+          <td><span class="lean">independent</span>nonprofit</td>
+        </tr>
+        <tr>
+          <td>Clear Creek Courant</td>
+          <td><span class="lean">local</span>Colorado Trust for Local News, nonprofit<span class="review">Couldn’t be reached today</span></td>
+        </tr>
+        <tr>
+          <td>Canyon Courier</td>
+          <td><span class="lean">local</span>Colorado Trust for Local News, nonprofit</td>
+        </tr>
+        <tr>
+          <td>The Colorado Sun</td>
+          <td><span class="lean">local</span>journalist founded, now nonprofit</td>
+        </tr>
+        <tr>
+          <td>CPR News</td>
+          <td><span class="lean">local</span>Colorado Public Radio, nonprofit</td>
+        </tr>
+        <tr>
+          <td>Colorado Newsline</td>
+          <td><span class="lean">local</span>States Newsroom, nonprofit</td>
+        </tr>
+        <tr>
+          <td>Denverite</td>
+          <td><span class="lean">local</span>Colorado Public Radio, nonprofit</td>
+        </tr>
+        <tr>
+          <td>Boulder Reporting Lab</td>
+          <td><span class="lean">local</span>nonprofit</td>
+        </tr>
+        <tr>
+          <td>Positive News</td>
+          <td><span class="lean">good</span>reader owned cooperative, UK</td>
+        </tr>
+        <tr>
+          <td>Reasons to be Cheerful</td>
+          <td><span class="lean">good</span>nonprofit</td>
+        </tr>
+        <tr>
+          <td>Good News Network</td>
+          <td><span class="lean">good</span>independent, commercial</td>
+        </tr>
+        <tr>
+          <td>The Optimist Daily</td>
+          <td><span class="lean">good</span>independent, reader funded</td>
+        </tr>
+        <tr>
+          <td>Good Good Good</td>
+          <td><span class="lean">good</span>independent, commercial</td>
+        </tr>
+        <tr>
+          <td>Fix the News</td>
+          <td><span class="lean">good</span>independent, reader funded</td>
+        </tr></table>
+        <p class="left-out">Outlets we couldn’t include:</p>
+        <table>
+        <tr><td>Associated Press</td><td>blocks automated access, no public feed</td></tr>
+        <tr><td>Reuters</td><td>retired its public feeds</td></tr>
+        <tr><td>Xinhua and Press TV</td><td>feeds dead, so Chinese and Iranian state lines are not represented</td></tr>
+        <tr><td>MSNBC, HuffPost, The Nation, Newsweek</td><td>feeds return nothing or refuse automated requests</td></tr>
+        <tr><td>Weekly Register-Call and The Mountain-Ear</td><td>neither publishes a public news feed, and the Mountain-Ear blocks automated reading</td></tr></table>
+      </div>
+    </details>
+    </div>
+  </main>
+  <a class="feedback-button" href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AAbout%3A%20the%20page%20in%20general%0AEdition%3A%202026-10-12" target="_blank" rel="noopener">Feedback</a>
+</body>
+</html>

@@ -1,0 +1,2690 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Steady</title>
+<meta name="description" content="Top stories read across the spectrum, condensed to what every side agrees on.">
+<meta name="robots" content="noindex, nofollow">
+<style>/* ============================================================== Steady, styles */
+
+:root {
+  --paper:      #f8f5ee;
+  --paper-2:    #fdfcf7;
+  --paper-sunk: #f1ede3;
+  --ink:        #1f1e1c;
+  --ink-mid:    #494641;
+  --ink-soft:   #6b675f;
+  --ink-faint:  #99948a;
+  --rule:       #ddd7c9;
+  --rule-soft:  #ebe6d9;
+  --accent:     #3a5750;
+  --accent-soft:#8aa39b;
+  --focus:      #7b968d;
+
+  --flag-bg:    #f4edda;
+  --flag-edge:  #a98d45;
+  --flag-ink:   #6a5518;
+
+  --serif: "Hoefler Text", "Iowan Old Style", Charter, "Palatino Linotype", Palatino, Georgia, serif;
+  --sans: ui-sans-serif, -apple-system, "SF Pro Text", "Segoe UI", system-ui, sans-serif;
+
+  --measure: 37rem;
+  --gap-xs: 0.375rem;
+  --gap-s:  0.75rem;
+  --gap-m:  1.25rem;
+  --gap-l:  2rem;
+  --gap-xl: 3.5rem;
+}
+
+/* Dark applies when the system asks for it and the reader has not overridden it,
+   or when the reader has chosen it outright. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+--paper:      #14140f;
+    --paper-2:    #1a1a16;
+    --paper-sunk: #1e1e19;
+    --ink:        #eae4d6;
+    --ink-mid:    #b6b0a2;
+    --ink-soft:   #969084;
+    --ink-faint:  #6e6a60;
+    --rule:       #2f2e27;
+    --rule-soft:  #26251f;
+    --accent:     #a6c0b6;
+    --accent-soft:#5c7069;
+    --focus:      #708881;
+
+    --flag-bg:    #221f14;
+    --flag-edge:  #8b7333;
+    --flag-ink:   #dcc491;
+  }
+}
+
+:root[data-theme="dark"] {
+--paper:      #14140f;
+    --paper-2:    #1a1a16;
+    --paper-sunk: #1e1e19;
+    --ink:        #eae4d6;
+    --ink-mid:    #b6b0a2;
+    --ink-soft:   #969084;
+    --ink-faint:  #6e6a60;
+    --rule:       #2f2e27;
+    --rule-soft:  #26251f;
+    --accent:     #a6c0b6;
+    --accent-soft:#5c7069;
+    --focus:      #708881;
+
+    --flag-bg:    #221f14;
+    --flag-edge:  #8b7333;
+    --flag-ink:   #dcc491;
+}
+
+* { box-sizing: border-box; }
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0 1.25rem 7rem;
+  background: var(--paper);
+  color: var(--ink);
+  font: 400 1.0625rem/1.7 var(--serif);
+  font-variant-numeric: oldstyle-nums proportional-nums;
+  font-kerning: normal;
+  font-feature-settings: "liga" 1, "kern" 1;
+  hanging-punctuation: first last;
+  text-rendering: optimizeLegibility;
+}
+
+main { max-width: var(--measure); margin: 0 auto; }
+a { color: inherit; }
+::selection { background: var(--paper-sunk); }
+
+/* Small caps set in the text face, which reads as typography rather than as a label. */
+.caps {
+  font-family: var(--serif);
+  font-variant-caps: all-small-caps;
+  font-variant-numeric: normal;
+  letter-spacing: 0.1em;
+}
+
+/* ---------------------------------------------------------------------- head */
+
+.masthead {
+  padding: 5.5rem 0 1.5rem;
+  text-align: center;
+}
+
+.wordmark {
+  margin: 0;
+  font-size: 1.875rem;
+  font-weight: 400;
+  letter-spacing: 0.34em;
+  text-indent: 0.34em;
+  color: var(--ink);
+}
+
+.mission {
+  max-width: 27rem;
+  margin: 1rem auto 0;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: var(--ink-mid);
+}
+
+.dateline {
+  margin: 1.5rem 0 0;
+  font-variant-caps: all-small-caps;
+  font-variant-numeric: oldstyle-nums;
+  letter-spacing: 0.16em;
+  font-size: 1rem;
+  color: var(--ink-mid);
+}
+
+.standing {
+  margin: 0.25rem 0 0;
+  font-style: italic;
+  font-size: 0.9375rem;
+  color: var(--ink-faint);
+}
+
+/* --------------------------------------------------------------------- index */
+
+.index {
+  margin: 0;
+  padding: 0.75rem 0;
+  border-top: 3px double var(--rule);
+  border-bottom: 1px solid var(--rule);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.25rem 1.25rem;
+}
+
+.index a {
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.13em;
+  font-size: 0.9375rem;
+  color: var(--ink-faint);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+.index a:hover { color: var(--ink); border-bottom-color: var(--accent-soft); }
+.index a:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
+
+.appearance {
+  margin: var(--gap-m) 0 0;
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.appearance button {
+  appearance: none;
+  background: none;
+  border: 0;
+  padding: 0 0 1px;
+  cursor: pointer;
+  font-family: var(--serif);
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.13em;
+  font-size: 0.875rem;
+  color: var(--ink-faint);
+  border-bottom: 1px solid transparent;
+}
+.appearance button:hover { color: var(--ink-soft); }
+.appearance button:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
+.appearance button[aria-pressed="true"] { color: var(--ink); border-bottom-color: var(--accent-soft); }
+
+.legend {
+  margin: var(--gap-s) 0 0;
+  text-align: center;
+  font-style: italic;
+  font-size: 0.875rem;
+  color: var(--ink-faint);
+}
+
+/* ------------------------------------------------------------------ sections */
+
+.section { margin: var(--gap-xl) 0 0; scroll-margin-top: 1.5rem; }
+
+.section h2 {
+  margin: 0 0 var(--gap-m);
+  font-weight: 400;
+  font-size: 1rem;
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.22em;
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.125rem;
+  text-align: center;
+}
+.section h2::before,
+.section h2::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--rule);
+}
+
+.section-lead h2 { color: var(--ink); letter-spacing: 0.26em; }
+.section-lead h2::before,
+.section-lead h2::after { background: var(--accent-soft); }
+
+/* ------------------------------------------------------------------- stories */
+
+.story {
+  padding: var(--gap-l) 0 var(--gap-xl);
+  border-bottom: 1px solid var(--rule-soft);
+}
+.section .story:last-child { border-bottom: 0; }
+
+.story h3 {
+  margin: 0;
+  font-size: 1.375rem;
+  font-weight: 400;
+  line-height: 1.34;
+  letter-spacing: -0.008em;
+  text-wrap: balance;
+}
+
+a.headline {
+  text-decoration: none;
+  background-image: linear-gradient(var(--accent-soft), var(--accent-soft));
+  background-size: 0 1px;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  transition: background-size 220ms ease;
+}
+a.headline:hover { background-size: 100% 1px; }
+a.headline:focus-visible { outline: 2px solid var(--focus); outline-offset: 4px; }
+
+.summary {
+  margin: var(--gap-s) 0 0;
+  color: var(--ink-mid);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.story-lead { padding-top: var(--gap-m); }
+.story-lead h3 {
+  font-size: clamp(1.75rem, 5.2vw, 2.125rem);
+  line-height: 1.18;
+  letter-spacing: -0.018em;
+}
+.story-lead .summary { font-size: 1.0625rem; }
+
+/* ------------------------------------------------------- tap a story to open */
+
+details.story-more > summary {
+  display: block;
+  list-style: none;
+  cursor: pointer;
+  /* undo the small caps link style other summaries use */
+  font: inherit;
+  font-variant-caps: normal;
+  letter-spacing: normal;
+  color: inherit;
+  border: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+details.story-more > summary::-webkit-details-marker { display: none; }
+details.story-more > summary:hover { color: inherit; }
+details.story-more > summary:hover .headline { color: var(--accent); }
+details.story-more > summary:focus-visible { outline: 2px solid var(--focus); outline-offset: 6px; }
+
+.story .headline { transition: color 160ms ease; }
+
+.gist {
+  margin: var(--gap-s) 0 0;
+  font-size: 1.0625rem;
+  line-height: 1.68;
+  color: var(--ink-mid);
+}
+.story-lead .gist { font-size: 1.125rem; }
+.gist-credit {
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.1em;
+  font-size: 0.875rem;
+  color: var(--ink-faint);
+  white-space: nowrap;
+}
+
+.flag-line {
+  margin: var(--gap-s) 0 0;
+  padding-left: 0.75rem;
+  border-left: 2px solid var(--flag-edge);
+  font-size: 0.9375rem;
+  color: var(--flag-ink);
+}
+
+.more-cue {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  margin-top: var(--gap-m);
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.14em;
+  font-size: 0.9375rem;
+  color: var(--accent);
+}
+.more-cue::after {
+  content: "";
+  width: 0.4rem;
+  height: 0.4rem;
+  border-right: 1px solid currentColor;
+  border-bottom: 1px solid currentColor;
+  transform: translateY(-0.12rem) rotate(45deg);
+  transition: transform 180ms ease;
+}
+details.story-more[open] .more-cue::after { transform: translateY(0.12rem) rotate(-135deg); }
+.cue-close { display: none; }
+details.story-more[open] .cue-open { display: none; }
+details.story-more[open] .cue-close { display: inline; }
+
+.more-body { margin-top: var(--gap-m); }
+.more-body > :first-child { margin-top: 0; }
+.more-body .brief-diff { margin-bottom: var(--gap-m); }
+.block-outlets { margin-top: var(--gap-m); }
+.block-outlets .original-body { margin-top: 0; }
+
+@media (prefers-reduced-motion: no-preference) {
+  details.story-more[open] .more-body { animation: open-up 220ms ease-out; }
+  @keyframes open-up { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
+}
+
+/* ---------------------------------------------------------------- how sure */
+
+.sure {
+  margin: 0 0 var(--gap-m);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--ink-mid);
+}
+.sure-label {
+  display: block;
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+}
+.sure-unconfirmed .sure-label, .sure-thin .sure-label { color: var(--flag-edge); }
+
+/* ------------------------------------------------------------- the account */
+
+.account p {
+  margin: 0 0 var(--gap-m);
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: var(--ink);
+}
+.account p:last-child { margin-bottom: 0; }
+.account + * { margin-top: var(--gap-l); }
+
+details.sources { margin-top: var(--gap-l); }
+details.sources > summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+details.sources > summary::after {
+  content: "";
+  width: 0.35rem;
+  height: 0.35rem;
+  border-right: 1px solid currentColor;
+  border-bottom: 1px solid currentColor;
+  transform: translateY(-0.1rem) rotate(45deg);
+}
+details.sources[open] > summary::after { transform: translateY(0.1rem) rotate(-135deg); }
+details.sources .original-body { margin-top: var(--gap-s); }
+
+/* -------------------------------------------------------------- the brief */
+
+.brief { margin: var(--gap-s) 0 0; }
+.brief-text { margin: 0; font-size: 1.0625rem; line-height: 1.7; color: var(--ink); }
+.story-lead .brief-text { font-size: 1.125rem; }
+.brief-diff { margin: var(--gap-s) 0 0; font-size: 1rem; line-height: 1.7; color: var(--ink-mid); font-style: italic; }
+.brief-credit {
+  margin: var(--gap-xs) 0 0;
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.1em;
+  font-size: 0.875rem;
+  color: var(--ink-faint);
+}
+
+/* ------------------------------------------------------- the spectrum spread */
+
+.spread {
+  margin: var(--gap-m) 0 0;
+  font-variant-caps: all-small-caps;
+  font-variant-numeric: oldstyle-nums;
+  letter-spacing: 0.08em;
+  font-size: 0.9375rem;
+}
+
+.spread-label { display: block; color: var(--ink-faint); margin-bottom: 0.25rem; }
+
+.chips { display: flex; flex-wrap: wrap; gap: 0.25rem 0.75rem; }
+
+/* A side that did not cover the story is present but faded, so the gap shows. */
+.chip { color: var(--ink-faint); opacity: 0.45; padding-bottom: 1px; }
+.chip.on { color: var(--ink); opacity: 1; box-shadow: inset 0 -2px 0 var(--accent-soft); }
+
+/* ------------------------------------------------------------------ the frame */
+
+.frame { margin: var(--gap-m) 0 0; }
+.block + .block { margin-top: var(--gap-m); }
+
+.more-body h4 {
+  margin: 0 0 var(--gap-s);
+  font-weight: 400;
+  font-size: 0.9375rem;
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+}
+
+.frame ul { margin: 0; padding: 0; list-style: none; }
+
+/* agreement: the load bearing part, given the most presence */
+.block-agreed {
+  position: relative;
+  padding: var(--gap-m) 0 var(--gap-m) var(--gap-m);
+  border-left: 2px solid var(--accent);
+  background: linear-gradient(90deg, var(--paper-2), transparent 72%);
+}
+.block-agreed::after {
+  content: "\201D";
+  position: absolute;
+  top: 0.125rem;
+  right: 0.25rem;
+  font-size: 3.5rem;
+  line-height: 1;
+  color: var(--rule);
+  pointer-events: none;
+}
+
+.shared li { margin: 0 0 var(--gap-s); }
+.shared li:last-child { margin-bottom: 0; }
+
+q { quotes: none; color: var(--ink-mid); font-size: 0.9375rem; line-height: 1.65; }
+cite {
+  display: block;
+  margin-top: 0.1875rem;
+  font-style: normal;
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.12em;
+  font-size: 0.875rem;
+  color: var(--ink-faint);
+}
+
+/* divergence: set apart so it never reads as part of the agreed account */
+.block-only { padding-left: var(--gap-m); border-left: 2px solid var(--rule); }
+
+.side + .side { margin-top: var(--gap-s); padding-top: var(--gap-s); border-top: 1px solid var(--rule-soft); }
+
+.side-name {
+  margin: 0;
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.12em;
+  font-size: 0.9375rem;
+  color: var(--ink-soft);
+}
+
+.side-body { margin: 0.25rem 0 0; color: var(--ink-mid); font-size: 0.9375rem; line-height: 1.65; }
+.side-quote { margin: 0.5rem 0 0; }
+
+/* the vocabulary split */
+.framing { margin: 0; }
+.framing dt {
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.1em;
+  font-size: 0.9375rem;
+  color: var(--ink-faint);
+}
+.framing dd {
+  margin: 0.1875rem 0 var(--gap-s);
+  color: var(--ink-soft);
+  font-size: 0.9375rem;
+  line-height: 1.7;
+}
+.framing dd:last-child { margin-bottom: 0; }
+.framing .who {
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.08em;
+  color: var(--ink-faint);
+}
+.framing b { font-weight: 400; color: var(--ink); box-shadow: inset 0 -1px 0 var(--accent-soft); }
+.framing .sep::before { content: "  ·  "; color: var(--ink-faint); }
+
+/* ----------------------------------------------------------------- the verdict */
+
+.verdict {
+  margin: var(--gap-m) 0 0;
+  padding: var(--gap-s) var(--gap-m) var(--gap-m);
+  background: var(--flag-bg);
+  border-left: 2px solid var(--flag-edge);
+}
+
+.verdict-kicker {
+  margin: 0;
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.16em;
+  font-size: 0.875rem;
+  color: var(--flag-edge);
+}
+
+.verdict-title {
+  margin: 0.125rem 0 0;
+  font-size: 1.125rem;
+  line-height: 1.32;
+  color: var(--flag-ink);
+}
+
+.verdict-reasoning { margin: 0.375rem 0 0; color: var(--ink-mid); font-size: 0.9375rem; line-height: 1.6; }
+.verdict-by { margin: 0.375rem 0 0; font-style: italic; font-size: 0.875rem; color: var(--ink-faint); }
+.verdict-measured {
+  margin: var(--gap-s) 0 0;
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.14em;
+  font-size: 0.8125rem;
+  color: var(--flag-edge);
+}
+.verdict ul { margin: var(--gap-xs) 0 0; padding-left: 1rem; }
+.verdict li { margin: 0.1875rem 0; color: var(--ink-mid); font-size: 0.9375rem; line-height: 1.6; }
+
+/* ---------------------------------------------------------- side by side list */
+
+details.original { margin: var(--gap-m) 0 0; }
+
+details > summary {
+  cursor: pointer;
+  list-style: none;
+  display: inline-block;
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.13em;
+  font-size: 0.9375rem;
+  color: var(--ink-faint);
+  border-bottom: 1px solid var(--rule);
+}
+details > summary::-webkit-details-marker { display: none; }
+details > summary:hover { color: var(--ink-soft); border-bottom-color: var(--accent-soft); }
+details > summary:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
+details[open] > summary { color: var(--ink-soft); }
+
+.original-body {
+  margin: var(--gap-s) 0 0;
+  padding: var(--gap-m);
+  background: var(--paper-sunk);
+}
+
+.camp-group + .camp-group { margin-top: var(--gap-m); }
+
+.also-head {
+  margin: 0 0 var(--gap-xs);
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.14em;
+  font-size: 0.9375rem;
+  color: var(--ink-faint);
+}
+
+.original-body ul { margin: 0; padding: 0; list-style: none; }
+.original-body li { margin: 0.4375rem 0; font-size: 0.9375rem; line-height: 1.55; }
+.original-body a { color: var(--ink-mid); text-decoration: none; }
+.original-body a:hover { color: var(--ink); }
+.original-body a:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.original-body .who {
+  display: block;
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.1em;
+  font-size: 0.8125rem;
+  color: var(--ink-faint);
+}
+
+/* --------------------------------------------------------------------- foot */
+
+.empty { padding: var(--gap-l) 0; color: var(--ink-mid); }
+.empty p { margin: 0; }
+
+.ending {
+  margin: var(--gap-xl) 0 0;
+  padding-top: var(--gap-l);
+  border-top: 3px double var(--rule);
+  color: var(--ink-faint);
+  font-size: 0.9375rem;
+  line-height: 1.75;
+  text-align: center;
+}
+.ending p { margin: 0 0 var(--gap-s); }
+.ending strong { font-weight: 400; font-style: italic; color: var(--ink-mid); }
+
+details.colophon { margin-top: var(--gap-l); text-align: left; }
+details.colophon > summary { display: block; text-align: center; border-bottom: 0; }
+details.colophon > summary span { border-bottom: 1px solid var(--rule); }
+details.colophon .body { margin-top: var(--gap-m); line-height: 1.75; }
+details.colophon table { width: 100%; border-collapse: collapse; margin-top: var(--gap-s); }
+details.colophon td {
+  padding: 0.5rem 0.875rem 0.5rem 0;
+  border-bottom: 1px solid var(--rule-soft);
+  vertical-align: top;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+details.colophon td:first-child { color: var(--ink-mid); white-space: nowrap; }
+.left-out { margin-top: var(--gap-l); }
+
+.lean {
+  display: block;
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.12em;
+  font-size: 0.8125rem;
+  color: var(--ink-faint);
+}
+.review { display: block; margin-top: 0.25rem; color: var(--ink-faint); font-size: 0.8125rem; font-style: italic; }
+
+/* ----------------------------------------------------------------- feedback */
+
+.feedback-link { margin: var(--gap-m) 0 0; }
+.feedback-link a, .feedback-link button {
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.13em;
+  font-size: 0.9375rem;
+  color: var(--ink-faint);
+  text-decoration: none;
+  border-bottom: 1px solid var(--rule);
+}
+.feedback-link a:hover, .feedback-link button:hover { color: var(--ink-soft); border-bottom-color: var(--accent-soft); }
+.feedback-link a:focus-visible, .feedback-link button:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
+
+button.feedback-button, .feedback-link button { font-family: var(--serif); cursor: pointer; }
+.feedback-link button { background: none; border: 0; border-bottom: 1px solid var(--rule); padding: 0 0 1px; }
+
+.feedback-box {
+  width: min(28rem, calc(100vw - 2rem));
+  padding: 1.5rem;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  background: var(--paper-2);
+  color: var(--ink);
+  font-family: var(--serif);
+}
+.feedback-box::backdrop { background: rgba(0, 0, 0, 0.45); }
+.feedback-box h2 { margin: 0; font-size: 1.25rem; font-weight: 400; }
+.feedback-about { margin: 0.375rem 0 1rem; font-size: 0.9375rem; line-height: 1.5; color: var(--ink-soft); }
+.feedback-box label { display: block; margin-bottom: 0.375rem; font-size: 1rem; color: var(--ink-mid); }
+.feedback-box textarea {
+  width: 100%;
+  padding: 0.625rem 0.75rem;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  background: var(--paper);
+  color: var(--ink);
+  font: 400 1.0625rem/1.5 var(--serif);
+  resize: vertical;
+}
+.feedback-box textarea:focus-visible { outline: 2px solid var(--focus); outline-offset: 1px; }
+#feedback-website { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.feedback-status { min-height: 1.5rem; margin: 0.5rem 0 0; font-size: 0.9375rem; color: var(--ink-soft); }
+.feedback-actions { display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 0.5rem; }
+.feedback-actions button {
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  background: none;
+  color: var(--ink-soft);
+  font: 400 1rem/1 var(--serif);
+  cursor: pointer;
+}
+.feedback-actions button[type="submit"] { background: var(--accent); border-color: var(--accent); color: var(--paper); }
+.feedback-actions button:disabled { opacity: 0.5; cursor: default; }
+.feedback-actions button:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+/* Always within reach while reading, and quiet enough not to pull the eye. */
+.feedback-button {
+  position: fixed;
+  right: 1rem;
+  bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+  z-index: 10;
+  padding: 0.5rem 0.875rem;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  background: var(--paper-2);
+  color: var(--ink-soft);
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.12em;
+  font-size: 0.9375rem;
+  line-height: 1;
+  text-decoration: none;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.08);
+}
+.feedback-button:hover { color: var(--ink); border-color: var(--accent-soft); }
+.feedback-button:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
+
+/* ------------------------------------------------------------------ archive */
+
+.archive-link { margin-top: var(--gap-m); }
+.archive-link a {
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.13em;
+  font-size: 0.9375rem;
+  color: var(--ink-soft);
+  text-decoration: none;
+  border-bottom: 1px solid var(--rule);
+}
+.archive-link a:hover { color: var(--ink); border-bottom-color: var(--accent-soft); }
+.archive-link a:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
+
+.archive-list {
+  margin: var(--gap-l) 0 0;
+  padding: 0;
+  list-style: none;
+  border-top: 3px double var(--rule);
+}
+.archive-list li { border-bottom: 1px solid var(--rule-soft); }
+.archive-list a {
+  display: block;
+  padding: 0.875rem 0;
+  text-decoration: none;
+  color: var(--ink-mid);
+  text-align: center;
+}
+.archive-list a:hover { color: var(--ink); }
+.archive-list a:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+/* -------------------------------------------------------------------- narrow */
+
+@media (max-width: 34rem) {
+  /* Phones: larger type and a little more air, since this is read in a hand. */
+  body { padding: 0 1.125rem 4rem; font-size: 1.125rem; }
+  .masthead { padding-top: 3rem; }
+  .wordmark { font-size: 1.625rem; letter-spacing: 0.3em; text-indent: 0.3em; }
+  .mission { font-size: 1.0625rem; }
+  .story-lead h3 { font-size: 1.625rem; }
+  .story h3 { font-size: 1.375rem; line-height: 1.3; }
+  .gist, .story-lead .gist { font-size: 1.125rem; line-height: 1.7; }
+  .account p { font-size: 1.125rem; line-height: 1.75; }
+  .spread { letter-spacing: 0.05em; }
+  .chips { gap: 0.25rem 0.625rem; }
+  .gist-credit, .spread, .more-cue, details > summary, .index a, .dateline { font-size: 1rem; }
+  q, .verdict li, .framing dd, .original-body li { font-size: 1.0625rem; }
+  .verdict-title { font-size: 1.1875rem; }
+  .block-agreed, .block-only { padding-left: 0.875rem; }
+  .block-agreed::after { display: none; }
+  .original-body { padding: 0.875rem; }
+  .section h2 { letter-spacing: 0.16em; font-size: 1.0625rem; }
+  .more-cue { padding: 0.5rem 0; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  main { animation: settle 520ms ease-out both; }
+  @keyframes settle { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: none; } }
+}
+
+@media print {
+  .feedback-button, .feedback-link { display: none; }
+  body { background: #fff; color: #000; padding: 0; font-size: 10.5pt; }
+  details { display: none; }
+  .index { border-color: #000; }
+  .verdict { border-left: 2px solid #000; background: #f3f3f3; }
+  .block-agreed { background: none; border-left: 2px solid #000; }
+  .block-agreed::after { display: none; }
+  .section, .story { break-inside: avoid-page; }
+}
+</style>
+<script>
+/* Applied before the page paints, so switching never flashes the other theme.
+   Without JavaScript the control stays hidden and the system setting decides. */
+(function () {
+  // A refresh starts at the top instead of where the reader last was. A link to a
+  // section (the menu) still goes to that section.
+  try { if ('scrollRestoration' in history) history.scrollRestoration = 'manual'; } catch (e) {}
+  if (!location.hash) window.scrollTo(0, 0);
+
+  var KEY = 'steady-theme';
+  var saved;
+  try { saved = localStorage.getItem(KEY); } catch (e) { saved = null; }
+  if (saved === 'dark' || saved === 'light') document.documentElement.dataset.theme = saved;
+
+  function paint(choice) {
+    var box = document.getElementById('appearance');
+    if (!box) return;
+    box.hidden = false;
+    var buttons = box.querySelectorAll('button');
+    for (var i = 0; i < buttons.length; i++) {
+      buttons[i].setAttribute('aria-pressed', String(buttons[i].dataset.themeChoice === choice));
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    var current = document.documentElement.dataset.theme || 'auto';
+    paint(current);
+    var box = document.getElementById('appearance');
+    if (!box) return;
+    box.addEventListener('click', function (e) {
+      var choice = e.target && e.target.dataset && e.target.dataset.themeChoice;
+      if (!choice) return;
+      if (choice === 'auto') {
+        delete document.documentElement.dataset.theme;
+        try { localStorage.removeItem(KEY); } catch (err) {}
+      } else {
+        document.documentElement.dataset.theme = choice;
+        try { localStorage.setItem(KEY, choice); } catch (err) {}
+      }
+      paint(choice);
+    });
+  });
+})();
+</script>
+</head>
+<body>
+  <main>
+    <header class="masthead">
+      <h1 class="wordmark">Steady</h1>
+      <p class="mission">Each morning, Steady reads the news from the left, the right and everything in between, and tells you what happened in plain, calm words.</p>
+      <p class="dateline">Wednesday, November 25, 2026</p>
+      <p class="standing">Updated once each morning</p>
+      <div class="appearance" id="appearance" hidden>
+        <button type="button" data-theme-choice="auto">auto</button>
+        <button type="button" data-theme-choice="light">light</button>
+        <button type="button" data-theme-choice="dark">dark</button>
+      </div>
+    </header>
+
+    
+    
+    <nav class="index" aria-label="sections in this edition">
+      <a href="#lead">Top stories</a>
+      <a href="#world">The world</a><a href="#nation">The nation</a><a href="#justice">Courts and justice</a><a href="#health">Health</a><a href="#science">Science</a><a href="#climate">Climate and land</a><a href="#technology">Technology</a><a href="#money">Work and money</a><a href="#local">Local</a><a href="#good">Good news</a>
+    </nav>
+
+    
+    <section class="section section-lead" id="lead">
+      <h2><span>Top stories</span></h2>
+      
+    <article class="story story-lead">
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">Trump announces new tariffs on EU, China despite US midterms defeat</h3>
+          <p class="gist">New tariffs ranging from 10 percent to 20 percent will apply to most goods imported from 14 major trading partners, including China, Japan, and Europe. <span class="gist-credit">Reason</span></p>
+          
+      <p class="spread" aria-label="Covered by 6 outlets: left, center, right, government-funded">
+        <span class="spread-label">Covered by 6 outlets</span>
+        <span class="chips"><span class="chip on" aria-hidden="true">Left</span><span class="chip on" aria-hidden="true">Center</span><span class="chip on" aria-hidden="true">Right</span><span class="chip on" aria-hidden="true">Government-funded</span><span class="chip" aria-hidden="true">Independent</span></span>
+      </p>
+          
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          <p class="sure sure-confirmed"><span class="sure-label">How sure is this?</span> Confirmed by 6 outlets across the left, center and right.</p>
+          
+        <div class="account">
+          <p>The Trump administration proposed a new round of tariffs targeting China, the European Union and 12 other economies over policies it says have created excess industrial capacity. <span class="gist-credit">Axios</span> The new round of import taxes aimed at countries that prop up domestic industries marks the latest effort to replace tariffs struck down by the Supreme Court. <span class="gist-credit">The Washington Post</span> Every year, the United States produces way more airplanes than domestic airlines can buy. <span class="gist-credit">Reason</span></p>
+          <p>The US is planning tariffs on 14 economies it accuses of using subsidies to help their industries overproduce. <span class="gist-credit">Al Jazeera</span> New Delhi could be slapped with higher duties than some other countries while it pursues a preferential agreement with Washington. <span class="gist-credit">RT</span> The United States on Wednesday unveiled proposed tariffs on 14 economies including the European Union and China, after a months-long probe into alleged excess production, the latest move by US. <span class="gist-credit">France 24</span></p>
+        </div>
+          
+          
+          
+          
+        <details class="sources">
+          <summary>Sources (6)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">the left</p>
+            <ul>
+              <li><a href="https://www.washingtonpost.com/politics/2026/11/25/trump-proposes-new-tariffs-china-europe-other-trade-partners/" target="_blank" rel="noopener"><span class="who">The Washington Post</span>Trump proposes new tariffs on China, Europe and other trade partners</a></li>
+            </ul>
+          </div>
+          <div class="camp-group">
+            <p class="also-head">the center</p>
+            <ul>
+              <li><a href="https://www.axios.com/2026/11/25/trump-tariffs-china" target="_blank" rel="noopener"><span class="who">Axios</span>Trump prepares new round of tariffs on China, other U.S. trading partners</a></li>
+            </ul>
+          </div>
+          <div class="camp-group">
+            <p class="also-head">the right</p>
+            <ul>
+              <li><a href="https://reason.com/2026/11/25/trumps-latest-tariffs-underscore-the-urgency-of-congressional-reforms/" target="_blank" rel="noopener"><span class="who">Reason</span>Trump&#39;s Latest Tariffs Underscore the Urgency of Congressional Reforms</a></li>
+            </ul>
+          </div>
+          <div class="camp-group">
+            <p class="also-head">government-funded outlets</p>
+            <ul>
+              <li><a href="https://www.aljazeera.com/news/2026/11/25/trump-announces-new-trade-tariffs-which-countries-will-they-target?traffic_source=rss" target="_blank" rel="noopener"><span class="who">Al Jazeera</span>Trump announces new trade tariffs: Which countries are affected?</a></li>
+              <li><a href="https://rt-english.com/india/649339-us-india-tariffs-probe/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=RSS" target="_blank" rel="noopener"><span class="who">RT</span>US preparing tariffs targeting India and other trade partners – media</a></li>
+              <li><a href="https://www.france24.com/en/video/20261125-us-unveils-proposed-tariffs-on-major-partners-including-eu-and-china" target="_blank" rel="noopener"><span class="who">France 24</span>US unveils proposed tariffs on major partners, including EU and China</a></li>
+            </ul>
+          </div></div>
+        </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Trump%20announces%20new%20tariffs%20on%20EU%2C%20China%20despite%20US%20midterms%20defeat&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Trump%20announces%20new%20tariffs%20on%20EU%2C%20China%20despite%20US%20midterms%20defeat%0ASection%3A%20Top%20stories%0AEdition%3A%202026-11-25" target="_blank" rel="noopener">Feedback on this story</a></p>
+        </div>
+      </details>
+    </article>
+    <article class="story story-lead">
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">Criminal charge against incoming House Democrat dropped</h3>
+          <p class="gist">Prosecutors in Mecklenburg County, N.C., announced Tuesday they are dropping a criminal charge against Rep.-elect LaKesha Womack (D-N.C.) related to an un-returned rental car in 2019. <span class="gist-credit">Axios</span></p>
+          
+      <p class="spread" aria-label="Covered by 6 outlets: left, center, right">
+        <span class="spread-label">Covered by 6 outlets</span>
+        <span class="chips"><span class="chip on" aria-hidden="true">Left</span><span class="chip on" aria-hidden="true">Center</span><span class="chip on" aria-hidden="true">Right</span><span class="chip" aria-hidden="true">Government-funded</span><span class="chip" aria-hidden="true">Independent</span></span>
+      </p>
+          
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          <p class="sure sure-confirmed"><span class="sure-label">How sure is this?</span> Confirmed by 6 outlets across the left, center and right.</p>
+          
+        <div class="account">
+          <p>Representative-elect LaKesha Womack in North Carolina had been issued a criminal summons at a campaign rally last month about a rental vehicle she had failed to return in 2019. <span class="gist-credit">The New York Times</span> Nearly two weeks after she was declared the winner in the Nov. <span class="gist-credit">Fox News</span> The woke District Attorney in deep blue Mecklenburg County dismissed a felony charge against LaKesha Womack, the accidental winner of North Carolina&#39;s 14th Congressional District race against Republican Rep. Tim Moore. <span class="gist-credit">Breitbart</span></p>
+          <p>Womack was served a court summons at a campaign event on Oct. <span class="gist-credit">Just the News</span> Why it matters: The charge had been a bothersome footnote for Womack since her sudden rise from obscurity on Election Day, when she unexpectedly won a heavily Republican district. <span class="gist-credit">Axios</span> 3 election, flipping a Republican-held seat, a North Carolina Democrat settled a 2019 rental car bill for a car she did not return, allowing prosecutors to drop a felony charge. <span class="gist-credit">Fox News</span></p>
+        </div>
+          
+          
+          
+          
+        <details class="sources">
+          <summary>Sources (6)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">the left</p>
+            <ul>
+              <li><a href="https://www.washingtonpost.com/politics/2026/11/24/felony-charge-north-carolina-dropped-against-incoming-democratic-lawmaker/" target="_blank" rel="noopener"><span class="who">The Washington Post</span>Felony charge in North Carolina dropped against incoming Democratic lawmaker</a></li>
+              <li><a href="https://www.nytimes.com/2026/11/24/us/lakesha-womack-rental-car-felony-charge-dismissed.html" target="_blank" rel="noopener"><span class="who">The New York Times</span>Officials Dismiss Rental Car Felony Charge for Incoming House Democrat</a></li>
+            </ul>
+          </div>
+          <div class="camp-group">
+            <p class="also-head">the center</p>
+            <ul>
+              <li><a href="https://www.axios.com/2026/11/24/lakesha-womack-charge-dropped-rental-car-nc" target="_blank" rel="noopener"><span class="who">Axios</span>Criminal charge against incoming House Democrat dropped</a></li>
+            </ul>
+          </div>
+          <div class="camp-group">
+            <p class="also-head">the right</p>
+            <ul>
+              <li><a href="https://www.foxnews.com/politics/prosecutors-drop-felony-charge-2020-incoming-house-dem" target="_blank" rel="noopener"><span class="who">Fox News</span>Prosecutors drop felony charge from 2020 against incoming House Dem</a></li>
+              <li><a href="https://www.breitbart.com/politics/2026/11/24/woke-da-dismisses-felony-charge-against-incoming-congresswoman/" target="_blank" rel="noopener"><span class="who">Breitbart</span>Woke DA Dismisses Felony Charge Against Incoming Congresswoman</a></li>
+              <li><a href="https://justthenews.com/government/congress/prosecutors-drop-felony-charge-against-incoming-house-democrat-lakesha-womack?utm_source=justthenews.com&amp;amp;utm_medium=feed&amp;amp;utm_campaign=external-news-aggregators" target="_blank" rel="noopener"><span class="who">Just the News</span>Prosecutors drop felony charge against incoming House Democrat LaKesha Womack, who flipped seat blue</a></li>
+            </ul>
+          </div></div>
+        </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Criminal%20charge%20against%20incoming%20House%20Democrat%20dropped&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Criminal%20charge%20against%20incoming%20House%20Democrat%20dropped%0ASection%3A%20Top%20stories%0AEdition%3A%202026-11-25" target="_blank" rel="noopener">Feedback on this story</a></p>
+        </div>
+      </details>
+    </article>
+    <article class="story story-lead">
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">Trump&#39;s Prison Stock Trades Before $3.6B Jail Splurge Revealed</h3>
+          <p class="gist">President Donald. Trump bought stock in two private prison giants before his administration launched a $3.6 billion jail-buying spree. <span class="gist-credit">The Daily Beast</span></p>
+          
+      <p class="spread" aria-label="Covered by 2 outlets: left">
+        <span class="spread-label">Covered by 2 outlets</span>
+        <span class="chips"><span class="chip on" aria-hidden="true">Left</span><span class="chip" aria-hidden="true">Center</span><span class="chip" aria-hidden="true">Right</span><span class="chip" aria-hidden="true">Government-funded</span><span class="chip" aria-hidden="true">Independent</span></span>
+      </p>
+          <p class="flag-line">Only the left is running this</p>
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          
+          
+        <div class="account">
+          <p>Photo Illustration by Eric Faison/The Daily Beast/Getty/Reuters. <span class="gist-credit">The Daily Beast</span> 23, the president&#39;s trades suggests he holds between $6 million and $71 million of Nvidia stock. <span class="gist-credit">The Washington Post</span> Trump, 80, listed his stakes ⁠ at the end of 2025 as $15,001 to $50,000 in CoreCivic and $50,001 to $100,000 in GEO Group, and doubled down on his investment this spring. <span class="gist-credit">The Daily Beast</span></p>
+          <p>Trump also reported receiving between $1,001 and $2,500 in dividends from GEO Group that year. <span class="gist-credit">The Daily Beast</span> Trump&#39;s stock buying continued into his second year in the White House. <span class="gist-credit">The Daily Beast</span> On April 13, 80 days before DHS bought its first two jails from CoreCivic, Trump&#39;s brokers bought shares in the company worth $15,001 to $50,000. <span class="gist-credit">The Daily Beast</span></p>
+        </div>
+          
+          
+      <aside class="verdict verdict-one-sided">
+        <p class="verdict-kicker">Worth knowing about this coverage</p>
+        <p class="verdict-title">Only the left is running this</p>
+        <ul><li>reported by The Daily Beast, The Washington Post, and no outlet from the other side</li></ul>
+      </aside>
+          
+          
+        <details class="sources">
+          <summary>Sources (2)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">the left</p>
+            <ul>
+              <li><a href="https://www.thedailybeast.com/trumps-prison-stock-trades-in-geo-group-and-corecivic-before-36b-dhs-jail-splurge-revealed" target="_blank" rel="noopener"><span class="who">The Daily Beast</span>Trump&#39;s Prison Stock Trades Before $3.6B Jail Splurge Revealed</a></li>
+              <li><a href="https://www.washingtonpost.com/politics/2026/11/24/see-all-trumps-nvidia-stock-trades-since-january/" target="_blank" rel="noopener"><span class="who">The Washington Post</span>See all of Trump&#39;s Nvidia stock trades since January</a></li>
+            </ul>
+          </div></div>
+        </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Trump&#39;s%20Prison%20Stock%20Trades%20Before%20%243.6B%20Jail%20Splurge%20Revealed&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Trump&#39;s%20Prison%20Stock%20Trades%20Before%20%243.6B%20Jail%20Splurge%20Revealed%0ASection%3A%20Top%20stories%0AEdition%3A%202026-11-25" target="_blank" rel="noopener">Feedback on this story</a></p>
+        </div>
+      </details>
+    </article>
+    </section>
+    
+    <section class="section" id="world">
+      <h2><span>The world</span></h2>
+      
+    <article class="story">
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">US Army detonates lead explosives in Iowa despite contamination fears</h3>
+          <p class="gist">The Army detonated 68 drums of unstable lead azide on an Iowa plant Wednesday after multiple delays, a court challenge and presidential intervention. <span class="gist-credit">Axios</span></p>
+          
+      <p class="spread" aria-label="Covered by 5 outlets: left, center, government-funded">
+        <span class="spread-label">Covered by 5 outlets</span>
+        <span class="chips"><span class="chip on" aria-hidden="true">Left</span><span class="chip on" aria-hidden="true">Center</span><span class="chip" aria-hidden="true">Right</span><span class="chip on" aria-hidden="true">Government-funded</span><span class="chip" aria-hidden="true">Independent</span></span>
+      </p>
+          
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          <p class="sure sure-confirmed"><span class="sure-label">How sure is this?</span> Confirmed by 5 outlets across the left and center.</p>
+          
+        <div class="account">
+          <p>The US Army has carried out a controlled criticize of nearly five tonnes of deteriorating lead azide at a military plant. <span class="gist-credit">Al Jazeera</span> The US Army says a controlled criticize is the safest way to deal with chemicals that began crystallizing in storage. <span class="gist-credit">Deutsche Welle</span> An enormous explosion rang out across rural Iowa Tuesday as the US military carried out the controlled detonation of some 10,000 pounds of lead azide. <span class="gist-credit">France 24</span></p>
+          <p>The big picture: Elected officials criticized the military over communication shortfalls ahead of the detonation, which triggered evacuations, closures and fears about exposure to toxic lead dust in surrounding communities and states. <span class="gist-credit">Axios</span> US President Donald Trump said &quot;mitigation efforts have far exceeded expectations.&quot; <span class="gist-credit">Deutsche Welle</span> US officials say the material, which was once used as a detonator in munitions, had become unstable and was at risk at risk of spontaneous explosion. <span class="gist-credit">France 24</span></p>
+        </div>
+          
+          
+          
+          
+        <details class="sources">
+          <summary>Sources (5)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">the left</p>
+            <ul>
+              <li><a href="https://www.nytimes.com/live/2026/11/25/us/iowa-detonation-ammunition-news/iowa-lead-cloud-explainer" target="_blank" rel="noopener"><span class="who">The New York Times</span>Army&#39;s Explosion in Iowa Raises Fears of Lead Cloud</a></li>
+            </ul>
+          </div>
+          <div class="camp-group">
+            <p class="also-head">the center</p>
+            <ul>
+              <li><a href="https://www.axios.com/2026/11/25/iowa-army-lead-detonation" target="_blank" rel="noopener"><span class="who">Axios</span>Army detonates Iowa explosives amid toxic lead fears</a></li>
+            </ul>
+          </div>
+          <div class="camp-group">
+            <p class="also-head">government-funded outlets</p>
+            <ul>
+              <li><a href="https://www.aljazeera.com/video/newsfeed/2026/11/25/us-army-detonates-nearly-five-tonnes-of-toxic-explosives-in-iowa?traffic_source=rss" target="_blank" rel="noopener"><span class="who">Al Jazeera</span>US Army detonates nearly five tonnes of toxic explosives in Iowa</a></li>
+              <li><a href="https://www.dw.com/en/us-army-detonates-unstable-lead-based-explosives-in-iowa/a-80043319?maca=en-rss-en-all-1573-rdf" target="_blank" rel="noopener"><span class="who">Deutsche Welle</span>US Army detonates unstable lead-based explosives in Iowa</a></li>
+              <li><a href="https://www.france24.com/en/video/20261125-iowa-toxic-dust-fears-as-us-army-blows-up-10-000-pounds-of-explosives" target="_blank" rel="noopener"><span class="who">France 24</span>Iowa: Toxic dust fears as US Army blows up 10,000 pounds of explosives</a></li>
+            </ul>
+          </div></div>
+        </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20US%20Army%20detonates%20lead%20explosives%20in%20Iowa%20despite%20contamination%20fears&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20US%20Army%20detonates%20lead%20explosives%20in%20Iowa%20despite%20contamination%20fears%0ASection%3A%20The%20world%0AEdition%3A%202026-11-25" target="_blank" rel="noopener">Feedback on this story</a></p>
+        </div>
+      </details>
+    </article>
+    <article class="story">
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">Canadian astronaut welcomes baby girl from space station</h3>
+          <p class="gist">China launched its Shenzhou-24 space mission to bring three astronauts to its Tiangong space station. <span class="gist-credit">BBC</span></p>
+          
+      <p class="spread" aria-label="Covered by 3 outlets: center, government-funded">
+        <span class="spread-label">Covered by 3 outlets</span>
+        <span class="chips"><span class="chip" aria-hidden="true">Left</span><span class="chip on" aria-hidden="true">Center</span><span class="chip" aria-hidden="true">Right</span><span class="chip on" aria-hidden="true">Government-funded</span><span class="chip" aria-hidden="true">Independent</span></span>
+      </p>
+          
+          <p class="flag-line">Unconfirmed: one source, big claim</p>
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          <p class="sure sure-thin"><span class="sure-label">How sure is this?</span> Only 3 outlets have this, and the headline makes a big claim. Worth waiting for more reporting.</p>
+          
+        <div class="account">
+          <p>Joshua Kutryk, currently on his first space mission, is just the fourth astronaut in history to miss the birth of a child while aboard the International Space Station. <span class="gist-credit">BBC</span> A Pakistani pilot is set to become the first foreign national associated with a Chinese space mission when the Shenzhou-24 flight criticizes off on Wednesday. <span class="gist-credit">RT</span> It successfully separated from a rocket and entered its predetermined orbit. <span class="gist-credit">France 24</span></p>
+          <p>Zeeshan Ali, a 40-year-old air force pilot, will also be the first Pakistani in orbit as he heads to the Tiangong space station, Reuters reported. <span class="gist-credit">RT</span> The launch marked the first joint flight involving Chinese and foreign astronauts in the history of China&#39;s crewed space program. <span class="gist-credit">France 24</span> He will conduct experiments on the space station for five to ten days. <span class="gist-credit">RT</span></p>
+        </div>
+          
+          
+          
+          
+        <details class="sources">
+          <summary>Sources (3)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">the center</p>
+            <ul>
+              <li><a href="https://www.bbc.co.uk/news/articles/ckx283y8wwwgo?at_medium=RSS&amp;amp;at_campaign=rss" target="_blank" rel="noopener"><span class="who">BBC</span>Canadian astronaut welcomes baby girl from space station</a></li>
+            </ul>
+          </div>
+          <div class="camp-group">
+            <p class="also-head">government-funded outlets</p>
+            <ul>
+              <li><a href="https://rt-english.com/news/649305-pakistani-pilot-china-tiangong/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=RSS" target="_blank" rel="noopener"><span class="who">RT</span>Pakistani pilot set to become first foreigner at Chinese space station</a></li>
+              <li><a href="https://www.france24.com/en/video/20261125-historic-space-mission-china-launches-shenzhou-24-spacecraft-carrying-pakistani-astronaut" target="_blank" rel="noopener"><span class="who">France 24</span>&#39;Historic&#39; space mission: China launches Shenzhou 24 spacecraft carrying Pakistani astronaut</a></li>
+            </ul>
+          </div></div>
+        </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Canadian%20astronaut%20welcomes%20baby%20girl%20from%20space%20station&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Canadian%20astronaut%20welcomes%20baby%20girl%20from%20space%20station%0ASection%3A%20The%20world%0AEdition%3A%202026-11-25" target="_blank" rel="noopener">Feedback on this story</a></p>
+        </div>
+      </details>
+    </article>
+    <article class="story">
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">Israeli strike kills senior Hamas security official and family in Gaza City</h3>
+          <p class="gist">Israel assassinated Hamas&#39;s internal security chief in Gaza City, killing him and six others in a strike. <span class="gist-credit">Al Jazeera</span></p>
+          
+      <p class="spread" aria-label="Covered by 3 outlets: center, government-funded">
+        <span class="spread-label">Covered by 3 outlets</span>
+        <span class="chips"><span class="chip" aria-hidden="true">Left</span><span class="chip on" aria-hidden="true">Center</span><span class="chip" aria-hidden="true">Right</span><span class="chip on" aria-hidden="true">Government-funded</span><span class="chip" aria-hidden="true">Independent</span></span>
+      </p>
+          
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          
+          
+        <div class="account">
+          <p>Mohammed Abu al-Ouf, head of Hamas&#39;s internal security service in northern Gaza, was killed with his wife and two teenage daughters, doctors say. <span class="gist-credit">BBC</span> The attack is the latest in a series of deadly Israeli strikes on the Palestinian enclave despite an US-brokered ceasefire. <span class="gist-credit">RT</span> Israel has expanded its territorial control over Gaza since the agreement was reached in October 2025. <span class="gist-credit">RT</span></p>
+          <p>Gaza&#39;s Hamas-run Interior Ministry confirmed the death of Naim Abu Nahal, 50, on Tuesday. <span class="gist-credit">RT</span> Hamas condemned the killing as a &quot;war crime,&quot; accusing Israel of seeking to destabilize the enclave and urging the international community to compel it to honor the ceasefire agreement. <span class="gist-credit">RT</span></p>
+        </div>
+          
+          
+          
+          
+        <details class="sources">
+          <summary>Sources (3)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">the center</p>
+            <ul>
+              <li><a href="https://www.bbc.co.uk/news/articles/cmd718zydz9qo?at_medium=RSS&amp;amp;at_campaign=rss" target="_blank" rel="noopener"><span class="who">BBC</span>Israeli strike kills senior Hamas security official and family in Gaza City</a></li>
+            </ul>
+          </div>
+          <div class="camp-group">
+            <p class="also-head">government-funded outlets</p>
+            <ul>
+              <li><a href="https://www.aljazeera.com/video/newsfeed/2026/11/25/jerusalem-daily-israel-kills-hamass-gaza-security-chief?traffic_source=rss" target="_blank" rel="noopener"><span class="who">Al Jazeera</span>Jerusalem Daily: Israel kills Hamas&#39;s Gaza security chief</a></li>
+              <li><a href="https://rt-english.com/news/649343-israel-gaza-hamas-security-chief-ceasefire/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=RSS" target="_blank" rel="noopener"><span class="who">RT</span>Israel violates &#39;ceasefire&#39; to kill Hamas security chief</a></li>
+            </ul>
+          </div></div>
+        </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Israeli%20strike%20kills%20senior%20Hamas%20security%20official%20and%20family%20in%20Gaza%20City&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Israeli%20strike%20kills%20senior%20Hamas%20security%20official%20and%20family%20in%20Gaza%20City%0ASection%3A%20The%20world%0AEdition%3A%202026-11-25" target="_blank" rel="noopener">Feedback on this story</a></p>
+        </div>
+      </details>
+    </article>
+    <article class="story">
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">Iran tightening control over Strait of Hormuz, spokesperson says</h3>
+          <p class="gist">Iran has expanded trade with Russia through the Caspian Sea amid disruptions in the Strait of Hormuz, RT reports. <span class="gist-credit">RT</span></p>
+          
+      <p class="spread" aria-label="Covered by 2 outlets: center, government-funded">
+        <span class="spread-label">Covered by 2 outlets</span>
+        <span class="chips"><span class="chip" aria-hidden="true">Left</span><span class="chip on" aria-hidden="true">Center</span><span class="chip" aria-hidden="true">Right</span><span class="chip on" aria-hidden="true">Government-funded</span><span class="chip" aria-hidden="true">Independent</span></span>
+      </p>
+          
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          
+          
+        <div class="account">
+          <p>The US-Israeli dispute over Iran, which began in February, has severely disrupted shipping through the strategic waterway. <span class="gist-credit">RT</span></p>
+        </div>
+          
+          
+          
+          
+        <details class="sources">
+          <summary>Sources (2)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">the center</p>
+            <ul>
+              <li><a href="https://thehill.com/policy/defense/6243090-iran-strait-of-hormuz-ships/" target="_blank" rel="noopener"><span class="who">The Hill</span>Iran tightening control over Strait of Hormuz, spokesperson says</a></li>
+            </ul>
+          </div>
+          <div class="camp-group">
+            <p class="also-head">government-funded outlets</p>
+            <ul>
+              <li><a href="https://rt-english.com/news/649251-iran-trade-russia-hormuz/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=RSS" target="_blank" rel="noopener"><span class="who">RT</span>Iran turns to Russia to bypass Hormuz disruptions (VIDEO)</a></li>
+            </ul>
+          </div></div>
+        </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Iran%20tightening%20control%20over%20Strait%20of%20Hormuz%2C%20spokesperson%20says&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Iran%20tightening%20control%20over%20Strait%20of%20Hormuz%2C%20spokesperson%20says%0ASection%3A%20The%20world%0AEdition%3A%202026-11-25" target="_blank" rel="noopener">Feedback on this story</a></p>
+        </div>
+      </details>
+    </article>
+    <article class="story">
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">Solomon Islands signs security deal with Australia</h3>
+          <p class="gist">Solomon Islands will have to consult Canberra before making new security or infrastructure deals under new pact. <span class="gist-credit">Al Jazeera</span></p>
+          
+      <p class="spread" aria-label="Covered by 2 outlets: government-funded">
+        <span class="spread-label">Covered by 2 outlets</span>
+        <span class="chips"><span class="chip" aria-hidden="true">Left</span><span class="chip" aria-hidden="true">Center</span><span class="chip" aria-hidden="true">Right</span><span class="chip on" aria-hidden="true">Government-funded</span><span class="chip" aria-hidden="true">Independent</span></span>
+      </p>
+          
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          
+          
+          
+          
+          
+          
+        <details class="sources">
+          <summary>Sources (2)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">government-funded outlets</p>
+            <ul>
+              <li><a href="https://www.aljazeera.com/news/2026/11/25/solomon-islands-signs-security-deal-with-australia?traffic_source=rss" target="_blank" rel="noopener"><span class="who">Al Jazeera</span>Solomon Islands signs security deal with Australia</a></li>
+              <li><a href="https://www.dw.com/en/australia-solomon-islands-sign-sweeping-pact-seen-as-countering-china/a-80043646?maca=en-rss-en-all-1573-rdf" target="_blank" rel="noopener"><span class="who">Deutsche Welle</span>Australia, Solomon Islands sign sweeping pact seen as countering China</a></li>
+            </ul>
+          </div></div>
+        </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Solomon%20Islands%20signs%20security%20deal%20with%20Australia&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Solomon%20Islands%20signs%20security%20deal%20with%20Australia%0ASection%3A%20The%20world%0AEdition%3A%202026-11-25" target="_blank" rel="noopener">Feedback on this story</a></p>
+        </div>
+      </details>
+    </article>
+    </section>
+    <section class="section" id="nation">
+      <h2><span>The nation</span></h2>
+      
+    <article class="story">
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">Kilmar Abrego Garcia Avoids Deportation to Liberia by Leaving for Spain Voluntarily</h3>
+          <p class="gist">Kilmar Ábrego García voluntarily left the United States for Spain on Tuesday under a deal that spared him forced deportation to Africa and could affect whether he can return under a future president. <span class="gist-credit">Breitbart</span></p>
+          
+      <p class="spread" aria-label="Covered by 5 outlets: left, center, right">
+        <span class="spread-label">Covered by 5 outlets</span>
+        <span class="chips"><span class="chip on" aria-hidden="true">Left</span><span class="chip on" aria-hidden="true">Center</span><span class="chip on" aria-hidden="true">Right</span><span class="chip" aria-hidden="true">Government-funded</span><span class="chip" aria-hidden="true">Independent</span></span>
+      </p>
+          
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          <p class="sure sure-confirmed"><span class="sure-label">How sure is this?</span> Confirmed by 5 outlets across the left, center and right.</p>
+          
+        <div class="account">
+          <p>His deportation to and return from El Salvador became a flashpoint in the debate the US president&#39;s immigration agenda. <span class="gist-credit">BBC</span> Ábrego García chose to depart from US after previously being deported to El Salvador due to &#39;administrative error&#39; Kilmar Ábrego García, the Salvadoran national whose mistaken deportation turned him into a symbol of Donald Trump&#39;s mass deportation efforts, has landed in Spain. <span class="gist-credit">The Guardian</span> The U.S. Department of Homeland Security said Tuesday night that his decision to self-deported to Spain was part of a removal order, and he didn&#39;t receive any incentives to do so. <span class="gist-credit">Just the News</span></p>
+          <p>Ábrego Garcían arrived in Madrid on Wednesday after leaving the United States of his own volition. <span class="gist-credit">The Guardian</span> Ábrego García departed Tuesday for Madrid on a commercial flight and was swarmed with supporters and journalists after touching down and making his way through the airport. <span class="gist-credit">Fox News</span> His voluntary departure ends his battle with the Trump administration that began last year with his initial deportation over allegations that he was a member of the MS-13 gang. <span class="gist-credit">Fox News</span></p>
+        </div>
+          
+          
+          
+        <div class="block block-framing">
+          <h4>Same thing, different words</h4>
+          <dl class="framing">
+            <dt>deportations</dt>
+            <dd><span class="who">the left</span> <b>deportation</b><span class="sep"></span><span class="who">the center</span> <b>deportation</b><span class="sep"></span><span class="who">the right</span> <b>deportation</b> <b>removal</b> <b>self-deport</b></dd>
+          </dl>
+        </div>
+          
+        <details class="sources">
+          <summary>Sources (5)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">the left</p>
+            <ul>
+              <li><a href="https://www.theguardian.com/us-news/2026/nov/25/kilmar-abrego-garcia-spain" target="_blank" rel="noopener"><span class="who">The Guardian</span>Kilmar Ábrego García, target of Trump&#39;s immigration crackdown, lands in Spain after &#39;leaving happy&#39;</a></li>
+            </ul>
+          </div>
+          <div class="camp-group">
+            <p class="also-head">the center</p>
+            <ul>
+              <li><a href="https://www.bbc.co.uk/news/articles/c6808pyy5dl9o?at_medium=RSS&amp;amp;at_campaign=rss" target="_blank" rel="noopener"><span class="who">BBC</span>Kilmar Ábrego García arrives in Spain, ending Trump deportation battle</a></li>
+            </ul>
+          </div>
+          <div class="camp-group">
+            <p class="also-head">the right</p>
+            <ul>
+              <li><a href="https://www.foxnews.com/politics/kilmar-abrego-garcia-leave-us-voluntarily-europe-avoiding-forced-deportation" target="_blank" rel="noopener"><span class="who">Fox News</span>Kilmar Ábrego García lands in Spain, ending deportation battle with Trump administration</a></li>
+              <li><a href="https://www.breitbart.com/immigration/2026/11/24/kilmar-abrego-garcia-avoids-deportation-liberia-leaving-spain/" target="_blank" rel="noopener"><span class="who">Breitbart</span>Kilmar Abrego Garcia Avoids Deportation to Liberia by Leaving for Spain Voluntarily</a></li>
+              <li><a href="https://justthenews.com/government/federal-agencies/abrego-garcia-arrives-spain-after-voluntarily-leaving-us-avoid?utm_source=justthenews.com&amp;amp;utm_medium=feed&amp;amp;utm_campaign=external-news-aggregators" target="_blank" rel="noopener"><span class="who">Just the News</span>Ábrego García arrives in Spain after voluntarily leaving U.S. to avoid deportation</a></li>
+            </ul>
+          </div></div>
+        </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Kilmar%20Abrego%20Garcia%20Avoids%20Deportation%20to%20Liberia%20by%20Leaving%20for%20Spain%20Voluntar&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Kilmar%20Abrego%20Garcia%20Avoids%20Deportation%20to%20Liberia%20by%20Leaving%20for%20Spain%20Voluntarily%0ASection%3A%20The%20nation%0AEdition%3A%202026-11-25" target="_blank" rel="noopener">Feedback on this story</a></p>
+        </div>
+      </details>
+    </article>
+    <article class="story">
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">Whip list: Schumer faces challenge from Van Hollen for Senate Democratic leader</h3>
+          <p class="gist">Sen. Chuck Schumer (D-N.Y.), who has led Senate Democrats since 2017, is facing a new leadership challenge from Sen. Chris Van Hollen (D-Md.) <span class="gist-credit">The Hill</span></p>
+          
+      <p class="spread" aria-label="Covered by 4 outlets: left, center, right">
+        <span class="spread-label">Covered by 4 outlets</span>
+        <span class="chips"><span class="chip on" aria-hidden="true">Left</span><span class="chip on" aria-hidden="true">Center</span><span class="chip on" aria-hidden="true">Right</span><span class="chip" aria-hidden="true">Government-funded</span><span class="chip" aria-hidden="true">Independent</span></span>
+      </p>
+          
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          <p class="sure sure-confirmed"><span class="sure-label">How sure is this?</span> Confirmed by 4 outlets across the left, center and right.</p>
+          
+        <div class="account">
+          <p>Senator Chris Van Hollen says his move to replace Senator Chuck Schumer as party leader isn&#39;t about Israel, but his sharply critical stance toward the Jewish state has become a major fault line in the race. <span class="gist-credit">The New York Times</span> The Maryland senator has become an unlikely opponent of the Jewish state, and that&#39;s boosted his fortunes in the Democratic Party. <span class="gist-credit">National Review</span></p>
+          <p>Van Hollen has emerged as a challenger to Schumer for leadership and a favorite of progressive lawmakers. <span class="gist-credit">Just the News</span> Van Hollen, 67, is the progressive in the race, and his election would be a boost for the left. <span class="gist-credit">The Hill</span></p>
+        </div>
+          
+          
+          
+          
+        <details class="sources">
+          <summary>Sources (4)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">the left</p>
+            <ul>
+              <li><a href="https://www.nytimes.com/2026/11/25/us/politics/van-hollen-schumer-israel-senate.html" target="_blank" rel="noopener"><span class="who">The New York Times</span>Van Hollen&#39;s Challenge to Schumer Highlights Democratic Rift on Israel</a></li>
+            </ul>
+          </div>
+          <div class="camp-group">
+            <p class="also-head">the center</p>
+            <ul>
+              <li><a href="https://thehill.com/homenews/senate/6223162-whip-schumer-van-hollen-leadership-race/" target="_blank" rel="noopener"><span class="who">The Hill</span>Whip list: Schumer faces challenge from Van Hollen for Senate Democratic leader</a></li>
+            </ul>
+          </div>
+          <div class="camp-group">
+            <p class="also-head">the right</p>
+            <ul>
+              <li><a href="https://www.nationalreview.com/article/chris-van-hollen-s-anti-israel-turn" target="_blank" rel="noopener"><span class="who">National Review</span>Chris Van Hollen&#39;s Anti-Israel Turn</a></li>
+              <li><a href="https://justthenews.com/politics-policy/troy-jackson-backs-chris-van-hollen-senate-leader-over-schumer?utm_source=justthenews.com&amp;amp;utm_medium=feed&amp;amp;utm_campaign=external-news-aggregators" target="_blank" rel="noopener"><span class="who">Just the News</span>Troy Jackson backs Chris Van Hollen for Senate leader over Schumer</a></li>
+            </ul>
+          </div></div>
+        </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Whip%20list%3A%20Schumer%20faces%20challenge%20from%20Van%20Hollen%20for%20Senate%20Democratic%20leader&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Whip%20list%3A%20Schumer%20faces%20challenge%20from%20Van%20Hollen%20for%20Senate%20Democratic%20leader%0ASection%3A%20The%20nation%0AEdition%3A%202026-11-25" target="_blank" rel="noopener">Feedback on this story</a></p>
+        </div>
+      </details>
+    </article>
+    <article class="story">
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">Fort Hood Killer Makes A Last-Ditch Bid To Dodge The Firing Squad</h3>
+          <p class="gist">The former Army major who slaughtered 13 people at Fort Hood in 2009 filed papers Tuesday asking a federal judge to freeze his December 3 execution so he can challenge his death sentence in civilian court, according to reports. <span class="gist-credit">The Daily Wire</span></p>
+          
+      <p class="spread" aria-label="Covered by 4 outlets: left, center, right">
+        <span class="spread-label">Covered by 4 outlets</span>
+        <span class="chips"><span class="chip on" aria-hidden="true">Left</span><span class="chip on" aria-hidden="true">Center</span><span class="chip on" aria-hidden="true">Right</span><span class="chip" aria-hidden="true">Government-funded</span><span class="chip" aria-hidden="true">Independent</span></span>
+      </p>
+          
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          <p class="sure sure-confirmed"><span class="sure-label">How sure is this?</span> Confirmed by 4 outlets across the left, center and right.</p>
+          
+        <div class="account">
+          <p>Nidal Malik Hasan, who killed 13 people at the Army base in 2009, said he wanted to challenge his conviction and death sentence, which is to be carried out next week. <span class="gist-credit">The New York Times</span> 3 so he can file a habeas corpus petition to contest his detainment. <span class="gist-credit">The Hill</span> The former Army major and military psychiatrist Nidal Hasan was sentenced to death by a military jury for a shooting spree on the Texas military base, killing 13 people and wounding 32 on Nov. <span class="gist-credit">Washington Examiner</span></p>
+          <p>The stay of execution sent to the U.S. <span class="gist-credit">The Hill</span> However, the judge ruled that the Fort Hood victims posed no imminent threat to the Taliban and that the legality of the war was a political question outside the court&#39;s jurisdiction. <span class="gist-credit">Washington Examiner</span> Hasan has been on military death row at Fort Leavenworth since a court-martial found him guilty in 2013 of 13 counts of premeditated murder and 32 counts of attempted murder. <span class="gist-credit">The Daily Wire</span></p>
+        </div>
+          
+          
+          
+          
+        <details class="sources">
+          <summary>Sources (4)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">the left</p>
+            <ul>
+              <li><a href="https://www.nytimes.com/2026/11/25/us/nidal-malik-hasan-fort-hood-execution-stay.html" target="_blank" rel="noopener"><span class="who">The New York Times</span>Fort Hood Shooter Asks Judge to Delay His Execution by Firing Squad</a></li>
+            </ul>
+          </div>
+          <div class="camp-group">
+            <p class="also-head">the center</p>
+            <ul>
+              <li><a href="https://thehill.com/policy/defense/6242707-fort-hood-shooter-seeks-execution-stay/" target="_blank" rel="noopener"><span class="who">The Hill</span>Fort Hood shooter asks for execution delay</a></li>
+            </ul>
+          </div>
+          <div class="camp-group">
+            <p class="also-head">the right</p>
+            <ul>
+              <li><a href="https://www.washingtonexaminer.com/news/justice/4814940/fort-hood-shooter-plea-stop-firing-squad-execution/" target="_blank" rel="noopener"><span class="who">Washington Examiner</span>Fort Hood shooter pleads court to stop his firing-squad execution</a></li>
+              <li><a href="https://www.dailywire.com/news/fort-hood-killer-makes-a-last-ditch-bid-to-dodge-the-firing-squad" target="_blank" rel="noopener"><span class="who">The Daily Wire</span>Fort Hood Killer Makes A Last-Ditch Bid To Dodge The Firing Squad</a></li>
+            </ul>
+          </div></div>
+        </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Fort%20Hood%20Killer%20Makes%20A%20Last-Ditch%20Bid%20To%20Dodge%20The%20Firing%20Squad&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Fort%20Hood%20Killer%20Makes%20A%20Last-Ditch%20Bid%20To%20Dodge%20The%20Firing%20Squad%0ASection%3A%20The%20nation%0AEdition%3A%202026-11-25" target="_blank" rel="noopener">Feedback on this story</a></p>
+        </div>
+      </details>
+    </article>
+    <article class="story">
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">Scoop: The Pentagon&#39;s case for Canada to get serious on defense</h3>
+          <p class="gist">The Pentagon accused Canada on Monday of failing to modernize its military and meet its commitments to NATO. <span class="gist-credit">Breitbart</span></p>
+          
+      <p class="spread" aria-label="Covered by 3 outlets: center, right, government-funded">
+        <span class="spread-label">Covered by 3 outlets</span>
+        <span class="chips"><span class="chip" aria-hidden="true">Left</span><span class="chip on" aria-hidden="true">Center</span><span class="chip on" aria-hidden="true">Right</span><span class="chip on" aria-hidden="true">Government-funded</span><span class="chip" aria-hidden="true">Independent</span></span>
+      </p>
+          
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          <p class="sure sure-confirmed"><span class="sure-label">How sure is this?</span> Confirmed by 3 outlets across the center and right.</p>
+          
+        <div class="account">
+          <p>Pete Hegseth has reportedly issued a classified directive limiting engagement with Ottawa, although US officials say joint operations will remain unaffected US Secretary of War Pete Hegseth has issued a classified memo restricting military engagement with Canada, the Washington Post has reported, citing anonymous officials. <span class="gist-credit">RT</span> Why it matters: The restrictions deepen tensions between the U.S. and Canada over trade and defense, as Ottawa reconsiders billions of dollars in purchases of American weapons. <span class="gist-credit">Axios</span> Ottawa, however, has said it has seen no evidence of any change in the decades-long partnership. <span class="gist-credit">RT</span></p>
+          <p>The new restraints, which do not affect defense or intelligence sharing, limit U.S. military personnel from fraternizing with their Canadian counterparts at official events without prior authorization from the Pentagon, an official told Axios. <span class="gist-credit">Axios</span> The Pentagon fact sheet has not been reported. <span class="gist-credit">Axios</span> In an article on Saturday, the Washington Post quoted one official familiar with the directive as saying that Canada would likely view the restrictions as a &quot;slap in the face.&quot; <span class="gist-credit">RT</span></p>
+        </div>
+          
+          
+          
+          
+        <details class="sources">
+          <summary>Sources (3)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">the center</p>
+            <ul>
+              <li><a href="https://www.axios.com/2026/11/22/pentagon-canada-defense-restrictions-fact-sheet" target="_blank" rel="noopener"><span class="who">Axios</span>Scoop: The Pentagon&#39;s case for Canada to &quot;get serious&quot; on defense</a></li>
+            </ul>
+          </div>
+          <div class="camp-group">
+            <p class="also-head">the right</p>
+            <ul>
+              <li><a href="https://www.breitbart.com/national-security/2026/11/24/pentagon-scolds-canada-get-serious/" target="_blank" rel="noopener"><span class="who">Breitbart</span>Pentagon Scolds Canada: &#39;Get Serious&#39;</a></li>
+            </ul>
+          </div>
+          <div class="camp-group">
+            <p class="also-head">government-funded outlets</p>
+            <ul>
+              <li><a href="https://rt-english.com/news/649224-pentagon-restricts-us-canada-military-cooperation-wapo/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=RSS" target="_blank" rel="noopener"><span class="who">RT</span>Pentagon restricts US-Canada military cooperation – WaPo</a></li>
+            </ul>
+          </div></div>
+        </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Scoop%3A%20The%20Pentagon&#39;s%20case%20for%20Canada%20to%20get%20serious%20on%20defense&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Scoop%3A%20The%20Pentagon&#39;s%20case%20for%20Canada%20to%20get%20serious%20on%20defense%0ASection%3A%20The%20nation%0AEdition%3A%202026-11-25" target="_blank" rel="noopener">Feedback on this story</a></p>
+        </div>
+      </details>
+    </article>
+    <article class="story">
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">Trump&#39;s rescue of Nvidia&#39;s Huang brings political risks</h3>
+          <p class="gist">President Donald Trump&#39;s push to restore Jensen Huang to the helm of Nvidia is drawing unusually blunt criticism from Senate Republicans, raising alarm about national security risks and prompting calls for an investigation. <span class="gist-credit">The Daily Wire</span></p>
+          
+      <p class="spread" aria-label="Covered by 3 outlets: center, right">
+        <span class="spread-label">Covered by 3 outlets</span>
+        <span class="chips"><span class="chip" aria-hidden="true">Left</span><span class="chip on" aria-hidden="true">Center</span><span class="chip on" aria-hidden="true">Right</span><span class="chip" aria-hidden="true">Government-funded</span><span class="chip" aria-hidden="true">Independent</span></span>
+      </p>
+          
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          <p class="sure sure-confirmed"><span class="sure-label">How sure is this?</span> Confirmed by 3 outlets across the center and right.</p>
+          
+        <div class="account">
+          <p>The US president&#39;s intercession to reinstate CEO Jensen Huang has inextricably linked their fates. <span class="gist-credit">BBC</span> Why it matters: President Trump&#39;s push to reinstate Huang creates a headache for Republicans and new fodder for Democrats eager to deploy their investigative powers when they take control in January. <span class="gist-credit">Axios</span> After a midterm blowout cost Republicans nine Senate seats, some members are publicly with Trump over his intervention in Nvidia&#39;s decision to remove Huang, including assurances to the board that Huang was unlikely to face prosecution. <span class="gist-credit">The Daily Wire</span></p>
+          <p>&quot;Nvidia&#39;s board says it relied on input from senior U.S. officials to conclude that bringing Jensen Huang back posed no national security risk. <span class="gist-credit">The Daily Wire</span> &quot;The risk of extortion by a Chinese asset who&#39;s been banned by Singapore is risk enough to not rehire Huang. <span class="gist-credit">Axios</span> Driving the news: The House Intelligence, Foreign Affairs and China committees have announced that Huang would testify next week. <span class="gist-credit">Axios</span></p>
+        </div>
+          
+          
+          
+          
+        <details class="sources">
+          <summary>Sources (3)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">the center</p>
+            <ul>
+              <li><a href="https://www.bbc.co.uk/news/articles/ckj05m2zdyryo?at_medium=RSS&amp;amp;at_campaign=rss" target="_blank" rel="noopener"><span class="who">BBC</span>Trump&#39;s rescue of Nvidia&#39;s Huang brings political risks</a></li>
+              <li><a href="https://www.axios.com/2026/11/23/jensen-huang-nvidia-congress-dc-reaction" target="_blank" rel="noopener"><span class="who">Axios</span>Jensen Huang&#39;s return to Nvidia sparks bipartisan backlash on Capitol Hill</a></li>
+            </ul>
+          </div>
+          <div class="camp-group">
+            <p class="also-head">the right</p>
+            <ul>
+              <li><a href="https://www.dailywire.com/news/trumps-nvidia-intervention-sparks-rare-gop-senate-backlash" target="_blank" rel="noopener"><span class="who">The Daily Wire</span>Trump&#39;s Nvidia Intervention Sparks Rare GOP Senate Backlash</a></li>
+            </ul>
+          </div></div>
+        </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Trump&#39;s%20rescue%20of%20Nvidia&#39;s%20Huang%20brings%20political%20risks&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Trump&#39;s%20rescue%20of%20Nvidia&#39;s%20Huang%20brings%20political%20risks%0ASection%3A%20The%20nation%0AEdition%3A%202026-11-25" target="_blank" rel="noopener">Feedback on this story</a></p>
+        </div>
+      </details>
+    </article>
+    <article class="story">
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">Trump Pardons Thanksgiving Turkeys, Even The One That Ran Away</h3>
+          <p class="gist">Trump pardoned two turkeys on Tuesday afternoon in one of the White House&#39;s annual Thanksgiving traditions. <span class="gist-credit">The Daily Wire</span></p>
+          
+      <p class="spread" aria-label="Covered by 3 outlets: left, right">
+        <span class="spread-label">Covered by 3 outlets</span>
+        <span class="chips"><span class="chip on" aria-hidden="true">Left</span><span class="chip" aria-hidden="true">Center</span><span class="chip on" aria-hidden="true">Right</span><span class="chip" aria-hidden="true">Government-funded</span><span class="chip" aria-hidden="true">Independent</span></span>
+      </p>
+          
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          <p class="sure sure-confirmed"><span class="sure-label">How sure is this?</span> Confirmed by 3 outlets across the left and right.</p>
+          
+        <div class="account">
+          <p>Trump pardoned two turkeys named Freedom and Feathers, even though Feathers made a run for it before the ceremony began. <span class="gist-credit">Breitbart</span> The ceremony took place on the new White House helipad on the South Lawn, where the president was joined by first lady Melania. <span class="gist-credit">The Daily Wire</span> Trump and House Speaker Mike Johnson (R-LA). <span class="gist-credit">The Daily Wire</span></p>
+          <p>&quot;Freedom, as of this moment, you have a complete and total pardon,&quot; Trump said to one of the turkeys. <span class="gist-credit">The Daily Wire</span> The turkeys, Freedom and Feathers, arrived at the Willard InterContinental in Washington, D.C., on Monday from a farm in Fort Seybert, West Virginia. <span class="gist-credit">The Daily Wire</span> This year marks the 79th annual National Thanksgiving Turkey Presentation. <span class="gist-credit">The Daily Wire</span></p>
+        </div>
+          
+          
+          
+          
+        <details class="sources">
+          <summary>Sources (3)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">the left</p>
+            <ul>
+              <li><a href="https://www.washingtonpost.com/politics/2026/11/24/trump-pardons-turkeys-new-white-house-helipad/" target="_blank" rel="noopener"><span class="who">The Washington Post</span>Trump pardons turkeys on new White House helipad</a></li>
+            </ul>
+          </div>
+          <div class="camp-group">
+            <p class="also-head">the right</p>
+            <ul>
+              <li><a href="https://www.dailywire.com/news/trump-pardons-thanksgiving-turkeys-even-the-one-that-ran-away" target="_blank" rel="noopener"><span class="who">The Daily Wire</span>Trump Pardons Thanksgiving Turkeys — Even The One That Ran Away</a></li>
+              <li><a href="https://www.breitbart.com/politics/2026/11/24/president-trump-pardons-thanksgiving-turkeys-one-makes-daring-escape-attempt/" target="_blank" rel="noopener"><span class="who">Breitbart</span>President Trump Pardons Thanksgiving Turkeys as One Makes Daring Escape Attempt</a></li>
+            </ul>
+          </div></div>
+        </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Trump%20Pardons%20Thanksgiving%20Turkeys%2C%20Even%20The%20One%20That%20Ran%20Away&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Trump%20Pardons%20Thanksgiving%20Turkeys%2C%20Even%20The%20One%20That%20Ran%20Away%0ASection%3A%20The%20nation%0AEdition%3A%202026-11-25" target="_blank" rel="noopener">Feedback on this story</a></p>
+        </div>
+      </details>
+    </article>
+    </section>
+    <section class="section" id="justice">
+      <h2><span>Courts and justice</span></h2>
+      
+    <article class="story">
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">Statement: ICIJ battles to protect source behind Pornhub documents story</h3>
+          <p class="gist">After Aylo, Pornhub&#39;s parent company, sought to restrain us from publishing a story based on court records, ICIJ prevailed. Now a federal judge has ordered us to explain why we shouldn&#39;t be forced to reveal our source. <span class="gist-credit">ICIJ</span></p>
+          
+      <p class="spread" aria-label="Covered by 1 outlet: independent">
+        <span class="spread-label">Covered by 1 outlet</span>
+        <span class="chips"><span class="chip" aria-hidden="true">Left</span><span class="chip" aria-hidden="true">Center</span><span class="chip" aria-hidden="true">Right</span><span class="chip" aria-hidden="true">Government-funded</span><span class="chip on" aria-hidden="true">Independent</span></span>
+      </p>
+          
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          <p class="sure sure-single"><span class="sure-label">How sure is this?</span> Only one outlet has reported this so far.</p>
+          
+        <div class="account">
+          <p>When the International Consortium of Investigative Journalists asked Pornhub about its handling of child sexual abuse material and other nonconsensual content, the company&#39;s parent, Aylo, went to court to stop the story. <span class="gist-credit">ICIJ</span> ICIJ fought back, arguing that the Alabama federal court where Aylo sought a temporary restraining order lacked jurisdiction over it and that the requested injunction would constitute an unconstitutional prior restraint under the First Amendment. <span class="gist-credit">ICIJ</span> 16, and ICIJ immediately published the story Aylo didn&#39;t want readers to see. <span class="gist-credit">ICIJ</span></p>
+          <p>U.S. District Judge Annemarie Carney Axon directed ICIJ to explain why it should not be required to disclose the source&#39;s identity privately to the court. <span class="gist-credit">ICIJ</span> The judge&#39;s inquiry concerns a specific court record identifying victims of child sexual abuse, which was among a larger collection of records provided to ICIJ by its source. <span class="gist-credit">ICIJ</span> 23, ICIJ argued that the court has no authority to force it to identify its confidential source and that doing so would violate important First Amendment protections for journalists. <span class="gist-credit">ICIJ</span></p>
+        </div>
+          
+          
+          
+          
+        <details class="sources">
+          <summary>Sources (1)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">independent outlets</p>
+            <ul>
+              <li><a href="https://www.icij.org/inside-icij/2026/11/statement-icij-battles-to-protect-source-behind-pornhub-documents-story/" target="_blank" rel="noopener"><span class="who">ICIJ</span>Statement: ICIJ battles to protect source behind Pornhub documents story</a></li>
+            </ul>
+          </div></div>
+        </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Statement%3A%20ICIJ%20battles%20to%20protect%20source%20behind%20Pornhub%20documents%20story&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Statement%3A%20ICIJ%20battles%20to%20protect%20source%20behind%20Pornhub%20documents%20story%0ASection%3A%20Courts%20and%20justice%0AEdition%3A%202026-11-25" target="_blank" rel="noopener">Feedback on this story</a></p>
+        </div>
+      </details>
+    </article>
+    <article class="story">
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">Judge who ordered Mahmoud Khalil&#39;s deportation promoted to lead immigration review office</h3>
+          <p class="gist">The immigration judge who ordered the deportation of former Columbia University student and anti-Israel activist Mahmoud Khalil has been promoted for the second time in roughly a week, emerging as a key figure in the Justice Department&#39;s efforts to carry out. President Donald Trump&#39;s deportation agenda. <span class="gist-credit">Washington Examiner</span></p>
+          
+      <p class="spread" aria-label="Covered by 1 outlet: right">
+        <span class="spread-label">Covered by 1 outlet</span>
+        <span class="chips"><span class="chip" aria-hidden="true">Left</span><span class="chip" aria-hidden="true">Center</span><span class="chip on" aria-hidden="true">Right</span><span class="chip" aria-hidden="true">Government-funded</span><span class="chip" aria-hidden="true">Independent</span></span>
+      </p>
+          
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          <p class="sure sure-single"><span class="sure-label">How sure is this?</span> Only one outlet has reported this so far.</p>
+          
+        <div class="account">
+          <p>Jamee Comans was named acting director of the Executive Office for Immigration Review on Tuesday, according to an updated personnel biography on the DOJ&#39;s website. <span class="gist-credit">Washington Examiner</span> Her appointment, first reported by Bloomberg Law, comes just days after Attorney General Todd Blanche tapped her to serve as chief immigration judge, overseeing the nation&#39;s immigration courts. <span class="gist-credit">Washington Examiner</span></p>
+          <p>Mahmoud Khalil, and his wife Dr. Noor Abdalla watch election returns before Michigan Democratic Senate candidate Abdul El-Sayed arrives at a Michigan Democratic Party election night event, Tuesday, Nov. <span class="gist-credit">Washington Examiner</span></p>
+        </div>
+          
+          
+          
+          
+        <details class="sources">
+          <summary>Sources (1)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">the right</p>
+            <ul>
+              <li><a href="https://www.washingtonexaminer.com/news/justice/4815151/jamee-comans-mahmoud-khalil-promotion-immigration/" target="_blank" rel="noopener"><span class="who">Washington Examiner</span>Judge who ordered Mahmoud Khalil&#39;s deportation promoted to lead immigration review office</a></li>
+            </ul>
+          </div></div>
+        </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Judge%20who%20ordered%20Mahmoud%20Khalil&#39;s%20deportation%20promoted%20to%20lead%20immigration%20revi&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Judge%20who%20ordered%20Mahmoud%20Khalil&#39;s%20deportation%20promoted%20to%20lead%20immigration%20review%20office%0ASection%3A%20Courts%20and%20justice%0AEdition%3A%202026-11-25" target="_blank" rel="noopener">Feedback on this story</a></p>
+        </div>
+      </details>
+    </article>
+    <article class="story">
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">Trump Team&#39;s Secret Ultimatum Exposed in Court</h3>
+          <p class="gist">The Trump administration tried to call the shots at another chip giant, according to court filings that surfaced as its apparent pressure campaign on Nvidia came to light. A shareholder&#39;s lawsuit against Intel&#39;s board has new details about how far the administration went to get what it wanted with the semiconductor company, according to documents obtained by WIRED. <span class="gist-credit">The Daily Beast</span></p>
+          
+      <p class="spread" aria-label="Covered by 1 outlet: left">
+        <span class="spread-label">Covered by 1 outlet</span>
+        <span class="chips"><span class="chip on" aria-hidden="true">Left</span><span class="chip" aria-hidden="true">Center</span><span class="chip" aria-hidden="true">Right</span><span class="chip" aria-hidden="true">Government-funded</span><span class="chip" aria-hidden="true">Independent</span></span>
+      </p>
+          
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          <p class="sure sure-single"><span class="sure-label">How sure is this?</span> Only one outlet has reported this so far.</p>
+          
+          
+          
+          
+          
+        <details class="sources">
+          <summary>Sources (1)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">the left</p>
+            <ul>
+              <li><a href="https://www.thedailybeast.com/trumps-secret-intel-ultimatum-exposed-in-court" target="_blank" rel="noopener"><span class="who">The Daily Beast</span>Trump Team&#39;s Secret Ultimatum Exposed in Court</a></li>
+            </ul>
+          </div></div>
+        </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Trump%20Team&#39;s%20Secret%20Ultimatum%20Exposed%20in%20Court&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Trump%20Team&#39;s%20Secret%20Ultimatum%20Exposed%20in%20Court%0ASection%3A%20Courts%20and%20justice%0AEdition%3A%202026-11-25" target="_blank" rel="noopener">Feedback on this story</a></p>
+        </div>
+      </details>
+    </article>
+    </section>
+    <section class="section" id="health">
+      <h2><span>Health</span></h2>
+      
+    <article class="story">
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">Sticker Looms as a Major Challenge in Push for Single-Payer Healthcare</h3>
+          <p class="gist">Any discussion of a universal health plan in the U.S. always comes with concerns about costs. The challenge for proponents is to explain to voters that Americans already spend more than $5 trillion on healthcare each year. <span class="gist-credit">KFF Health News</span></p>
+          
+      <p class="spread" aria-label="Covered by 1 outlet: independent">
+        <span class="spread-label">Covered by 1 outlet</span>
+        <span class="chips"><span class="chip" aria-hidden="true">Left</span><span class="chip" aria-hidden="true">Center</span><span class="chip" aria-hidden="true">Right</span><span class="chip" aria-hidden="true">Government-funded</span><span class="chip on" aria-hidden="true">Independent</span></span>
+      </p>
+          
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          <p class="sure sure-single"><span class="sure-label">How sure is this?</span> Only one outlet has reported this so far.</p>
+          
+        <div class="account">
+          <p>As an Oregon panel finalized its proposal for statewide universal healthcare this month, opposition had already coalesced around a familiar theme: The costs and the new taxes needed to support it will be staggeringly large. <span class="gist-credit">KFF Health News</span> The panel&#39;s estimates place the cost of the plan at $69.7 billion a year starting in 2032. <span class="gist-credit">KFF Health News</span></p>
+          <p>&quot;We already do spend trillions of dollars on healthcare,&quot; said Cynthia Cox, a senior vice president at KFF, a health information nonprofit that includes KFF Health News. <span class="gist-credit">KFF Health News</span></p>
+        </div>
+          
+          
+          
+          
+        <details class="sources">
+          <summary>Sources (1)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">independent outlets</p>
+            <ul>
+              <li><a href="https://kffhealthnews.org/health-industry/universal-healthcare-single-payer-medicare-for-all-costs-oregon-midterm-election/" target="_blank" rel="noopener"><span class="who">KFF Health News</span>Sticker Shock Looms as a Major Challenge in Push for Single-Payer Healthcare</a></li>
+            </ul>
+          </div></div>
+        </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Sticker%20Looms%20as%20a%20Major%20Challenge%20in%20Push%20for%20Single-Payer%20Healthcare&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Sticker%20Looms%20as%20a%20Major%20Challenge%20in%20Push%20for%20Single-Payer%20Healthcare%0ASection%3A%20Health%0AEdition%3A%202026-11-25" target="_blank" rel="noopener">Feedback on this story</a></p>
+        </div>
+      </details>
+    </article>
+    <article class="story">
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">Medicare Open Enrollment: Here&#39;s What&#39;s Changing, and What Mistakes To Avoid</h3>
+          <p class="gist">Medicare&#39;s zero-premium drug plans are disappearing, millions are losing their plans, and the average prescription drug plan premium could rise 50% if you stay put. Here&#39;s what to check. <span class="gist-credit">KFF Health News</span></p>
+          
+      <p class="spread" aria-label="Covered by 1 outlet: independent">
+        <span class="spread-label">Covered by 1 outlet</span>
+        <span class="chips"><span class="chip" aria-hidden="true">Left</span><span class="chip" aria-hidden="true">Center</span><span class="chip" aria-hidden="true">Right</span><span class="chip" aria-hidden="true">Government-funded</span><span class="chip on" aria-hidden="true">Independent</span></span>
+      </p>
+          
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          <p class="sure sure-single"><span class="sure-label">How sure is this?</span> Only one outlet has reported this so far.</p>
+          
+        <div class="account">
+          <p>Annual open enrollment is underway for Medicare, the federal program that provides health insurance to roughly 70 million people. <span class="gist-credit">KFF Health News</span> The coverage choices are complex and often consequential. <span class="gist-credit">KFF Health News</span> Medicare provides health insurance to people 65 or older, as well as to some younger people with disabilities or certain health conditions. <span class="gist-credit">KFF Health News</span></p>
+          <p>Roughly half of beneficiaries are enrolled in traditional Medicare, which consists of Parts. <span class="gist-credit">KFF Health News</span> Enrollees can typically see any healthcare provider who accepts Medicare, and they rarely need approval for diagnostic tests, such as MRIs and CT scans. <span class="gist-credit">KFF Health News</span> However, there&#39;s no cap on out-of-pocket expenses in traditional Medicare, and it doesn&#39;t cover most prescriptions or dental, vision, or hearing services. <span class="gist-credit">KFF Health News</span></p>
+        </div>
+          
+          
+          
+          
+        <details class="sources">
+          <summary>Sources (1)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">independent outlets</p>
+            <ul>
+              <li><a href="https://kffhealthnews.org/insurance/medicare-open-enrollment-guide-medicare-advantage-medigap-part-d-drugs-premiums/" target="_blank" rel="noopener"><span class="who">KFF Health News</span>Medicare Open Enrollment: Here&#39;s What&#39;s Changing, and What Mistakes To Avoid</a></li>
+            </ul>
+          </div></div>
+        </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Medicare%20Open%20Enrollment%3A%20Here&#39;s%20What&#39;s%20Changing%2C%20and%20What%20Mistakes%20To%20Avoid&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Medicare%20Open%20Enrollment%3A%20Here&#39;s%20What&#39;s%20Changing%2C%20and%20What%20Mistakes%20To%20Avoid%0ASection%3A%20Health%0AEdition%3A%202026-11-25" target="_blank" rel="noopener">Feedback on this story</a></p>
+        </div>
+      </details>
+    </article>
+    <article class="story">
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">Aftershock: Untangling the Risks of Electroconvulsive Therapy</h3>
+          <p class="gist">Psychiatrists and other experts, backed by studies, maintain that ECT is safe and effective for severe psychiatric conditions including depression, schizophrenia, and bipolar disorder. But some ECT patients report lasting cognitive harm and say they weren&#39;t adequately pointed to potential side effects. <span class="gist-credit">Undark</span></p>
+          
+      <p class="spread" aria-label="Covered by 1 outlet: independent">
+        <span class="spread-label">Covered by 1 outlet</span>
+        <span class="chips"><span class="chip" aria-hidden="true">Left</span><span class="chip" aria-hidden="true">Center</span><span class="chip" aria-hidden="true">Right</span><span class="chip" aria-hidden="true">Government-funded</span><span class="chip on" aria-hidden="true">Independent</span></span>
+      </p>
+          
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          <p class="sure sure-single"><span class="sure-label">How sure is this?</span> Only one outlet has reported this so far.</p>
+          
+          
+          
+          
+          
+        <details class="sources">
+          <summary>Sources (1)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">independent outlets</p>
+            <ul>
+              <li><a href="https://undark.org/2026/11/25/electroconvulsive-therapy-risks/" target="_blank" rel="noopener"><span class="who">Undark</span>Aftershock: Untangling the Risks of Electroconvulsive Therapy</a></li>
+            </ul>
+          </div></div>
+        </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Aftershock%3A%20Untangling%20the%20Risks%20of%20Electroconvulsive%20Therapy&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Aftershock%3A%20Untangling%20the%20Risks%20of%20Electroconvulsive%20Therapy%0ASection%3A%20Health%0AEdition%3A%202026-11-25" target="_blank" rel="noopener">Feedback on this story</a></p>
+        </div>
+      </details>
+    </article>
+    </section>
+    <section class="section" id="science">
+      <h2><span>Science</span></h2>
+      
+    <article class="story">
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">A cosmically close supernova may spill the stellar explosion&#39;s secrets</h3>
+          <p class="gist">In early November, astronomers caught a nearby supernova. They soon realized it was something special and started working to study it. <span class="gist-credit">Science News</span></p>
+          
+      <p class="spread" aria-label="Covered by 1 outlet: independent">
+        <span class="spread-label">Covered by 1 outlet</span>
+        <span class="chips"><span class="chip" aria-hidden="true">Left</span><span class="chip" aria-hidden="true">Center</span><span class="chip" aria-hidden="true">Right</span><span class="chip" aria-hidden="true">Government-funded</span><span class="chip on" aria-hidden="true">Independent</span></span>
+      </p>
+          
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          <p class="sure sure-single"><span class="sure-label">How sure is this?</span> Only one outlet has reported this so far.</p>
+          
+          
+          
+          
+          
+        <details class="sources">
+          <summary>Sources (1)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">independent outlets</p>
+            <ul>
+              <li><a href="https://www.sciencenews.org/article/close-supernova-secrets-white-dwarf" target="_blank" rel="noopener"><span class="who">Science News</span>A cosmically close supernova may spill the stellar explosion&#39;s secrets</a></li>
+            </ul>
+          </div></div>
+        </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20A%20cosmically%20close%20supernova%20may%20spill%20the%20stellar%20explosion&#39;s%20secrets&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20A%20cosmically%20close%20supernova%20may%20spill%20the%20stellar%20explosion&#39;s%20secrets%0ASection%3A%20Science%0AEdition%3A%202026-11-25" target="_blank" rel="noopener">Feedback on this story</a></p>
+        </div>
+      </details>
+    </article>
+    <article class="story">
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">Australia&#39;s legless geckos evolved like snakes did</h3>
+          <p class="gist">Pygopods, Australia&#39;s limbless geckos, have taken an evolutionary path more like that of snakes than of other legless lizards. <span class="gist-credit">Science News</span></p>
+          
+      <p class="spread" aria-label="Covered by 1 outlet: independent">
+        <span class="spread-label">Covered by 1 outlet</span>
+        <span class="chips"><span class="chip" aria-hidden="true">Left</span><span class="chip" aria-hidden="true">Center</span><span class="chip" aria-hidden="true">Right</span><span class="chip" aria-hidden="true">Government-funded</span><span class="chip on" aria-hidden="true">Independent</span></span>
+      </p>
+          
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          <p class="sure sure-single"><span class="sure-label">How sure is this?</span> Only one outlet has reported this so far.</p>
+          
+          
+          
+          
+          
+        <details class="sources">
+          <summary>Sources (1)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">independent outlets</p>
+            <ul>
+              <li><a href="https://www.sciencenews.org/article/legless-geckos-evolved-like-snakes" target="_blank" rel="noopener"><span class="who">Science News</span>Australia&#39;s legless geckos evolved like snakes did</a></li>
+            </ul>
+          </div></div>
+        </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Australia&#39;s%20legless%20geckos%20evolved%20like%20snakes%20did&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Australia&#39;s%20legless%20geckos%20evolved%20like%20snakes%20did%0ASection%3A%20Science%0AEdition%3A%202026-11-25" target="_blank" rel="noopener">Feedback on this story</a></p>
+        </div>
+      </details>
+    </article>
+    <article class="story">
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">Novel Experiments Expand the Hunt for Ultralight Dark Matter</h3>
+          <p class="gist">Scientists are inventing new ways to search for the missing mass of the universe. <span class="gist-credit">Quanta</span></p>
+          
+      <p class="spread" aria-label="Covered by 1 outlet: independent">
+        <span class="spread-label">Covered by 1 outlet</span>
+        <span class="chips"><span class="chip" aria-hidden="true">Left</span><span class="chip" aria-hidden="true">Center</span><span class="chip" aria-hidden="true">Right</span><span class="chip" aria-hidden="true">Government-funded</span><span class="chip on" aria-hidden="true">Independent</span></span>
+      </p>
+          
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          <p class="sure sure-single"><span class="sure-label">How sure is this?</span> Only one outlet has reported this so far.</p>
+          
+          
+          
+          
+          
+        <details class="sources">
+          <summary>Sources (1)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">independent outlets</p>
+            <ul>
+              <li><a href="https://www.quantamagazine.org/novel-experiments-expand-the-hunt-for-ultralight-dark-matter-20261125/" target="_blank" rel="noopener"><span class="who">Quanta</span>Novel Experiments Expand the Hunt for &#39;Ultralight&#39; Dark Matter</a></li>
+            </ul>
+          </div></div>
+        </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Novel%20Experiments%20Expand%20the%20Hunt%20for%20Ultralight%20Dark%20Matter&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Novel%20Experiments%20Expand%20the%20Hunt%20for%20Ultralight%20Dark%20Matter%0ASection%3A%20Science%0AEdition%3A%202026-11-25" target="_blank" rel="noopener">Feedback on this story</a></p>
+        </div>
+      </details>
+    </article>
+    </section>
+    <section class="section" id="climate">
+      <h2><span>Climate and land</span></h2>
+      
+    <article class="story">
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">A Disappointing UN Climate Summit Concludes With Little Action on Food Systems</h3>
+          <p class="gist">The first day of the United Nations&#39; COP31 climate talks in Turkey focused on the nexus of food, agriculture and health, setting a hopeful tone for negotiators and advocacy groups that have been pushing to make food systems a bigger priority at the annual gatherings. <span class="gist-credit">Inside Climate News</span></p>
+          
+      <p class="spread" aria-label="Covered by 1 outlet: independent">
+        <span class="spread-label">Covered by 1 outlet</span>
+        <span class="chips"><span class="chip" aria-hidden="true">Left</span><span class="chip" aria-hidden="true">Center</span><span class="chip" aria-hidden="true">Right</span><span class="chip" aria-hidden="true">Government-funded</span><span class="chip on" aria-hidden="true">Independent</span></span>
+      </p>
+          
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          <p class="sure sure-single"><span class="sure-label">How sure is this?</span> Only one outlet has reported this so far.</p>
+          
+        <div class="account">
+          <p>Advocates say they&#39;re hopeful the next climate conference in Ethiopia will tackle agriculture. <span class="gist-credit">Inside Climate News</span> Despite no agreement being reached, some positive signs emerged this year. <span class="gist-credit">Inside Climate News</span></p>
+        </div>
+          
+          
+          
+          
+        <details class="sources">
+          <summary>Sources (1)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">independent outlets</p>
+            <ul>
+              <li><a href="https://insideclimatenews.org/news/25112026/a-disappointing-un-climate-summit-concludes-with-little-action-on-food-systems/" target="_blank" rel="noopener"><span class="who">Inside Climate News</span>A Disappointing UN Climate Summit Concludes With Little Action on Food Systems</a></li>
+            </ul>
+          </div></div>
+        </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20A%20Disappointing%20UN%20Climate%20Summit%20Concludes%20With%20Little%20Action%20on%20Food%20Systems&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20A%20Disappointing%20UN%20Climate%20Summit%20Concludes%20With%20Little%20Action%20on%20Food%20Systems%0ASection%3A%20Climate%20and%20land%0AEdition%3A%202026-11-25" target="_blank" rel="noopener">Feedback on this story</a></p>
+        </div>
+      </details>
+    </article>
+    <article class="story">
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">Storm Costs Are Sending Maine&#39;s Power Bills Rising</h3>
+          <p class="gist">Squeezing blood from a stone. That&#39;s how Seth Berry describes rising electricity prices in Maine. As executive director of Our Power, a coalition focused on clean energy and utility regulation, Berry talks with people all over the state who are no longer able to afford their power bills. <span class="gist-credit">Inside Climate News</span></p>
+          
+      <p class="spread" aria-label="Covered by 1 outlet: independent">
+        <span class="spread-label">Covered by 1 outlet</span>
+        <span class="chips"><span class="chip" aria-hidden="true">Left</span><span class="chip" aria-hidden="true">Center</span><span class="chip" aria-hidden="true">Right</span><span class="chip" aria-hidden="true">Government-funded</span><span class="chip on" aria-hidden="true">Independent</span></span>
+      </p>
+          
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          <p class="sure sure-single"><span class="sure-label">How sure is this?</span> Only one outlet has reported this so far.</p>
+          
+          
+          
+          
+          
+        <details class="sources">
+          <summary>Sources (1)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">independent outlets</p>
+            <ul>
+              <li><a href="https://insideclimatenews.org/news/25112026/maine-storms-power-bill-costs/" target="_blank" rel="noopener"><span class="who">Inside Climate News</span>Storm Costs Are Sending Maine&#39;s Power Bills Soaring</a></li>
+            </ul>
+          </div></div>
+        </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Storm%20Costs%20Are%20Sending%20Maine&#39;s%20Power%20Bills%20Rising&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Storm%20Costs%20Are%20Sending%20Maine&#39;s%20Power%20Bills%20Rising%0ASection%3A%20Climate%20and%20land%0AEdition%3A%202026-11-25" target="_blank" rel="noopener">Feedback on this story</a></p>
+        </div>
+      </details>
+    </article>
+    </section>
+    <section class="section" id="technology">
+      <h2><span>Technology</span></h2>
+      
+    <article class="story">
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">The Birds Are Listening: Scientists Used Seabirds to Track Hidden Ships</h3>
+          <p class="gist">Scientists equipped birds with audio recorders, revealing a &quot;surprising&quot; amount of vessels had turned their location trackers off, one researcher said. <span class="gist-credit">404 Media</span></p>
+          
+      <p class="spread" aria-label="Covered by 1 outlet: independent">
+        <span class="spread-label">Covered by 1 outlet</span>
+        <span class="chips"><span class="chip" aria-hidden="true">Left</span><span class="chip" aria-hidden="true">Center</span><span class="chip" aria-hidden="true">Right</span><span class="chip" aria-hidden="true">Government-funded</span><span class="chip on" aria-hidden="true">Independent</span></span>
+      </p>
+          
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          <p class="sure sure-single"><span class="sure-label">How sure is this?</span> Only one outlet has reported this so far.</p>
+          
+        <div class="account">
+          <p>🌘 The Abstract, our newsletter about the most exciting and mind-boggling science news and studies of the week. <span class="gist-credit">404 Media</span> In what sounds like an avian riff on The Wire, scientists equipped seabirds with audio recorders in order to listen in on their interactions with fishing vessels across the world&#39;s oceans, according to a study published on Wednesday in Science Advances. <span class="gist-credit">404 Media</span></p>
+          <p>However, the discovery that seabirds are regularly interacting with unseen ships can shed light on broader efforts to monitor commercial fisheries, while also revealing new insights about seabird behavior, especially their risk of becoming &quot;bycatch&quot; when they are fatally trapped in fishing gear. <span class="gist-credit">404 Media</span></p>
+        </div>
+          
+          
+          
+          
+        <details class="sources">
+          <summary>Sources (1)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">independent outlets</p>
+            <ul>
+              <li><a href="https://www.404media.co/the-birds-are-listening-scientists-used-seabirds-to-track-hidden-ships/" target="_blank" rel="noopener"><span class="who">404 Media</span>The Birds Are Listening: Scientists Used Seabirds to Track Hidden Ships</a></li>
+            </ul>
+          </div></div>
+        </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20The%20Birds%20Are%20Listening%3A%20Scientists%20Used%20Seabirds%20to%20Track%20Hidden%20Ships&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20The%20Birds%20Are%20Listening%3A%20Scientists%20Used%20Seabirds%20to%20Track%20Hidden%20Ships%0ASection%3A%20Technology%0AEdition%3A%202026-11-25" target="_blank" rel="noopener">Feedback on this story</a></p>
+        </div>
+      </details>
+    </article>
+    <article class="story">
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">Let the beat drop</h3>
+          <p class="gist">We&#39;re officially entering low power mode, but we have a couple more stories for you to close out the week. In the impending retail spirit, I review a device that&#39;s not a sex toy. I Listened to &#39;Sandstorm&#39; Through a Sex Toy You don&#39;t really realize how much downtime there is in the song &quot;Sandstorm&quot; by Darude until you&#39;re waiting for the bass to drop while it&#39;s playing inside your vagina. <span class="gist-credit">404 Media</span></p>
+          
+      <p class="spread" aria-label="Covered by 1 outlet: independent">
+        <span class="spread-label">Covered by 1 outlet</span>
+        <span class="chips"><span class="chip" aria-hidden="true">Left</span><span class="chip" aria-hidden="true">Center</span><span class="chip" aria-hidden="true">Right</span><span class="chip" aria-hidden="true">Government-funded</span><span class="chip on" aria-hidden="true">Independent</span></span>
+      </p>
+          
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          <p class="sure sure-single"><span class="sure-label">How sure is this?</span> Only one outlet has reported this so far.</p>
+          
+          
+          
+          
+          
+        <details class="sources">
+          <summary>Sources (1)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">independent outlets</p>
+            <ul>
+              <li><a href="https://www.404media.co/let-the-beat-drop/" target="_blank" rel="noopener"><span class="who">404 Media</span>Let the beat drop</a></li>
+            </ul>
+          </div></div>
+        </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Let%20the%20beat%20drop&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Let%20the%20beat%20drop%0ASection%3A%20Technology%0AEdition%3A%202026-11-25" target="_blank" rel="noopener">Feedback on this story</a></p>
+        </div>
+      </details>
+    </article>
+    <article class="story">
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">How foreign AI romance apps are reshaping youth intimacy in Africa</h3>
+          <p class="gist">With no local safeguards in place, addictive chatbots are testing communal values and hooking children on synthetic love. <span class="gist-credit">Rest of World</span></p>
+          
+      <p class="spread" aria-label="Covered by 1 outlet: independent">
+        <span class="spread-label">Covered by 1 outlet</span>
+        <span class="chips"><span class="chip" aria-hidden="true">Left</span><span class="chip" aria-hidden="true">Center</span><span class="chip" aria-hidden="true">Right</span><span class="chip" aria-hidden="true">Government-funded</span><span class="chip on" aria-hidden="true">Independent</span></span>
+      </p>
+          
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          <p class="sure sure-single"><span class="sure-label">How sure is this?</span> Only one outlet has reported this so far.</p>
+          
+        <div class="account">
+          <p>The 28-year-old Zimbabwean texted into the middle of the night until his eyes were red and burning, drawn by several &quot;AI girlfriends&quot; on the U.S. <span class="gist-credit">Rest of World</span></p>
+        </div>
+          
+          
+          
+          
+        <details class="sources">
+          <summary>Sources (1)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">independent outlets</p>
+            <ul>
+              <li><a href="https://restofworld.org/2026/ai-companion-apps-africa-character-ai/?utm_source=rss&amp;amp;utm_medium=rss&amp;amp;utm_campaign=feeds" target="_blank" rel="noopener"><span class="who">Rest of World</span>How foreign AI romance apps are reshaping youth intimacy in Africa</a></li>
+            </ul>
+          </div></div>
+        </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20How%20foreign%20AI%20romance%20apps%20are%20reshaping%20youth%20intimacy%20in%20Africa&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20How%20foreign%20AI%20romance%20apps%20are%20reshaping%20youth%20intimacy%20in%20Africa%0ASection%3A%20Technology%0AEdition%3A%202026-11-25" target="_blank" rel="noopener">Feedback on this story</a></p>
+        </div>
+      </details>
+    </article>
+    </section>
+    <section class="section" id="money">
+      <h2><span>Work and money</span></h2>
+      
+    <article class="story">
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">The U.S. Isn&#39;t in a Recession. Try Telling Many Americans That</h3>
+          <p class="gist">The freshest measures of growth and hiring show a healthy economy. Struggling Americans aren&#39;t seeing that. <span class="gist-credit">The New York Times</span></p>
+          
+      <p class="spread" aria-label="Covered by 1 outlet: left">
+        <span class="spread-label">Covered by 1 outlet</span>
+        <span class="chips"><span class="chip on" aria-hidden="true">Left</span><span class="chip" aria-hidden="true">Center</span><span class="chip" aria-hidden="true">Right</span><span class="chip" aria-hidden="true">Government-funded</span><span class="chip" aria-hidden="true">Independent</span></span>
+      </p>
+          
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          <p class="sure sure-single"><span class="sure-label">How sure is this?</span> Only one outlet has reported this so far.</p>
+          
+          
+          
+          
+          
+        <details class="sources">
+          <summary>Sources (1)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">the left</p>
+            <ul>
+              <li><a href="https://www.nytimes.com/2026/11/25/us/economic-growth-recession-pessimism.html" target="_blank" rel="noopener"><span class="who">The New York Times</span>The U.S. Isn&#39;t in a Recession. Try Telling Many Americans That.</a></li>
+            </ul>
+          </div></div>
+        </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20The%20U.S.%20Isn&#39;t%20in%20a%20Recession.%20Try%20Telling%20Many%20Americans%20That&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20The%20U.S.%20Isn&#39;t%20in%20a%20Recession.%20Try%20Telling%20Many%20Americans%20That%0ASection%3A%20Work%20and%20money%0AEdition%3A%202026-11-25" target="_blank" rel="noopener">Feedback on this story</a></p>
+        </div>
+      </details>
+    </article>
+    <article class="story">
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">53 incoming House Democrats to boycott Harvard orientation in support of graduate students&#39; strike</h3>
+          <p class="gist">&#39;We have been informed that to attend your event we would be required to cross a union picket line,&#39; the Democrats say US politics live, latest updates Fifty three newly elected members of Congress told Harvard University on Tuesday that they will boycott an informal orientation program at Harvard&#39;s Kennedy School next month in support of the school&#39;s striking graduate students union. <span class="gist-credit">The Guardian</span></p>
+          
+      <p class="spread" aria-label="Covered by 1 outlet: left">
+        <span class="spread-label">Covered by 1 outlet</span>
+        <span class="chips"><span class="chip on" aria-hidden="true">Left</span><span class="chip" aria-hidden="true">Center</span><span class="chip" aria-hidden="true">Right</span><span class="chip" aria-hidden="true">Government-funded</span><span class="chip" aria-hidden="true">Independent</span></span>
+      </p>
+          
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          <p class="sure sure-single"><span class="sure-label">How sure is this?</span> Only one outlet has reported this so far.</p>
+          
+          
+          
+          
+          
+        <details class="sources">
+          <summary>Sources (1)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">the left</p>
+            <ul>
+              <li><a href="https://www.theguardian.com/education/2026/nov/25/house-democrats-harvard-boycott-strike" target="_blank" rel="noopener"><span class="who">The Guardian</span>53 incoming House Democrats to boycott Harvard orientation in support of graduate students&#39; strike</a></li>
+            </ul>
+          </div></div>
+        </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%2053%20incoming%20House%20Democrats%20to%20boycott%20Harvard%20orientation%20in%20support%20of%20graduat&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%2053%20incoming%20House%20Democrats%20to%20boycott%20Harvard%20orientation%20in%20support%20of%20graduate%20students&#39;%20strike%0ASection%3A%20Work%20and%20money%0AEdition%3A%202026-11-25" target="_blank" rel="noopener">Feedback on this story</a></p>
+        </div>
+      </details>
+    </article>
+    <article class="story">
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">Trump proposing new tariffs on 14 partners including China and EU</h3>
+          <p class="gist">Administration is suggesting an added 20% tax on Chinese imports, which would bring the total to about 40% US politics live, latest updates Donald. Trump is proposing new tariffs on 14 trading partners, including China and the European Union, that would go into effect early next year, the office of the US trade representative said on Wednesday. <span class="gist-credit">The Guardian</span></p>
+          
+      <p class="spread" aria-label="Covered by 1 outlet: left">
+        <span class="spread-label">Covered by 1 outlet</span>
+        <span class="chips"><span class="chip on" aria-hidden="true">Left</span><span class="chip" aria-hidden="true">Center</span><span class="chip" aria-hidden="true">Right</span><span class="chip" aria-hidden="true">Government-funded</span><span class="chip" aria-hidden="true">Independent</span></span>
+      </p>
+          
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          <p class="sure sure-single"><span class="sure-label">How sure is this?</span> Only one outlet has reported this so far.</p>
+          
+          
+          
+          
+          
+        <details class="sources">
+          <summary>Sources (1)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">the left</p>
+            <ul>
+              <li><a href="https://www.theguardian.com/us-news/2026/nov/25/trump-new-china-tariffs-europe" target="_blank" rel="noopener"><span class="who">The Guardian</span>Trump proposing new tariffs on 14 partners including China and EU</a></li>
+            </ul>
+          </div></div>
+        </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Trump%20proposing%20new%20tariffs%20on%2014%20partners%20including%20China%20and%20EU&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Trump%20proposing%20new%20tariffs%20on%2014%20partners%20including%20China%20and%20EU%0ASection%3A%20Work%20and%20money%0AEdition%3A%202026-11-25" target="_blank" rel="noopener">Feedback on this story</a></p>
+        </div>
+      </details>
+    </article>
+    </section>
+    <section class="section" id="local">
+      <h2><span>Local: Gilpin County and the foothills</span></h2>
+      
+    <article class="story">
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">Where to give and volunteer in Boulder County this holiday season</h3>
+          <p class="gist">From winter coats to volunteer drivers, local nonprofits and community groups share what they need most and how you can help. <span class="gist-credit">Boulder Reporting Lab</span></p>
+          
+      <p class="spread"><span class="spread-label">Reported by Boulder Reporting Lab</span></p>
+          
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          
+          
+        <div class="account">
+          <p>Boulder Reporting Lab&#39;s 2026 giving guide spans 17 categories, from food and housing to the arts and wildfire resilience. <span class="gist-credit">Boulder Reporting Lab</span> The groups told us in their own words what would help most, whether that&#39;s a donation, a volunteer shift or supplies they can put to use right away. <span class="gist-credit">Boulder Reporting Lab</span></p>
+          <p>Community Foundation Boulder County helped us reach more organizations by sharing our survey. <span class="gist-credit">Boulder Reporting Lab</span></p>
+        </div>
+          
+          
+          
+          
+        <details class="sources">
+          <summary>Sources (1)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">local outlets</p>
+            <ul>
+              <li><a href="https://boulderreportinglab.org/2026/11/24/where-to-give-and-volunteer-in-boulder-county-this-holiday-season/" target="_blank" rel="noopener"><span class="who">Boulder Reporting Lab</span>Where to give and volunteer in Boulder County this holiday season</a></li>
+            </ul>
+          </div></div>
+        </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Where%20to%20give%20and%20volunteer%20in%20Boulder%20County%20this%20holiday%20season&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Where%20to%20give%20and%20volunteer%20in%20Boulder%20County%20this%20holiday%20season%0ASection%3A%20Local%3A%20Gilpin%20County%20and%20the%20foothills%0AEdition%3A%202026-11-25" target="_blank" rel="noopener">Feedback on this story</a></p>
+        </div>
+      </details>
+    </article>
+    </section>
+    <section class="section" id="good">
+      <h2><span>Good news</span></h2>
+      
+    <article class="story">
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">Indigenous women plant hundreds of thousands of trees to restore water sources</h3>
+          <p class="gist">The reforestation initiative prioritizes women&#39;s empowerment, bridging gender divides through education in a bid to make the project more durable. <span class="gist-credit">Good Good Good</span></p>
+          
+      <p class="spread"><span class="spread-label">Reported by Good Good Good</span></p>
+          
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          
+          
+          
+          
+          
+          
+        <details class="sources">
+          <summary>Sources (1)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">good news outlets</p>
+            <ul>
+              <li><a href="https://www.goodgoodgood.co/articles/bolivian-andes-indigenous-women" target="_blank" rel="noopener"><span class="who">Good Good Good</span>Indigenous women plant hundreds of thousands of trees to restore water sources</a></li>
+            </ul>
+          </div></div>
+        </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Indigenous%20women%20plant%20hundreds%20of%20thousands%20of%20trees%20to%20restore%20water%20sources&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Indigenous%20women%20plant%20hundreds%20of%20thousands%20of%20trees%20to%20restore%20water%20sources%0ASection%3A%20Good%20news%0AEdition%3A%202026-11-25" target="_blank" rel="noopener">Feedback on this story</a></p>
+        </div>
+      </details>
+    </article>
+    <article class="story">
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">Roman Glass Among the Silk Road Treasures Unearthed in Nomadic Noble&#39;s Tomb</h3>
+          <p class="gist">The legendary character of the Silk Road was in full focus recently in Mongolia, where excavations of a nomad&#39;s tomb unearthed objects all the way from Classical Rome. <span class="gist-credit">Good News Network</span></p>
+          
+      <p class="spread"><span class="spread-label">Reported by Good News Network</span></p>
+          
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          
+          
+          
+          
+          
+          
+        <details class="sources">
+          <summary>Sources (1)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">good news outlets</p>
+            <ul>
+              <li><a href="https://www.goodnewsnetwork.org/roman-glass-among-the-silk-road-treasures-unearthed-in-nomadic-nobles-tomb/" target="_blank" rel="noopener"><span class="who">Good News Network</span>Roman Glass Among the Silk Road Treasures Unearthed in Nomadic Noble&#39;s Tomb</a></li>
+            </ul>
+          </div></div>
+        </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Roman%20Glass%20Among%20the%20Silk%20Road%20Treasures%20Unearthed%20in%20Nomadic%20Noble&#39;s%20Tomb&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Roman%20Glass%20Among%20the%20Silk%20Road%20Treasures%20Unearthed%20in%20Nomadic%20Noble&#39;s%20Tomb%0ASection%3A%20Good%20news%0AEdition%3A%202026-11-25" target="_blank" rel="noopener">Feedback on this story</a></p>
+        </div>
+      </details>
+    </article>
+    <article class="story">
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">What We&#39;re Reading: Building a Walkable City From Scratch</h3>
+          <p class="gist">Welcome back to our weekly behind-the-scenes glimpse at what&#39;s getting our team talking. Tell us what you&#39;ve been reading at info@reasonstobecheerful.world and we just might feature it here. City of tomorrow At first glance, the sky seems to be the limit for Utah City, a new community in one of Utah&#39;s fastest-growing cities, with the developer citing the cost of constructing high rises as the only constraint. <span class="gist-credit">Reasons to be Cheerful</span></p>
+          
+      <p class="spread"><span class="spread-label">Reported by Reasons to be Cheerful</span></p>
+          
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          
+          
+        <div class="account">
+          <p>Though one new resident describes it as &quot;rad&quot; and &quot;vibey,&quot; members of the local city council call it a &quot;gamble,&quot; expressing skepticism that such a community makes sense in a place full of freeways and single-family homes. <span class="gist-credit">Reasons to be Cheerful</span></p>
+        </div>
+          
+          
+          
+          
+        <details class="sources">
+          <summary>Sources (1)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">good news outlets</p>
+            <ul>
+              <li><a href="https://reasonstobecheerful.world/what-were-reading-walkable-utah-city/" target="_blank" rel="noopener"><span class="who">Reasons to be Cheerful</span>What We&#39;re Reading: Building a Walkable City From Scratch</a></li>
+            </ul>
+          </div></div>
+        </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20What%20We&#39;re%20Reading%3A%20Building%20a%20Walkable%20City%20From%20Scratch&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20What%20We&#39;re%20Reading%3A%20Building%20a%20Walkable%20City%20From%20Scratch%0ASection%3A%20Good%20news%0AEdition%3A%202026-11-25" target="_blank" rel="noopener">Feedback on this story</a></p>
+        </div>
+      </details>
+    </article>
+    <article class="story">
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">Autos for Love Owners Delight in Giving Away Cars to Needy Neighbors</h3>
+          <p class="gist">Once a year, the owners of a Texas auto-repair shop would refurbish a donated car and then hand the keys to a member of their community in need. But thanks to their generosity and the generosity of others, they&#39;ve been able to turbocharge their giving, with multiple vehicles going out ever year. <span class="gist-credit">Good News Network</span></p>
+          
+      <p class="spread"><span class="spread-label">Reported by Good News Network</span></p>
+          
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          
+          
+          
+          
+          
+          
+        <details class="sources">
+          <summary>Sources (1)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">good news outlets</p>
+            <ul>
+              <li><a href="https://www.goodnewsnetwork.org/texas-auto-shop-couple-is-hungry-to-keep-giving-cars-away-to-neighbors-in-need/" target="_blank" rel="noopener"><span class="who">Good News Network</span>&#39;Autos for Love&#39; Owners Delight in Giving Away Cars to Needy Neighbors</a></li>
+            </ul>
+          </div></div>
+        </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Autos%20for%20Love%20Owners%20Delight%20in%20Giving%20Away%20Cars%20to%20Needy%20Neighbors&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Autos%20for%20Love%20Owners%20Delight%20in%20Giving%20Away%20Cars%20to%20Needy%20Neighbors%0ASection%3A%20Good%20news%0AEdition%3A%202026-11-25" target="_blank" rel="noopener">Feedback on this story</a></p>
+        </div>
+      </details>
+    </article>
+    <article class="story">
+      <details class="story-more">
+        <summary>
+          <h3 class="headline">Miki Kawamura: a 19-year-old&#39;s peace network brings ice cream to a Nobel summit</h3>
+          <p class="gist">BY THE OPTIMIST Daily EDITORIAL Team What does peace taste like? At the 20th World Summit of Nobel Peace Laureates, held in Rome from December 1 to 4, Miki Kawamura plans to let visitors decide for themselves. PeaceCream, The post Miki Kawamura: a 19-year-old&#39;s peace network brings ice cream to a Nobel summit first appeared on The Optimist Daily: Making Solutions the News. <span class="gist-credit">The Optimist Daily</span></p>
+          
+      <p class="spread"><span class="spread-label">Reported by The Optimist Daily</span></p>
+          
+          
+          <span class="more-cue" aria-hidden="true"><span class="cue-open">More</span><span class="cue-close">Less</span></span>
+        </summary>
+        <div class="more-body">
+          
+          
+        <div class="account">
+          <p>PeaceCream, a pop-up she has developed through her Youth Peace Ambassadors program in collaboration with Japan&#39;s Goi Peace Foundation, gives each ice cream flavor a value tied to peace, such as love, hope, gratitude, or compassion. <span class="gist-credit">The Optimist Daily</span> Participants think about what peace means to them, then build their own cup from the flavors and toppings that represent the values they want to bring into the world. <span class="gist-credit">The Optimist Daily</span> &quot;What if we could make peace something people can taste, feel, and share?&quot; <span class="gist-credit">The Optimist Daily</span></p>
+          <p>The concept is playful, but the conviction behind it runs through everything Miki has built since she was 18. <span class="gist-credit">The Optimist Daily</span> In her view, peace has been left too long to political debates and international institutions. <span class="gist-credit">The Optimist Daily</span> Youth Peace Ambassadors begins with the individual. <span class="gist-credit">The Optimist Daily</span></p>
+        </div>
+          
+          
+          
+          
+        <details class="sources">
+          <summary>Sources (1)</summary>
+          <div class="original-body">
+          <div class="camp-group">
+            <p class="also-head">good news outlets</p>
+            <ul>
+              <li><a href="https://www.optimistdaily.com/2026/11/miki-kawamura-a-19-year-olds-peace-network-brings-ice-cream-to-a-nobel-summit/" target="_blank" rel="noopener"><span class="who">The Optimist Daily</span>Miki Kawamura: a 19-year-old&#39;s peace network brings ice cream to a Nobel summit</a></li>
+            </ul>
+          </div></div>
+        </details>
+          <p class="feedback-link"><a href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback%3A%20Miki%20Kawamura%3A%20a%2019-year-old&#39;s%20peace%20network%20brings%20ice%20cream%20to%20a%20Nobel%20summit&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AStory%3A%20Miki%20Kawamura%3A%20a%2019-year-old&#39;s%20peace%20network%20brings%20ice%20cream%20to%20a%20Nobel%20summit%0ASection%3A%20Good%20news%0AEdition%3A%202026-11-25" target="_blank" rel="noopener">Feedback on this story</a></p>
+        </div>
+      </details>
+    </article>
+    </section>
+
+    <div class="ending">
+      <p><strong>That’s everything for today.</strong></p>
+      <p>The next edition arrives tomorrow morning.</p>
+      <p class="archive-link"><a href="./">Earlier editions</a></p>
+      
+    <details class="colophon">
+      <summary><span>How this works, and which outlets are included</span></summary>
+      <div class="body">
+        <p>These are inputs to compare, not sources to trust. Outlets are carried across the political spectrum, including state broadcasters, precisely so that a story can be read against itself. Every outlet is labelled by lean, owner and money. Agreement across outlets that disagree is the only thing treated as evidence.</p>
+        <p>Each morning Steady reads news outlets from the left, center and right, plus
+        government-funded and independent ones. Stories that several of them covered go first.</p>
+        <p>The quotes under each story are
+        things outlets on different sides both reported, in their own words.</p>
+        <p>Headlines are reworded to remove charged language. Tap "See every outlet's headline"
+        to read the originals.</p>
+        <p>Every outlet has a political lean, and many have owners or funders with interests of
+        their own. They are listed below.</p>
+        <table>
+        <tr>
+          <td>Mother Jones</td>
+          <td><span class="lean">left</span>nonprofit, reader funded, openly progressive</td>
+        </tr>
+        <tr>
+          <td>The Daily Beast</td>
+          <td><span class="lean">left</span>IAC, commercial</td>
+        </tr>
+        <tr>
+          <td>Salon</td>
+          <td><span class="lean">left</span>commercial, openly progressive</td>
+        </tr>
+        <tr>
+          <td>The Guardian</td>
+          <td><span class="lean">center-left</span>Scott Trust, no shareholders, declared left politics</td>
+        </tr>
+        <tr>
+          <td>NPR</td>
+          <td><span class="lean">center-left</span>nonprofit network, federal funding under dispute</td>
+        </tr>
+        <tr>
+          <td>The Washington Post</td>
+          <td><span class="lean">center-left</span>Jeff Bezos, sole owner</td>
+        </tr>
+        <tr>
+          <td>The New York Times</td>
+          <td><span class="lean">center-left</span>public company, Sulzberger family control</td>
+        </tr>
+        <tr>
+          <td>CNN</td>
+          <td><span class="lean">center-left</span>Warner Bros Discovery, commercial</td>
+        </tr>
+        <tr>
+          <td>Politico</td>
+          <td><span class="lean">center-left</span>Axel Springer, commercial</td>
+        </tr>
+        <tr>
+          <td>BBC</td>
+          <td><span class="lean">center</span>UK licence fee, level set by government</td>
+        </tr>
+        <tr>
+          <td>The Hill</td>
+          <td><span class="lean">center</span>Nexstar, commercial</td>
+        </tr>
+        <tr>
+          <td>Axios</td>
+          <td><span class="lean">center</span>Cox Enterprises, commercial</td>
+        </tr>
+        <tr>
+          <td>Christian Science Monitor</td>
+          <td><span class="lean">center</span>church owned nonprofit, editorially independent</td>
+        </tr>
+        <tr>
+          <td>The Wall Street Journal</td>
+          <td><span class="lean">center-right</span>News Corp, Murdoch family</td>
+        </tr>
+        <tr>
+          <td>Reason</td>
+          <td><span class="lean">center-right</span>nonprofit, libertarian by charter</td>
+        </tr>
+        <tr>
+          <td>National Review</td>
+          <td><span class="lean">center-right</span>nonprofit, conservative by charter</td>
+        </tr>
+        <tr>
+          <td>The Dispatch</td>
+          <td><span class="lean">center-right</span>subscriber funded, conservative</td>
+        </tr>
+        <tr>
+          <td>The Washington Times</td>
+          <td><span class="lean">center-right</span>Unification movement affiliated, conservative<span class="review">Couldn’t be reached today</span></td>
+        </tr>
+        <tr>
+          <td>Fox News</td>
+          <td><span class="lean">right</span>Fox Corporation, Murdoch family</td>
+        </tr>
+        <tr>
+          <td>New York Post</td>
+          <td><span class="lean">right</span>News Corp, Murdoch family</td>
+        </tr>
+        <tr>
+          <td>Washington Examiner</td>
+          <td><span class="lean">right</span>Clarity Media, Philip Anschutz</td>
+        </tr>
+        <tr>
+          <td>The Daily Wire</td>
+          <td><span class="lean">right</span>commercial, openly conservative</td>
+        </tr>
+        <tr>
+          <td>Breitbart</td>
+          <td><span class="lean">right</span>commercial, openly right wing</td>
+        </tr>
+        <tr>
+          <td>Just the News</td>
+          <td><span class="lean">right</span>commercial, conservative</td>
+        </tr>
+        <tr>
+          <td>Al Jazeera</td>
+          <td><span class="lean">state</span>funded by the government of Qatar</td>
+        </tr>
+        <tr>
+          <td>RT</td>
+          <td><span class="lean">state</span>funded by the Russian state</td>
+        </tr>
+        <tr>
+          <td>Deutsche Welle</td>
+          <td><span class="lean">state</span>funded by the German federal government</td>
+        </tr>
+        <tr>
+          <td>France 24</td>
+          <td><span class="lean">state</span>funded by the French state</td>
+        </tr>
+        <tr>
+          <td>ProPublica</td>
+          <td><span class="lean">independent</span>nonprofit, donor funded</td>
+        </tr>
+        <tr>
+          <td>Reveal</td>
+          <td><span class="lean">independent</span>nonprofit</td>
+        </tr>
+        <tr>
+          <td>ICIJ</td>
+          <td><span class="lean">independent</span>nonprofit consortium</td>
+        </tr>
+        <tr>
+          <td>The Marshall Project</td>
+          <td><span class="lean">independent</span>nonprofit</td>
+        </tr>
+        <tr>
+          <td>KFF Health News</td>
+          <td><span class="lean">independent</span>endowed nonprofit</td>
+        </tr>
+        <tr>
+          <td>404 Media</td>
+          <td><span class="lean">independent</span>journalist owned, subscriber funded</td>
+        </tr>
+        <tr>
+          <td>The Markup</td>
+          <td><span class="lean">independent</span>nonprofit</td>
+        </tr>
+        <tr>
+          <td>Rest of World</td>
+          <td><span class="lean">independent</span>nonprofit</td>
+        </tr>
+        <tr>
+          <td>Science News</td>
+          <td><span class="lean">independent</span>nonprofit membership society</td>
+        </tr>
+        <tr>
+          <td>Quanta</td>
+          <td><span class="lean">independent</span>Simons Foundation</td>
+        </tr>
+        <tr>
+          <td>Undark</td>
+          <td><span class="lean">independent</span>Knight Foundation, MIT program</td>
+        </tr>
+        <tr>
+          <td>Inside Climate News</td>
+          <td><span class="lean">independent</span>nonprofit</td>
+        </tr>
+        <tr>
+          <td>High Country News</td>
+          <td><span class="lean">independent</span>nonprofit, reader supported</td>
+        </tr>
+        <tr>
+          <td>Votebeat</td>
+          <td><span class="lean">independent</span>nonprofit, nonpartisan by charter</td>
+        </tr>
+        <tr>
+          <td>The 19th</td>
+          <td><span class="lean">independent</span>nonprofit, gender lens</td>
+        </tr>
+        <tr>
+          <td>The Texas Tribune</td>
+          <td><span class="lean">independent</span>nonprofit</td>
+        </tr>
+        <tr>
+          <td>CalMatters</td>
+          <td><span class="lean">independent</span>nonprofit</td>
+        </tr>
+        <tr>
+          <td>Clear Creek Courant</td>
+          <td><span class="lean">local</span>Colorado Trust for Local News, nonprofit<span class="review">Couldn’t be reached today</span></td>
+        </tr>
+        <tr>
+          <td>Canyon Courier</td>
+          <td><span class="lean">local</span>Colorado Trust for Local News, nonprofit</td>
+        </tr>
+        <tr>
+          <td>The Colorado Sun</td>
+          <td><span class="lean">local</span>journalist founded, now nonprofit</td>
+        </tr>
+        <tr>
+          <td>CPR News</td>
+          <td><span class="lean">local</span>Colorado Public Radio, nonprofit</td>
+        </tr>
+        <tr>
+          <td>Colorado Newsline</td>
+          <td><span class="lean">local</span>States Newsroom, nonprofit</td>
+        </tr>
+        <tr>
+          <td>Denverite</td>
+          <td><span class="lean">local</span>Colorado Public Radio, nonprofit</td>
+        </tr>
+        <tr>
+          <td>Boulder Reporting Lab</td>
+          <td><span class="lean">local</span>nonprofit</td>
+        </tr>
+        <tr>
+          <td>Positive News</td>
+          <td><span class="lean">good</span>reader owned cooperative, UK<span class="review">Couldn’t be reached today</span></td>
+        </tr>
+        <tr>
+          <td>Reasons to be Cheerful</td>
+          <td><span class="lean">good</span>nonprofit</td>
+        </tr>
+        <tr>
+          <td>Good News Network</td>
+          <td><span class="lean">good</span>independent, commercial</td>
+        </tr>
+        <tr>
+          <td>The Optimist Daily</td>
+          <td><span class="lean">good</span>independent, reader funded</td>
+        </tr>
+        <tr>
+          <td>Good Good Good</td>
+          <td><span class="lean">good</span>independent, commercial</td>
+        </tr>
+        <tr>
+          <td>Fix the News</td>
+          <td><span class="lean">good</span>independent, reader funded</td>
+        </tr></table>
+        <p class="left-out">Outlets we couldn’t include:</p>
+        <table>
+        <tr><td>Associated Press</td><td>blocks automated access, no public feed</td></tr>
+        <tr><td>Reuters</td><td>retired its public feeds</td></tr>
+        <tr><td>Xinhua and Press TV</td><td>feeds dead, so Chinese and Iranian state lines are not represented</td></tr>
+        <tr><td>MSNBC, HuffPost, The Nation, Newsweek</td><td>feeds return nothing or refuse automated requests</td></tr>
+        <tr><td>Weekly Register-Call and The Mountain-Ear</td><td>neither publishes a public news feed, and the Mountain-Ear blocks automated reading</td></tr></table>
+      </div>
+    </details>
+    </div>
+  </main>
+  <a class="feedback-button" href="https://github.com/tupeloghost/Steady/issues/new?labels=feedback&amp;title=Feedback&amp;body=What%20I%20noticed%3A%0A%0A%0A%0A---%0AAbout%3A%20the%20page%20in%20general%0AEdition%3A%202026-11-25" target="_blank" rel="noopener">Feedback</a>
+</body>
+</html>
